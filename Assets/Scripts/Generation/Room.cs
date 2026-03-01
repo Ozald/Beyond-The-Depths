@@ -22,6 +22,7 @@ public class Room : Connectable
     public Vector3 rightDoorPosition;
     public Vector3 leftDoorPosition;
     public Vector3 downDoorPosition;
+    public RoomType roomType;
 
     public Connectable? Left
     {
