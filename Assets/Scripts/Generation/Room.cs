@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using UnityEngine;
 
 public class Room : Connectable
 {
@@ -16,6 +17,11 @@ public class Room : Connectable
     [CanBeNull] private Connectable up;
     [CanBeNull] private Connectable right;
     [CanBeNull] private Connectable down;
+    
+    public Vector3 upDoorPosition;
+    public Vector3 rightDoorPosition;
+    public Vector3 leftDoorPosition;
+    public Vector3 downDoorPosition;
 
     public Connectable? Left
     {
