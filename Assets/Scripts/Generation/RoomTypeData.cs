@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum RoomType
@@ -9,37 +10,70 @@ public enum RoomType
     Hallway,
 }
 
+
+[Serializable]
+public struct WeightedRoom
+{
+    public Connectable connectable;
+    public int weight;
+}
+
 [CreateAssetMenu(fileName = "Room Types", menuName = "ScriptableObjects/RoomTypes", order = 1)]
 public class RoomTypeData : ScriptableObject
 {
-    public Room[] startRooms;
-    public Room[] endRooms;
-    public Room[] specialRooms;
-    public Hallway[] hallways;
-    public Room[] rooms;
+    public WeightedRoom[] startRooms;
+    public WeightedRoom[] endRooms;
+    public WeightedRoom[] specialRooms;
+    public WeightedRoom[] hallways;
+    public WeightedRoom[] rooms;
     
     public Room GetStartRoom()
     {
-        return startRooms[Random.Range(0, startRooms.Length)];
+        ItemSelector<Room> selector = new ItemSelector<Room>();
+        
+        foreach (WeightedRoom item in startRooms)
+            selector.AddItem((Room)item.connectable, item.weight);
+
+        return selector.Roll();
     }
 
     public Room GetEndRoom()
     {
-        return endRooms[Random.Range(0, endRooms.Length)];
+        ItemSelector<Room> selector = new ItemSelector<Room>();
+        
+        foreach (WeightedRoom item in endRooms)
+            selector.AddItem((Room)item.connectable, item.weight);
+
+        return selector.Roll();
     }
 
     public Room GetSpecialRoom()
     {
-        return specialRooms[Random.Range(0, specialRooms.Length)];
+        ItemSelector<Room> selector = new ItemSelector<Room>();
+        
+        foreach (WeightedRoom item in specialRooms)
+            selector.AddItem((Room)item.connectable, item.weight);
+
+        return selector.Roll();
     }
     
     public Room GetRoom()
     {
-        return rooms[Random.Range(0, rooms.Length)];
+        ItemSelector<Room> selector = new ItemSelector<Room>();
+        
+        foreach (WeightedRoom item in rooms)
+            selector.AddItem((Room)item.connectable, item.weight);
+
+        return selector.Roll();
     }
 
     public Hallway GetHallway()
     {
-        return hallways[Random.Range(0, hallways.Length)];
+        ItemSelector<Hallway> selector = new ItemSelector<Hallway>();
+        
+        foreach (WeightedRoom item in hallways)
+            selector.AddItem((Hallway)item.connectable, item.weight);
+
+        return selector.Roll();
     }
 }
