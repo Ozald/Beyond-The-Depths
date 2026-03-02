@@ -7,9 +7,7 @@ public enum RoomType
     EndRoom,
     SpecialRoom,
     Room,
-    Hallway,
 }
-
 
 [Serializable]
 public struct WeightedRoom

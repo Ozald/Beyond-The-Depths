@@ -1,7 +1,7 @@
 ﻿public class Hallway : Connectable
 {
-    private Connectable? origin;
-    private Connectable? end;
+    public Connectable? origin;
+    public Connectable? end;
 
     public Connectable? Origin
     {
