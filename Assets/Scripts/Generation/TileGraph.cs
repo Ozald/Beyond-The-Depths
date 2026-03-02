@@ -120,12 +120,12 @@ public class TileGraph : MonoBehaviour
         Room startRoom = Instantiate(roomPrefab.gameObject, 
             new Vector3(startPosition.x, startPosition.y, 0), Quaternion.identity).GetComponent<Room>();
         StartPosition = startPosition;
-        startRoom.IsOrigin = true;
         Start = startRoom;
         
         // It works here, but not in the two other places?
         startRoom.gameObject.name = "StartRoom";
         startRoom.gameObject.GetComponent<Renderer>().material.color = Color.green;
+        startRoom.roomType = RoomType.StartRoom;
 
         GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
         AddHalls(extraHallsChance);
@@ -217,7 +217,9 @@ public class TileGraph : MonoBehaviour
             {
                 case Room.ConnectionDirection.Left:
                     //random.Next(roomsGenerated < maxRoomsPerBranch / 4 ? 2 : 1, 5)
-                    start.Left = Instantiate(roomPrefab).GetComponent<Room>();
+                    
+                    // This is so ugly, why do I have to do it to make it work???????
+                    start.Left = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
                     Destroy(start.Left.gameObject);
                     Room tempLeft = null;
 
@@ -226,8 +228,8 @@ public class TileGraph : MonoBehaviour
                             penaltySafety, out tempLeft) is not null)
                     {
                         Console.WriteLine("Generating left branch");
-                        PlaceHallAt(startVector + new Vector2(-1, 0), start, (Room)start.Left);
                         start.Left = tempLeft;
+                        PlaceHallAt(startVector + new Vector2(-1, 0), start, (Room)start.Left);
                         connectionCount++;
                         
                         // Scuffed
@@ -241,7 +243,8 @@ public class TileGraph : MonoBehaviour
 
                     break;
                 case Room.ConnectionDirection.Right:
-                    start.Right = Instantiate(roomPrefab).GetComponent<Room>();
+                    // This is so ugly, why do I have to do it to make it work???????
+                    start.Right = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
                     Destroy(start.Right.gameObject);
                     Room tempRight = null;
                     
@@ -250,8 +253,8 @@ public class TileGraph : MonoBehaviour
                             penaltySafety, out tempRight) is not null)
                     {
                         Console.WriteLine("Generating right branch");
-                        PlaceHallAt(startVector + new Vector2(1, 0), start, (Room)start.Right);
                         start.Right = tempRight;
+                        PlaceHallAt(startVector + new Vector2(1, 0), start, (Room)start.Right);
                         connectionCount++;
                         
                         // Scuffed
@@ -265,7 +268,8 @@ public class TileGraph : MonoBehaviour
 
                     break;
                 case Room.ConnectionDirection.Up:
-                    start.Up = Instantiate(roomPrefab).GetComponent<Room>();
+                    // This is so ugly, why do I have to do it to make it work???????
+                    start.Up = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
                     Destroy(start.Up.gameObject);
                     Room tempUp = null;
                     
@@ -274,8 +278,8 @@ public class TileGraph : MonoBehaviour
                             penaltySafety, out tempUp) is not null)
                     {
                         Console.WriteLine("Generating up branch");
-                        PlaceHallAt(startVector + new Vector2(0, -1), start, (Room)start.Up);
                         start.Up = tempUp;
+                        PlaceHallAt(startVector + new Vector2(0, -1), start, (Room)start.Up);
                         connectionCount++;
                         
                         // Scuffed
@@ -289,7 +293,8 @@ public class TileGraph : MonoBehaviour
 
                     break;
                 case Room.ConnectionDirection.Down:
-                    start.Down = Instantiate(roomPrefab).GetComponent<Room>();
+                    // This is so ugly, why do I have to do it to make it work???????
+                    start.Down = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
                     Destroy(start.Down.gameObject);
                     Room tempDown = null;
 
@@ -298,8 +303,8 @@ public class TileGraph : MonoBehaviour
                             penaltySafety, out tempDown) is not null)
                     {
                         Console.WriteLine("Generating down branch");
-                        PlaceHallAt(startVector + new Vector2(0, 1), start, (Room)start.Down);
                         start.Down = tempDown;
+                        PlaceHallAt(startVector + new Vector2(0, 1), start, (Room)start.Down);
                         connectionCount++;
                         
                         // Scuffed
@@ -711,8 +716,6 @@ public class TileGraph : MonoBehaviour
     // Holy crap does this solution suck
     public bool PlaceAt(ref Room room, Vector2 pos)
     {
-        bool isOrigin = room.IsOrigin;
-        
         Destroy(room.gameObject);
         
         if (IsSpotEmpty(pos))
@@ -720,8 +723,6 @@ public class TileGraph : MonoBehaviour
             grid[(int)pos.x, (int)pos.y] = room;
             
             room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
-            room.IsOrigin = isOrigin; // We NEED to preserve this, otherwise funny issues
-            
             return true;
         }
         
@@ -947,11 +948,11 @@ public class TileGraph : MonoBehaviour
         if (farthest is not null)
         {
             Debug.Log("End room found.");
-            
-            farthest.IsEndRoom = true;
+
             // This works. I don't want to know.
             farthest.gameObject.name = "End_Room";
             farthest.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            farthest.roomType = RoomType.EndRoom;
             
             Debug.Log(farthest.gameObject);
         }
@@ -970,15 +971,14 @@ public class TileGraph : MonoBehaviour
             if(generated >= maxSpecialRooms)
                 break;
 
-            if(room.IsOrigin || room.IsSpecial || room.IsEndRoom)
+            if(room.roomType != RoomType.Room)
                 continue;
 
             if(random.NextDouble() < specialRoomsChance)
             {
-                room.IsSpecial = true;
-
                 room.gameObject.GetComponent<Renderer>().material.color = Color.magenta;
                 room.gameObject.name = "Special_Room_" + (generated + 1);
+                room.roomType = RoomType.SpecialRoom;
 
                 generated++;
             }

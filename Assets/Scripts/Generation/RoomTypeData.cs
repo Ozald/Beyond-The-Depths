@@ -3,10 +3,10 @@ using UnityEngine;
 
 public enum RoomType
 {
+    Room,
     StartRoom,
     EndRoom,
-    SpecialRoom,
-    Room,
+    SpecialRoom
 }
 
 [Serializable]

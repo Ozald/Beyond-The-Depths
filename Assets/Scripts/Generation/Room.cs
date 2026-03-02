@@ -54,10 +54,6 @@ public class Room : Connectable
         set { maxConnections = value; }
     }
 
-    public bool IsOrigin { get; set; } = false;
-    public bool IsEndRoom { get; set; } = false;
-    public bool IsSpecial { get; set; } = false;
-
     public Room()
     {
         Connections = new[] { Left, Up, Right, Down };
@@ -74,29 +70,33 @@ public class Room : Connectable
     {
         Connections = new[] { Left, Up, Right, Down };
         MaxConnections = 4;
-        IsOrigin = isOrigin;
+
+        if (isOrigin)
+            roomType = RoomType.StartRoom;
     }
 
     public Room(int maxConnections, bool isOrigin)
     {
         Connections = new[] { Left, Up, Right, Down };
         MaxConnections = maxConnections;
-        IsOrigin = isOrigin;
+        
+        if (isOrigin)
+            roomType = RoomType.StartRoom;
     }
 
     public override string ToString()
     {
-        if (IsOrigin)
+        if (roomType == RoomType.StartRoom)
         {
             return "O";
         }
 
-        if (IsEndRoom)
+        if (roomType == RoomType.EndRoom)
         {
             return "E";
         }
 
-        if (IsSpecial)
+        if (roomType == RoomType.SpecialRoom)
         {
             return "S";
         }
