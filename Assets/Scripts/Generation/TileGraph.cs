@@ -28,7 +28,7 @@ public class TileGraph : MonoBehaviour
     private readonly Dictionary<Room, Vector2> rooms;
     private readonly Dictionary<Hallway, Vector2> halls;
     private Vector2 startPos;
-    public Room? Start;
+    private Room? Start;
     public float extraHallsChance;
     [FormerlySerializedAs("specialRooms")] public int maxSpecialRooms;
     public float specialRoomsChance;

@@ -1,8 +1,13 @@
-﻿public class Hallway : Connectable
+﻿using UnityEngine;
+
+public class Hallway : Connectable
 {
     public Connectable? origin;
     public Connectable? end;
 
+    public Vector3 originDoorPosition;
+    public Vector3 endDoorPosition;
+    
     public Connectable? Origin
     {
         get { return origin; }
