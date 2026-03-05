@@ -11,6 +11,7 @@ public class TileGraph : MonoBehaviour
 {
     public Connectable roomPrefab;
     public Connectable hallPrefab;
+    public Connectable doorPrefab;
     
     public enum Half
     {
@@ -131,6 +132,7 @@ public class TileGraph : MonoBehaviour
         AddHalls(extraHallsChance);
         SetEndRoom();
         SetSpecialRooms();
+        CleanDoors();
         
         Debug.Log($"Generated {rooms.Count} rooms.");
         Debug.Log($"Generated {halls.Count} halls.");
@@ -171,6 +173,15 @@ public class TileGraph : MonoBehaviour
         
         PlaceAt(ref start, startVector);
         rooms.Add(start, startVector);
+        
+        start.upDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, -1, 0),
+            Quaternion.identity).GetComponent<Door>();
+        start.downDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, 1, 0),
+            Quaternion.identity).GetComponent<Door>();
+        start.leftDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(-1, 0, 0),
+            Quaternion.identity).GetComponent<Door>();
+        start.rightDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(1, 0, 0),
+            Quaternion.identity).GetComponent<Door>();
 
         Debug.Log("Layer: " + roomsGenerated);
         
@@ -233,8 +244,17 @@ public class TileGraph : MonoBehaviour
                         connectionCount++;
                         
                         // Scuffed
-                        if(start.Left is not null)
+                        if (start.Left is not null)
+                        {
+                            // I hate this so much
                             ((Room)start.Left).Right = start;
+                            start.leftDoor.connectedDoor = ((Room)start.Left).rightDoor;
+                            ((Room)start.Left).rightDoor.connectedDoor = start.leftDoor;
+                        }
+                        else
+                        {
+                            Destroy(start.leftDoor.gameObject);
+                        }
                     }
                     else
                     {
@@ -258,8 +278,17 @@ public class TileGraph : MonoBehaviour
                         connectionCount++;
                         
                         // Scuffed
-                        if(start.Right is not null)
+                        if (start.Right is not null)
+                        {
+                            // I hate this so much
                             ((Room)start.Right).Left = start;
+                            start.rightDoor.connectedDoor = ((Room)start.Right).leftDoor;
+                            ((Room)start.Right).leftDoor.connectedDoor = start.rightDoor;
+                        }
+                        else
+                        {
+                            Destroy(start.rightDoor.gameObject);
+                        }
                     }
                     else
                     {
@@ -283,8 +312,17 @@ public class TileGraph : MonoBehaviour
                         connectionCount++;
                         
                         // Scuffed
-                        if(start.Up is not null)
+                        if (start.Up is not null)
+                        {
+                            // I hate this so much
                             ((Room)start.Up).Down = start;
+                            start.upDoor.connectedDoor = ((Room)start.Up).downDoor;
+                            ((Room)start.Up).downDoor.connectedDoor = start.upDoor;
+                        }
+                        else
+                        {
+                            Destroy(start.upDoor.gameObject);
+                        }
                     }
                     else
                     {
@@ -308,8 +346,17 @@ public class TileGraph : MonoBehaviour
                         connectionCount++;
                         
                         // Scuffed
-                        if(start.Down is not null)
+                        if (start.Down is not null)
+                        {
+                            // I hate this so much
                             ((Room)start.Down).Up = start;
+                            start.downDoor.connectedDoor = ((Room)start.Down).upDoor;
+                            ((Room)start.Down).upDoor.connectedDoor = start.downDoor;
+                        }
+                        else
+                        {
+                            Destroy(start.downDoor.gameObject);
+                        }
                     }
                     else
                     {
@@ -342,6 +389,11 @@ public class TileGraph : MonoBehaviour
                 Room originRoom = roomList[i];
                 Room end = roomList[j];
 
+                if (originRoom == end)
+                {
+                    continue;
+                }
+
                 if (random.NextDouble() < chance)
                 {
                     if (Math.Abs(XDist(originRoom, end)) == 2 && YDist(originRoom, end) == 0)
@@ -349,12 +401,21 @@ public class TileGraph : MonoBehaviour
                         if (XDist(originRoom, end) == -2)
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(1, 0), originRoom, end))
+                            {
                                 Console.WriteLine("Added extra right hall");
+                                originRoom.rightDoor.connectedDoor = end.leftDoor;
+                                end.leftDoor.connectedDoor = originRoom.rightDoor;
+                            }
+                                
                         }
                         else if (XDist(originRoom, end) == 2)
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(-1, 0), originRoom, end))
+                            {
                                 Console.WriteLine("Added extra left hall");
+                                originRoom.leftDoor.connectedDoor = end.rightDoor;
+                                end.rightDoor.connectedDoor = originRoom.leftDoor;
+                            }
                         }
                     }
                     else if (Math.Abs(YDist(originRoom, end)) == 2 && XDist(originRoom, end) == 0)
@@ -362,15 +423,39 @@ public class TileGraph : MonoBehaviour
                         if (YDist(originRoom, end) == 2)
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(0, -1), originRoom, end))
+                            {
                                 Console.WriteLine("Added extra up hall");
+                                originRoom.upDoor = end.downDoor;
+                                end.downDoor.connectedDoor = originRoom.upDoor;
+                            }
                         }
                         else if (YDist(originRoom, end) == -2)
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(0, 1), originRoom, end))
+                            {
                                 Console.WriteLine("Added extra down hall");
+                                originRoom.downDoor = end.upDoor;
+                                end.upDoor.connectedDoor = originRoom.downDoor;
+                            }
                         }
                     }
                 }
+            }
+        }
+    }
+
+    // Literally needed to get rid of doors
+    // without connections because for some reason
+    // it didn't work in the recursive method
+    public void CleanDoors()
+    {
+        List<Door> doors = new List<Door>(FindObjectsByType<Door>(FindObjectsSortMode.None));
+
+        foreach (Door door in doors)
+        {
+            if (door.connectedDoor is null)
+            {
+                Destroy(door.gameObject);
             }
         }
     }

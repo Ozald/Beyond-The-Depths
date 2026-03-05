@@ -17,11 +17,12 @@ public class Room : Connectable
     [CanBeNull] private Connectable up;
     [CanBeNull] private Connectable right;
     [CanBeNull] private Connectable down;
+
+    [CanBeNull] public Door leftDoor;
+    [CanBeNull] public Door rightDoor;
+    [CanBeNull] public Door upDoor;
+    [CanBeNull] public Door downDoor;
     
-    public Vector3 upDoorPosition;
-    public Vector3 rightDoorPosition;
-    public Vector3 leftDoorPosition;
-    public Vector3 downDoorPosition;
     public RoomType roomType;
 
     public Connectable? Left

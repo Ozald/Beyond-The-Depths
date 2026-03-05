@@ -5,6 +5,7 @@ public class GenerationManager : MonoBehaviour
 {
     public Connectable roomPrefab;
     public Connectable hallPrefab;
+    public Connectable doorPrefab;
 
     public int mapWidth;
     public int mapHeight;
@@ -41,6 +42,7 @@ public class GenerationManager : MonoBehaviour
 
         map.roomPrefab = roomPrefab;
         map.hallPrefab = hallPrefab;
+        map.doorPrefab = doorPrefab;
         map.extraHallsChance = extraHallsChance;
         map.maxSpecialRooms = maxSpecialRooms;
         map.specialRoomsChance = specialRoomsChance;

@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 7107939709571010806, guid: 18e314f68b04ff44ca95f71eb5090e3d, type: 3}
   hallPrefab: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
+  doorPrefab: {fileID: 4915866706923932472, guid: 4b396a91d894bc140bce24d80b31e1fd, type: 3}
   mapWidth: 11
   mapHeight: 11
   maxRoomsPerBranch: 7
