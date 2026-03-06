@@ -23,7 +23,7 @@ public class EnemyPathAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("UpdatePath", 0f, 0.25f); //updates every [second]
+        InvokeRepeating("UpdatePath", 0f, 0.5f); //updates every [second]
         
 
         
@@ -59,12 +59,12 @@ public class EnemyPathAI : MonoBehaviour
         }
         
         //gets an array from current pos to the one you want to be at, then normalizes it so that its length always = 1
-        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb.position).normalized; 
+        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint+1] - rb.position).normalized; 
         
         Vector2 force = direction * speed * Time.deltaTime;
         rb.AddForce(force); //moves obj by force
         
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint+1]);
 
         if (distance < nextWaypointDistance)
         {
@@ -76,10 +76,10 @@ public class EnemyPathAI : MonoBehaviour
         // we can technically just design the corners to be wider tho LMAO
         if (force.x >= 0.05f) //if the obj wants to move to the right
         {
-            enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
+            enemyGFX.localScale = new Vector3(1f, 1f, 1f);
         } else if (force.x <= -0.05f)
         {
-            enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+            enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
         }
         
     }
