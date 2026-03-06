@@ -23,7 +23,7 @@ public class EnemyPathAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("UpdatePath", 0f, 0.5f); //updates every [second]
+        InvokeRepeating("UpdatePath", 0f, 0.25f); //updates every [second]
         
 
         
@@ -72,10 +72,12 @@ public class EnemyPathAI : MonoBehaviour
         }
         
         //For SPRITE FLIPPING
-        if (force.x >= 0.1f) //if the obj wants to move to the right
+        //TODO: Sprites flip too often when in tight corners,
+        // we can technically just design the corners to be wider tho LMAO
+        if (force.x >= 0.05f) //if the obj wants to move to the right
         {
             enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
-        } else if (force.x <= -0.1f)
+        } else if (force.x <= -0.05f)
         {
             enemyGFX.localScale = new Vector3(1f, 1f, 1f);
         }
