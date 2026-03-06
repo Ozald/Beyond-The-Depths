@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(SpriteRenderer))]
+//[RequireComponent(typeof(BoxCollider2D))]
+//[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyBaseController : MonoBehaviour
 {
 
@@ -23,10 +23,10 @@ public class EnemyBaseController : MonoBehaviour
     void Start()
     { 
         
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        //SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         BoxCollider2D coll = GetComponent<BoxCollider2D>(); //for the base enemy's sprite
         coll.isTrigger = true;
-        coll.size =  spriteRenderer.bounds.size;
+        //coll.size =  spriteRenderer.bounds.size;
         
 
 
