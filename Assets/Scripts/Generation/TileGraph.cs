@@ -251,10 +251,6 @@ public class TileGraph : MonoBehaviour
                             start.leftDoor.connectedDoor = ((Room)start.Left).rightDoor;
                             ((Room)start.Left).rightDoor.connectedDoor = start.leftDoor;
                         }
-                        else
-                        {
-                            Destroy(start.leftDoor.gameObject);
-                        }
                     }
                     else
                     {
@@ -284,10 +280,6 @@ public class TileGraph : MonoBehaviour
                             ((Room)start.Right).Left = start;
                             start.rightDoor.connectedDoor = ((Room)start.Right).leftDoor;
                             ((Room)start.Right).leftDoor.connectedDoor = start.rightDoor;
-                        }
-                        else
-                        {
-                            Destroy(start.rightDoor.gameObject);
                         }
                     }
                     else
@@ -319,10 +311,6 @@ public class TileGraph : MonoBehaviour
                             start.upDoor.connectedDoor = ((Room)start.Up).downDoor;
                             ((Room)start.Up).downDoor.connectedDoor = start.upDoor;
                         }
-                        else
-                        {
-                            Destroy(start.upDoor.gameObject);
-                        }
                     }
                     else
                     {
@@ -353,10 +341,6 @@ public class TileGraph : MonoBehaviour
                             start.downDoor.connectedDoor = ((Room)start.Down).upDoor;
                             ((Room)start.Down).upDoor.connectedDoor = start.downDoor;
                         }
-                        else
-                        {
-                            Destroy(start.downDoor.gameObject);
-                        }
                     }
                     else
                     {
@@ -382,9 +366,9 @@ public class TileGraph : MonoBehaviour
     {
         List<Room> roomList = rooms.Keys.ToList();
 
-        for (int i = 0; i < roomList.Count; i++)
+        for (int i = roomList.Count - 1; i >= 0; i--)
         {
-            for (int j = i + 1; j < roomList.Count; j++)
+            for (int j = 0; j < i; j++)
             {
                 Room originRoom = roomList[i];
                 Room end = roomList[j];
@@ -402,17 +386,16 @@ public class TileGraph : MonoBehaviour
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(1, 0), originRoom, end))
                             {
-                                Console.WriteLine("Added extra right hall");
+                                Debug.Log("Added extra right hall");
                                 originRoom.rightDoor.connectedDoor = end.leftDoor;
                                 end.leftDoor.connectedDoor = originRoom.rightDoor;
                             }
-                                
                         }
                         else if (XDist(originRoom, end) == 2)
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(-1, 0), originRoom, end))
                             {
-                                Console.WriteLine("Added extra left hall");
+                                Debug.Log("Added extra left hall");
                                 originRoom.leftDoor.connectedDoor = end.rightDoor;
                                 end.rightDoor.connectedDoor = originRoom.leftDoor;
                             }
@@ -424,8 +407,12 @@ public class TileGraph : MonoBehaviour
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(0, -1), originRoom, end))
                             {
-                                Console.WriteLine("Added extra up hall");
-                                originRoom.upDoor = end.downDoor;
+                                Debug.Log("Added extra up hall");
+                                // OH MY GOD, THIS TOOK MULTIPLE DAYS TO SOLVE
+                                // originRoom.upDoor = end.downDoor;
+                                // to
+                                // originRoom.upDoor.connectedDoor = end.downDoor;
+                                originRoom.upDoor.connectedDoor = end.downDoor;
                                 end.downDoor.connectedDoor = originRoom.upDoor;
                             }
                         }
@@ -433,8 +420,12 @@ public class TileGraph : MonoBehaviour
                         {
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(0, 1), originRoom, end))
                             {
-                                Console.WriteLine("Added extra down hall");
-                                originRoom.downDoor = end.upDoor;
+                                Debug.Log("Added extra down hall");
+                                // OH MY GOD, THIS TOOK MULTIPLE DAYS TO SOLVE
+                                // originRoom.downDoor = end.upDoor;
+                                // to
+                                // originRoom.downDoor.connectedDoor = end.upDoor;
+                                originRoom.downDoor.connectedDoor = end.upDoor;
                                 end.upDoor.connectedDoor = originRoom.downDoor;
                             }
                         }
@@ -450,14 +441,18 @@ public class TileGraph : MonoBehaviour
     public void CleanDoors()
     {
         List<Door> doors = new List<Door>(FindObjectsByType<Door>(FindObjectsSortMode.None));
+        int removedDoors = 0;
 
         foreach (Door door in doors)
         {
             if (door.connectedDoor is null)
             {
                 Destroy(door.gameObject);
+                removedDoors++;
             }
         }
+        
+        Debug.Log($"Removed {removedDoors} doors.");
     }
 
     /*
