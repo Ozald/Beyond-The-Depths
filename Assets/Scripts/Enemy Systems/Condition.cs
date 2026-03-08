@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Condition : ScriptableObject
+public abstract class Condition : ScriptableObject
 {
-    public void Check()
-    {
-        
-    }
+    public abstract bool Check(EnemyBaseController enemy);
 }

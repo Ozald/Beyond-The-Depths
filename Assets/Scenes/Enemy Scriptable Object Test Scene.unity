@@ -771,8 +771,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca3ecebb40aa0f40bb82daa79f1cfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultEnemySO: {fileID: 0}
-  movementType: {fileID: 0}
+  initalState: {fileID: 11400000, guid: a4f941d10810a784e9b97e9beb45ff05, type: 2}
+  transitions:
+  - fromState: {fileID: 11400000, guid: a4f941d10810a784e9b97e9beb45ff05, type: 2}
+    toState: {fileID: 11400000, guid: a4f941d10810a784e9b97e9beb45ff05, type: 2}
+    condition: {fileID: 11400000, guid: 2e52c6ea0b8cf2543b53328ed9cfc22b, type: 2}
+  - fromState: {fileID: 11400000, guid: a4f941d10810a784e9b97e9beb45ff05, type: 2}
+    toState: {fileID: 11400000, guid: a4f941d10810a784e9b97e9beb45ff05, type: 2}
+    condition: {fileID: 11400000, guid: 2e52c6ea0b8cf2543b53328ed9cfc22b, type: 2}
+  currentState: {fileID: 0}
 --- !u!61 &962652039
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1549,8 +1556,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca3ecebb40aa0f40bb82daa79f1cfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultEnemySO: {fileID: 0}
-  movementType: {fileID: 0}
+  initalState: {fileID: 0}
+  transitions: []
+  currentState: {fileID: 0}
 --- !u!212 &1415302224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1849,7 +1857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc2c6db5921cc7409e48ef079e31a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiPath: {fileID: 1415302221}
 --- !u!1 &1945350261
 GameObject:
   m_ObjectHideFlags: 0

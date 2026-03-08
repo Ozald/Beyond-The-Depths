@@ -4,18 +4,18 @@ using UnityEngine;
 
 public abstract class AIState : ScriptableObject
 {
-    public void OnEnter()
+    public virtual void OnEnter()
     {
-        
+        Debug.Log("Entered state");
     }
 
-    public void OnUpdate()
+    public virtual void OnUpdate()
     {
-        
+        Debug.Log("Updating state");
     }
 
-    public void OnExit()
+    public virtual void OnExit()
     {
-        
+        Debug.Log("Exiting state");
     }
 }
