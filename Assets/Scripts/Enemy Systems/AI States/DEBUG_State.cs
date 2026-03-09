@@ -5,18 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy AI/States/DEBUG")]
 public class DEBUG_State : AIState
 {
-    public override void OnEnter()
+    public override void OnEnter(Enemy enemy)
     {
-        base.OnEnter();
+        base.OnEnter(enemy);
     }
 
-    public override void OnUpdate()
+    public override void OnUpdate(Enemy enemy)
     {
-        base.OnUpdate();
+        base.OnUpdate(enemy);
     }
 
-    public override void OnExit() 
+    public override void OnExit(Enemy enemy) 
     { 
-        base.OnExit();
+        base.OnExit(enemy);
     }
 }

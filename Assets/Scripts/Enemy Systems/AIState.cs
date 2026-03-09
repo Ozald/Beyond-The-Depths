@@ -4,17 +4,17 @@ using UnityEngine;
 
 public abstract class AIState : ScriptableObject
 {
-    public virtual void OnEnter()
+    public virtual void OnEnter(Enemy enemy)
     {
         Debug.Log("Entered state");
     }
 
-    public virtual void OnUpdate()
+    public virtual void OnUpdate(Enemy enemy)
     {
         Debug.Log("Updating state");
     }
 
-    public virtual void OnExit()
+    public virtual void OnExit(Enemy enemy)
     {
         Debug.Log("Exiting state");
     }

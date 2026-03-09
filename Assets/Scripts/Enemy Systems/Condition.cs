@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Condition : ScriptableObject
 {
-    public abstract bool Check(EnemyBaseController enemy);
+    public abstract bool Check(Enemy enemy);
 }
