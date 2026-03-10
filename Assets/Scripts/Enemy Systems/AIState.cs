@@ -4,18 +4,7 @@ using UnityEngine;
 
 public abstract class AIState : ScriptableObject
 {
-    public virtual void OnEnter(Enemy enemy)
-    {
-        Debug.Log("Entered state");
-    }
-
-    public virtual void OnUpdate(Enemy enemy)
-    {
-        Debug.Log("Updating state");
-    }
-
-    public virtual void OnExit(Enemy enemy)
-    {
-        Debug.Log("Exiting state");
-    }
+    public abstract void OnEnter(Enemy enemy);
+    public abstract void OnUpdate(Enemy enemy);
+    public abstract void OnExit(Enemy enemy);
 }
