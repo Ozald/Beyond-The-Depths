@@ -7,16 +7,16 @@ public class DEBUG_State : AIState
 {
     public override void OnEnter(Enemy enemy)
     {
-        base.OnEnter(enemy);
+        //base.OnEnter(enemy);
     }
 
     public override void OnUpdate(Enemy enemy)
     {
-        base.OnUpdate(enemy);
+        //base.OnUpdate(enemy);
     }
 
     public override void OnExit(Enemy enemy) 
     { 
-        base.OnExit(enemy);
+        //base.OnExit(enemy);
     }
 }
