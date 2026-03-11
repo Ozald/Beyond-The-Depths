@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   boxCollider: {fileID: 0}
+  exitOffset: 0.5

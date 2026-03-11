@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -23,11 +20,11 @@ public class PlayerMovement : MonoBehaviour
         double verticalInput = Input.GetAxisRaw("Vertical");
         // Move the player based on the input (Y-axis)
 
-        Debug.Log("Horizontal Input: " + horizontalInput + " |" + " Vertical Input: " + verticalInput);
+        //Debug.Log("Horizontal Input: " + horizontalInput + " |" + " Vertical Input: " + verticalInput);
 
         Vector2 movementDirection = new Vector2((float)horizontalInput, (float)verticalInput).normalized;
 
         rb2d.velocity = movementDirection * PS.speedVariable;
-
+        rb2d.rotation = Vector2.Angle(Vector2.up, movementDirection);
     }
 }
