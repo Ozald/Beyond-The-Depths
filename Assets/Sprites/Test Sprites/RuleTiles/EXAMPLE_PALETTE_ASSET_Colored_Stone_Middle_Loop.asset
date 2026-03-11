@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Test_Sprite_256x256
+  m_Name: EXAMPLE_PALETTE_ASSET_Colored_Stone_Middle_Loop
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: fff0ef3f7585d184f8a21ede3590f820, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3cc8a324fa30e7d4e94ff3e52c15a715, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
