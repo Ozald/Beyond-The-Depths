@@ -11,6 +11,6 @@ public class CameraTracking : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 2f, player.transform.position.z - 10);
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10);
     }
 }

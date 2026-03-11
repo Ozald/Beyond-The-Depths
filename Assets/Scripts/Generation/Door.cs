@@ -15,7 +15,8 @@ public class Door : Connectable
             
             if (connectedDoor is not null)
             {
-                other.transform.position = connectedDoor.transform.position;
+                // I have to do this, otherwise the player renders behind rooms, halls, and doors
+                other.transform.position = connectedDoor.transform.position + new Vector3(0, 0, -1);
 
                 if (connectedDoor.transform.position.x > transform.position.x)
                 {
