@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CameraTracking : MonoBehaviour
 {
     private GameObject player;
 
