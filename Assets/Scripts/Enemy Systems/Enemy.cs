@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<EnemyStateTransition> transitions;
 
     public float stateTimer { get; private set; }
-    private AIState currentState;
+    [SerializeField] private AIState currentState;
 
     /**************************************************************************************/
 
@@ -65,9 +65,15 @@ public class Enemy : MonoBehaviour
 
     private void TransitionHandler()
     {
+        if (stateTimer < 1f)
+            return;
+
         // Find every valid destination in a transition, store in a list, and then pick one of them
         foreach (EnemyStateTransition transition in transitions)
         {
+            if (transition.fromState != currentState)
+                continue;
+
             List<TransitionDestination> validDestinations = new List<TransitionDestination>();
 
             foreach (TransitionDestination destination in transition.destinations)
@@ -76,7 +82,7 @@ public class Enemy : MonoBehaviour
                     validDestinations.Add(destination);
             }
 
-            if (validDestinations.Count > 0) 
+            if (validDestinations.Count > 0)
                 PickValidDestination(validDestinations, transition.transitionMode);
         }
     }
@@ -86,14 +92,16 @@ public class Enemy : MonoBehaviour
         currentState.OnExit(this);
 
         // Pick a valid destination based on the transition mode
+        AIState newState = null;
+
         switch (transitionMode)
         {
             case TransitionMode.FirstValid:
-                currentState = destinations[0].toState;
+                newState = destinations[0].toState;
                 break;
 
             case TransitionMode.Random:
-                currentState = destinations[UnityEngine.Random.Range(0, destinations.Count)].toState;
+                newState = destinations[UnityEngine.Random.Range(0, destinations.Count)].toState;
                 break;
 
             case TransitionMode.WeightedRandom:
@@ -111,12 +119,17 @@ public class Enemy : MonoBehaviour
                     if (cursor >= random)
                         randomDestination = destinations[i].toState;
                 }
-                
-                currentState = randomDestination;
+
+                newState = randomDestination;
                 break;
         }
 
-        currentState.OnEnter(this);
-        stateTimer = 0;
+        if (newState != currentState)
+        {
+            currentState.OnExit(this);
+            currentState = newState;
+            currentState.OnEnter(this);
+            stateTimer = 0;
+        }
     }
 }

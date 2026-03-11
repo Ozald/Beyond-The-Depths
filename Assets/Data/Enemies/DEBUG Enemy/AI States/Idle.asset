@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d7518c37f4027f4fbc434d928d204db, type: 3}
-  m_Name: TimedStateCondition
+  m_Script: {fileID: 11500000, guid: 0a23afc95a376b3459ff003f7d94928b, type: 3}
+  m_Name: Idle
   m_EditorClassIdentifier: 
-  timeToTransition: 2
