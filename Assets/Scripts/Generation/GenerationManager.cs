@@ -32,6 +32,7 @@ public class GenerationManager : MonoBehaviour
     void GenerateFloorLayout()
     {
         List<Connectable> roomCollection = new List<Connectable>(FindObjectsByType<Connectable>(FindObjectsSortMode.None));
+        GameObject player = GameObject.Find("TestPlayer");
         
         foreach (Connectable room in roomCollection)
         {
@@ -48,5 +49,11 @@ public class GenerationManager : MonoBehaviour
         map.specialRoomsChance = specialRoomsChance;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
+
+        if (map.StartRoom is not null)
+        {
+            player.transform.position = new Vector3(map.StartRoom.gameObject.transform.position.x * 5, 
+                map.StartRoom.gameObject.transform.position.y * 5, -1);
+        }
     }
 }

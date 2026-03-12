@@ -95,7 +95,7 @@ public class TileGraph : MonoBehaviour
     public Room? StartRoom
     {
         get { return Start; }
-        set { Start = value; }
+        private set { Start = value; }
     }
 
     public TileGraph(int width, int height, int maxRoomsPerBranch)
