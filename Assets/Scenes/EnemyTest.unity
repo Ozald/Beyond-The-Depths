@@ -758,10 +758,22 @@ MonoBehaviour:
     fromState: {fileID: 11400000, guid: 3f9cd480f93f3e84398fba3b300a590f, type: 2}
     destinations:
     - weight: 1
+      toState: {fileID: 11400000, guid: cb09cc1076064bd42bb0844966f1417c, type: 2}
+      condition: {fileID: 11400000, guid: 9df3028137ccea24e96d43b0f4808841, type: 2}
+    - weight: 1
       toState: {fileID: 11400000, guid: 8cc9225024e944e4682059795fdb0113, type: 2}
       condition: {fileID: 11400000, guid: 2e52c6ea0b8cf2543b53328ed9cfc22b, type: 2}
   - transitionMode: 0
     fromState: {fileID: 11400000, guid: 8cc9225024e944e4682059795fdb0113, type: 2}
+    destinations:
+    - weight: 1
+      toState: {fileID: 11400000, guid: cb09cc1076064bd42bb0844966f1417c, type: 2}
+      condition: {fileID: 11400000, guid: 9df3028137ccea24e96d43b0f4808841, type: 2}
+    - weight: 1
+      toState: {fileID: 11400000, guid: 3f9cd480f93f3e84398fba3b300a590f, type: 2}
+      condition: {fileID: 11400000, guid: 2e52c6ea0b8cf2543b53328ed9cfc22b, type: 2}
+  - transitionMode: 0
+    fromState: {fileID: 11400000, guid: cb09cc1076064bd42bb0844966f1417c, type: 2}
     destinations:
     - weight: 1
       toState: {fileID: 11400000, guid: 3f9cd480f93f3e84398fba3b300a590f, type: 2}
