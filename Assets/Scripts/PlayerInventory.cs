@@ -60,7 +60,8 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Weapon"))
+        Weapon weapon = collision.gameObject.GetComponent<Weapon>();
+        if (weapon != null)
         {
             isInTriggerZone = true;
             nearbyWeapon = collision.gameObject.GetComponent<Weapon>();
@@ -69,7 +70,8 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Weapon"))
+        Weapon weapon = collision.gameObject.GetComponent<Weapon>();
+        if (weapon != null)
         {
             isInTriggerZone = false;
             nearbyWeapon = null;
