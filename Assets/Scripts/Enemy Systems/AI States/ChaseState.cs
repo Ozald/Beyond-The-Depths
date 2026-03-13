@@ -10,7 +10,10 @@ public class ChaseState : AIState
 
     public override void OnEnter(Enemy enemy)
     {
-        Debug.Log(enemy.gameObject.name + " entering chase state.");
+        AIPath enemyAI = enemy.GetComponent<AIPath>();
+
+        if (enemyAI != null)
+            enemyAI.isStopped = false;
     }
 
     public override void OnExit(Enemy enemy)
@@ -20,7 +23,7 @@ public class ChaseState : AIState
         AIPath enemyAI = enemy.GetComponent<AIPath>();
 
         if (enemyAI != null)
-            enemyAI.destination = enemy.transform.position;
+            enemyAI.isStopped = true;
     }
 
     public override void OnUpdate(Enemy enemy)
