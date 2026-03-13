@@ -22,6 +22,13 @@ public class PlayerInventory : MonoBehaviour
         {
             PickupWeapon();
         }
+
+        if (Input.GetKeyDown("r"))
+        {
+            Weapon temp = playerInv[1];
+            playerInv[1] = playerInv[0];
+            playerInv[0] = temp;
+        }
     }
 
     private void PickupWeapon()
