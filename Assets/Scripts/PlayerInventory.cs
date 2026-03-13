@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public List<Weapon> playerInv;
+    private bool isInTriggerZone = false;
+    private Weapon nearbyWeapon = null;
 
 
     // Start is called before the first frame update
@@ -16,16 +18,54 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isInTriggerZone && Input.GetKeyDown("e"))
+        {
+            PickupWeapon();
+        }
     }
+
+    private void PickupWeapon()
+    {
+        if (nearbyWeapon == null) return;
+
+        if (playerInv.Count <= 1)
+        {
+            playerInv.Add(nearbyWeapon);
+            nearbyWeapon.gameObject.SetActive(false);
+        }
+        else
+        {
+            Weapon droppedWeapon = playerInv[1];
+
+            droppedWeapon.transform.position = nearbyWeapon.transform.position;
+            droppedWeapon.gameObject.SetActive(true);
+
+            playerInv[1] = playerInv[0];
+            playerInv[0] = nearbyWeapon;
+
+            nearbyWeapon.gameObject.SetActive(false);
+        }
+
+        isInTriggerZone = false;
+        nearbyWeapon = null;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Things happened");
-        Weapon weapon = collision.gameObject.GetComponent<Weapon>();
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            playerInv.Add(weapon);
-            collision.gameObject.SetActive(false);
+            isInTriggerZone = true;
+            nearbyWeapon = collision.gameObject.GetComponent<Weapon>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Weapon"))
+        {
+            isInTriggerZone = false;
+            nearbyWeapon = null;
         }
     }
 }
