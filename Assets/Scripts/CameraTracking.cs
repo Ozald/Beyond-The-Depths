@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class CameraTracking : MonoBehaviour
 {
-    private GameObject player;
-
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        transform.position = PlayerManager.instance.transform.position + new Vector3(0, 0, -10);
     }
-
+    
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10);
+        Room room = PlayerManager.instance.currentRoom;
+        
+        transform.position = new Vector3(room.transform.position.x, room.transform.position.y, room.transform.position.z - 10);
     }
 }

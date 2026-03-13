@@ -25,6 +25,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movementDirection = new Vector2((float)horizontalInput, (float)verticalInput).normalized;
 
         rb2d.velocity = movementDirection * PS.speedVariable;
-        rb2d.rotation = Vector2.Angle(Vector2.up, movementDirection);
+        rb2d.rotation = Vector2.SignedAngle(Vector2.up, movementDirection);
     }
 }

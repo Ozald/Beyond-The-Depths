@@ -176,12 +176,19 @@ public class TileGraph : MonoBehaviour
         
         start.upDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, -1, 0),
             Quaternion.identity).GetComponent<Door>();
+        start.upDoor.parentRoom = start;
+        
         start.downDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, 1, 0),
             Quaternion.identity).GetComponent<Door>();
+        start.downDoor.parentRoom = start;
+        
         start.leftDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(-1, 0, 0),
             Quaternion.identity).GetComponent<Door>();
+        start.leftDoor.parentRoom = start;
+        
         start.rightDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(1, 0, 0),
             Quaternion.identity).GetComponent<Door>();
+        start.rightDoor.parentRoom = start;
 
         Debug.Log("Layer: " + roomsGenerated);
         

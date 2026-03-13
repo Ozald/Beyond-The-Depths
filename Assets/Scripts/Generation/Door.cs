@@ -6,6 +6,7 @@ public class Door : Connectable
     [CanBeNull] public Door connectedDoor;
     public BoxCollider2D boxCollider;
     public float exitOffset;
+    public Room parentRoom;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,8 +17,9 @@ public class Door : Connectable
             if (connectedDoor is not null)
             {
                 // I have to do this, otherwise the player renders behind rooms, halls, and doors
-                other.transform.position = connectedDoor.transform.position + new Vector3(0, 0, -1);
-
+                other.transform.position = connectedDoor.transform.position + new Vector3(0, 0, other.transform.position.z);
+                PlayerManager.instance.currentRoom = connectedDoor.parentRoom;
+                
                 if (connectedDoor.transform.position.x > transform.position.x)
                 {
                     other.transform.position += new Vector3(exitOffset, 0, 0);

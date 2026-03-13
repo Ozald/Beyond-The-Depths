@@ -52,8 +52,10 @@ public class GenerationManager : MonoBehaviour
 
         if (map.StartRoom is not null)
         {
+            PlayerManager.instance.currentRoom = map.StartRoom;
+            
             player.transform.position = new Vector3(map.StartRoom.gameObject.transform.position.x * 5, 
-                map.StartRoom.gameObject.transform.position.y * 5, -1);
+                map.StartRoom.gameObject.transform.position.y * 5, player.transform.position.z);
         }
     }
 }

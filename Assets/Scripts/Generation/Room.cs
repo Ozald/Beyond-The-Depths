@@ -24,6 +24,7 @@ public class Room : Connectable
     [CanBeNull] public Door downDoor;
     
     public RoomType roomType;
+    public bool hasBeenExplored = false;
 
     public Connectable? Left
     {
