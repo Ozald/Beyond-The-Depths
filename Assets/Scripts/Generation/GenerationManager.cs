@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GenerationManager : MonoBehaviour
@@ -38,9 +39,9 @@ public class GenerationManager : MonoBehaviour
         {
             Destroy(room.gameObject);
         }
-
+        
         TileGraph map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
-
+        
         map.roomPrefab = roomPrefab;
         map.hallPrefab = hallPrefab;
         map.doorPrefab = doorPrefab;
@@ -49,6 +50,8 @@ public class GenerationManager : MonoBehaviour
         map.specialRoomsChance = specialRoomsChance;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
+        
+        Debug.Log(map);
 
         if (map.StartRoom != null)
         {

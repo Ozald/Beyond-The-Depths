@@ -113,11 +113,13 @@ public class TileGraph : MonoBehaviour
     // Depth-first generation
     public void GenerateMap(Vector2 startPosition)
     {
+        Debug.Log("Starting generation");
+        Debug.Log($"Start position: {startPosition}");
+        
         if (!InBounds(startPosition))
             throw new ArgumentException("Start position is not in the map.");
 
         // Create the starting room and start the recursive generation
-        // Rule: The origin room has 4 possible branches
         Room startRoom = Instantiate(roomPrefab.gameObject, 
             new Vector3(startPosition.x, startPosition.y, 0), Quaternion.identity).GetComponent<Room>();
         StartPosition = startPosition;
