@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Room : Connectable
@@ -13,6 +13,15 @@ public class Room : Connectable
     // { 
     //     Debug.Log(name + "(Start): "  + GetComponent<Collider2D>().enabled);
     // }
+
+    // For the love of god and everything that is good I cannot find what is disabling this object
+    // Demonic code requires demonic answers
+    void OnDisable()
+    {
+        Debug.LogError($"{name} was disabled\n{System.Environment.StackTrace}", this);
+        GetComponent<Room>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+    }
 
     public enum ConnectionDirection
     {
@@ -33,7 +42,7 @@ public class Room : Connectable
     [CanBeNull] public Door rightDoor;
     [CanBeNull] public Door upDoor;
     [CanBeNull] public Door downDoor;
-    
+
     public RoomType roomType;
     public bool hasBeenExplored = false;
 
@@ -42,19 +51,19 @@ public class Room : Connectable
         get { return left; }
         set { left = value; }
     }
-    
+
     public Connectable? Up
     {
         get { return up; }
         set { up = value; }
     }
-    
+
     public Connectable? Right
     {
         get { return right; }
         set { right = value; }
     }
-    
+
     public Connectable? Down
     {
         get { return down; }
@@ -92,7 +101,7 @@ public class Room : Connectable
     {
         Connections = new[] { Left, Up, Right, Down };
         MaxConnections = maxConnections;
-        
+
         if (isOrigin)
             roomType = RoomType.StartRoom;
     }
