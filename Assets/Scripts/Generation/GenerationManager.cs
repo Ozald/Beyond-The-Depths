@@ -50,7 +50,7 @@ public class GenerationManager : MonoBehaviour
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
 
-        if (map.StartRoom is not null)
+        if (map.StartRoom != null)
         {
             PlayerManager.instance.currentRoom = map.StartRoom;
             

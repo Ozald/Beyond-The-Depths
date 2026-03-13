@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class Room : Connectable
 {
+
+    // void Awake()
+    // {
+    //     Debug.Log(name + "(Awake): "  + GetComponent<Collider2D>().enabled);
+    // }
+    //
+    // void Start()
+    // { 
+    //     Debug.Log(name + "(Start): "  + GetComponent<Collider2D>().enabled);
+    // }
+
     public enum ConnectionDirection
     {
         Left,
@@ -84,6 +95,14 @@ public class Room : Connectable
         
         if (isOrigin)
             roomType = RoomType.StartRoom;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player has entered the room.");
+        }
     }
 
     public override string ToString()
