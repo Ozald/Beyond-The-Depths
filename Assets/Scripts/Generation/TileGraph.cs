@@ -240,7 +240,7 @@ public class TileGraph : MonoBehaviour
                     
                     // This is so ugly, why do I have to do it to make it work???????
                     start.Left = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Left.gameObject);
+                    //Destroy(start.Left.gameObject);
                     Room tempLeft = null;
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
@@ -270,7 +270,7 @@ public class TileGraph : MonoBehaviour
                 case Room.ConnectionDirection.Right:
                     // This is so ugly, why do I have to do it to make it work???????
                     start.Right = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Right.gameObject);
+                    //Destroy(start.Right.gameObject);
                     Room tempRight = null;
                     
                     if (roomsGenerated < maxRoomsPerBranch - 1
@@ -300,7 +300,7 @@ public class TileGraph : MonoBehaviour
                 case Room.ConnectionDirection.Up:
                     // This is so ugly, why do I have to do it to make it work???????
                     start.Up = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Up.gameObject);
+                    //Destroy(start.Up.gameObject);
                     Room tempUp = null;
                     
                     if (roomsGenerated < maxRoomsPerBranch - 1
@@ -330,7 +330,7 @@ public class TileGraph : MonoBehaviour
                 case Room.ConnectionDirection.Down:
                     // This is so ugly, why do I have to do it to make it work???????
                     start.Down = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Down.gameObject);
+                    //Destroy(start.Down.gameObject);
                     Room tempDown = null;
 
                     if (roomsGenerated < maxRoomsPerBranch - 1

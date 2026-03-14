@@ -16,6 +16,8 @@ public class Room : Connectable
 
     // For the love of god and everything that is good I cannot find what is disabling this object
     // Demonic code requires demonic answers
+    //
+    // This demon has beaten my exorcism.
     void OnDisable()
     {
         Debug.LogError($"{name} was disabled\n{System.Environment.StackTrace}", this);
@@ -106,11 +108,12 @@ public class Room : Connectable
             roomType = RoomType.StartRoom;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other);
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player has entered the room.");
+            Debug.Log("Player has entered a room.");
         }
     }
 
