@@ -110,7 +110,6 @@ public class Room : Connectable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other);
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player has entered a room.");

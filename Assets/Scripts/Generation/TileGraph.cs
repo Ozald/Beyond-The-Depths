@@ -807,15 +807,13 @@ public class TileGraph : MonoBehaviour
     {
         Destroy(room.gameObject);
         
-        if (IsSpotEmpty(pos))
-        {
-            grid[(int)pos.x, (int)pos.y] = room;
-            
-            room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
-            return true;
-        }
+        if (!IsSpotEmpty(pos))
+            return false;
         
-        return false;
+        grid[(int)pos.x, (int)pos.y] = room;
+        room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+        
+        return true;
     }
     
     // Places an item at a grid position
