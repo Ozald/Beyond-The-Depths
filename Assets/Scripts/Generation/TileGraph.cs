@@ -1,7 +1,8 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = System.Random;
@@ -121,10 +122,12 @@ public class TileGraph : MonoBehaviour
 
         // Create the starting room and start the recursive generation
         Room startRoom = Instantiate(roomPrefab.gameObject, 
-            new Vector3(startPosition.x, startPosition.y, 0), Quaternion.identity).GetComponent<Room>();
+            new Vector3(startPosition.x * 5, startPosition.y * 5, 0), Quaternion.identity).GetComponent<Room>();
         StartPosition = startPosition;
         Start = startRoom;
-        
+        rooms.Add(startRoom, startPosition);
+        grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
+
         // It works here, but not in the two other places?
         startRoom.gameObject.name = "StartRoom";
         startRoom.gameObject.GetComponent<Renderer>().material.color = Color.green;
@@ -160,7 +163,7 @@ public class TileGraph : MonoBehaviour
         // This should also stop hallways from overwriting things.
         // This was really only here because the origin room kept
         // getting overwritten.
-        if (!IsSpotEmpty(startVector))
+        if (!IsSpotEmpty(startVector) && start != Start)
         {
             room = null;
             return null;
@@ -173,8 +176,11 @@ public class TileGraph : MonoBehaviour
             return null;
         }
         
-        PlaceAt(ref start, startVector);
-        rooms.Add(start, startVector);
+        if (!rooms.ContainsKey(start))
+        {
+            PlaceAt(ref start, startVector);
+            rooms.Add(start, startVector);
+        }
         
         start.upDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, -1, 0),
             Quaternion.identity).GetComponent<Door>();
@@ -311,7 +317,7 @@ public class TileGraph : MonoBehaviour
                     }
                     else
                     {
-                        start.Right = null;
+                        start.Up = null;
                     }
 
                     break;
@@ -337,7 +343,7 @@ public class TileGraph : MonoBehaviour
                     }
                     else
                     {
-                        start.Right = null;
+                        start.Down = null;
                     }
 
                     break;
