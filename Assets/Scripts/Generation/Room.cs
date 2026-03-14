@@ -16,12 +16,12 @@ public class Room : Connectable
 
     // For the love of god and everything that is good I cannot find what is disabling this object
     // Demonic code requires demonic answers
-    void OnDisable()
-    {
-        Debug.LogError($"{name} was disabled\n{System.Environment.StackTrace}", this);
-        GetComponent<Room>().enabled = true;
-        GetComponent<Collider2D>().enabled = true;
-    }
+    //void OnDisable()
+    //{
+    //    Debug.LogError($"{name} was disabled\n{System.Environment.StackTrace}", this);
+    //    GetComponent<Room>().enabled = true;
+    //    GetComponent<Collider2D>().enabled = true;
+    //}
 
     public enum ConnectionDirection
     {

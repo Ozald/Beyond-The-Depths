@@ -239,27 +239,23 @@ public class TileGraph : MonoBehaviour
                     //random.Next(roomsGenerated < maxRoomsPerBranch / 4 ? 2 : 1, 5)
                     
                     // This is so ugly, why do I have to do it to make it work???????
-                    start.Left = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Left.gameObject);
-                    Room tempLeft = null;
+                    Room tempLeft = roomPrefab.GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
-                        && GenerateFrom((Room)start.Left, startVector + new Vector2(-2, 0), roomsGenerated + 1,
+                        && GenerateFrom(tempLeft, startVector + new Vector2(-2, 0), roomsGenerated + 1,
                             penaltySafety, out tempLeft) is not null)
                     {
                         Console.WriteLine("Generating left branch");
                         start.Left = tempLeft;
-                        PlaceHallAt(startVector + new Vector2(-1, 0), start, (Room)start.Left);
+                        PlaceHallAt(startVector + new Vector2(-1, 0), start, tempLeft);
                         connectionCount++;
                         
-                        // Scuffed
-                        if (start.Left is not null)
-                        {
-                            // I hate this so much
-                            ((Room)start.Left).Right = start;
-                            start.leftDoor.connectedDoor = ((Room)start.Left).rightDoor;
-                            ((Room)start.Left).rightDoor.connectedDoor = start.leftDoor;
-                        }
+                        // I hate this so much
+                        tempLeft.Right = start;
+
+                        // Linking doors
+                        start.leftDoor.connectedDoor = tempLeft.rightDoor;
+                        tempLeft.rightDoor.connectedDoor = start.leftDoor;
                     }
                     else
                     {
@@ -269,27 +265,23 @@ public class TileGraph : MonoBehaviour
                     break;
                 case Room.ConnectionDirection.Right:
                     // This is so ugly, why do I have to do it to make it work???????
-                    start.Right = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Right.gameObject);
-                    Room tempRight = null;
-                    
+                    Room tempRight = roomPrefab.GetComponent<Room>();
+
                     if (roomsGenerated < maxRoomsPerBranch - 1
-                        && GenerateFrom((Room)start.Right, startVector + new Vector2(2, 0), roomsGenerated + 1,
+                        && GenerateFrom(tempRight, startVector + new Vector2(2, 0), roomsGenerated + 1,
                             penaltySafety, out tempRight) is not null)
                     {
-                        Console.WriteLine("Generating right branch");
+                        Console.WriteLine("Generating left branch");
                         start.Right = tempRight;
-                        PlaceHallAt(startVector + new Vector2(1, 0), start, (Room)start.Right);
+                        PlaceHallAt(startVector + new Vector2(1, 0), start, tempRight);
                         connectionCount++;
-                        
-                        // Scuffed
-                        if (start.Right is not null)
-                        {
-                            // I hate this so much
-                            ((Room)start.Right).Left = start;
-                            start.rightDoor.connectedDoor = ((Room)start.Right).leftDoor;
-                            ((Room)start.Right).leftDoor.connectedDoor = start.rightDoor;
-                        }
+
+                        // I hate this so much
+                        tempRight.Left = start;
+
+                        // Linking doors
+                        start.rightDoor.connectedDoor = tempRight.leftDoor;
+                        tempRight.leftDoor.connectedDoor = start.rightDoor;
                     }
                     else
                     {
@@ -299,61 +291,53 @@ public class TileGraph : MonoBehaviour
                     break;
                 case Room.ConnectionDirection.Up:
                     // This is so ugly, why do I have to do it to make it work???????
-                    start.Up = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Up.gameObject);
-                    Room tempUp = null;
-                    
+                    Room tempUp = roomPrefab.GetComponent<Room>();
+
                     if (roomsGenerated < maxRoomsPerBranch - 1
-                        && GenerateFrom((Room)start.Up, startVector + new Vector2(0, -2), roomsGenerated + 1,
+                        && GenerateFrom(tempUp, startVector + new Vector2(0, -2), roomsGenerated + 1,
                             penaltySafety, out tempUp) is not null)
                     {
-                        Console.WriteLine("Generating up branch");
+                        Console.WriteLine("Generating left branch");
                         start.Up = tempUp;
-                        PlaceHallAt(startVector + new Vector2(0, -1), start, (Room)start.Up);
+                        PlaceHallAt(startVector + new Vector2(0, -1), start, tempUp);
                         connectionCount++;
-                        
-                        // Scuffed
-                        if (start.Up is not null)
-                        {
-                            // I hate this so much
-                            ((Room)start.Up).Down = start;
-                            start.upDoor.connectedDoor = ((Room)start.Up).downDoor;
-                            ((Room)start.Up).downDoor.connectedDoor = start.upDoor;
-                        }
+
+                        // I hate this so much
+                        tempUp.Down = start;
+
+                        // Linking doors
+                        start.upDoor.connectedDoor = tempUp.downDoor;
+                        tempUp.downDoor.connectedDoor = start.upDoor;
                     }
                     else
                     {
-                        start.Up = null;
+                        start.Right = null;
                     }
 
                     break;
                 case Room.ConnectionDirection.Down:
                     // This is so ugly, why do I have to do it to make it work???????
-                    start.Down = Instantiate(roomPrefab.gameObject).GetComponent<Room>();
-                    Destroy(start.Down.gameObject);
-                    Room tempDown = null;
+                    Room tempDown = roomPrefab.GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
-                        && GenerateFrom((Room)start.Down, startVector + new Vector2(0, 2), roomsGenerated + 1,
+                        && GenerateFrom(tempDown, startVector + new Vector2(0, 2), roomsGenerated + 1,
                             penaltySafety, out tempDown) is not null)
                     {
-                        Console.WriteLine("Generating down branch");
-                        start.Down = tempDown;
-                        PlaceHallAt(startVector + new Vector2(0, 1), start, (Room)start.Down);
+                        Console.WriteLine("Generating left branch");
+                        start.Up = tempDown;
+                        PlaceHallAt(startVector + new Vector2(0, 1), start, tempDown);
                         connectionCount++;
-                        
-                        // Scuffed
-                        if (start.Down is not null)
-                        {
-                            // I hate this so much
-                            ((Room)start.Down).Up = start;
-                            start.downDoor.connectedDoor = ((Room)start.Down).upDoor;
-                            ((Room)start.Down).upDoor.connectedDoor = start.downDoor;
-                        }
+
+                        // I hate this so much
+                        tempDown.Up = start;
+
+                        // Linking doors
+                        start.downDoor.connectedDoor = tempDown.upDoor;
+                        tempDown.upDoor.connectedDoor = start.downDoor;
                     }
                     else
                     {
-                        start.Down = null;
+                        start.Right = null;
                     }
 
                     break;
@@ -805,35 +789,27 @@ public class TileGraph : MonoBehaviour
     // Holy crap does this solution suck
     public bool PlaceAt(ref Room room, Vector2 pos)
     {
-        Destroy(room.gameObject);
-        
-        if (IsSpotEmpty(pos))
-        {
-            grid[(int)pos.x, (int)pos.y] = room;
+        if (!IsSpotEmpty(pos))
+            return false;
             
-            room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
-            return true;
-        }
-        
-        return false;
+        room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+        grid[(int)pos.x, (int)pos.y] = room;
+
+        return true;
     }
     
     // Places an item at a grid position
     // Holy crap does this solution suck
     public bool PlaceAt(ref Hallway hall, Vector2 pos)
     {
-        Destroy(hall.gameObject);
+        if (!IsSpotEmpty(pos))
+            return false;
         
-        if (IsSpotEmpty(pos))
-        {
-            grid[(int)pos.x, (int)pos.y] = hall;
-            
-            hall = Instantiate(hall.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity)
-                .GetComponent<Hallway>();
-            return true;
-        }
+        hall = Instantiate(hall.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Hallway>();
+        grid[(int)pos.x, (int)pos.y] = hall;
+
+        return true;
         
-        return false;
     }
 
     // Gets the feature at a position
