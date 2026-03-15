@@ -110,7 +110,7 @@ public class Room : Connectable
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player has entered the room.");
+            Debug.Log("Player has entered a room.");
         }
     }
 

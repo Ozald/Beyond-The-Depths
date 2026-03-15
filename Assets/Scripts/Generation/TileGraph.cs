@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = System.Random;
@@ -34,6 +33,8 @@ public class TileGraph : MonoBehaviour
     public float extraHallsChance;
     [FormerlySerializedAs("specialRooms")] public int maxSpecialRooms;
     public float specialRoomsChance;
+
+    public RoomTypeData roomTypes;
     
     public float ExtraHallsChance { get => extraHallsChance; set => extraHallsChance = value; }
 

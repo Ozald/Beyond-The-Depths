@@ -8,6 +8,8 @@ public class GenerationManager : MonoBehaviour
     public Connectable hallPrefab;
     public Connectable doorPrefab;
 
+    public RoomTypeData roomTypes;
+
     public int mapWidth;
     public int mapHeight;
     public int maxRoomsPerBranch;
@@ -48,6 +50,7 @@ public class GenerationManager : MonoBehaviour
         map.extraHallsChance = extraHallsChance;
         map.maxSpecialRooms = maxSpecialRooms;
         map.specialRoomsChance = specialRoomsChance;
+        map.roomTypes = roomTypes;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         
