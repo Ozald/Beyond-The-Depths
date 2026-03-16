@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
 
     public float stateTimer { get; private set; }
     [SerializeField] private AIState currentState;
+    [NonSerialized] public GameObject activeAttackHitbox;
 
     /**************************************************************************************/
 
@@ -65,8 +66,6 @@ public class Enemy : MonoBehaviour
 
     private void TransitionHandler()
     {
-        if (stateTimer < 1f)
-            return;
 
         // Find every valid destination in a transition, store in a list, and then pick one of them
         foreach (EnemyStateTransition transition in transitions)

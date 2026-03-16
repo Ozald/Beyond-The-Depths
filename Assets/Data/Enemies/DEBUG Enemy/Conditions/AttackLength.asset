@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d7518c37f4027f4fbc434d928d204db, type: 3}
-  m_Name: TimedStateCondition
+  m_Name: AttackLength
   m_EditorClassIdentifier: 
-  timeToTransition: 1
+  timeToTransition: 0.75
