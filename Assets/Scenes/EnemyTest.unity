@@ -310,6 +310,7 @@ MonoBehaviour:
   maxHP: 5
   currentHP: 5
   doubloons: 0
+  invincibilityCooldown: 1
 --- !u!1 &528442865
 GameObject:
   m_ObjectHideFlags: 0
