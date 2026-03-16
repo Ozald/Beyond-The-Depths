@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347171feed5a3e04fad9858041dd1132, type: 3}
   m_Name: Room Types
   m_EditorClassIdentifier: 
-  startRooms: []
-  endRooms: []
+  startRooms:
+  - connectable: {fileID: 1216396713924481307, guid: be7744cfcaa5c424389c5d5f318cfc70, type: 3}
+    weight: 1
   specialRooms: []
-  hallways: []
-  rooms: []
+  hallways:
+  - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
+    weight: 1
+  rooms:
+  - connectable: {fileID: -9160724495066844610, guid: 18e314f68b04ff44ca95f71eb5090e3d, type: 3}
+    weight: 1

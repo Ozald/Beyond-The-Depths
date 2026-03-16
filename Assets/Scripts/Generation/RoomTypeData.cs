@@ -20,7 +20,6 @@ public struct WeightedRoom
 public class RoomTypeData : ScriptableObject
 {
     public WeightedRoom[] startRooms;
-    public WeightedRoom[] endRooms;
     public WeightedRoom[] specialRooms;
     public WeightedRoom[] hallways;
     public WeightedRoom[] rooms;
@@ -34,17 +33,7 @@ public class RoomTypeData : ScriptableObject
 
         return selector.Roll();
     }
-
-    public Room GetEndRoom()
-    {
-        ItemSelector<Room> selector = new ItemSelector<Room>();
-        
-        foreach (WeightedRoom item in endRooms)
-            selector.AddItem((Room)item.connectable, item.weight);
-
-        return selector.Roll();
-    }
-
+    
     public Room GetSpecialRoom()
     {
         ItemSelector<Room> selector = new ItemSelector<Room>();

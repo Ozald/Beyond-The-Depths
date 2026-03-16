@@ -122,17 +122,12 @@ public class TileGraph : MonoBehaviour
             throw new ArgumentException("Start position is not in the map.");
 
         // Create the starting room and start the recursive generation
-        Room startRoom = Instantiate(roomPrefab.gameObject, 
+        Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
             new Vector3(startPosition.x * 5, startPosition.y * 5, 0), Quaternion.identity).GetComponent<Room>();
         StartPosition = startPosition;
         Start = startRoom;
         rooms.Add(startRoom, startPosition);
         grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
-
-        // It works here, but not in the two other places?
-        startRoom.gameObject.name = "StartRoom";
-        startRoom.gameObject.GetComponent<Renderer>().material.color = Color.green;
-        startRoom.roomType = RoomType.StartRoom;
 
         GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
         AddHalls(extraHallsChance);
@@ -246,7 +241,7 @@ public class TileGraph : MonoBehaviour
                     //random.Next(roomsGenerated < maxRoomsPerBranch / 4 ? 2 : 1, 5)
                     
                     // This is so ugly, why do I have to do it to make it work???????
-                    Room tempLeft = roomPrefab.GetComponent<Room>();
+                    Room tempLeft = roomTypes.GetRoom().GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
                         && GenerateFrom(tempLeft, startVector + new Vector2(-2, 0), roomsGenerated + 1,
@@ -272,7 +267,7 @@ public class TileGraph : MonoBehaviour
                     break;
                 case Room.ConnectionDirection.Right:
                     // This is so ugly, why do I have to do it to make it work???????
-                    Room tempRight = roomPrefab.GetComponent<Room>();
+                    Room tempRight = roomTypes.GetRoom().GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
                         && GenerateFrom(tempRight, startVector + new Vector2(2, 0), roomsGenerated + 1,
@@ -298,7 +293,7 @@ public class TileGraph : MonoBehaviour
                     break;
                 case Room.ConnectionDirection.Up:
                     // This is so ugly, why do I have to do it to make it work???????
-                    Room tempUp = roomPrefab.GetComponent<Room>();
+                    Room tempUp = roomTypes.GetRoom().GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
                         && GenerateFrom(tempUp, startVector + new Vector2(0, -2), roomsGenerated + 1,
@@ -324,7 +319,7 @@ public class TileGraph : MonoBehaviour
                     break;
                 case Room.ConnectionDirection.Down:
                     // This is so ugly, why do I have to do it to make it work???????
-                    Room tempDown = roomPrefab.GetComponent<Room>();
+                    Room tempDown = roomTypes.GetRoom().GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
                         && GenerateFrom(tempDown, startVector + new Vector2(0, 2), roomsGenerated + 1,
@@ -775,7 +770,7 @@ public class TileGraph : MonoBehaviour
     // Places a hallway
     public bool PlaceHallAt(Vector2 pos, Connectable? origin, Connectable? end)
     {
-        Hallway hall = Instantiate(hallPrefab.gameObject, 
+        Hallway hall = Instantiate(roomTypes.GetHallway().gameObject, 
             new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Hallway>();
 
         hall.Origin = origin;
@@ -1026,6 +1021,10 @@ public class TileGraph : MonoBehaviour
             farthest.gameObject.GetComponent<Renderer>().material.color = Color.red;
             farthest.roomType = RoomType.EndRoom;
             
+            // Most likely will need code to replace
+            // the farthest room with an actual special
+            // EndRoom prefab
+            
             Debug.Log(farthest.gameObject);
         }
     }
@@ -1051,6 +1050,9 @@ public class TileGraph : MonoBehaviour
                 room.gameObject.GetComponent<Renderer>().material.color = Color.magenta;
                 room.gameObject.name = "Special_Room_" + (generated + 1);
                 room.roomType = RoomType.SpecialRoom;
+                
+                // Most likely will need code to replace the room
+                // with a special room that is randomly rolled
 
                 generated++;
             }
