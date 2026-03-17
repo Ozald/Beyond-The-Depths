@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 
-public class PlayButton : MonoBehaviour
+public class SettingsButton : MonoBehaviour
 {
     // change the scene name later once we have it.
     public string sceneName = "example";
@@ -21,6 +21,7 @@ public class PlayButton : MonoBehaviour
     void TaskOnClick()
     {
         Debug.Log("You have clicked the button!");
-        SceneManager.LoadScene(sceneName);
+        mainMenu.gameObject.SetActive(false);
+        settings.gameObject.SetActive(true);
     }
 }
