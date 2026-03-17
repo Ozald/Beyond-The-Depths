@@ -23,12 +23,23 @@ public class RoomTypeData : ScriptableObject
     public WeightedRoom[] specialRooms;
     public WeightedRoom[] hallways;
     public WeightedRoom[] rooms;
+    public WeightedRoom[] endRooms;
     
     public Room GetStartRoom()
     {
         ItemSelector<Room> selector = new ItemSelector<Room>();
         
         foreach (WeightedRoom item in startRooms)
+            selector.AddItem((Room)item.connectable, item.weight);
+
+        return selector.Roll();
+    }
+    
+    public Room GetEndRoom()
+    {
+        ItemSelector<Room> selector = new ItemSelector<Room>();
+        
+        foreach (WeightedRoom item in endRooms)
             selector.AddItem((Room)item.connectable, item.weight);
 
         return selector.Roll();

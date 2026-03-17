@@ -44,11 +44,8 @@ public class GenerationManager : MonoBehaviour
         
         TileGraph map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
         
-        map.roomPrefab = roomPrefab;
-        map.hallPrefab = hallPrefab;
         map.doorPrefab = doorPrefab;
         map.extraHallsChance = extraHallsChance;
-        map.maxSpecialRooms = maxSpecialRooms;
         map.specialRoomsChance = specialRoomsChance;
         map.roomTypes = roomTypes;
 

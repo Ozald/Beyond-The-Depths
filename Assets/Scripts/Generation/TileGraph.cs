@@ -9,8 +9,6 @@ using Vector2 = UnityEngine.Vector2;
 
 public class TileGraph : MonoBehaviour
 {
-    public Connectable roomPrefab;
-    public Connectable hallPrefab;
     public Connectable doorPrefab;
     
     public enum Half
@@ -31,7 +29,6 @@ public class TileGraph : MonoBehaviour
     private Vector2 startPos;
     private Room? Start;
     public float extraHallsChance;
-    [FormerlySerializedAs("specialRooms")] public int maxSpecialRooms;
     public float specialRoomsChance;
 
     public RoomTypeData roomTypes;
@@ -132,7 +129,6 @@ public class TileGraph : MonoBehaviour
         GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
         AddHalls(extraHallsChance);
         SetEndRoom();
-        SetSpecialRooms();
         CleanDoors();
         
         Debug.Log($"Generated {rooms.Count} rooms.");
@@ -793,8 +789,12 @@ public class TileGraph : MonoBehaviour
     {
         if (!IsSpotEmpty(pos))
             return false;
-            
-        room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+        
+        if(room.roomType == RoomType.Room && random.NextDouble() < specialRoomsChance)
+            room = Instantiate(roomTypes.GetSpecialRoom().gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+        else
+            room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+        
         grid[(int)pos.x, (int)pos.y] = room;
 
         return true;
@@ -994,7 +994,7 @@ public class TileGraph : MonoBehaviour
 
         foreach (Room room in rooms.Keys)
         {
-            if (IsDeadEnd(room))
+            if (IsDeadEnd(room) && room.roomType != RoomType.SpecialRoom && room.roomType != RoomType.StartRoom)
             {
                 if (Vector2.Distance(StartPosition, rooms[room]) > farthestDistance)
                 {
@@ -1015,20 +1015,19 @@ public class TileGraph : MonoBehaviour
         if (farthest is not null)
         {
             Debug.Log("End room found.");
-
-            // This works. I don't want to know.
-            farthest.gameObject.name = "End_Room";
-            farthest.gameObject.GetComponent<Renderer>().material.color = Color.red;
-            farthest.roomType = RoomType.EndRoom;
+            Vector3 position = farthest.transform.position;
             
-            // Most likely will need code to replace
-            // the farthest room with an actual special
-            // EndRoom prefab
+            // Scuffed (Unused, but it's so scuffed that I just want to leave this here)
+            // Door farthestDoor  = farthest.downDoor != null ? farthest.downDoor : farthest.upDoor != null ?  farthest.upDoor : farthest.leftDoor != null ? farthest.leftDoor : farthest.rightDoor;
             
-            Debug.Log(farthest.gameObject);
+            Room endRoom = Instantiate(roomTypes.GetEndRoom().gameObject, position, Quaternion.identity).GetComponent<Room>();
+            
+            Destroy(farthest.gameObject);
+            Debug.Log(endRoom.gameObject);
         }
     }
 
+    /*
     // Sets some rooms as "special" rooms
     public void SetSpecialRooms()
     {
@@ -1058,6 +1057,7 @@ public class TileGraph : MonoBehaviour
             }
         }
     }
+    */
     
     /*
     // Prints a compressed view of the
