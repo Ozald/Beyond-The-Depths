@@ -1021,6 +1021,10 @@ public class TileGraph : MonoBehaviour
             // Door farthestDoor  = farthest.downDoor != null ? farthest.downDoor : farthest.upDoor != null ?  farthest.upDoor : farthest.leftDoor != null ? farthest.leftDoor : farthest.rightDoor;
             
             Room endRoom = Instantiate(roomTypes.GetEndRoom().gameObject, position, Quaternion.identity).GetComponent<Room>();
+            endRoom.upDoor = farthest.upDoor;
+            endRoom.downDoor = farthest.downDoor;
+            endRoom.rightDoor = farthest.rightDoor;
+            endRoom.leftDoor = farthest.leftDoor;
             
             Destroy(farthest.gameObject);
             Debug.Log(endRoom.gameObject);
