@@ -98,7 +98,7 @@ Material:
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
-    - _DistortionBlend: 0.059
+    - _DistortionBlend: 0.034
     - _DstBlend: 10
     - _EnableExternalAlpha: 0
     - _Fullscreen_AlphaBlendOperation: 0
@@ -109,7 +109,7 @@ Material:
     - _Fullscreen_DstColorBlend: 10
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 5
-    - _NoiseScale: 10
+    - _NoiseScale: 7.7
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 0.13
