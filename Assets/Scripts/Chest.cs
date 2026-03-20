@@ -2,14 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : Interactable
+public class Chest : MonoBehaviour
 {
-    public PlayerInventory playerInv;
-    public override void Interact(PlayerInteraction player)
-    {
-        playerInv.PickupWeapon(this);
-    }
-
     // Start is called before the first frame update
     void Start()
     {

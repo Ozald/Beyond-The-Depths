@@ -20,18 +20,22 @@ public class PlayerInventory : MonoBehaviour
     {
         if (isInTriggerZone && Input.GetKeyDown("e"))
         {
-            PickupWeapon();
+            //PickupWeapon();
         }
 
         if (Input.GetKeyDown("r"))
         {
-            Weapon temp = playerInv[1];
-            playerInv[1] = playerInv[0];
-            playerInv[0] = temp;
+            if (playerInv.Count > 1)
+            {
+                Weapon temp = playerInv[1];
+                playerInv[1] = playerInv[0];
+                playerInv[0] = temp;
+            }
+
         }
     }
 
-    private void PickupWeapon()
+    public void PickupWeapon(Weapon nearbyWeapon)
     {
         if (nearbyWeapon == null) return;
 
