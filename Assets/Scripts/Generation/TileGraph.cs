@@ -30,6 +30,7 @@ public class TileGraph : MonoBehaviour
     private Room? Start;
     public float extraHallsChance;
     public float specialRoomsChance;
+    private bool endRoomGenerated = false;
 
     public RoomTypeData roomTypes;
     
@@ -139,7 +140,7 @@ public class TileGraph : MonoBehaviour
     [CanBeNull]
     private Room GenerateFrom(Room start, Vector2 startVector, int roomsGenerated, int penaltySafety, out Room room)
     {
-        if (roomsGenerated >= maxRoomsPerBranch)
+        if (roomsGenerated > maxRoomsPerBranch)
         {
             room = null;
             return null;
@@ -174,21 +175,28 @@ public class TileGraph : MonoBehaviour
             rooms.Add(start, startVector);
         }
         
-        start.upDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, -1, 0),
-            Quaternion.identity).GetComponent<Door>();
-        start.upDoor.parentRoom = start;
+        // start.upDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, -1, 0),
+        //     Quaternion.identity).GetComponent<Door>();
         
-        start.downDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, 1, 0),
-            Quaternion.identity).GetComponent<Door>();
-        start.downDoor.parentRoom = start;
+        if(start.upDoor is not null)
+            start.upDoor.parentRoom = start;
         
-        start.leftDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(-1, 0, 0),
-            Quaternion.identity).GetComponent<Door>();
-        start.leftDoor.parentRoom = start;
+        // start.downDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(0, 1, 0),
+        //     Quaternion.identity).GetComponent<Door>();
         
-        start.rightDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(1, 0, 0),
-            Quaternion.identity).GetComponent<Door>();
-        start.rightDoor.parentRoom = start;
+        if(start.downDoor is not null)
+            start.downDoor.parentRoom = start;
+        
+        // start.leftDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(-1, 0, 0),
+        //     Quaternion.identity).GetComponent<Door>();
+        
+        if(start.leftDoor is not null)
+            start.leftDoor.parentRoom = start;
+        
+        // start.rightDoor = Instantiate(doorPrefab.gameObject, start.transform.position + new Vector3(1, 0, 0),
+        //     Quaternion.identity).GetComponent<Door>();
+        if(start.rightDoor is not null)
+            start.rightDoor.parentRoom = start;
 
         Debug.Log("Layer: " + roomsGenerated);
         
@@ -235,10 +243,8 @@ public class TileGraph : MonoBehaviour
             {
                 case Room.ConnectionDirection.Left:
                     //random.Next(roomsGenerated < maxRoomsPerBranch / 4 ? 2 : 1, 5)
-                    
-                    // This is so ugly, why do I have to do it to make it work???????
                     Room tempLeft = roomTypes.GetRoom().GetComponent<Room>();
-
+                    
                     if (roomsGenerated < maxRoomsPerBranch - 1
                         && GenerateFrom(tempLeft, startVector + new Vector2(-2, 0), roomsGenerated + 1,
                             penaltySafety, out tempLeft) is not null)
@@ -252,8 +258,11 @@ public class TileGraph : MonoBehaviour
                         tempLeft.Right = start;
 
                         // Linking doors
-                        start.leftDoor.connectedDoor = tempLeft.rightDoor;
-                        tempLeft.rightDoor.connectedDoor = start.leftDoor;
+                        if (start.leftDoor is not null)
+                        {
+                            start.leftDoor.connectedDoor = tempLeft.rightDoor;
+                            tempLeft.rightDoor.connectedDoor = start.leftDoor;
+                        }
                     }
                     else
                     {
@@ -262,7 +271,6 @@ public class TileGraph : MonoBehaviour
 
                     break;
                 case Room.ConnectionDirection.Right:
-                    // This is so ugly, why do I have to do it to make it work???????
                     Room tempRight = roomTypes.GetRoom().GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
@@ -278,8 +286,11 @@ public class TileGraph : MonoBehaviour
                         tempRight.Left = start;
 
                         // Linking doors
-                        start.rightDoor.connectedDoor = tempRight.leftDoor;
-                        tempRight.leftDoor.connectedDoor = start.rightDoor;
+                        if (start.rightDoor is not null)
+                        {
+                            start.rightDoor.connectedDoor = tempRight.leftDoor;
+                            tempRight.leftDoor.connectedDoor = start.rightDoor;
+                        }
                     }
                     else
                     {
@@ -288,7 +299,6 @@ public class TileGraph : MonoBehaviour
 
                     break;
                 case Room.ConnectionDirection.Up:
-                    // This is so ugly, why do I have to do it to make it work???????
                     Room tempUp = roomTypes.GetRoom().GetComponent<Room>();
 
                     if (roomsGenerated < maxRoomsPerBranch - 1
@@ -304,8 +314,11 @@ public class TileGraph : MonoBehaviour
                         tempUp.Down = start;
 
                         // Linking doors
-                        start.upDoor.connectedDoor = tempUp.downDoor;
-                        tempUp.downDoor.connectedDoor = start.upDoor;
+                        if (start.upDoor is not null)
+                        {
+                            start.upDoor.connectedDoor = tempUp.downDoor;
+                            tempUp.downDoor.connectedDoor = start.upDoor;
+                        }
                     }
                     else
                     {
@@ -314,9 +327,8 @@ public class TileGraph : MonoBehaviour
 
                     break;
                 case Room.ConnectionDirection.Down:
-                    // This is so ugly, why do I have to do it to make it work???????
                     Room tempDown = roomTypes.GetRoom().GetComponent<Room>();
-
+                    
                     if (roomsGenerated < maxRoomsPerBranch - 1
                         && GenerateFrom(tempDown, startVector + new Vector2(0, 2), roomsGenerated + 1,
                             penaltySafety, out tempDown) is not null)
@@ -330,8 +342,11 @@ public class TileGraph : MonoBehaviour
                         tempDown.Up = start;
 
                         // Linking doors
-                        start.downDoor.connectedDoor = tempDown.upDoor;
-                        tempDown.upDoor.connectedDoor = start.downDoor;
+                        if (start.downDoor is not null)
+                        {
+                            start.downDoor.connectedDoor = tempDown.upDoor;
+                            tempDown.upDoor.connectedDoor = start.downDoor;
+                        }
                     }
                     else
                     {
@@ -352,6 +367,43 @@ public class TileGraph : MonoBehaviour
         return start;
     }
 
+    // Places the end room
+    private void SetEndRoom()
+    {
+        Room farthest = GetFarthestDeadEnd();
+
+        if (farthest is not null)
+        {
+            Room end = Instantiate(roomTypes.GetEndRoom().gameObject, farthest.transform.position, Quaternion.identity).GetComponent<Room>();
+
+            if (farthest.leftDoor.connectedDoor is not null)
+            {
+                farthest.leftDoor.connectedDoor.connectedDoor = end.leftDoor;
+                end.leftDoor.connectedDoor = farthest.leftDoor.connectedDoor;
+            }
+
+            if (farthest.rightDoor.connectedDoor is not null)
+            {
+                farthest.rightDoor.connectedDoor.connectedDoor = end.rightDoor;
+                end.rightDoor.connectedDoor = farthest.rightDoor.connectedDoor;
+            }
+
+            if (farthest.upDoor.connectedDoor is not null)
+            {
+                farthest.upDoor.connectedDoor.connectedDoor = end.upDoor;
+                end.upDoor.connectedDoor = farthest.upDoor.connectedDoor;
+            }
+
+            if (farthest.downDoor.connectedDoor is not null)
+            {
+                farthest.downDoor.connectedDoor.connectedDoor = end.downDoor;
+                end.downDoor.connectedDoor = farthest.downDoor.connectedDoor;
+            }
+            
+            Destroy(farthest.gameObject);
+        }
+    }
+
     // Adds extra halls to the map
     private void AddHalls(float chance)
     {
@@ -365,9 +417,10 @@ public class TileGraph : MonoBehaviour
                 Room end = roomList[j];
 
                 if (originRoom == end)
-                {
                     continue;
-                }
+
+                if (originRoom.roomType == RoomType.EndRoom || end.roomType == RoomType.EndRoom)
+                    continue;
 
                 if (random.NextDouble() < chance)
                 {
@@ -378,8 +431,11 @@ public class TileGraph : MonoBehaviour
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(1, 0), originRoom, end))
                             {
                                 Debug.Log("Added extra right hall");
-                                originRoom.rightDoor.connectedDoor = end.leftDoor;
-                                end.leftDoor.connectedDoor = originRoom.rightDoor;
+                                if (originRoom.rightDoor is not null)
+                                {
+                                    originRoom.rightDoor.connectedDoor = end.leftDoor;
+                                    end.leftDoor.connectedDoor = originRoom.rightDoor;
+                                }
                             }
                         }
                         else if (XDist(originRoom, end) == 2)
@@ -387,8 +443,11 @@ public class TileGraph : MonoBehaviour
                             if (PlaceHallAt(rooms[originRoom] + new Vector2(-1, 0), originRoom, end))
                             {
                                 Debug.Log("Added extra left hall");
-                                originRoom.leftDoor.connectedDoor = end.rightDoor;
-                                end.rightDoor.connectedDoor = originRoom.leftDoor;
+                                if (originRoom.leftDoor is not null)
+                                {
+                                    originRoom.leftDoor.connectedDoor = end.rightDoor;
+                                    end.rightDoor.connectedDoor = originRoom.leftDoor;
+                                }
                             }
                         }
                     }
@@ -403,8 +462,11 @@ public class TileGraph : MonoBehaviour
                                 // originRoom.upDoor = end.downDoor;
                                 // to
                                 // originRoom.upDoor.connectedDoor = end.downDoor;
-                                originRoom.upDoor.connectedDoor = end.downDoor;
-                                end.downDoor.connectedDoor = originRoom.upDoor;
+                                if (originRoom.upDoor is not null)
+                                {
+                                    originRoom.upDoor.connectedDoor = end.downDoor;
+                                    end.downDoor.connectedDoor = originRoom.upDoor;
+                                }
                             }
                         }
                         else if (YDist(originRoom, end) == -2)
@@ -416,8 +478,11 @@ public class TileGraph : MonoBehaviour
                                 // originRoom.downDoor = end.upDoor;
                                 // to
                                 // originRoom.downDoor.connectedDoor = end.upDoor;
-                                originRoom.downDoor.connectedDoor = end.upDoor;
-                                end.upDoor.connectedDoor = originRoom.downDoor;
+                                if (originRoom.downDoor is not null)
+                                {
+                                    originRoom.downDoor.connectedDoor = end.upDoor;
+                                    end.upDoor.connectedDoor = originRoom.downDoor;
+                                }
                             }
                         }
                     }
@@ -432,18 +497,12 @@ public class TileGraph : MonoBehaviour
     public void CleanDoors()
     {
         List<Door> doors = new List<Door>(FindObjectsByType<Door>(FindObjectsSortMode.None));
-        int removedDoors = 0;
 
         foreach (Door door in doors)
         {
             if (door.connectedDoor is null)
-            {
                 Destroy(door.gameObject);
-                removedDoors++;
-            }
         }
-        
-        Debug.Log($"Removed {removedDoors} doors.");
     }
 
     /*
@@ -1005,42 +1064,6 @@ public class TileGraph : MonoBehaviour
         }
 
         return farthest;
-    }
-
-    // Sets the farthest dead end room as the end room
-    public void SetEndRoom()
-    {
-        Room? farthest = GetFarthestDeadEnd();
-        
-        if (farthest is not null)
-        {
-            Debug.Log("End room found.");
-            Vector3 position = farthest.transform.position;
-            
-            // Scuffed (Unused, but it's so scuffed that I just want to leave this here)
-            // Door farthestDoor  = farthest.downDoor != null ? farthest.downDoor : farthest.upDoor != null ?  farthest.upDoor : farthest.leftDoor != null ? farthest.leftDoor : farthest.rightDoor;
-            
-            Room endRoom = Instantiate(roomTypes.GetEndRoom().gameObject, position, Quaternion.identity).GetComponent<Room>();
-            endRoom.upDoor = farthest.upDoor;
-            endRoom.downDoor = farthest.downDoor;
-            endRoom.rightDoor = farthest.rightDoor;
-            endRoom.leftDoor = farthest.leftDoor;
-        
-            if(endRoom.upDoor is not null)
-                endRoom.upDoor.parentRoom = endRoom;
-            
-            if (endRoom.downDoor is not null)
-                endRoom.downDoor.parentRoom = endRoom;
-            
-            if (endRoom.leftDoor is not null)
-                endRoom.leftDoor.parentRoom = endRoom;
-            
-            if(endRoom.rightDoor is not null)
-                endRoom.rightDoor.parentRoom = endRoom;
-            
-            Destroy(farthest.gameObject);
-            Debug.Log(endRoom.gameObject);
-        }
     }
 
     /*
