@@ -3,37 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public enum TransitionMode : byte 
-{ 
-    FirstValid,         // The first valid transition found will be picked
-    Random,             // A random valid transition would be picked disregarding its probability weights
-    WeightedRandom      // A random valid transition would be picked based on its probability weights
-}
-
-[Serializable]
-public struct TransitionDestination
-{
-    public int weight;
-    public AIState toState;
-    public Condition condition;
-}
-
-[Serializable]
-public struct EnemyStateTransition 
-{
-    public TransitionMode transitionMode;
-    public AIState fromState;
-    public List<TransitionDestination> destinations;
-}
-
 /**************************************************************************************/
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Setup")]
-
-    [SerializeField] private AIState initalState;
-    [SerializeField] private List<EnemyStateTransition> transitions;
+    public EnemyData enemyData;
 
     public float stateTimer { get; private set; }
     [SerializeField] private AIState currentState;
@@ -49,7 +23,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         stateTimer = 0;
-        currentState = initalState;
+        currentState = enemyData.initalState;
         currentState.OnEnter(this);
 
         currentPath = null;
@@ -75,7 +49,7 @@ public class Enemy : MonoBehaviour
     {
 
         // Find every valid destination in a transition, store in a list, and then pick one of them
-        foreach (EnemyStateTransition transition in transitions)
+        foreach (EnemyStateTransition transition in enemyData.transitions)
         {
             if (transition.fromState != currentState)
                 continue;
