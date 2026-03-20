@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class GenerationManager : MonoBehaviour
 {
-    public Connectable roomPrefab;
-    public Connectable hallPrefab;
     public Connectable doorPrefab;
 
-    public RoomTypeData roomTypes;
+    public LevelData roomTypes;
 
     public int mapWidth;
     public int mapHeight;

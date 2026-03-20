@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 347171feed5a3e04fad9858041dd1132, type: 3}
-  m_Name: Room Types
+  m_Name: Level Data
   m_EditorClassIdentifier: 
   startRooms:
   - connectable: {fileID: 5146461723574256006, guid: be7744cfcaa5c424389c5d5f318cfc70, type: 3}

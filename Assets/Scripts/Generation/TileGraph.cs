@@ -32,7 +32,7 @@ public class TileGraph : MonoBehaviour
     public float specialRoomsChance;
     private bool endRoomGenerated = false;
 
-    public RoomTypeData roomTypes;
+    public LevelData roomTypes;
     
     public float ExtraHallsChance { get => extraHallsChance; set => extraHallsChance = value; }
 
