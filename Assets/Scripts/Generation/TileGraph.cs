@@ -1025,6 +1025,18 @@ public class TileGraph : MonoBehaviour
             endRoom.downDoor = farthest.downDoor;
             endRoom.rightDoor = farthest.rightDoor;
             endRoom.leftDoor = farthest.leftDoor;
+        
+            if(endRoom.upDoor is not null)
+                endRoom.upDoor.parentRoom = endRoom;
+            
+            if (endRoom.downDoor is not null)
+                endRoom.downDoor.parentRoom = endRoom;
+            
+            if (endRoom.leftDoor is not null)
+                endRoom.leftDoor.parentRoom = endRoom;
+            
+            if(endRoom.rightDoor is not null)
+                endRoom.rightDoor.parentRoom = endRoom;
             
             Destroy(farthest.gameObject);
             Debug.Log(endRoom.gameObject);
