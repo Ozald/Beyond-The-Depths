@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         double verticalInput = Input.GetAxisRaw("Vertical");
         // Move the player based on the input (Y-axis)
 
-        //Debug.Log("Horizontal Input: " + horizontalInput + " |" + " Vertical Input: " + verticalInput);
+        // Debug.Log("Horizontal Input: " + horizontalInput + " |" + " Vertical Input: " + verticalInput);
 
         Vector2 movementDirection = new Vector2((float)horizontalInput, (float)verticalInput).normalized;
 
