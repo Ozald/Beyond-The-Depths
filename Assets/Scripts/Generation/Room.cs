@@ -33,6 +33,7 @@ public class Room : Connectable
     }
 
     private int maxConnections;
+    public LevelData levelData;
 
     [CanBeNull] private Connectable left;
     [CanBeNull] private Connectable up;
@@ -137,8 +138,8 @@ public class Room : Connectable
 
         foreach (Spawnpoint point in enemySpawns)
         {
-            // Pick and spawn enemy
-            // Enemy enemy = Todo: Pick enemy and spawn it 
+            Enemy enemy = levelData.GetEnemy();
+            // Spawn enemy
             point.hasSpawnedEnemy = true;
         }
     }

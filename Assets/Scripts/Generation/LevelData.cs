@@ -82,4 +82,14 @@ public class LevelData : ScriptableObject
 
         return selector.Roll();
     }
+
+    public Enemy GetEnemy()
+    {
+        ItemSelector<Enemy> selector = new ItemSelector<Enemy>();
+
+        foreach(WeightedEnemy e in enemies)
+            selector.AddItem(e.enemy, e.weight);
+        
+        return selector.Roll();
+    }
 }

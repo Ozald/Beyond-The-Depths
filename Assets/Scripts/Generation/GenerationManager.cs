@@ -12,7 +12,6 @@ public class GenerationManager : MonoBehaviour
     public int mapHeight;
     public int maxRoomsPerBranch;
     public float extraHallsChance;
-    public int maxSpecialRooms;
     public float specialRoomsChance;
     
     void Start()

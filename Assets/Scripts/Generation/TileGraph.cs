@@ -140,6 +140,7 @@ public class TileGraph : MonoBehaviour
     [CanBeNull]
     private Room GenerateFrom(Room start, Vector2 startVector, int roomsGenerated, int penaltySafety, out Room room)
     {
+        start.levelData = roomTypes;
         if (roomsGenerated > maxRoomsPerBranch)
         {
             room = null;
