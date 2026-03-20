@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -42,6 +43,7 @@ public class Room : Connectable
     [CanBeNull] public Door rightDoor;
     [CanBeNull] public Door upDoor;
     [CanBeNull] public Door downDoor;
+    public Spawnpoint[] spawnpoints;
 
     public RoomType roomType;
     public bool hasBeenExplored = false;
@@ -111,6 +113,33 @@ public class Room : Connectable
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player has entered a room.");
+        }
+
+        if (!hasBeenExplored)
+        {
+            SpawnEnemies();    
+        }
+    }
+
+    private void SpawnEnemies()
+    {
+        HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
+        int enemiesToSpawn = Random.Range(1, spawnpoints.Length + 1);
+
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
+            Spawnpoint spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Length)];
+            enemySpawns.Add(spawnpoint);
+        }
+        
+        // Todo: Pick enemies using weighted selection
+        // For now, use pure random selection
+
+        foreach (Spawnpoint point in enemySpawns)
+        {
+            // Pick and spawn enemy
+            // Enemy enemy = Todo: Pick enemy and spawn it 
+            point.hasSpawnedEnemy = true;
         }
     }
 
