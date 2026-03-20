@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb546c38e174ab47bb9d97c9da2c8b0, type: 3}
-  m_Name: Example Enemy Movement
+  m_Script: {fileID: 11500000, guid: 0a23afc95a376b3459ff003f7d94928b, type: 3}
+  m_Name: Idle
   m_EditorClassIdentifier: 

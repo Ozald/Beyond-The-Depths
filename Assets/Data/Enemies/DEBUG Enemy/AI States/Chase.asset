@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64163898dfb455a4fbdd4b832cc44b7a, type: 3}
-  m_Name: Example Nautilus Enemy
+  m_Script: {fileID: 11500000, guid: 55e94c6dbe5f9fa4fbb0d05bd28ad41c, type: 3}
+  m_Name: Chase
   m_EditorClassIdentifier: 
-  enemyName: Nautilus
-  health: 20
-  damage: 15
+  moveSpeed: 3
+  chaseAnimationTrigger: Chase

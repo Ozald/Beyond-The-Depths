@@ -4,18 +4,9 @@ using UnityEngine;
 
 public abstract class AIState : ScriptableObject
 {
-    public void OnEnter()
-    {
-        
-    }
-
-    public void OnUpdate()
-    {
-        
-    }
-
-    public void OnExit()
-    {
-        
-    }
+    public abstract void OnEnter(Enemy enemy);
+    public abstract void OnUpdate(Enemy enemy);
+    public abstract void OnFixedUpdate(Enemy enemy);
+    public abstract void OnExit(Enemy enemy);
+    
 }
