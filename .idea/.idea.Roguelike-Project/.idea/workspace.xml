@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="" />
+    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/EndRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/EndRoom.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/EndRoom.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/EndRoom.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room_Placeholder.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room_Placeholder.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom1.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom2.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom2.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/StartRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/StartRoom.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/StartRoom.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/StartRoom.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +42,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Data/ScriptableObjects/Room Types.asset" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -40,6 +58,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -95,7 +114,7 @@
       <updated>1772764722588</updated>
       <workItem from="1772764724535" duration="4061000" />
       <workItem from="1773358746077" duration="115000" />
-      <workItem from="1774037358340" duration="316000" />
+      <workItem from="1774037358340" duration="5919000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -105,12 +124,21 @@
       <option name="project" value="LOCAL" />
       <updated>1774037604139</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=".">
+      <option name="closed" value="true" />
+      <created>1774037729628</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774037729628</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -121,7 +149,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Fixed issue with end room doors' parent room not being properly set." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue with end room doors' parent room not being properly set." />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
