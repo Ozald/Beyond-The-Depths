@@ -98,7 +98,7 @@ Material:
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
-    - _DistortionBlend: 0.034
+    - _DistortionBlend: 0.066
     - _DstBlend: 10
     - _EnableExternalAlpha: 0
     - _Fullscreen_AlphaBlendOperation: 0
@@ -123,4 +123,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
