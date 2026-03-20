@@ -92,7 +92,7 @@ public class ChaseState : AIState
                 for (int i = 0; i < p.vectorPath.Count; i++)
                 {
                     float distance = Vector2.Distance(enemy.transform.position, p.vectorPath[i]);
-                    if (distance >= 2f)
+                    if (distance >= 1f)
                     {
                         newWaypoint = i;
                         break;
