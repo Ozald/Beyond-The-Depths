@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Chase
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  chaseAnimationTrigger: Chase

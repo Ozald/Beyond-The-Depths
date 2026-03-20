@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public enum TransitionMode : byte 
 { 
@@ -38,22 +39,28 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AIState currentState;
     [NonSerialized] public GameObject activeAttackHitbox;
 
+    // Pathfinding storage, use the state machine system to modify these values
+    [NonSerialized] public Path currentPath;
+    [NonSerialized] public int currentWaypoint;
+    [NonSerialized] public bool reachedEndOfPath = true;
+
     /**************************************************************************************/
 
     void Start()
     {
-        /*
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        BoxCollider2D coll = GetComponent<BoxCollider2D>(); //for the base enemy's sprite
-        coll.isTrigger = true;
-        coll.size =  spriteRenderer.bounds.size;
-        */
-
         stateTimer = 0;
         currentState = initalState;
         currentState.OnEnter(this);
+
+        currentPath = null;
+        currentWaypoint = 0;
     }
-    
+
+    void FixedUpdate()
+    {
+        currentState.OnFixedUpdate(this);
+    }
+
     void Update()
     {
         stateTimer += Time.deltaTime;

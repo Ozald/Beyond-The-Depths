@@ -9,7 +9,7 @@ public class IdleState : AIState
     // This class rn does literally nothing until further notice
     public override void OnEnter(Enemy enemy)
     {
-        Debug.Log(enemy.gameObject.name + " entering idle state.");
+        //Debug.Log(enemy.gameObject.name + " entering idle state.");
     }
 
     public override void OnExit(Enemy enemy)
@@ -19,6 +19,11 @@ public class IdleState : AIState
 
     public override void OnUpdate(Enemy enemy)
     {
-        Debug.Log(enemy.gameObject.name + " exiting idle state.");
+        //Debug.Log(enemy.gameObject.name + " exiting idle state.");
+    }
+
+    public override void OnFixedUpdate(Enemy enemy)
+    {
+        //throw new System.NotImplementedException();
     }
 }

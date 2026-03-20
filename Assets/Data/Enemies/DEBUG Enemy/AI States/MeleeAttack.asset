@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: MeleeAttack
   m_EditorClassIdentifier: 
   hitboxObject: {fileID: 864556813618362423, guid: f75c08a6b9161864d9545bab23f0f439, type: 3}
+  attackAnimationTrigger: Attack
