@@ -11,7 +11,7 @@ public class CameraTracking : MonoBehaviour
     {
         Room room = PlayerManager.instance.currentRoom;
 
-        if (room != null)
+        if (room is not null)
         {
             transform.position = new Vector3(room.transform.position.x, room.transform.position.y,
                 room.transform.position.z - 10);

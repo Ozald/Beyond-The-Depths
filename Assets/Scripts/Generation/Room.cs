@@ -143,19 +143,13 @@ public class Room : Connectable
     public override string ToString()
     {
         if (roomType == RoomType.StartRoom)
-        {
             return "O";
-        }
 
         if (roomType == RoomType.EndRoom)
-        {
             return "E";
-        }
 
         if (roomType == RoomType.SpecialRoom)
-        {
             return "S";
-        }
 
         return "R";
     }
