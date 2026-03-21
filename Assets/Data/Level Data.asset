@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347171feed5a3e04fad9858041dd1132, type: 3}
+  m_Name: Level Data
+  m_EditorClassIdentifier: 
+  startRooms:
+  - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
+    weight: 1
+  specialRooms:
+  - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
+    weight: 1
+  - connectable: {fileID: 8113397583161321766, guid: 5a757023aa3d25c40a7b4925d935a4a4, type: 3}
+    weight: 2
+  hallways:
+  - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
+    weight: 1
+  rooms:
+  - connectable: {fileID: 8113397583161321766, guid: 5a757023aa3d25c40a7b4925d935a4a4, type: 3}
+    weight: 1
+  - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
+    weight: 1
+  - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
+    weight: 1
+  endRooms:
+  - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
+    weight: 1
+  enemies:
+  - enemy: {fileID: 2777718196688764207, guid: 43be780d3922641478f0b3296ee70dc8, type: 3}
+    weight: 1

@@ -16,14 +16,22 @@ public struct WeightedRoom
     public int weight;
 }
 
-[CreateAssetMenu(fileName = "Room Types", menuName = "ScriptableObjects/RoomTypes", order = 1)]
-public class RoomTypeData : ScriptableObject
+[Serializable]
+public struct WeightedEnemy
+{
+    public Enemy enemy;
+    public int weight;
+}
+
+[CreateAssetMenu(fileName = "Level Data", menuName = "ScriptableObjects/LevelData", order = 1)]
+public class LevelData : ScriptableObject
 {
     public WeightedRoom[] startRooms;
     public WeightedRoom[] specialRooms;
     public WeightedRoom[] hallways;
     public WeightedRoom[] rooms;
     public WeightedRoom[] endRooms;
+    public WeightedEnemy[] enemies;
     
     public Room GetStartRoom()
     {
@@ -72,6 +80,16 @@ public class RoomTypeData : ScriptableObject
         foreach (WeightedRoom item in hallways)
             selector.AddItem((Hallway)item.connectable, item.weight);
 
+        return selector.Roll();
+    }
+
+    public Enemy GetEnemy()
+    {
+        ItemSelector<Enemy> selector = new ItemSelector<Enemy>();
+
+        foreach(WeightedEnemy e in enemies)
+            selector.AddItem(e.enemy, e.weight);
+        
         return selector.Roll();
     }
 }

@@ -1,21 +1,16 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GenerationManager : MonoBehaviour
 {
-    public Connectable roomPrefab;
-    public Connectable hallPrefab;
-    public Connectable doorPrefab;
-
-    public RoomTypeData roomTypes;
+    public LevelData roomTypes;
 
     public int mapWidth;
     public int mapHeight;
     public int maxRoomsPerBranch;
     public float extraHallsChance;
-    public int maxSpecialRooms;
     public float specialRoomsChance;
+    public int roomOffset;
     
     void Start()
     {
@@ -38,22 +33,20 @@ public class GenerationManager : MonoBehaviour
         GameObject player = GameObject.Find("TestPlayer");
         
         foreach (Connectable room in roomCollection)
-        {
             Destroy(room.gameObject);
-        }
         
         TileGraph map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
         
-        map.doorPrefab = doorPrefab;
         map.extraHallsChance = extraHallsChance;
         map.specialRoomsChance = specialRoomsChance;
         map.roomTypes = roomTypes;
+        map.offset = roomOffset;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         
         Debug.Log(map);
 
-        if (map.StartRoom != null)
+        if (map.StartRoom is not null)
         {
             PlayerManager.instance.currentRoom = map.StartRoom;
             

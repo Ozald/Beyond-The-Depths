@@ -3,14 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = System.Random;
 using Vector2 = UnityEngine.Vector2;
 
 public class TileGraph : MonoBehaviour
 {
-    public Connectable doorPrefab;
-    
     public enum Half
     {
         Left,
@@ -30,9 +27,9 @@ public class TileGraph : MonoBehaviour
     private Room? Start;
     public float extraHallsChance;
     public float specialRoomsChance;
-    private bool endRoomGenerated = false;
+    public int offset;
 
-    public RoomTypeData roomTypes;
+    public LevelData roomTypes;
     
     public float ExtraHallsChance { get => extraHallsChance; set => extraHallsChance = value; }
 
@@ -121,7 +118,7 @@ public class TileGraph : MonoBehaviour
 
         // Create the starting room and start the recursive generation
         Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
-            new Vector3(startPosition.x * 5, startPosition.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+            new Vector3(startPosition.x * offset, startPosition.y * offset, 0), Quaternion.identity).GetComponent<Room>();
         StartPosition = startPosition;
         Start = startRoom;
         rooms.Add(startRoom, startPosition);
@@ -140,6 +137,7 @@ public class TileGraph : MonoBehaviour
     [CanBeNull]
     private Room GenerateFrom(Room start, Vector2 startVector, int roomsGenerated, int penaltySafety, out Room room)
     {
+        start.levelData = roomTypes;
         if (roomsGenerated > maxRoomsPerBranch)
         {
             room = null;
@@ -826,7 +824,7 @@ public class TileGraph : MonoBehaviour
     public bool PlaceHallAt(Vector2 pos, Connectable? origin, Connectable? end)
     {
         Hallway hall = Instantiate(roomTypes.GetHallway().gameObject, 
-            new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Hallway>();
+            new Vector3(pos.x * offset, pos.y * offset, 0), Quaternion.identity).GetComponent<Hallway>();
 
         hall.Origin = origin;
         hall.End = end;
@@ -850,9 +848,9 @@ public class TileGraph : MonoBehaviour
             return false;
         
         if(room.roomType == RoomType.Room && random.NextDouble() < specialRoomsChance)
-            room = Instantiate(roomTypes.GetSpecialRoom().gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+            room = Instantiate(roomTypes.GetSpecialRoom().gameObject, new Vector3(pos.x * offset, pos.y * offset, 0), Quaternion.identity).GetComponent<Room>();
         else
-            room = Instantiate(room.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Room>();
+            room = Instantiate(room.gameObject, new Vector3(pos.x * offset, pos.y * offset, 0), Quaternion.identity).GetComponent<Room>();
         
         grid[(int)pos.x, (int)pos.y] = room;
 
@@ -866,7 +864,7 @@ public class TileGraph : MonoBehaviour
         if (!IsSpotEmpty(pos))
             return false;
         
-        hall = Instantiate(hall.gameObject, new Vector3(pos.x * 5, pos.y * 5, 0), Quaternion.identity).GetComponent<Hallway>();
+        hall = Instantiate(hall.gameObject, new Vector3(pos.x * offset, pos.y * offset, 0), Quaternion.identity).GetComponent<Hallway>();
         grid[(int)pos.x, (int)pos.y] = hall;
 
         return true;

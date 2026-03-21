@@ -20,24 +20,16 @@ public class Door : Connectable
                 PlayerManager.instance.currentRoom = connectedDoor.parentRoom;
                 
                 if (connectedDoor.transform.position.x > transform.position.x)
-                {
                     other.transform.position += new Vector3(exitOffset, 0, 0);
-                }
                 
                 if (connectedDoor.transform.position.y > transform.position.y)
-                {
                     other.transform.position += new Vector3(0, exitOffset, 0);
-                }
 
                 if (connectedDoor.transform.position.y < transform.position.y)
-                {
                     other.transform.position += new Vector3(0, -exitOffset, 0);
-                }
 
                 if (connectedDoor.transform.position.x < transform.position.x)
-                {
                     other.transform.position += new Vector3(-exitOffset, 0, 0);
-                }
             }
         }
     }
