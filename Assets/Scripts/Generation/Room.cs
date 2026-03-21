@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -45,6 +46,8 @@ public class Room : Connectable
     [CanBeNull] public Door upDoor;
     [CanBeNull] public Door downDoor;
     [FormerlySerializedAs("spawnpoints")] public Spawnpoint[] enemySpawnpoints;
+
+    public GameObject navMesh;
 
     public RoomType roomType;
     public bool hasBeenExplored = false;
