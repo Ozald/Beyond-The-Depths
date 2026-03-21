@@ -17,7 +17,8 @@ MonoBehaviour:
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
   - {fileID: 1908833368563494257}
-  m_RendererFeatureMap: 71ada3d4d5897d1a
+  - {fileID: 3432767465815425609}
+  m_RendererFeatureMap: 71ada3d4d5897d1a49427294d2a3a32f
   m_UseNativeRenderPass: 0
   m_LayerMask:
     serializedVersion: 2
@@ -77,11 +78,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d613f08f173d4dd895bb07b3230baa9, type: 3}
   m_Name: UnderwaterFeature
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   injectionPoint: 600
   fetchColorBuffer: 1
   requirements: -1
   passMaterial: {fileID: 2100000, guid: 76549514c410da24a9fa258bdacfae61, type: 2}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+--- !u!114 &3432767465815425609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d613f08f173d4dd895bb07b3230baa9, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  injectionPoint: 600
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: 2100000, guid: bc12036794deb634790f569fe1f17b14, type: 2}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1

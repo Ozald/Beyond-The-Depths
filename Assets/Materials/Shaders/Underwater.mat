@@ -98,11 +98,13 @@ Material:
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
-    - _DistortionBlend: 0.066
+    - _DistortionBlend: 0.05
+    - _Distortion_Speed: 0.16
+    - _Distortion_Strength: 0.031
     - _DstBlend: 10
     - _EnableExternalAlpha: 0
     - _Fullscreen_AlphaBlendOperation: 0
-    - _Fullscreen_BlendMode: 1
+    - _Fullscreen_BlendMode: 0
     - _Fullscreen_ColorBlendOperation: 0
     - _Fullscreen_DepthWrite: 0
     - _Fullscreen_DstAlphaBlend: 10
@@ -110,12 +112,16 @@ Material:
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 5
     - _NoiseScale: 7.7
+    - _Noise_Scale: 5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 0.13
     - _SrcBlend: 5
     - _Strength: 1
     - _Surface: 1
+    - _Tint_Strength: 4.43
+    - _Vignette_Intensity: 20.19
+    - _Vignette_Radius: 4.46
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
@@ -124,4 +130,6 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
+    - _Tint_Color: {r: 0.75, g: 0.79285717, b: 1, a: 0}
+    - _Vignette_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0}
   m_BuildTextureStacks: []
