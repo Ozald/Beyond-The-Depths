@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GenerationManager : MonoBehaviour
 {
-    public Connectable doorPrefab;
-
     public LevelData roomTypes;
 
     public int mapWidth;
@@ -40,7 +38,6 @@ public class GenerationManager : MonoBehaviour
         
         TileGraph map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
         
-        map.doorPrefab = doorPrefab;
         map.extraHallsChance = extraHallsChance;
         map.specialRoomsChance = specialRoomsChance;
         map.roomTypes = roomTypes;

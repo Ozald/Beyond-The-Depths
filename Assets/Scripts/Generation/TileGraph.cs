@@ -9,8 +9,6 @@ using Vector2 = UnityEngine.Vector2;
 
 public class TileGraph : MonoBehaviour
 {
-    public Connectable doorPrefab;
-    
     public enum Half
     {
         Left,
