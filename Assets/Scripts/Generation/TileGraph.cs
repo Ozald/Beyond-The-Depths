@@ -124,6 +124,11 @@ public class TileGraph : MonoBehaviour
         rooms.Add(startRoom, startPosition);
         grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
 
+        startRoom.upDoor.enabled = true;
+        startRoom.downDoor.enabled = true;
+        startRoom.leftDoor.enabled = true;
+        startRoom.rightDoor.enabled = true;
+
         GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
         AddHalls(extraHallsChance);
         SetEndRoom();
