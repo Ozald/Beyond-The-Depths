@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Room : Connectable
 {
-
     // void Awake()
     // {
     //     Debug.Log(name + "(Awake): "  + GetComponent<Collider2D>().enabled);

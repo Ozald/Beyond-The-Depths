@@ -32,9 +32,7 @@ public class GenerationManager : MonoBehaviour
         GameObject player = GameObject.Find("TestPlayer");
         
         foreach (Connectable room in roomCollection)
-        {
             Destroy(room.gameObject);
-        }
         
         TileGraph map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
         
@@ -46,7 +44,7 @@ public class GenerationManager : MonoBehaviour
         
         Debug.Log(map);
 
-        if (map.StartRoom != null)
+        if (map.StartRoom is not null)
         {
             PlayerManager.instance.currentRoom = map.StartRoom;
             
