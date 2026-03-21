@@ -4,6 +4,10 @@ using Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/*
+Todo: Detection to remove enemies so that a room can be
+cleared when all enemies are defeated
+*/
 public class Room : Connectable
 {
     // void Awake()
@@ -51,6 +55,7 @@ public class Room : Connectable
 
     public RoomType roomType;
     public bool hasBeenExplored = false;
+    public List<Enemy> spawnedEnemies = new List<Enemy>();
 
     public Connectable? Left
     {
@@ -140,6 +145,7 @@ public class Room : Connectable
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
             point.hasSpawned = true;
+            spawnedEnemies.Add(enemy);
         }
     }
 

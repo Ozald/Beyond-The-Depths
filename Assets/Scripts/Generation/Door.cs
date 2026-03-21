@@ -6,10 +6,11 @@ public class Door : Connectable
     [CanBeNull] public Door connectedDoor;
     public float exitOffset;
     public Room parentRoom;
+    public bool enabled = false;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && enabled)
         {
             Debug.Log("Player has entered a door");
             
