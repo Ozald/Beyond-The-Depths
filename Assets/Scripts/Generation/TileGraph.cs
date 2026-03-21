@@ -28,7 +28,6 @@ public class TileGraph : MonoBehaviour
     private Room? Start;
     public float extraHallsChance;
     public float specialRoomsChance;
-    private bool endRoomGenerated = false;
 
     public LevelData roomTypes;
     
