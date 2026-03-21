@@ -10,6 +10,7 @@ public class GenerationManager : MonoBehaviour
     public int maxRoomsPerBranch;
     public float extraHallsChance;
     public float specialRoomsChance;
+    public int roomOffset;
     
     void Start()
     {
@@ -39,6 +40,7 @@ public class GenerationManager : MonoBehaviour
         map.extraHallsChance = extraHallsChance;
         map.specialRoomsChance = specialRoomsChance;
         map.roomTypes = roomTypes;
+        map.offset = roomOffset;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         
