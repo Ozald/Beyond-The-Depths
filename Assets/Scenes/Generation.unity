@@ -172,6 +172,7 @@ MonoBehaviour:
   maxHP: 10
   currentHP: 10
   doubloons: 0
+  invincibilityCooldown: 0
 --- !u!212 &401354741
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -353,16 +354,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0c95b07eef4b40bd3918529def824b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: -9160724495066844610, guid: 18e314f68b04ff44ca95f71eb5090e3d, type: 3}
-  hallPrefab: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
-  doorPrefab: {fileID: 4915866706923932472, guid: 4b396a91d894bc140bce24d80b31e1fd, type: 3}
   roomTypes: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
-  mapWidth: 11
-  mapHeight: 11
-  maxRoomsPerBranch: 7
-  extraHallsChance: 0.075
-  maxSpecialRooms: 2
-  specialRoomsChance: 0.025
+  mapWidth: 12
+  mapHeight: 12
+  maxRoomsPerBranch: 8
+  extraHallsChance: 0.05
+  specialRoomsChance: 0.02
 --- !u!4 &409894598
 Transform:
   m_ObjectHideFlags: 0
