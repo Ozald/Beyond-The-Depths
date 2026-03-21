@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class Spawnpoint : MonoBehaviour
 {
-    public bool hasSpawnedEnemy = false;
+    public bool hasSpawned = false;
 }

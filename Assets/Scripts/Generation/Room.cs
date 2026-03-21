@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Room : Connectable
 {
@@ -43,7 +44,7 @@ public class Room : Connectable
     [CanBeNull] public Door rightDoor;
     [CanBeNull] public Door upDoor;
     [CanBeNull] public Door downDoor;
-    public Spawnpoint[] spawnpoints;
+    [FormerlySerializedAs("spawnpoints")] public Spawnpoint[] enemySpawnpoints;
 
     public RoomType roomType;
     public bool hasBeenExplored = false;
@@ -110,18 +111,18 @@ public class Room : Connectable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!hasBeenExplored && spawnpoints.Length > 0)
+        if (!hasBeenExplored && enemySpawnpoints.Length > 0)
             SpawnEnemies();
     }
 
     private void SpawnEnemies()
     {
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
-        int enemiesToSpawn = Random.Range(1, spawnpoints.Length + 1);
+        int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Spawnpoint spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Length)];
+            Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
             enemySpawns.Add(spawnpoint);
         }
         
@@ -130,12 +131,12 @@ public class Room : Connectable
             if(point is null)
                 continue;
             
-            if(point.hasSpawnedEnemy)
+            if(point.hasSpawned)
                 continue;
             
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
-            point.hasSpawnedEnemy = true;
+            point.hasSpawned = true;
         }
     }
 
