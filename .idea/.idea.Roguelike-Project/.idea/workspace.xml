@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="" />
+    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Generation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Generation.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,6 +154,7 @@
       <workItem from="1774092368861" duration="42000" />
       <workItem from="1774092585365" duration="586000" />
       <workItem from="1774095956923" duration="149000" />
+      <workItem from="1774101759371" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />

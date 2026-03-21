@@ -355,11 +355,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomTypes: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
-  mapWidth: 12
-  mapHeight: 12
+  mapWidth: 11
+  mapHeight: 11
   maxRoomsPerBranch: 8
-  extraHallsChance: 0.05
-  specialRoomsChance: 0.02
+  extraHallsChance: 0.055
+  specialRoomsChance: 0.0225
 --- !u!4 &409894598
 Transform:
   m_ObjectHideFlags: 0
