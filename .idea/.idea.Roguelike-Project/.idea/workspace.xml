@@ -60,8 +60,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Spawnpoint.prefab" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy Systems/Spawnpoint.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Spawnpoint.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -149,6 +149,7 @@
       <workItem from="1774087114843" duration="191000" />
       <workItem from="1774092368861" duration="42000" />
       <workItem from="1774092585365" duration="586000" />
+      <workItem from="1774095956923" duration="149000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -238,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774093166846</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refactored Spawnpoint so that they can work for things other than enemies">
+      <option name="closed" value="true" />
+      <created>1774096052350</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1774096052350</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +297,8 @@
     <MESSAGE value="Yet another unused reference" />
     <MESSAGE value="Small cleanup" />
     <MESSAGE value="Cleaning" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaning" />
+    <MESSAGE value="Refactored Spawnpoint so that they can work for things other than enemies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Spawnpoint so that they can work for things other than enemies" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
