@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/EndRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/EndRoom.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/SpecialRoom2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/StartRoom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/StartRoom.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/GenerationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/GenerationManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/LevelData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level Data.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level Data.asset.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +22,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -24,12 +35,37 @@
     &quot;assignee&quot;: &quot;Ill-Come-Up-With-The-Name-Later&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Ozald/Roguelike-Project.git&quot;,
-    &quot;accountId&quot;: &quot;b9bbdd28-e491-4c8a-bf76-925eddb482b6&quot;
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="spawnpoints" />
+                    <option name="lastUsedInstant" value="1774079026" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1774079025" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ozald/Roguelike-Project.git",
+    "accountId": "dd885a1c-ca75-4393-9c23-079bb2047f10"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" root0="FORCE_HIGHLIGHTING" />
@@ -55,7 +91,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;spawnpoints&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -117,6 +153,7 @@
       <workItem from="1774045194743" duration="566000" />
       <workItem from="1774045776428" duration="218000" />
       <workItem from="1774046025715" duration="1474000" />
+      <workItem from="1774079160262" duration="625000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />

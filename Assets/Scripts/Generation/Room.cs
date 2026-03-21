@@ -111,12 +111,7 @@ public class Room : Connectable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Player has entered a room.");
-        }
-
-        if (!hasBeenExplored)
+        if (!hasBeenExplored && spawnpoints.Length > 0)
         {
             SpawnEnemies();    
         }
@@ -133,13 +128,13 @@ public class Room : Connectable
             enemySpawns.Add(spawnpoint);
         }
         
-        // Todo: Pick enemies using weighted selection
-        // For now, use pure random selection
-
         foreach (Spawnpoint point in enemySpawns)
         {
+            if(point.hasSpawnedEnemy)
+                continue;
+            
             Enemy enemy = levelData.GetEnemy();
-            // Spawn enemy
+            Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
             point.hasSpawnedEnemy = true;
         }
     }

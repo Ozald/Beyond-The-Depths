@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b343210a575bfb49b888181c55a01a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelData: {fileID: 0}
   leftDoor: {fileID: 8393208767182531875}
   rightDoor: {fileID: 503440063788237475}
   upDoor: {fileID: 3630803722913530513}
@@ -251,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6845219134873442169, guid: e73d391a4989a544dadd41d2430c40e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6845219134873442169, guid: e73d391a4989a544dadd41d2430c40e4, type: 3}
       propertyPath: m_LocalRotation.w
