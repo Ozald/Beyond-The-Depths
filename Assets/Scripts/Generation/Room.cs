@@ -112,9 +112,7 @@ public class Room : Connectable
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!hasBeenExplored && spawnpoints.Length > 0)
-        {
-            SpawnEnemies();    
-        }
+            SpawnEnemies();
     }
 
     private void SpawnEnemies()
@@ -130,6 +128,9 @@ public class Room : Connectable
         
         foreach (Spawnpoint point in enemySpawns)
         {
+            if(point is null)
+                continue;
+            
             if(point.hasSpawnedEnemy)
                 continue;
             
