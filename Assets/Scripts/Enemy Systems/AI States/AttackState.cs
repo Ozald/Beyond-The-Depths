@@ -10,7 +10,7 @@ public class AttackState : AIState
 
     public override void OnEnter(Enemy enemy)
     {
-        enemy.activeAttackHitbox = Instantiate(hitboxObject, null);
+        enemy.activeAttackHitbox = Instantiate(hitboxObject, enemy.transform);
 
         enemy.activeAttackHitbox.transform.localPosition = Vector3.zero;
         enemy.activeAttackHitbox.transform.localRotation = Quaternion.identity;
@@ -24,8 +24,6 @@ public class AttackState : AIState
         if (enemyAnim != null)
             enemyAnim.SetTrigger(attackAnimationTrigger);
 
-        
-
         enemy.transform.rotation = Quaternion.identity;
     }
 
@@ -38,6 +36,9 @@ public class AttackState : AIState
     {
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
+
+        if (player == null)
+            return;
 
         if (hitboxObject == null || enemy.stateTimer < 0.5)
         {

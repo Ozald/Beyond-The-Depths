@@ -1,7 +1,5 @@
 using Cinemachine;
-using FMODUnity;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
@@ -28,7 +26,11 @@ public class CameraShake : MonoBehaviour
         instance.camShaker.m_AmplitudeGain = amplitude;
         instance.timerStart = duration;
         instance.timerCurr = instance.timerStart;
-        instance.StartCoroutine(instance.OnImpactFrame(duration));
+
+        if (isImpactFrame)
+        {
+            instance.StartCoroutine(instance.OnImpactFrame(duration));
+        }
     }
 
     // Update is called once per frame

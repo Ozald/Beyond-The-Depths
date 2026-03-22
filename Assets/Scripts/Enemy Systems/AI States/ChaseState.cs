@@ -78,6 +78,9 @@ public class ChaseState : AIState
         // This is not the best way to do this, but to avoid merge conflicts I am going to keep it like this. Sue me.
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        if (player == null)
+            return;
+
         enemyAI.StartPath(enemy.transform.position, player.position, (Path p) =>
         {
             if (!p.error)

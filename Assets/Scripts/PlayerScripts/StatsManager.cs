@@ -59,4 +59,13 @@ public class StatsManager : MonoBehaviour
             TakeDamage(damage: 1);
         }
     }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && timeSinceLastHit > invincibilityCooldown)
+        {
+            timeSinceLastHit = 0f;
+            TakeDamage(damage: 1);
+        }
+    }
 }
