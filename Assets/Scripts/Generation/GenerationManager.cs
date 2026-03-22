@@ -44,7 +44,7 @@ public class GenerationManager : MonoBehaviour
     void GenerateFloorLayout()
     {
         List<Connectable> roomCollection = new List<Connectable>(FindObjectsByType<Connectable>(FindObjectsSortMode.None));
-        GameObject player = GameObject.Find("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         
         foreach (Connectable room in roomCollection)
             Destroy(room.gameObject);
