@@ -380,7 +380,7 @@ MonoBehaviour:
   maxHP: 10
   currentHP: 10
   doubloons: 0
-  invincibilityCooldown: 1
+  invincibilityCooldown: 0.75
 --- !u!212 &401354741
 SpriteRenderer:
   m_ObjectHideFlags: 0

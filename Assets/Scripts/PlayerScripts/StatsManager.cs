@@ -54,6 +54,9 @@ public class StatsManager : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EnemyHurtbox") && timeSinceLastHit > invincibilityCooldown)
-            TakeDamage(1);
+        {
+            timeSinceLastHit = 0f;
+            TakeDamage(damage: 1);
+        }
     }
 }
