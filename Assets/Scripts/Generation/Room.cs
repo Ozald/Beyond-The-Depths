@@ -125,18 +125,18 @@ public class Room : Connectable
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
 
-        while (enemySpawns.Count < enemiesToSpawn)
+        for (int i = 0; i < enemiesToSpawn; i++)
         {
             Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
             enemySpawns.Add(spawnpoint);
         }
-
+        
         foreach (Spawnpoint point in enemySpawns)
         {
             if(point is null)
                 continue;
-            
-            if(point.hasSpawned)
+
+            if (point.hasSpawned)
                 continue;
             
             Enemy enemy = levelData.GetEnemy();
