@@ -19,19 +19,26 @@ public class AttackState : AIState
 
         Animator enemyAnim = enemy.GetComponent<Animator>();
         SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (enemyAnim != null)
             enemyAnim.SetTrigger(attackAnimationTrigger);
 
         if (enemyRenderer != null)
         {
-            if (GameObject.FindGameObjectWithTag("Player").transform.position.x > enemy.transform.position.x)
+            if (player.position.x > enemy.transform.position.x)
                 enemyRenderer.flipX = true;
             else 
                 enemyRenderer.flipX = false;
         }
 
         enemy.transform.rotation = Quaternion.identity;
+
+        Vector3 attackDir = player.position - enemy.transform.position;
+        float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
+
+        enemy.activeAttackHitbox.transform.position = enemy.transform.position;
+        enemy.activeAttackHitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public override void OnExit(Enemy enemy)
@@ -45,13 +52,7 @@ public class AttackState : AIState
             return;
 
         enemy.activeAttackHitbox.SetActive(true);
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        Vector3 attackDir = player.position - enemy.transform.position;
-        float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
-
-        enemy.activeAttackHitbox.transform.position = enemy.transform.position;
-        enemy.activeAttackHitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
+        
     }
 
     // Unused
