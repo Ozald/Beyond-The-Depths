@@ -7,15 +7,16 @@ TagManager:
   - EnemyHurtbox
   - Door
   - Weapon
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Obstacles
-  - 
+  - Enemy
   - 
   - 
   - 

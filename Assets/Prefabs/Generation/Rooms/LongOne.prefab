@@ -9363,7 +9363,7 @@ GameObject:
   - component: {fileID: 8442326409540924789}
   - component: {fileID: 8991214513027341959}
   - component: {fileID: 8113397583161321766}
-  - component: {fileID: 4970307606513994385}
+  - component: {fileID: 7502719794291746843}
   m_Layer: 0
   m_Name: LongOne
   m_TagString: Untagged
@@ -9431,11 +9431,10 @@ MonoBehaviour:
   - {fileID: 2033923882189069196}
   - {fileID: 139940079843910615}
   - {fileID: 312681470661079497}
-  navMesh: {fileID: 0}
   roomType: 0
   hasBeenExplored: 0
---- !u!61 &4970307606513994385
-BoxCollider2D:
+--- !u!60 &7502719794291746843
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9466,7 +9465,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0029659271, y: -0.05609131}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9476,9 +9475,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 34.07295, y: 11.264618}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 17, y: 5.5}
+      - {x: -17, y: 5.5}
+      - {x: -17, y: -5.5}
+      - {x: 17, y: -5.5}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &1416565460873514361
 PrefabInstance:
   m_ObjectHideFlags: 0

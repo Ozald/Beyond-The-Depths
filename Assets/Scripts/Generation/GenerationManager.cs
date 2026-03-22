@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using Cinemachine;
 using Pathfinding;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class GenerationManager : MonoBehaviour
 {
@@ -19,6 +20,15 @@ public class GenerationManager : MonoBehaviour
     {
         GenerateFloorLayout();
         GenerateNavMesh();
+
+        // Set camera to new room
+        CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
+
+        if (cineCam is not null)
+        {
+            cineCam.m_BoundingShape2D = map.StartRoom.GetComponent<PolygonCollider2D>();
+            cineCam.InvalidateCache();
+        }
     }
 
     void Update()

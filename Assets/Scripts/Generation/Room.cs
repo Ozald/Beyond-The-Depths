@@ -51,8 +51,6 @@ public class Room : Connectable
     [CanBeNull] public Door downDoor;
     [FormerlySerializedAs("spawnpoints")] public Spawnpoint[] enemySpawnpoints;
 
-    public GameObject navMesh;
-
     public RoomType roomType;
     public bool hasBeenExplored = false;
     public List<Enemy> spawnedEnemies = new List<Enemy>();
@@ -119,6 +117,10 @@ public class Room : Connectable
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // This code is important otherwise enemies can trigger room behavior accidentally
+        if (!other.gameObject.CompareTag("Player"))
+            return;
+
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
             SpawnEnemies();
     }
@@ -138,8 +140,8 @@ public class Room : Connectable
         {
             if(point is null)
                 continue;
-            
-            if(point.hasSpawned)
+
+            if (point.hasSpawned)
                 continue;
             
             Enemy enemy = levelData.GetEnemy();

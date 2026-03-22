@@ -10,10 +10,7 @@ public class TimerCondition : Condition
     public override bool Check(Enemy enemy)
     {
         if (enemy.stateTimer > timeToTransition)
-        {
-            Debug.Log("Switching states...");
             return true;
-        }
 
         return false;
     }

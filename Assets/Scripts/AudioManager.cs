@@ -46,6 +46,11 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sound, Vector3.zero);
     }
 
+    public static void PlayOneShot(EventReference sound, float delay)
+    {
+        instance.StartCoroutine(instance.DelayedOneShot(sound, delay));
+    }
+
     public static void PlayBGMusic(EventReference music)
     {
         instance.currentBGMusic = RuntimeManager.CreateInstance(music);
@@ -60,5 +65,11 @@ public class AudioManager : MonoBehaviour
     public static FMODEvents GetAudioData()
     {
         return instance.audioData;
+    }
+
+    private IEnumerator DelayedOneShot(EventReference sound, float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        RuntimeManager.PlayOneShot(sound, Vector3.zero);
     }
 }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class Door : Connectable
                 // I have to do this, otherwise the player renders behind rooms, halls, and doors
                 other.transform.position = connectedDoor.transform.position + new Vector3(0, 0, other.transform.position.z);
                 PlayerManager.instance.currentRoom = connectedDoor.parentRoom;
-                
+
                 if (connectedDoor.transform.position.x > transform.position.x)
                     other.transform.position += new Vector3(exitOffset, 0, 0);
                 
@@ -31,6 +32,15 @@ public class Door : Connectable
 
                 if (connectedDoor.transform.position.x < transform.position.x)
                     other.transform.position += new Vector3(-exitOffset, 0, 0);
+
+                // Set camera to new room
+                CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
+
+                if (cineCam is not null)
+                {
+                    cineCam.m_BoundingShape2D = connectedDoor.parentRoom.GetComponent<PolygonCollider2D>();
+                    cineCam.InvalidateCache();
+                }
             }
         }
     }

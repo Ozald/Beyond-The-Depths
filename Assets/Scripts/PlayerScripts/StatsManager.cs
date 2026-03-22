@@ -34,12 +34,16 @@ public class StatsManager : MonoBehaviour
 
     void Update()
     {
-        timeSinceLastHit += Time.deltaTime;
+        if (Time.timeScale > 0)
+            timeSinceLastHit += Time.deltaTime;
     }
 
     public static void TakeDamage(int damage)
     {
+        CameraShake.ShakeCamera(amplitude: 3, duration: 0.2f, isImpactFrame: true);
+        AudioManager.PlayOneShot(AudioManager.instance.audioData.damageTaken, delay: 0.2f);
         Instance.currentHP -= damage;
+
         if (Instance.currentHP <= 0)
         {
             Debug.Log("PLAYER HAS DIED");
@@ -50,6 +54,18 @@ public class StatsManager : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EnemyHurtbox") && timeSinceLastHit > invincibilityCooldown)
-            TakeDamage(1);
+        {
+            timeSinceLastHit = 0f;
+            TakeDamage(damage: 1);
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && timeSinceLastHit > invincibilityCooldown)
+        {
+            timeSinceLastHit = 0f;
+            TakeDamage(damage: 1);
+        }
     }
 }

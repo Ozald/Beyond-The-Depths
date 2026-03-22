@@ -21,11 +21,7 @@ public class ChaseState : AIState
             enemyAnim.SetTrigger(chaseAnimationTrigger);
     }
 
-    public override void OnExit(Enemy enemy)
-    {
-        Debug.Log(enemy.gameObject.name + " exiting chase state.");
-        
-    }
+    public override void OnExit(Enemy enemy) {}
 
     public override void OnUpdate(Enemy enemy) {}
 
@@ -81,6 +77,9 @@ public class ChaseState : AIState
 
         // This is not the best way to do this, but to avoid merge conflicts I am going to keep it like this. Sue me.
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (player == null)
+            return;
 
         enemyAI.StartPath(enemy.transform.position, player.position, (Path p) =>
         {
