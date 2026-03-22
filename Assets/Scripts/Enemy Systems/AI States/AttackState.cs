@@ -10,8 +10,6 @@ public class AttackState : AIState
 
     public override void OnEnter(Enemy enemy)
     {
-        Debug.Log(enemy.gameObject.name + " entering attack state.");
-
         enemy.activeAttackHitbox = Instantiate(hitboxObject, null);
 
         enemy.activeAttackHitbox.transform.localPosition = Vector3.zero;
@@ -38,8 +36,6 @@ public class AttackState : AIState
 
     public override void OnExit(Enemy enemy)
     {
-        Debug.Log(enemy.gameObject.name + " exiting attack state.");
-
         Destroy(enemy.activeAttackHitbox);
     }
 

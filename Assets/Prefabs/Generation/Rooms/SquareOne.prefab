@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 2156242579062759868}
   - component: {fileID: 7848369734714511305}
   - component: {fileID: 1051941340371020093}
-  - component: {fileID: 7608443048508587992}
+  - component: {fileID: 7410781627239183643}
   m_Layer: 0
   m_Name: SquareOne
   m_TagString: Untagged
@@ -511,11 +511,10 @@ MonoBehaviour:
   downDoor: {fileID: 2092433280898602430}
   enemySpawnpoints:
   - {fileID: 1162063754219059914}
-  navMesh: {fileID: 0}
   roomType: 0
   hasBeenExplored: 0
---- !u!61 &7608443048508587992
-BoxCollider2D:
+--- !u!60 &7410781627239183643
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -546,7 +545,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08501053, y: -0.9359021}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -556,9 +555,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 21.344994, y: 20.414665}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 10, y: 9}
+      - {x: -10, y: 9}
+      - {x: -10, y: -11}
+      - {x: 10, y: -11}
+  m_UseDelaunayMesh: 0
 --- !u!1 &6109102023327023534
 GameObject:
   m_ObjectHideFlags: 0

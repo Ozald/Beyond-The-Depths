@@ -47,8 +47,6 @@ public class Room : Connectable
     [CanBeNull] public Door downDoor;
     [FormerlySerializedAs("spawnpoints")] public Spawnpoint[] enemySpawnpoints;
 
-    public GameObject navMesh;
-
     public RoomType roomType;
     public bool hasBeenExplored = false;
 
@@ -114,6 +112,10 @@ public class Room : Connectable
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // This code is important otherwise enemies can trigger room behavior accidentally
+        if (!other.gameObject.CompareTag("Player"))
+            return;
+
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
             SpawnEnemies();
     }
@@ -123,12 +125,12 @@ public class Room : Connectable
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
 
-        for (int i = 0; i < enemiesToSpawn; i++)
+        while (enemySpawns.Count < enemiesToSpawn)
         {
             Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
             enemySpawns.Add(spawnpoint);
         }
-        
+
         foreach (Spawnpoint point in enemySpawns)
         {
             if(point is null)
