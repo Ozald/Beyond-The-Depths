@@ -7,6 +7,7 @@ public class PlayerInventory : MonoBehaviour
     public List<Weapon> playerInv;
     private bool isInTriggerZone = false;
     private Weapon nearbyWeapon = null;
+    private float lastAttackTime = 0f;
 
 
     // Start is called before the first frame update
@@ -32,6 +33,24 @@ public class PlayerInventory : MonoBehaviour
                 playerInv[0] = temp;
             }
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space pressed");
+            if (playerInv.Count == 0) return;
+
+            Weapon currentWeapon = playerInv[0];
+
+            if (currentWeapon == null || currentWeapon.weaponData == null) return;
+
+            float attackSpeed = currentWeapon.weaponData.cooldown;
+
+            if (Time.time - lastAttackTime < attackSpeed) return;
+
+            lastAttackTime = Time.time;
+
+            currentWeapon.weaponData.Attack(gameObject);
         }
     }
 

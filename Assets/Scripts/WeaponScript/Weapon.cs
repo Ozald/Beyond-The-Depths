@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Weapon : Interactable
 {
+    public WeaponData weaponData;
     public PlayerInventory playerInv;
     public override void Interact(PlayerInteraction player)
     {
         playerInv.PickupWeapon(this);
     }
+
+
 
     // Start is called before the first frame update
     void Start()
