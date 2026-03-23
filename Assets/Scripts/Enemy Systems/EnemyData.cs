@@ -30,6 +30,11 @@ public struct EnemyStateTransition
 [CreateAssetMenu(menuName = "Enemy AI/EnemyData")]
 public class EnemyData : ScriptableObject
 {
+    [Header("Stats")]
+    public int HP;
+    public float invincibilityCooldown;
+
+    [Header("State Machine")]
     public AIState initalState;
     public List<EnemyStateTransition> transitions;
 }

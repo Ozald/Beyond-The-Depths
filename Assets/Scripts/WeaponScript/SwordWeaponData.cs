@@ -18,6 +18,7 @@ public class SwordWeaponData : WeaponData
         {
             swordHitbox.gameObject.SetActive(true);
             player.GetComponent<MonoBehaviour>().StartCoroutine(DisableHitbox(swordHitbox, attackSpeed));
+            
         }
     }
 
