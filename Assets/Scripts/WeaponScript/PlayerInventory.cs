@@ -31,6 +31,9 @@ public class PlayerInventory : MonoBehaviour
                 Weapon temp = playerInv[1];
                 playerInv[1] = playerInv[0];
                 playerInv[0] = temp;
+
+                playerInv[0].gameObject.SetActive(true);
+                playerInv[1].gameObject.SetActive(false);
             }
 
         }
@@ -52,6 +55,14 @@ public class PlayerInventory : MonoBehaviour
 
             currentWeapon.weaponData.Attack(gameObject);
         }
+
+        if (playerInv.Count > 0 && playerInv[0] != null)
+        {
+            Weapon currentWeapon = playerInv[0];
+            currentWeapon.transform.SetParent(this.transform, false);
+            currentWeapon.transform.localPosition = Vector3.zero;
+            currentWeapon.transform.localRotation = Quaternion.identity;
+        }
     }
 
     public void PickupWeapon(Weapon nearbyWeapon)
@@ -61,7 +72,7 @@ public class PlayerInventory : MonoBehaviour
         if (playerInv.Count <= 1)
         {
             playerInv.Add(nearbyWeapon);
-            nearbyWeapon.gameObject.SetActive(false);
+            //nearbyWeapon.gameObject.SetActive(false);
         }
         else
         {
@@ -73,11 +84,14 @@ public class PlayerInventory : MonoBehaviour
             playerInv[1] = playerInv[0];
             playerInv[0] = nearbyWeapon;
 
-            nearbyWeapon.gameObject.SetActive(false);
+            //nearbyWeapon.gameObject.SetActive(false);
+            playerInv[1].gameObject.SetActive(false);
         }
 
         isInTriggerZone = false;
         nearbyWeapon = null;
+
+
     }
 
 
