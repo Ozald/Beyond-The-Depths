@@ -18,6 +18,8 @@ public class GenerationManager : MonoBehaviour
     
     void Start()
     {
+        map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
+        
         GenerateFloorLayout();
         GenerateNavMesh();
 
@@ -49,7 +51,10 @@ public class GenerationManager : MonoBehaviour
         foreach (Connectable room in roomCollection)
             Destroy(room.gameObject);
         
-        map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
+        if(map is null)
+            map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
+        
+        Debug.Log($"Map null: {map is null}");
         
         map.extraHallsChance = extraHallsChance;
         map.specialRoomsChance = specialRoomsChance;
