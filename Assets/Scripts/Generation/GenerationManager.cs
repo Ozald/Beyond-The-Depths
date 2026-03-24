@@ -14,7 +14,7 @@ public class GenerationManager : MonoBehaviour
     public float specialRoomsChance;
     public int roomOffset;
 
-    private TileGraph map;
+    public TileGraph map;
     
     void Start()
     {
