@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="Somehow this value got lost">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/CameraRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/CameraRenderTexture.renderTexture" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Shaders-and-VFX-(Osvaldo)" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,12 +36,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="spawnpoints" />
-                    <option name="lastUsedInstant" value="1774079026" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1774207954" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1774079025" />
+                    <option name="branchName" value="Shaders-and-VFX-(Osvaldo)" />
+                    <option name="lastUsedInstant" value="1774207814" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="spawnpoints" />
+                    <option name="lastUsedInstant" value="1774079026" />
                   </RecentBranch>
                 </list>
               </option>
