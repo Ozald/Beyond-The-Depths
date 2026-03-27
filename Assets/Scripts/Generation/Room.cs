@@ -52,6 +52,7 @@ public class Room : Connectable
 
     public RoomType roomType;
     public bool hasBeenExplored = false;
+    public List<Enemy> spawnedEnemies = new List<Enemy>();
 
     public Connectable? Left
     {
@@ -120,19 +121,15 @@ public class Room : Connectable
             return;
 
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
-            SpawnEnemies();
+        {
+            StartCoroutine(SpawnEnemies());
+        }
     }
 
-    void Update()
+    private IEnumerator<YieldInstruction> SpawnEnemies()
     {
-        if(EnemyManager.instance.currentRoom == this && 
-           EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
-            OpenDoors();
-    }
-
-    private void SpawnEnemies()
-    {
-        EnemyManager.instance.currentRoom = this;
+        yield return new WaitForSeconds(1);
+        
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
 
@@ -153,26 +150,8 @@ public class Room : Connectable
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
             point.hasSpawned = true;
-
-            EnemyManager.instance.enemies.Add(enemy);
+            spawnedEnemies.Add(enemy);
         }
-    }
-
-    private void OpenDoors()
-    {
-        hasBeenExplored = true;
-        
-        if (leftDoor != null)
-            leftDoor.enabled = true;
-        
-        if (rightDoor != null)
-            rightDoor.enabled = true;
-        
-        if (downDoor != null)
-            downDoor.enabled = true;
-        
-        if (upDoor != null)
-            upDoor.enabled = true;
     }
 
     public override string ToString()
