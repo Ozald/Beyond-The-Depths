@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class WeaponData : ScriptableObject
 {
     public float cooldown;
-    public float attackSpeed;
+    public float attackLifetime;
+    public float damage;
     public abstract void Attack(GameObject player);
 }
