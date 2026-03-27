@@ -54,6 +54,7 @@ public class PlayerInventory : MonoBehaviour
             lastAttackTime = Time.time;
 
             currentWeapon.weaponData.Attack(gameObject);
+            Debug.Log("Attack done");
         }
 
         if (playerInv.Count > 0 && playerInv[0] != null)
