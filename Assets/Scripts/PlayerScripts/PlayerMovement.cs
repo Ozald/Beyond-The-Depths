@@ -16,8 +16,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!canMove)
+        {
+            rb2d.velocity = Vector2.zero;
             return;
-        
+        }
+
         double horizontalInput = Input.GetAxisRaw("Horizontal");
         // Move the player based on the input (X-axis)
 
