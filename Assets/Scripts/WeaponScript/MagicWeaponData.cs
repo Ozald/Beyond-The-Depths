@@ -20,9 +20,10 @@ public class MagicWeaponData : WeaponData
             GameObject newBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
             Rigidbody2D rb = newBullet.GetComponent<Rigidbody2D>();
+
             if (rb != null)
             {
-                rb.velocity = firePoint.up * bulletSpeed;
+                rb.velocity = firePoint.right * bulletSpeed;
             }
 
             player.GetComponent<MonoBehaviour>().StartCoroutine(DisableHitbox(newBullet.GetComponent<Collider2D>(), attackLifetime));

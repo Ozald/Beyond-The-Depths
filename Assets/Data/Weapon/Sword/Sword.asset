@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   cooldown: 0.5
-  attackSpeed: 0.3
+  attackLifetime: 0.4
   damage: 1

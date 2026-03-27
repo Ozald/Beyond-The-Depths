@@ -59,10 +59,31 @@ public class PlayerInventory : MonoBehaviour
 
         if (playerInv.Count > 0 && playerInv[0] != null)
         {
+            /*
             Weapon currentWeapon = playerInv[0];
             currentWeapon.transform.SetParent(this.transform, false);
             currentWeapon.transform.localPosition = Vector3.zero;
             currentWeapon.transform.localRotation = Quaternion.identity;
+            */
+
+            Weapon currentWeapon = playerInv[0];
+
+            
+            currentWeapon.transform.SetParent(this.transform, false);
+            currentWeapon.transform.localPosition = Vector3.zero;
+
+            
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+
+            
+            Vector3 direction = mousePos - currentWeapon.transform.position;
+
+            
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            
+            currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
