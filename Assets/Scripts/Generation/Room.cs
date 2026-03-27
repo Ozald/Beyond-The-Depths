@@ -122,11 +122,15 @@ public class Room : Connectable
             return;
 
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
-            SpawnEnemies();
+        {
+            StartCoroutine(SpawnEnemies());
+        }
     }
 
-    private void SpawnEnemies()
+    private IEnumerator<YieldInstruction> SpawnEnemies()
     {
+        yield return new WaitForSeconds(1);
+        
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
 
