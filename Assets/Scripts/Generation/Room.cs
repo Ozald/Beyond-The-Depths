@@ -113,6 +113,13 @@ public class Room : Connectable
         if (isOrigin)
             roomType = RoomType.StartRoom;
     }
+    
+    void Update()
+    {
+        if(EnemyManager.instance.currentRoom == this && 
+           EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
+            OpenDoors();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -154,6 +161,23 @@ public class Room : Connectable
         }
     }
 
+    private void OpenDoors()
+    {
+        hasBeenExplored = true;
+        
+        if (leftDoor != null)
+            leftDoor.enabled = true;
+        
+        if (rightDoor != null)
+            rightDoor.enabled = true;
+        
+        if (downDoor != null)
+            downDoor.enabled = true;
+        
+        if (upDoor != null)
+            upDoor.enabled = true;
+    }
+    
     public override string ToString()
     {
         if (roomType == RoomType.StartRoom)
