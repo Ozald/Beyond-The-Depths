@@ -284,5 +284,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab7a6d43fe113340979cddcbd8c2000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
-  currentHP: 0
+  enemyData: {fileID: 11400000, guid: 8b5a6ff04d6e55541978449eff4f6d64, type: 2}
+  currentHP: -2147483647

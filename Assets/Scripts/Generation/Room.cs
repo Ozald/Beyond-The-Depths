@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -53,7 +52,6 @@ public class Room : Connectable
 
     public RoomType roomType;
     public bool hasBeenExplored = false;
-    public List<Enemy> spawnedEnemies = new List<Enemy>();
 
     public Connectable? Left
     {
@@ -125,8 +123,16 @@ public class Room : Connectable
             SpawnEnemies();
     }
 
+    void Update()
+    {
+        if(EnemyManager.instance.currentRoom == this && 
+           EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
+            OpenDoors();
+    }
+
     private void SpawnEnemies()
     {
+        EnemyManager.instance.currentRoom = this;
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
 
@@ -147,8 +153,26 @@ public class Room : Connectable
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
             point.hasSpawned = true;
-            spawnedEnemies.Add(enemy);
+
+            EnemyManager.instance.enemies.Add(enemy);
         }
+    }
+
+    private void OpenDoors()
+    {
+        hasBeenExplored = true;
+        
+        if (leftDoor != null)
+            leftDoor.enabled = true;
+        
+        if (rightDoor != null)
+            rightDoor.enabled = true;
+        
+        if (downDoor != null)
+            downDoor.enabled = true;
+        
+        if (upDoor != null)
+            upDoor.enabled = true;
     }
 
     public override string ToString()

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
@@ -36,6 +35,16 @@ public class EnemyHP : MonoBehaviour
         currentHP -= damage;
 
         if (currentHP <= 0)
-            Destroy(gameObject);
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
+        Debug.Log(gameObject.name + " died.");
+        
+        Destroy(gameObject);
     }
 }
