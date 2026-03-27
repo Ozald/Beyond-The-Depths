@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fade.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/CameraRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/CameraRenderTexture.renderTexture" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/Door.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +72,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Spawnpoint.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Generation.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Spawnpoint.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" root0="FORCE_HIGHLIGHTING" />
@@ -169,6 +172,7 @@
       <workItem from="1774336347202" duration="433000" />
       <workItem from="1774633822936" duration="121000" />
       <workItem from="1774634055292" duration="1997000" />
+      <workItem from="1774638583656" duration="2421000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -282,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774336470993</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Delay enemy spawning by 1 second">
+      <option name="closed" value="true" />
+      <created>1774638861254</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1774638861254</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +348,8 @@
     <MESSAGE value="Integrated new room prefabs and an offset value" />
     <MESSAGE value="Somehow this value got lost" />
     <MESSAGE value="Made the GenerationManager's TileGraph public" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the GenerationManager's TileGraph public" />
+    <MESSAGE value="Delay enemy spawning by 1 second" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delay enemy spawning by 1 second" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

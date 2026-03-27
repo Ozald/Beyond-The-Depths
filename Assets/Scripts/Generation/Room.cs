@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
 

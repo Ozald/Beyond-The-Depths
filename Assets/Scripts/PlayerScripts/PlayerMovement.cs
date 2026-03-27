@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private Rigidbody2D rb2d;
     public PlayerSettings PS;
+    public bool canMove = true;
 
     void Start()
     {
@@ -14,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+            return;
+        
         double horizontalInput = Input.GetAxisRaw("Horizontal");
         // Move the player based on the input (X-axis)
 
