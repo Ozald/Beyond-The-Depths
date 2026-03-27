@@ -15,8 +15,10 @@ public class StatsManager : MonoBehaviour
 
     [Header("Extra")]
     public float invincibilityCooldown;
-
     private float timeSinceLastHit;
+
+    [Header("FX")]
+    public ParticleSystem damageEffect;
 
     void Awake()
     {
@@ -41,6 +43,7 @@ public class StatsManager : MonoBehaviour
     public static void TakeDamage(int damage)
     {
         CameraShake.ShakeCamera(amplitude: 3, duration: 0.2f, isImpactFrame: true);
+        Instance.damageEffect.Play();
         AudioManager.PlayOneShot(AudioManager.instance.audioData.damageTaken, delay: 0.2f);
         Instance.currentHP -= damage;
 
