@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/MeleeAttack")]
-public class AttackState : AIState
+[CreateAssetMenu(menuName = "Enemy AI/States/Melee Attack")]
+public class MeleeAttackState : AIState
 {
     public GameObject hitboxObject;
     public string attackAnimationTrigger;

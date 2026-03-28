@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/Chase")]
-public class ChaseState : AIState
+[CreateAssetMenu(menuName = "Enemy AI/States/Runaway")]
+public class RunawayState : AIState
 {
     public float moveSpeed;
-    public string chaseAnimationTrigger;
+    public string runningAnimationTrigger;
 
     public override void OnEnter(Enemy enemy)
     {
@@ -18,14 +18,14 @@ public class ChaseState : AIState
             enemyAI.isStopped = false;
 
         if (enemyAnim != null)
-            enemyAnim.SetTrigger(chaseAnimationTrigger);
+            enemyAnim.SetTrigger(runningAnimationTrigger);
     }
 
-    public override void OnExit(Enemy enemy) {}
+    public override void OnExit(Enemy enemy) { }
 
-    public override void OnUpdate(Enemy enemy) {}
+    public override void OnUpdate(Enemy enemy) { }
 
-    public override void OnFixedUpdate(Enemy enemy) 
+    public override void OnFixedUpdate(Enemy enemy)
     {
         Seeker enemyAI = enemy.GetComponent<Seeker>();
         Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
@@ -81,7 +81,14 @@ public class ChaseState : AIState
         if (player == null)
             return;
 
-        enemyAI.StartPath(enemy.transform.position, player.position, (Path p) =>
+        // Calculate location to run to
+        Vector3 dir = (enemy.transform.position - player.position).normalized;
+        Vector3 runawayDir = enemy.transform.position + dir * 2;
+
+        Vector3 targetPosition = AstarPath.active.GetNearest(runawayDir).position;
+
+        // Calculate the final path
+        enemyAI.StartPath(enemy.transform.position, targetPosition, (Path p) =>
         {
             if (!p.error)
             {
