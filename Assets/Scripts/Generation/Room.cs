@@ -171,8 +171,8 @@ public class Room : Connectable
             
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
-            EnemyManager.instance.enemies.Add(enemy);
-            Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemies);
+            EnemyManager.instance.enemyCount++;
+            Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
             
             point.hasSpawned = true;
         }

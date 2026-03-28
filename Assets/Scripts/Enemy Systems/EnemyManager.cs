@@ -5,16 +5,15 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
     public Room currentRoom;
-    public List<Enemy> enemies;
+    public int enemyCount = 0;
 
     void Awake()
     {
         instance = this;
-        enemies = new List<Enemy>();
     }
 
     public bool AllEnemiesDead()
     {
-        return enemies.Count == 0;
+        return enemyCount == 0;
     }
 }

@@ -43,7 +43,7 @@ public class EnemyHP : MonoBehaviour
     {
         //EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
         Debug.Log(gameObject.name + " died.");
-        EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
+        EnemyManager.instance.enemyCount--;
         Destroy(gameObject);
     }
 }
