@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -13,23 +11,6 @@ public class EnemyManager : MonoBehaviour
     {
         instance = this;
         enemies = new List<Enemy>();
-    }
-
-    // DEBUG FEATURE
-    void Update()
-    {
-        #if UNITY_EDITOR
-        if (Input.GetKey(KeyCode.X))
-            KillAllEnemies();
-        #endif
-        
-        enemies.RemoveAll(x => x.gameObject.GetComponent<EnemyHP>().currentHP <= 0);
-    }
-
-    private void KillAllEnemies()
-    {
-        foreach (Enemy enemy in enemies)
-            enemy.GetComponent<EnemyHP>().TakeDamage(2147483647);
     }
 
     public bool AllEnemiesDead()

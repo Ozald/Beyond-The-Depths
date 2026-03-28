@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy Systems/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy Systems/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy Systems/Setup/EnemyHP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy Systems/Setup/EnemyHP.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/GenerationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/GenerationManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +179,8 @@
       <workItem from="1774638583656" duration="2421000" />
       <workItem from="1774687539739" duration="2605000" />
       <workItem from="1774714462040" duration="784000" />
-      <workItem from="1774716866479" duration="1973000" />
+      <workItem from="1774716866479" duration="2118000" />
+      <workItem from="1774724570897" duration="430000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -346,7 +342,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774716886894</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room.">
+      <option name="closed" value="true" />
+      <created>1774718882021</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1774718882021</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,7 +410,8 @@
     <MESSAGE value="Fixes" />
     <MESSAGE value="Disabled the fade shader" />
     <MESSAGE value="Fixed the camera not tracking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the camera not tracking" />
+    <MESSAGE value="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

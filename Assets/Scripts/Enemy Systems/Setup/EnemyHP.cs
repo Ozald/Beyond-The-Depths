@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
@@ -44,7 +43,7 @@ public class EnemyHP : MonoBehaviour
     {
         //EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
         Debug.Log(gameObject.name + " died.");
-        
+        EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
         Destroy(gameObject);
     }
 }
