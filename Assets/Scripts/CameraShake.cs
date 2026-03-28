@@ -20,6 +20,7 @@ public class CameraShake : MonoBehaviour
     void Start()
     {
         camShaker = GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        instance.camShaker.m_AmplitudeGain = 0f;
     }
 
     public static async void ShakeCamera(float amplitude, float duration, bool isImpactFrame)

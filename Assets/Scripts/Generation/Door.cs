@@ -38,7 +38,7 @@ public class Door : Connectable
             playerMovement.canMove = false;
         
         fadeAnimator.SetTrigger("Transition");
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.75f);
         
         // I have to do this, otherwise the player renders behind rooms, halls, and doors
         other.transform.position = connectedDoor.transform.position + new Vector3(0, 0, other.transform.position.z);
@@ -65,7 +65,7 @@ public class Door : Connectable
             cineCam.InvalidateCache();
         }
         
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.2f);
         fadeAnimator.SetTrigger("Transition");
         
         yield return new WaitForSecondsRealtime(0.2f);
