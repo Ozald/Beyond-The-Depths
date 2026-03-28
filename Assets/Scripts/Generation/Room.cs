@@ -129,13 +129,25 @@ public class Room : Connectable
 
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
         {
+            if (leftDoor is not null)
+                leftDoor.enabled = false;
+        
+            if (rightDoor is not null)
+                rightDoor.enabled = false;
+        
+            if (downDoor is not null)
+                downDoor.enabled = false;
+        
+            if (upDoor is not null)
+                upDoor.enabled = false;
+            
             StartCoroutine(SpawnEnemies());
         }
     }
 
     private IEnumerator<YieldInstruction> SpawnEnemies()
     {
-        yield return new WaitForSeconds(1);
+        EnemyManager.instance.currentRoom = this;
         
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
@@ -145,6 +157,8 @@ public class Room : Connectable
             Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
             enemySpawns.Add(spawnpoint);
         }
+        
+        yield return new WaitForSeconds(1);
         
         foreach (Spawnpoint point in enemySpawns)
         {
@@ -157,7 +171,7 @@ public class Room : Connectable
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
             point.hasSpawned = true;
-            spawnedEnemies.Add(enemy);
+            EnemyManager.instance.enemies.Add(enemy);
         }
     }
 
@@ -165,16 +179,16 @@ public class Room : Connectable
     {
         hasBeenExplored = true;
         
-        if (leftDoor != null)
+        if (leftDoor is not null)
             leftDoor.enabled = true;
         
-        if (rightDoor != null)
+        if (rightDoor is not null)
             rightDoor.enabled = true;
         
-        if (downDoor != null)
+        if (downDoor is not null)
             downDoor.enabled = true;
         
-        if (upDoor != null)
+        if (upDoor is not null)
             upDoor.enabled = true;
     }
     
