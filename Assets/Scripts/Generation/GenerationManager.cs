@@ -22,7 +22,7 @@ public class GenerationManager : MonoBehaviour
         
         GenerateFloorLayout();
         GenerateNavMesh();
-
+        
         // Set camera to new room
         CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
 
