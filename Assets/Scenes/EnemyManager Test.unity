@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 1815240553}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 6
@@ -311,7 +311,7 @@ Transform:
   m_GameObject: {fileID: 297492295}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11}
+  m_LocalPosition: {x: -2.06, y: -1.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -470,7 +470,7 @@ Transform:
   m_GameObject: {fileID: 606066058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11}
+  m_LocalPosition: {x: -2.06, y: -1.03, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -866,7 +866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1256909412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1090,6 +1090,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
+--- !u!4 &1815240553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7234926377684215576, guid: c2f0c07bbf27329488bac0556c18d3cb, type: 3}
+  m_PrefabInstance: {fileID: 794347378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1843074809
 GameObject:
   m_ObjectHideFlags: 0

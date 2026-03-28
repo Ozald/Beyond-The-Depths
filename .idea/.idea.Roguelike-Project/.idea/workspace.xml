@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/EnemyManager Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/EnemyManager Test.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +177,7 @@
       <workItem from="1774634055292" duration="1997000" />
       <workItem from="1774638583656" duration="2421000" />
       <workItem from="1774687539739" duration="2605000" />
-      <workItem from="1774714462040" duration="416000" />
+      <workItem from="1774714462040" duration="784000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -324,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774689855673</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Disabled the fade shader">
+      <option name="closed" value="true" />
+      <created>1774714938646</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1774714938646</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +389,8 @@
     <MESSAGE value="Restored door opening code" />
     <MESSAGE value="Fade animation does not play, screen is stuck black" />
     <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <MESSAGE value="Disabled the fade shader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Disabled the fade shader" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
