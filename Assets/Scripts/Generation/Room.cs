@@ -126,6 +126,9 @@ public class Room : Connectable
         // This code is important otherwise enemies can trigger room behavior accidentally
         if (!other.gameObject.CompareTag("Player"))
             return;
+        
+        if(hasBeenExplored)
+            OpenDoors();
 
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
         {
@@ -147,8 +150,6 @@ public class Room : Connectable
 
     private IEnumerator<YieldInstruction> SpawnEnemies()
     {
-        EnemyManager.instance.currentRoom = this;
-        
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
 
@@ -170,9 +171,13 @@ public class Room : Connectable
             
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
-            point.hasSpawned = true;
             EnemyManager.instance.enemies.Add(enemy);
+            Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemies);
+            
+            point.hasSpawned = true;
         }
+        
+        EnemyManager.instance.currentRoom = this;
     }
 
     private void OpenDoors()

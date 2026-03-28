@@ -19,9 +19,11 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKey(KeyCode.X))
             KillAllEnemies();
         #endif
+        
+        enemies.RemoveAll(x => x.gameObject.GetComponent<EnemyHP>().currentHP <= 0);
     }
 
     private void KillAllEnemies()

@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 9
+  exitOffset: 15
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}

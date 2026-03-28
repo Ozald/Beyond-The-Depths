@@ -37,9 +37,7 @@ public class GenerationManager : MonoBehaviour
     {   
         #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Y))
-        {
             GenerateFloorLayout();
-        }
         #endif
     }
 
@@ -65,10 +63,11 @@ public class GenerationManager : MonoBehaviour
         
         Debug.Log(map);
 
-        if (map.StartRoom is not null)
+        if(map.StartRoom is not null)
         {
             PlayerManager.instance.currentRoom = map.StartRoom;
             EnemyManager.instance.currentRoom = map.StartRoom;
+            map.StartRoom.hasBeenExplored = true;
             
             player.transform.position = new Vector3(map.StartRoom.gameObject.transform.position.x, 
                 map.StartRoom.gameObject.transform.position.y, player.transform.position.z);

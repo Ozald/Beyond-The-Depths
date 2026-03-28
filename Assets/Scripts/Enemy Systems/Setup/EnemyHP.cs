@@ -5,7 +5,7 @@ public class EnemyHP : MonoBehaviour
 {
     public EnemyData enemyData;
 
-    [SerializeField] private int currentHP;
+    [SerializeField] public int currentHP;
     private float timeSinceLastHit;
 
     void Start()
@@ -42,7 +42,7 @@ public class EnemyHP : MonoBehaviour
 
     private void Die()
     {
-        EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
+        //EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
         Debug.Log(gameObject.name + " died.");
         
         Destroy(gameObject);
