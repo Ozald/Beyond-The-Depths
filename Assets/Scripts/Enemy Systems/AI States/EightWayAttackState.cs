@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/Single Bullet Attack")]
-public class SingleBulletAttackState : AIState
+[CreateAssetMenu(menuName = "Enemy AI/States/8-Way Bullet Attack")]
+public class EightWayAttackState : AIState
 {
     public Projectile projectilePrefab;
     public float projectileSpeed = 5f;
@@ -23,10 +23,10 @@ public class SingleBulletAttackState : AIState
         if (projectilePrefab == null)
             return;
 
-        enemy.StartCoroutine(SpawnProjectile(enemy));
+        enemy.StartCoroutine(SpawnProjectiles(enemy));
     }
 
-    public override void OnExit(Enemy enemy) {}
+    public override void OnExit(Enemy enemy) { }
 
     public override void OnUpdate(Enemy enemy)
     {
@@ -45,16 +45,30 @@ public class SingleBulletAttackState : AIState
     // Unused
     public override void OnFixedUpdate(Enemy enemy) { }
 
-    IEnumerator SpawnProjectile(Enemy enemy)
+    IEnumerator SpawnProjectiles(Enemy enemy)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        Vector3 attackDir = (player.position - enemy.transform.position).normalized;
-        Projectile projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
-        projectile.speed = projectileSpeed;
-        projectile.direction = new Vector2(attackDir.x, attackDir.y);
-        projectile.maxLifetime = projectileLifetime;
+        Vector2[] attackDirections = new Vector2[]
+        {
+            new Vector2(0, 1),
+            new Vector2(1, 1),
+            new Vector2(1, 0),
+            new Vector2(1, -1),
+            new Vector2(0, -1),
+            new Vector2(-1, -1),
+            new Vector2(-1, 0),
+            new Vector2(-1, 1),
+        };
+
+        foreach (Vector2 attack in attackDirections)
+        {
+            Projectile projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
+            projectile.speed = projectileSpeed;
+            projectile.direction = new Vector2(attack.x, attack.y).normalized;
+            projectile.maxLifetime = projectileLifetime;
+        }
     }
 }

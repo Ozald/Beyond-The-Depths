@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2777718196688764207}
   - component: {fileID: 7624988931635914483}
   m_Layer: 7
-  m_Name: Wizard
+  m_Name: Knight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 2006677336, guid: 5a0483ed3d41a44448f944c1c8156321, type: 3}
-  m_Color: {r: 1, g: 0.9574938, b: 0.23113209, a: 1}
+  m_Color: {r: 1, g: 0.060789786, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -174,7 +174,7 @@ Animator:
   m_GameObject: {fileID: 5016624854893773111}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 47c905d7b3d99cd4cbc2d6c4ecd49d36, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1d1b93e8198cc2548abaa8b27fd829f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca3ecebb40aa0f40bb82daa79f1cfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 2373e0bd078d6aa4caa34890c704ba61, type: 2}
+  enemyData: {fileID: 11400000, guid: 2d51180076a10e0429e1929fbdab70f1, type: 2}
   currentState: {fileID: 0}
 --- !u!114 &7624988931635914483
 MonoBehaviour:
@@ -284,5 +284,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab7a6d43fe113340979cddcbd8c2000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 2373e0bd078d6aa4caa34890c704ba61, type: 2}
+  enemyData: {fileID: 11400000, guid: 2d51180076a10e0429e1929fbdab70f1, type: 2}
   currentHP: 0
