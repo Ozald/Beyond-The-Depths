@@ -126,9 +126,12 @@ public class Room : Connectable
         // This code is important otherwise enemies can trigger room behavior accidentally
         if (!other.gameObject.CompareTag("Player"))
             return;
-        
-        if(hasBeenExplored)
+
+        if (hasBeenExplored)
+        {
             OpenDoors();
+            return;
+        }
 
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
         {
