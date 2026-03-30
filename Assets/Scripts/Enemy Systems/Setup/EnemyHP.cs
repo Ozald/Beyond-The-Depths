@@ -20,10 +20,33 @@ public class EnemyHP : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Weapon") && timeSinceLastHit > enemyData.invincibilityCooldown)
+        if (collision.gameObject.CompareTag("Bullet") && timeSinceLastHit > enemyData.invincibilityCooldown)
         {
             timeSinceLastHit = 0;
             TakeDamage(damage: 1);
+            Destroy(collision.gameObject);
+            return;
+        }
+
+        if ((collision.gameObject.CompareTag("Player") && timeSinceLastHit > enemyData.invincibilityCooldown))
+        {
+            // Find the active child of the player
+            foreach (Transform child in collision.transform)
+            {
+                if (child.gameObject.activeInHierarchy)
+                {
+                    // Check if any of its grandchildren are active
+                    foreach (Transform grandchild in child)
+                    {
+                            if (grandchild.gameObject.activeInHierarchy)
+                            {
+                                timeSinceLastHit = 0;
+                                TakeDamage(damage: 1);
+                                return;
+                            }
+                    }
+                }
+            }
         }
     }
 
