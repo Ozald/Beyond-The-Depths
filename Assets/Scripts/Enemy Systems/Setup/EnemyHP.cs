@@ -25,7 +25,9 @@ public class EnemyHP : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet") && timeSinceLastHit > enemyData.invincibilityCooldown)
         {
             timeSinceLastHit = 0;
-            TakeDamage(damage: 1);
+            Weapon weapon = collision.GetComponent<Weapon>();
+            int damageAmount = weapon.weaponData.damage;
+            TakeDamage(damageAmount);
             Destroy(collision.gameObject);
             return;
         }
@@ -37,15 +39,20 @@ public class EnemyHP : MonoBehaviour
             {
                 if (child.gameObject.activeInHierarchy)
                 {
+                    Weapon weapon = child.GetComponent<Weapon>();
                     // Check if any of its grandchildren are active
                     foreach (Transform grandchild in child)
                     {
-                            if (grandchild.gameObject.activeInHierarchy)
-                            {
-                                timeSinceLastHit = 0;
-                                TakeDamage(damage: 1);
-                                return;
-                            }
+                        if (weapon != null && weapon.weaponData != null)
+                        {
+                            timeSinceLastHit = 0;
+
+                            // Use damage from WeaponData
+                            int damageAmount = weapon.weaponData.damage;
+                            TakeDamage(damage: damageAmount);
+
+                            return;
+                        }
                     }
                 }
             }

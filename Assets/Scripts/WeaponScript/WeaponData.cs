@@ -6,6 +6,6 @@ public abstract class WeaponData : ScriptableObject
 {
     public float cooldown;
     public float attackLifetime;
-    public float damage;
+    public int damage;
     public abstract void Attack(GameObject player);
 }
