@@ -5,10 +5,18 @@ using UnityEngine;
 public class Weapon : Interactable
 {
     public WeaponData weaponData;
-    public PlayerInventory playerInv;
     public override void Interact(PlayerInteraction player)
     {
-        playerInv.PickupWeapon(this);
+        PlayerInventory inv = player.GetComponent<PlayerInventory>();
+
+        if (inv != null)
+        {
+            inv.PickupWeapon(this);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerInventory not found on player!");
+        }
     }
 
 

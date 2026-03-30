@@ -5,10 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Weapon Data/Sword")]
 public class SwordWeaponData : WeaponData
 {
-    public int damage = 1;
-    //public float attackSpeed = 0.3f;
-    //public float cooldown = 3f;
-
     public override void Attack(GameObject player)
     {
         Transform weaponTransform = player.transform.Find("Sword");
@@ -18,7 +14,7 @@ public class SwordWeaponData : WeaponData
         if (swordHitbox != null)
         {
             swordHitbox.gameObject.SetActive(true);
-            player.GetComponent<MonoBehaviour>().StartCoroutine(DisableHitbox(swordHitbox, attackSpeed));
+            player.GetComponent<MonoBehaviour>().StartCoroutine(DisableHitbox(swordHitbox, attackLifetime));
             
         }
     }
