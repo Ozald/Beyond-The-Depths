@@ -7,7 +7,7 @@ public class SwordWeaponData : WeaponData
 {
     public override void Attack(GameObject player)
     {
-        Transform weaponTransform = player.transform.Find("Sword");
+        Transform weaponTransform = player.transform.GetComponentInChildren<Weapon>().transform;
         Transform hitboxTransform = weaponTransform.Find("SwordHitbox");
         Collider2D swordHitbox = hitboxTransform.GetComponent<Collider2D>();
 

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" afterDir="false" />
-    </list>
+    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +60,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Ozald/Roguelike-Project.git&quot;,
-    &quot;accountId&quot;: &quot;b9bbdd28-e491-4c8a-bf76-925eddb482b6&quot;
+    &quot;accountId&quot;: &quot;dd885a1c-ca75-4393-9c23-079bb2047f10&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -73,8 +71,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/LongOne.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Spawnpoint.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/EnemyManager Test.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Generation.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fade.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Spawnpoint.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" root0="FORCE_HIGHLIGHTING" />
@@ -88,24 +87,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "room-transition-polish",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Unity.exe" />
@@ -175,6 +174,12 @@
       <workItem from="1774633822936" duration="121000" />
       <workItem from="1774634055292" duration="1997000" />
       <workItem from="1774638583656" duration="2421000" />
+      <workItem from="1774687539739" duration="2605000" />
+      <workItem from="1774714462040" duration="784000" />
+      <workItem from="1774716866479" duration="2118000" />
+      <workItem from="1774724570897" duration="1138000" />
+      <workItem from="1774728229094" duration="5000" />
+      <workItem from="1774732762851" duration="210000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -296,7 +301,71 @@
       <option name="project" value="LOCAL" />
       <updated>1774638861254</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Restored door opening code">
+      <option name="closed" value="true" />
+      <created>1774650624942</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1774650624942</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fade animation does not play, screen is stuck black">
+      <option name="closed" value="true" />
+      <created>1774688923021</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1774688923021</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1774689855673</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1774689855673</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Disabled the fade shader">
+      <option name="closed" value="true" />
+      <created>1774714938646</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1774714938646</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fixed the camera not tracking">
+      <option name="closed" value="true" />
+      <created>1774716886894</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1774716886894</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room.">
+      <option name="closed" value="true" />
+      <created>1774718882021</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1774718882021</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Enemies should now be removed from list on death">
+      <option name="closed" value="true" />
+      <created>1774725250919</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1774725250919</updated>
+    </task>
+    <task id="LOCAL-00023" summary="EnemyManager changed to a counter">
+      <option name="closed" value="true" />
+      <created>1774732969379</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1774732969379</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +390,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="spawnpoints" />
+                        <option value="origin/enemy-manager" />
                       </list>
                     </value>
                   </entry>
@@ -351,7 +420,15 @@
     <MESSAGE value="Somehow this value got lost" />
     <MESSAGE value="Made the GenerationManager's TileGraph public" />
     <MESSAGE value="Delay enemy spawning by 1 second" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delay enemy spawning by 1 second" />
+    <MESSAGE value="Restored door opening code" />
+    <MESSAGE value="Fade animation does not play, screen is stuck black" />
+    <MESSAGE value="Fixes" />
+    <MESSAGE value="Disabled the fade shader" />
+    <MESSAGE value="Fixed the camera not tracking" />
+    <MESSAGE value="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room." />
+    <MESSAGE value="Enemies should now be removed from list on death" />
+    <MESSAGE value="EnemyManager changed to a counter" />
+    <option name="LAST_COMMIT_MESSAGE" value="EnemyManager changed to a counter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

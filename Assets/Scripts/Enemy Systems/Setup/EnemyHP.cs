@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
     public EnemyData enemyData;
 
-    [SerializeField] private int currentHP;
+    [SerializeField] public int currentHP;
     private float timeSinceLastHit;
 
     void Start()
@@ -66,6 +64,16 @@ public class EnemyHP : MonoBehaviour
         currentHP -= damage;
 
         if (currentHP <= 0)
-            Destroy(gameObject);
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        //EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
+        Debug.Log(gameObject.name + " died.");
+        EnemyManager.instance.enemyCount--;
+        Destroy(gameObject);
     }
 }

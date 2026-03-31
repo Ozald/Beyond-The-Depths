@@ -43,18 +43,6 @@ public class Door : Connectable
         // I have to do this, otherwise the player renders behind rooms, halls, and doors
         other.transform.position = connectedDoor.transform.position + new Vector3(0, 0, other.transform.position.z);
         PlayerManager.instance.currentRoom = connectedDoor.parentRoom;
-                
-        if (connectedDoor.transform.position.x > transform.position.x)
-            other.transform.position += new Vector3(exitOffset, 0, 0);
-                
-        if (connectedDoor.transform.position.y > transform.position.y)
-            other.transform.position += new Vector3(0, exitOffset, 0);
-
-        if (connectedDoor.transform.position.y < transform.position.y)
-            other.transform.position += new Vector3(0, -exitOffset, 0);
-
-        if (connectedDoor.transform.position.x < transform.position.x)
-            other.transform.position += new Vector3(-exitOffset, 0, 0);
 
         // Set camera to new room
         CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
@@ -67,6 +55,18 @@ public class Door : Connectable
         
         yield return new WaitForSecondsRealtime(0.2f);
         fadeAnimator.SetTrigger("Transition");
+        
+        if (connectedDoor.transform.position.x > transform.position.x)
+            other.gameObject.transform.position += new Vector3(exitOffset, 0, 0);
+                
+        if (connectedDoor.transform.position.y > transform.position.y)
+            other.gameObject.transform.position += new Vector3(0, exitOffset, 0);
+
+        if (connectedDoor.transform.position.y < transform.position.y)
+            other.gameObject.transform.position += new Vector3(0, -exitOffset, 0);
+
+        if (connectedDoor.transform.position.x < transform.position.x)
+            other.gameObject.transform.position += new Vector3(-exitOffset, 0, 0);
         
         yield return new WaitForSecondsRealtime(0.2f);
         if(playerMovement is not null)
