@@ -116,8 +116,8 @@ public class Room : Connectable
     
     void Update()
     {
-        if(EnemyManager.instance.currentRoom == this && 
-           EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
+        if(EnemyManager.instance.currentRoom == this 
+            && EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
             OpenDoors();
     }
 

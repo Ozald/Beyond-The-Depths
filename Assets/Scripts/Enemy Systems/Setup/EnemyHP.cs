@@ -30,6 +30,7 @@ public class EnemyHP : MonoBehaviour
             return;
         }
 
+        /*
         if ((collision.gameObject.CompareTag("Player") && timeSinceLastHit > enemyData.invincibilityCooldown))
         {
             // Find the active child of the player
@@ -54,6 +55,15 @@ public class EnemyHP : MonoBehaviour
                     }
                 }
             }
+        }*/
+
+        if (collision.gameObject.CompareTag("Weapon") && timeSinceLastHit > enemyData.invincibilityCooldown)
+        {
+            timeSinceLastHit = 0;
+            Weapon weapon = collision.GetComponentInParent<Weapon>();
+            int damageAmount = weapon.weaponData.damage;
+            TakeDamage(damageAmount);
+            return;
         }
     }
 

@@ -99,8 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
+  exitOffset: 2
+  exitDirection: {x: 0, y: 1, z: 0}
   parentRoom: {fileID: 8113397583161321766}
+  enabled: 0
+  fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &5011449063320611864
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9013,8 +9017,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
+  exitOffset: 2
+  exitDirection: {x: 1, y: 0, z: 0}
   parentRoom: {fileID: 8113397583161321766}
+  enabled: 0
+  fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &7527402540508300316
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9159,8 +9167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
+  exitOffset: 2
+  exitDirection: {x: 0, y: -1, z: 0}
   parentRoom: {fileID: 8113397583161321766}
+  enabled: 0
+  fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &3293980873680949109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9305,8 +9317,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
+  exitOffset: 2
+  exitDirection: {x: -1, y: 0, z: 0}
   parentRoom: {fileID: 8113397583161321766}
+  enabled: 0
+  fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &1979752678347649953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9433,6 +9449,7 @@ MonoBehaviour:
   - {fileID: 312681470661079497}
   roomType: 0
   hasBeenExplored: 0
+  spawnedEnemies: []
 --- !u!60 &7502719794291746843
 PolygonCollider2D:
   m_ObjectHideFlags: 0
