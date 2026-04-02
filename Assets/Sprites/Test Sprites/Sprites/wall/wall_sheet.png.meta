@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 12a53b65d7dd03c4c9686d0b612b5b13
+guid: 325d12da0f329aa44a59f9557955bb3a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cookie_Idle_Animation_Sprites_0
+      name: wall_sheet_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 32
         y: 0
-        width: 40.857143
-        height: 46
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7fc095a868c901468d6cf14b0f38762
-      internalID: 1376522529
+      spriteID: 0f56af2ecd505ea4f8aab620416b38d9
+      internalID: -2104923325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cookie_Idle_Animation_Sprites_1
+      name: wall_sheet_1
       rect:
         serializedVersion: 2
-        x: 47
+        x: 64
         y: 0
-        width: 40.857143
-        height: 46
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df204b59adbc5a74f94635d03511cacb
-      internalID: -1259864053
+      spriteID: 43e03b47fb6818e4cb9578756a1ca1a2
+      internalID: -1062270943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cookie_Idle_Animation_Sprites_2
+      name: wall_sheet_2
       rect:
         serializedVersion: 2
-        x: 87
+        x: 96
         y: 0
-        width: 40.857143
-        height: 46
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b9d493085106904daf90cec43bc0736
-      internalID: -560922151
+      spriteID: 6572f1104e841ed43b491452abbf1bc8
+      internalID: 1257909495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cookie_Idle_Animation_Sprites_3
+      name: wall_sheet_3
       rect:
         serializedVersion: 2
-        x: 127
+        x: 128
         y: 0
-        width: 40.857143
-        height: 46
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e2a9022d5b53024f924a21882a59b12
-      internalID: -261642230
+      spriteID: 4620d191086851f43938558d5d35f5fe
+      internalID: 249382270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cookie_Idle_Animation_Sprites_4
+      name: wall_sheet_4
       rect:
         serializedVersion: 2
-        x: 167
+        x: 160
         y: 0
-        width: 40.857143
-        height: 46
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1cb8b1b8d6118047a6d4147c12a558b
-      internalID: -1924461794
+      spriteID: d187937600cd97249a801f66bcbd6fa1
+      internalID: -792282921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cookie_Idle_Animation_Sprites_5
+      name: wall_sheet_5
       rect:
         serializedVersion: 2
-        x: 207
+        x: 192
         y: 0
-        width: 40.857143
-        height: 46
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7db782f80053f744188672653b13df9e
-      internalID: -1111321307
+      spriteID: ec4b527f9644a97419dcab6d0f9b37ea
+      internalID: -1867493782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cookie_Idle_Animation_Sprites_6
+      name: wall_sheet_6
       rect:
         serializedVersion: 2
-        x: 247
+        x: 224
         y: 0
-        width: 40.857143
-        height: 46
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,8 +237,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7165e328c6bfc7b4e9777431535bb6d0
-      internalID: -1344548364
+      spriteID: e147f878cfd026244ac10a3c2614b873
+      internalID: 874579452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11801a18caeb9449ae962505e43d42b
+      internalID: 1986622140
       vertices: []
       indices: 
       edges: []
@@ -254,13 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cookie_Idle_Animation_Sprites_0: 1376522529
-      Cookie_Idle_Animation_Sprites_1: -1259864053
-      Cookie_Idle_Animation_Sprites_2: -560922151
-      Cookie_Idle_Animation_Sprites_3: -261642230
-      Cookie_Idle_Animation_Sprites_4: -1924461794
-      Cookie_Idle_Animation_Sprites_5: -1111321307
-      Cookie_Idle_Animation_Sprites_6: -1344548364
+      wall_sheet_0: -2104923325
+      wall_sheet_1: -1062270943
+      wall_sheet_2: 1257909495
+      wall_sheet_3: 249382270
+      wall_sheet_4: -792282921
+      wall_sheet_5: -1867493782
+      wall_sheet_6: 874579452
+      wall_sheet_7: 1986622140
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
