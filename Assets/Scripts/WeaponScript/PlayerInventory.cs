@@ -88,19 +88,31 @@ public class PlayerInventory : MonoBehaviour
     {
         if (nearbyWeapon == null) return;
 
-        if (playerInv.Count <= 1)
+        if (playerInv.Count < 1)
         {
             playerInv.Add(nearbyWeapon);
             //nearbyWeapon.gameObject.SetActive(false);
         }
+        else if (playerInv.Count == 1)
+        {
+            playerInv.Add(nearbyWeapon);
+            Weapon temp = playerInv[1];
+            playerInv[1] = playerInv[0];
+            playerInv[0] = temp;
+
+            playerInv[0].gameObject.SetActive(true);
+            playerInv[1].gameObject.SetActive(false);
+
+        }
         else
         {
-            Weapon droppedWeapon = playerInv[1];
+            Weapon droppedWeapon = playerInv[0];
+
+            droppedWeapon.transform.parent = null;
 
             droppedWeapon.transform.position = nearbyWeapon.transform.position;
             droppedWeapon.gameObject.SetActive(true);
 
-            playerInv[1] = playerInv[0];
             playerInv[0] = nearbyWeapon;
 
             //nearbyWeapon.gameObject.SetActive(false);
