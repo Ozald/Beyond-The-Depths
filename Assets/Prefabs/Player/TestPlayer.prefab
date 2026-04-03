@@ -276,7 +276,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7994105097079150364}
   serializedVersion: 8
-  lengthInSec: 3
+  lengthInSec: 1
   simulationSpeed: 5
   stopAction: 0
   cullingMode: 0
@@ -1158,7 +1158,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1214,8 +1214,8 @@ ParticleSystem:
       time: 0
       countCurve:
         serializedVersion: 2
-        minMaxState: 3
-        scalar: 18
+        minMaxState: 0
+        scalar: 10
         minScalar: 9
         maxCurve:
           serializedVersion: 2
@@ -1265,7 +1265,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 1
+      cycleCount: 10
       repeatInterval: 1
       probability: 1
   SizeModule:
@@ -1435,7 +1435,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.43633232
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1488,7 +1488,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.61086524
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1541,7 +1541,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5235988
+      scalar: 0.34906584
       minScalar: 0.7853982
       maxCurve:
         serializedVersion: 2
@@ -2265,7 +2265,7 @@ ParticleSystem:
     radial:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2318,7 +2318,7 @@ ParticleSystem:
     speedModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4229,11 +4229,11 @@ ParticleSystem:
   TrailModule:
     enabled: 1
     mode: 0
-    ratio: 1
+    ratio: 0.66
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.75
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4364,7 +4364,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 0.66
       minScalar: 1
       maxCurve:
         serializedVersion: 2

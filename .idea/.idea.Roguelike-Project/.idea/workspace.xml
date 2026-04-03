@@ -11,9 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/CameraRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/CameraRenderTexture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/TestPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/TestPlayer.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,7 @@
       <workItem from="1774732762851" duration="210000" />
       <workItem from="1775239564875" duration="126000" />
       <workItem from="1775240102248" duration="3124000" />
-      <workItem from="1775244659835" duration="467000" />
+      <workItem from="1775244659835" duration="1078000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -382,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774732969379</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Upgrade particle effect">
+      <option name="closed" value="true" />
+      <created>1775245155832</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1775245155832</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +451,8 @@
     <MESSAGE value="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room." />
     <MESSAGE value="Enemies should now be removed from list on death" />
     <MESSAGE value="EnemyManager changed to a counter" />
-    <option name="LAST_COMMIT_MESSAGE" value="EnemyManager changed to a counter" />
+    <MESSAGE value="Upgrade particle effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upgrade particle effect" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
