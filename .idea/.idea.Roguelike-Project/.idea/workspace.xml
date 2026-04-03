@@ -11,7 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/TestPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/TestPlayer.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeInventory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +77,6 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/25/e0bd2277/Object.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Data/Level Data.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/LongOne.prefab" root0="FORCE_HIGHLIGHTING" />
@@ -85,6 +88,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Spawnpoint.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeInventory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -194,7 +200,8 @@
       <workItem from="1774732762851" duration="210000" />
       <workItem from="1775239564875" duration="126000" />
       <workItem from="1775240102248" duration="3124000" />
-      <workItem from="1775244659835" duration="1078000" />
+      <workItem from="1775244659835" duration="1170000" />
+      <workItem from="1775245883651" duration="574000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -388,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775245155832</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Updates to the particle">
+      <option name="closed" value="true" />
+      <created>1775245758160</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1775245758160</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +442,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixed issue with end room doors' parent room not being properly set." />
     <MESSAGE value="." />
     <MESSAGE value="Door prefabs are now directly attached to the room prefabs." />
     <MESSAGE value="Added spawnpoint prefab and laid down groundwork for rooms to spawn enemies." />
@@ -452,7 +466,8 @@
     <MESSAGE value="Enemies should now be removed from list on death" />
     <MESSAGE value="EnemyManager changed to a counter" />
     <MESSAGE value="Upgrade particle effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrade particle effect" />
+    <MESSAGE value="Updates to the particle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates to the particle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
