@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy AI/States/Single Bullet Attack")]
 public class SingleBulletAttackState : AIState
 {
-    public Projectile projectilePrefab;
+    public AttackHitboxData projectilePrefab;
     public float projectileSpeed = 5f;
     public float projectileLifetime = 5f;
     public string attackAnimationTrigger;
@@ -52,9 +52,10 @@ public class SingleBulletAttackState : AIState
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
         Vector3 attackDir = (player.position - enemy.transform.position).normalized;
-        Projectile projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
+        AttackHitboxData projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
         projectile.speed = projectileSpeed;
         projectile.direction = new Vector2(attackDir.x, attackDir.y);
         projectile.maxLifetime = projectileLifetime;
+        projectile.damage = 1;
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6768969423927979315}
   - component: {fileID: 8075446663738679063}
   - component: {fileID: 4182349780033080414}
-  - component: {fileID: 6127372653477484688}
+  - component: {fileID: 4345511523590025392}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -149,7 +149,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!114 &6127372653477484688
+--- !u!114 &4345511523590025392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9048629083875518825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dbc4c3d8f7aa04faac2946cc49e4dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f68545c0f89a094fafa6f9f4a6aff27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: c3b645558b87c874bb299c455a349297, type: 2}
+  speed: 0
+  direction: {x: 0, y: 0}
+  maxLifetime: 0
+  damage: 0
+  tagToHit: Enemy

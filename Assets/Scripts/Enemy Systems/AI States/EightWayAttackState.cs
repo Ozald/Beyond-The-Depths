@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy AI/States/8-Way Bullet Attack")]
 public class EightWayAttackState : AIState
 {
-    public Projectile projectilePrefab;
+    public AttackHitboxData projectilePrefab;
     public float projectileSpeed = 5f;
     public float projectileLifetime = 5f;
     public string attackAnimationTrigger;
@@ -65,10 +65,11 @@ public class EightWayAttackState : AIState
 
         foreach (Vector2 attack in attackDirections)
         {
-            Projectile projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
+            AttackHitboxData projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
             projectile.speed = projectileSpeed;
             projectile.direction = new Vector2(attack.x, attack.y).normalized;
             projectile.maxLifetime = projectileLifetime;
+            projectile.damage = 1;
         }
     }
 }
