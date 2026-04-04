@@ -159,7 +159,9 @@ public class Room : Connectable
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
-            enemySpawns.Add(spawnpoint);
+
+            if (!enemySpawns.Add(spawnpoint))
+                i--;
         }
         
         yield return new WaitForSeconds(1);
