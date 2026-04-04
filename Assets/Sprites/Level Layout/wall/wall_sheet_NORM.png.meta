@@ -100,9 +100,9 @@ TextureImporter:
       name: wall_sheet_NORM_0
       rect:
         serializedVersion: 2
-        x: 32
+        x: 54
         y: 0
-        width: 32
+        width: 52
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -111,50 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10e2004ddc857fd4c8e1ac14298e124b
-      internalID: 1848016078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wall_sheet_NORM_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fe7e35afb0fb4c45bdf571d65dfad93
-      internalID: -6852811
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wall_sheet_NORM_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97aa7700c7884234ca46fe8dd594a6c0
-      internalID: 574392776
+      spriteID: 04d8e90b8922f2e4d821629e9b6c3718
+      internalID: -962513464
       vertices: []
       indices: 
       edges: []
@@ -170,9 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_sheet_NORM_0: 1848016078
-      wall_sheet_NORM_1: -6852811
-      wall_sheet_NORM_2: 574392776
+      wall_sheet_NORM_0: -962513464
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
