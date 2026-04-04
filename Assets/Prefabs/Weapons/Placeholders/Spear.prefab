@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5204154792832344385}
   - component: {fileID: 1567415891838003356}
   - component: {fileID: 8503317042616541028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpearHitbox
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6944324929204985090}
   - component: {fileID: 8823468916062723627}
   - component: {fileID: 4592145569582754314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spear
   m_TagString: Weapon
   m_Icon: {fileID: 0}

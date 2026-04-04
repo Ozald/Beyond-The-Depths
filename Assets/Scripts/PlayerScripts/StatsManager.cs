@@ -54,8 +54,11 @@ public class StatsManager : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
+        if (!gameObject.CompareTag("Player"))
+            return;
+
         if (collision.gameObject.CompareTag("EnemyHurtbox") && timeSinceLastHit > invincibilityCooldown)
         {
             timeSinceLastHit = 0f;
@@ -65,6 +68,9 @@ public class StatsManager : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
+        if (!gameObject.CompareTag("Player"))
+            return;
+
         if (collision.gameObject.CompareTag("Enemy") && timeSinceLastHit > invincibilityCooldown)
         {
             timeSinceLastHit = 0f;

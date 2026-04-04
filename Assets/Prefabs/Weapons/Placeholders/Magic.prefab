@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5667250511406831820}
   - component: {fileID: 2386211062773362320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7944228508793681043}
   - component: {fileID: 1499779831097413700}
   - component: {fileID: 657121370835302512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Magic
   m_TagString: Weapon
   m_Icon: {fileID: 0}

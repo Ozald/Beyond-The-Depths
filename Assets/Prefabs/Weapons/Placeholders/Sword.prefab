@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8599936536345435604}
   - component: {fileID: 5446489708998809583}
   - component: {fileID: 5685798783081884483}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 7531051468229230216}
   - component: {fileID: 9109336790845513529}
   - component: {fileID: 6611248917729450962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SwordHitbox
   m_TagString: Weapon
   m_Icon: {fileID: 0}
