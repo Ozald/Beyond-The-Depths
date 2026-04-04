@@ -9,7 +9,7 @@ public class Weapon : Interactable
     {
         PlayerInventory inv = player.GetComponent<PlayerInventory>();
 
-        if (inv != null)
+        if (inv != null && !inv.playerInv.Contains(this))
         {
             inv.PickupWeapon(this);
         }
@@ -17,19 +17,5 @@ public class Weapon : Interactable
         {
             Debug.LogWarning("PlayerInventory not found on player!");
         }
-    }
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

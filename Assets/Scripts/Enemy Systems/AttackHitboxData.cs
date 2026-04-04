@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class AttackHitboxData : MonoBehaviour
 {
     public float speed;
     public Vector2 direction;
     public float maxLifetime;
+    public int damage;
+    public int knockback;
+
+    public string tagToHit;
 
     private float currLifetime;
     private Rigidbody2D rb;
@@ -19,16 +23,11 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = direction * speed;
+        if (rb != null)
+            rb.velocity = direction * speed;
 
         currLifetime += Time.deltaTime;
         if (currLifetime > maxLifetime)
-            Destroy(gameObject);
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
             Destroy(gameObject);
     }
 }

@@ -61,9 +61,12 @@ public class StatsManager : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyHurtbox") && collision.attachedRigidbody == GetComponent<Rigidbody2D>())
+        if (collision.gameObject.CompareTag("EnemyHurtbox"))
         {
-            TakeDamage(damage: 1);
+            AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
+
+            if (projectile != null)
+                TakeDamage(damage: projectile.damage);
         }
     }
 
@@ -71,7 +74,10 @@ public class StatsManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(damage: 1);
+            AttackHitboxData projectile = collision.gameObject.GetComponent<AttackHitboxData>();
+
+            if (projectile != null)
+                TakeDamage(damage: projectile.damage);
         }
     }
 }

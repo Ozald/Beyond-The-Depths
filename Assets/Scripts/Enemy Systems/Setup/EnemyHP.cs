@@ -13,6 +13,7 @@ public class EnemyHP : MonoBehaviour
     void Start()
     {
         currentHP = enemyData.HP;
+        timeSinceLastHit = enemyData.invincibilityCooldown;
     }
 
     void Update()
@@ -23,13 +24,16 @@ public class EnemyHP : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet") && timeSinceLastHit > enemyData.invincibilityCooldown)
+        if (collision.gameObject.CompareTag("Bullet"))
         {
+            Destroy(collision.gameObject, 0.05f);
+
+            if (timeSinceLastHit < enemyData.invincibilityCooldown)
+                return;
+
             timeSinceLastHit = 0;
-            Weapon weapon = collision.GetComponent<Weapon>();
-            int damageAmount = weapon.weaponData.damage;
-            TakeDamage(damageAmount);
-            Destroy(collision.gameObject);
+            AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
+            TakeDamage(damage: projectile.damage, knockback: projectile.knockback);
             return;
         }
 
@@ -63,22 +67,21 @@ public class EnemyHP : MonoBehaviour
         if (collision.gameObject.CompareTag("Weapon") && timeSinceLastHit > enemyData.invincibilityCooldown)
         {
             timeSinceLastHit = 0;
-            Weapon weapon = collision.GetComponentInParent<Weapon>();
-            int damageAmount = weapon.weaponData.damage;
-            TakeDamage(damageAmount);
+            AttackHitboxData attack = collision.GetComponent<AttackHitboxData>();
+            TakeDamage(attack.damage, attack.knockback);
             return;
         }
     }
 
     /********************************************************************/
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int knockback)
     {
         currentHP -= damage;
         StartCoroutine(FlashEnemy());
 
         Vector3 knockbackDir = -(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
-        GetComponent<Rigidbody2D>().velocity = knockbackDir * 4f;
+        GetComponent<Rigidbody2D>().velocity = knockbackDir * knockback;
 
         AudioManager.PlayOneShot(AudioManager.GetAudioData().enemyDamageTaken);
 

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy AI/States/Multi Bullet Attack")]
 public class MultiBulletAttackState : AIState
 {
-    public Projectile projectilePrefab;
+    public AttackHitboxData projectilePrefab;
     public float projectileSpeed = 5f;
     public float projectileLifetime = 5f;
     public string attackAnimationTrigger;
@@ -61,10 +61,11 @@ public class MultiBulletAttackState : AIState
 
         foreach (Vector3 attackDir in attackDirs)
         {
-            Projectile projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
+            AttackHitboxData projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
             projectile.speed = projectileSpeed;
             projectile.direction = new Vector2(attackDir.x, attackDir.y);
             projectile.maxLifetime = projectileLifetime;
+            projectile.damage = 1;
         }
     }
 }
