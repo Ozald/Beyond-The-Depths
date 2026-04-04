@@ -68,21 +68,18 @@ public class PlayerInventory : MonoBehaviour
 
             Weapon currentWeapon = playerInv[0];
 
-            
             currentWeapon.transform.SetParent(this.transform, false);
             currentWeapon.transform.localPosition = Vector3.zero;
 
-            
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0f;
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 viewportPos = new Vector3(mousePos.x / Screen.width, mousePos.y / Screen.height, 0);
 
-            
-            Vector3 direction = mousePos - currentWeapon.transform.position;
+            float distanceToWeapon = currentWeapon.transform.position.z - Camera.main.transform.position.z;
+            mousePos = Camera.main.ViewportToWorldPoint(new Vector3(viewportPos.x, viewportPos.y, distanceToWeapon));
 
-            
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Vector3 attackDir = mousePos - currentWeapon.transform.position;
+            float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
 
-            
             currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
@@ -91,19 +88,31 @@ public class PlayerInventory : MonoBehaviour
     {
         if (nearbyWeapon == null) return;
 
-        if (playerInv.Count <= 1)
+        if (playerInv.Count < 1)
         {
             playerInv.Add(nearbyWeapon);
             //nearbyWeapon.gameObject.SetActive(false);
         }
+        else if (playerInv.Count == 1)
+        {
+            playerInv.Add(nearbyWeapon);
+            Weapon temp = playerInv[1];
+            playerInv[1] = playerInv[0];
+            playerInv[0] = temp;
+
+            playerInv[0].gameObject.SetActive(true);
+            playerInv[1].gameObject.SetActive(false);
+
+        }
         else
         {
-            Weapon droppedWeapon = playerInv[1];
+            Weapon droppedWeapon = playerInv[0];
+
+            droppedWeapon.transform.parent = null;
 
             droppedWeapon.transform.position = nearbyWeapon.transform.position;
             droppedWeapon.gameObject.SetActive(true);
 
-            playerInv[1] = playerInv[0];
             playerInv[0] = nearbyWeapon;
 
             //nearbyWeapon.gameObject.SetActive(false);

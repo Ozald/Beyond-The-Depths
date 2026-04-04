@@ -7,7 +7,7 @@ public class SpearWeaponData : WeaponData
 {
     public override void Attack(GameObject player)
     {
-        Transform weaponTransform = player.transform.Find("Spear");
+        Transform weaponTransform = player.transform.GetComponentInChildren<Weapon>().transform;
         Transform hitboxTransform = weaponTransform.Find("SpearHitbox");
         Collider2D spearHitbox = hitboxTransform.GetComponent<Collider2D>();
 
