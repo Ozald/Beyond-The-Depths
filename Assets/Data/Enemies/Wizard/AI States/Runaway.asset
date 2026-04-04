@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab10bf62bf9a2c4eb2c216fe27c12b0, type: 3}
   m_Name: Runaway
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   runningAnimationTrigger: Running

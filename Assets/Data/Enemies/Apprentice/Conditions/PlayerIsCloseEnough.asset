@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01879df342b3894448eb6acb58072d09, type: 3}
-  m_Name: Magic
+  m_Script: {fileID: 11500000, guid: 8c139cd1b8ac4fa41be36f7f0200fa9f, type: 3}
+  m_Name: PlayerIsCloseEnough
   m_EditorClassIdentifier: 
-  cooldown: 0.4
-  attackLifetime: 1.5
-  damage: 2
-  bulletSpeed: 10
-  bulletPrefab: {fileID: 9048629083875518825, guid: 59d6001652a90cd4396b1005969fadaf, type: 3}
+  distanceThreshold: 5
+  comparisonOperator: 0

@@ -21,7 +21,7 @@ MonoBehaviour:
     destinations:
     - weight: 1
       toState: {fileID: 11400000, guid: 23368835634e0a34bb4a8828e356d32d, type: 2}
-      condition: {fileID: 11400000, guid: e4288196c421cbe4eb19758dfe7359f0, type: 2}
+      condition: {fileID: 11400000, guid: 95f10b4376a2061478eee0e0ef8cfdc4, type: 2}
   - transitionMode: 0
     fromState: {fileID: 11400000, guid: 23368835634e0a34bb4a8828e356d32d, type: 2}
     destinations:

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
+  m_Name: ApprenticeData
+  m_EditorClassIdentifier: 
+  HP: 5
+  invincibilityCooldown: 1
+  initalState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
+  transitions:
+  - transitionMode: 0
+    fromState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
+    destinations:
+    - weight: 1
+      toState: {fileID: 11400000, guid: f5db5dde028d74644911b295047055c1, type: 2}
+      condition: {fileID: 11400000, guid: 5839417c18ed1ab49ade96811be81b5c, type: 2}
+    - weight: 1
+      toState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
+      condition: {fileID: 11400000, guid: 5e101ffd4e204fb4cae951b7dda29101, type: 2}
+  - transitionMode: 0
+    fromState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
+    destinations:
+    - weight: 1
+      toState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
+      condition: {fileID: 11400000, guid: 983154268362a424fbb3d97a65091211, type: 2}
+  - transitionMode: 0
+    fromState: {fileID: 11400000, guid: f5db5dde028d74644911b295047055c1, type: 2}
+    destinations:
+    - weight: 1
+      toState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
+      condition: {fileID: 11400000, guid: f10a577c775a3b445bdfcd62aea7f66d, type: 2}

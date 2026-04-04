@@ -42,9 +42,14 @@ public class StatsManager : MonoBehaviour
 
     public static void TakeDamage(int damage)
     {
+        if (Instance.timeSinceLastHit < Instance.invincibilityCooldown)
+            return;
+
+        Instance.timeSinceLastHit = 0f;
+
         CameraShake.ShakeCamera(amplitude: 3, duration: 0.2f, isImpactFrame: true);
         Instance.damageEffect.Play();
-        AudioManager.PlayOneShot(AudioManager.instance.audioData.damageTaken, delay: 0.2f);
+        AudioManager.PlayOneShot(AudioManager.instance.audioData.playerDamageTaken, delay: 0.2f);
         Instance.currentHP -= damage;
 
         if (Instance.currentHP <= 0)
@@ -54,20 +59,18 @@ public class StatsManager : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyHurtbox") && timeSinceLastHit > invincibilityCooldown)
+        if (collision.gameObject.CompareTag("EnemyHurtbox") && collision.attachedRigidbody == GetComponent<Rigidbody2D>())
         {
-            timeSinceLastHit = 0f;
             TakeDamage(damage: 1);
         }
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && timeSinceLastHit > invincibilityCooldown)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            timeSinceLastHit = 0f;
             TakeDamage(damage: 1);
         }
     }

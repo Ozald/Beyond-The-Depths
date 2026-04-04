@@ -1,8 +1,11 @@
+using Pathfinding;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
     public EnemyData enemyData;
+    public Material flashMaterial;
 
     [SerializeField] public int currentHP;
     private float timeSinceLastHit;
@@ -72,18 +75,57 @@ public class EnemyHP : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
+        StartCoroutine(FlashEnemy());
+
+        Vector3 knockbackDir = -(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
+        GetComponent<Rigidbody2D>().velocity = knockbackDir * 4f;
+
+        AudioManager.PlayOneShot(AudioManager.GetAudioData().enemyDamageTaken);
 
         if (currentHP <= 0)
         {
+            CameraShake.ShakeCamera(amplitude: 2f, duration: 0.3f, isImpactFrame: true);
+            AudioManager.PlayOneShot(sound: AudioManager.GetAudioData().enemyDeath, delay: 0.3f);
             Die();
         }
     }
+
+    public IEnumerator FlashEnemy()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Color originalColor = spriteRenderer.color;
+        Material originalMaterial = spriteRenderer.material;
+
+        // Now do the flash
+
+        spriteRenderer.color = Color.white;
+        spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(0.1f);
+
+        spriteRenderer.color = originalColor;
+        spriteRenderer.material = originalMaterial;
+    }
+
+
 
     private void Die()
     {
         //EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
         Debug.Log(gameObject.name + " died.");
-        EnemyManager.instance.enemyCount--;
-        Destroy(gameObject);
+
+        if (EnemyManager.instance.enemyCount > 0)
+            EnemyManager.instance.enemyCount--;
+
+        GetComponent<Enemy>().enabled = false;
+
+        Vector3 knockbackDir = -(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        rb.freezeRotation = false;
+        rb.velocity = knockbackDir * 15f;
+        rb.AddTorque(100f);
+
+        Destroy(gameObject, 0.7f);
     }
 }

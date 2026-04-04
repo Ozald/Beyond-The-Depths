@@ -12,7 +12,7 @@ public class MagicWeaponData : WeaponData
 
     public override void Attack(GameObject player)
     {
-        Transform weaponTransform = player.transform.Find("Magic");
+        Transform weaponTransform = player.transform.GetComponentInChildren<Weapon>().transform;
         Transform firePoint = weaponTransform.Find("Fire Point");
 
         if (firePoint != null && bulletPrefab != null)
