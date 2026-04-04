@@ -44,7 +44,7 @@ public class StatsManager : MonoBehaviour
     {
         CameraShake.ShakeCamera(amplitude: 3, duration: 0.2f, isImpactFrame: true);
         Instance.damageEffect.Play();
-        AudioManager.PlayOneShot(AudioManager.instance.audioData.damageTaken, delay: 0.2f);
+        AudioManager.PlayOneShot(AudioManager.instance.audioData.playerDamageTaken, delay: 0.2f);
         Instance.currentHP -= damage;
 
         if (Instance.currentHP <= 0)

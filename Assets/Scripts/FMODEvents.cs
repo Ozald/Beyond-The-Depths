@@ -13,5 +13,7 @@ public class FMODEvents : ScriptableObject
     public EventReference floor1;
 
     [Header("SFX")]
-    public EventReference damageTaken;
+    public EventReference playerDamageTaken;
+    public EventReference enemyDamageTaken;
+    public EventReference enemyDeath;
 }
