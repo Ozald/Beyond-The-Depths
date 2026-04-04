@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 325d12da0f329aa44a59f9557955bb3a
+guid: 39f1c98fbf36acd41909493bc7ccdde0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_sheet_0
+      name: wall_sheet_NORM_0
       rect:
         serializedVersion: 2
         x: 32
@@ -105,20 +105,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f56af2ecd505ea4f8aab620416b38d9
-      internalID: -2104923325
+      spriteID: 10e2004ddc857fd4c8e1ac14298e124b
+      internalID: 1848016078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wall_sheet_1
+      name: wall_sheet_NORM_1
       rect:
         serializedVersion: 2
         x: 64
@@ -126,20 +126,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43e03b47fb6818e4cb9578756a1ca1a2
-      internalID: -1062270943
+      spriteID: 1fe7e35afb0fb4c45bdf571d65dfad93
+      internalID: -6852811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wall_sheet_2
+      name: wall_sheet_NORM_2
       rect:
         serializedVersion: 2
         x: 96
@@ -147,14 +147,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6572f1104e841ed43b491452abbf1bc8
-      internalID: 1257909495
+      spriteID: 97aa7700c7884234ca46fe8dd594a6c0
+      internalID: 574392776
       vertices: []
       indices: 
       edges: []
@@ -168,18 +168,11 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 39f1c98fbf36acd41909493bc7ccdde0, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
     nameFileIdTable:
-      wall_sheet_0: -2104923325
-      wall_sheet_1: -1062270943
-      wall_sheet_2: 1257909495
-      wall_sheet_3: 249382270
-      wall_sheet_4: -792282921
-      wall_sheet_5: -1867493782
-      wall_sheet_6: 874579452
-      wall_sheet_7: 1986622140
+      wall_sheet_NORM_0: 1848016078
+      wall_sheet_NORM_1: -6852811
+      wall_sheet_NORM_2: 574392776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
