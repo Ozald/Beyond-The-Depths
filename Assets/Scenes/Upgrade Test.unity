@@ -235,6 +235,26 @@ PrefabInstance:
       propertyPath: baseSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3360351157022643434, guid: 4df511901f00031469d04460d70d458d, type: 3}
+      propertyPath: speed.value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360351157022643434, guid: 4df511901f00031469d04460d70d458d, type: 3}
+      propertyPath: health.value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360351157022643434, guid: 4df511901f00031469d04460d70d458d, type: 3}
+      propertyPath: speed.baseValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360351157022643434, guid: 4df511901f00031469d04460d70d458d, type: 3}
+      propertyPath: health.baseValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360351157022643434, guid: 4df511901f00031469d04460d70d458d, type: 3}
+      propertyPath: maxHealth.baseValue
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
