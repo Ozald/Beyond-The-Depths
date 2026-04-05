@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class UpgradeInventory : MonoBehaviour
 {
-    public List<Upgrade> upgrades = new List<Upgrade>();
-    
+    public List<Upgrade> upgrades = new();
+    public ParticleSystem particles;
+
+    public void PickupUpgrade(Upgrade nearbyUpgrade)
+    {
+        upgrades.Add(nearbyUpgrade);
+        particles.Play();
+    }
 }

@@ -7,7 +7,10 @@ public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
 
-    [Header("Health")]
+    [Header("Health")] 
+    public int baseMaxHP;
+
+    public int bonusMaxHP;
     public int maxHP;
     public int currentHP;
 
@@ -31,6 +34,7 @@ public class StatsManager : MonoBehaviour
 
     void Start()
     {
+        maxHP = baseMaxHP + bonusMaxHP;
         currentHP = maxHP;
         timeSinceLastHit = 0f;
     }
@@ -63,6 +67,11 @@ public class StatsManager : MonoBehaviour
             Instance.StopCoroutine(Instance.InvincFrameVisualizer());
             Instance.StartCoroutine(Instance.InvincFrameVisualizer());
         }
+    }
+
+    public void UpdateMaxHP()
+    {
+        maxHP = baseMaxHP + bonusMaxHP;
     }
 
     // Attack Damage
