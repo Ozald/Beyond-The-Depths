@@ -91,6 +91,11 @@ public class EnemyHP : MonoBehaviour
             AudioManager.PlayOneShot(sound: AudioManager.GetAudioData().enemyDeath, delay: 0.3f);
             Die();
         }
+        else
+        {
+            StopCoroutine(InvincFrameVisualizer());
+            StartCoroutine(InvincFrameVisualizer());
+        }
     }
 
     public IEnumerator FlashEnemy()
@@ -110,8 +115,6 @@ public class EnemyHP : MonoBehaviour
         spriteRenderer.material = originalMaterial;
     }
 
-
-
     private void Die()
     {
         //EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
@@ -130,5 +133,19 @@ public class EnemyHP : MonoBehaviour
         rb.AddTorque(100f);
 
         Destroy(gameObject, 0.7f);
+    }
+
+    private IEnumerator InvincFrameVisualizer()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        // SpriteRenderer shadow = GetComponent<DropShadow>().currentShadow.GetComponent<SpriteRenderer>();
+
+        yield return new WaitForSeconds(enemyData.invincibilityCooldown * 0.1f);
+        Color currColor = spriteRenderer.color;
+        spriteRenderer.color = new Color(currColor.r, currColor.g, currColor.b, 0.8f);
+
+        yield return new WaitForSeconds(enemyData.invincibilityCooldown * 0.9f);
+
+        spriteRenderer.color = currColor;
     }
 }
