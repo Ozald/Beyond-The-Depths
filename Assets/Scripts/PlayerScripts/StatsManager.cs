@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class StatsManager : MonoBehaviour
 {
@@ -57,21 +58,47 @@ public class StatsManager : MonoBehaviour
             Debug.Log("PLAYER HAS DIED");
             Destroy(Instance.gameObject);
         }
-    }
-
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("EnemyHurtbox") && collision.attachedRigidbody == GetComponent<Rigidbody2D>())
+        else
         {
-            TakeDamage(damage: 1);
+            Instance.StopCoroutine(Instance.InvincFrameVisualizer());
+            Instance.StartCoroutine(Instance.InvincFrameVisualizer());
         }
     }
 
+    // Attack Damage
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyHurtbox"))
+        {
+            AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
+
+            if (projectile != null)
+                TakeDamage(damage: projectile.damage);
+            else
+                TakeDamage(1);
+        }
+    }
+
+    // Contact Damage
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(damage: 1);
         }
+    }
+
+    private IEnumerator InvincFrameVisualizer()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        // SpriteRenderer shadow = GetComponent<DropShadow>().currentShadow.GetComponent<SpriteRenderer>();
+
+        yield return new WaitForSeconds(invincibilityCooldown * 0.1f);
+        Color currColor = spriteRenderer.color;
+        spriteRenderer.color = new Color(currColor.r, currColor.g, currColor.b, 0.8f);
+
+        yield return new WaitForSeconds(invincibilityCooldown * 0.9f);
+
+        spriteRenderer.color = currColor;
     }
 }

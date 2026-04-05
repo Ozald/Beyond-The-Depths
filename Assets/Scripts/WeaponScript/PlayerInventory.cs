@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public static PlayerInventory instance;
+
     public List<Weapon> playerInv;
     private bool isInTriggerZone = false;
     private Weapon nearbyWeapon = null;
@@ -11,9 +13,10 @@ public class PlayerInventory : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (instance == null)
+            instance = this;
     }
 
     // Update is called once per frame
@@ -68,8 +71,7 @@ public class PlayerInventory : MonoBehaviour
 
             Weapon currentWeapon = playerInv[0];
 
-            currentWeapon.transform.SetParent(this.transform, false);
-            currentWeapon.transform.localPosition = Vector3.zero;
+            currentWeapon.transform.position = transform.position;
 
             Vector3 mousePos = Input.mousePosition;
             Vector3 viewportPos = new Vector3(mousePos.x / Screen.width, mousePos.y / Screen.height, 0);
@@ -107,8 +109,6 @@ public class PlayerInventory : MonoBehaviour
         else
         {
             Weapon droppedWeapon = playerInv[0];
-
-            droppedWeapon.transform.parent = null;
 
             droppedWeapon.transform.position = nearbyWeapon.transform.position;
             droppedWeapon.gameObject.SetActive(true);

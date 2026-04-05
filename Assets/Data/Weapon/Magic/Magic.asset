@@ -15,5 +15,6 @@ MonoBehaviour:
   cooldown: 0.4
   attackLifetime: 1.5
   damage: 2
+  knockback: 1
   bulletSpeed: 10
   bulletPrefab: {fileID: 9048629083875518825, guid: 59d6001652a90cd4396b1005969fadaf, type: 3}

@@ -13,6 +13,7 @@ public class EnemyHP : MonoBehaviour
     void Start()
     {
         currentHP = enemyData.HP;
+        timeSinceLastHit = enemyData.invincibilityCooldown;
     }
 
     void Update()
@@ -23,13 +24,16 @@ public class EnemyHP : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet") && timeSinceLastHit > enemyData.invincibilityCooldown)
+        if (collision.gameObject.CompareTag("Bullet"))
         {
+            Destroy(collision.gameObject, 0.05f);
+
+            if (timeSinceLastHit < enemyData.invincibilityCooldown)
+                return;
+
             timeSinceLastHit = 0;
-            Weapon weapon = collision.GetComponent<Weapon>();
-            int damageAmount = weapon.weaponData.damage;
-            TakeDamage(damageAmount);
-            Destroy(collision.gameObject);
+            AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
+            TakeDamage(damage: projectile.damage, knockback: projectile.knockback);
             return;
         }
 
@@ -63,22 +67,21 @@ public class EnemyHP : MonoBehaviour
         if (collision.gameObject.CompareTag("Weapon") && timeSinceLastHit > enemyData.invincibilityCooldown)
         {
             timeSinceLastHit = 0;
-            Weapon weapon = collision.GetComponentInParent<Weapon>();
-            int damageAmount = weapon.weaponData.damage;
-            TakeDamage(damageAmount);
+            AttackHitboxData attack = collision.GetComponent<AttackHitboxData>();
+            TakeDamage(attack.damage, attack.knockback);
             return;
         }
     }
 
     /********************************************************************/
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int knockback)
     {
         currentHP -= damage;
         StartCoroutine(FlashEnemy());
 
         Vector3 knockbackDir = -(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
-        GetComponent<Rigidbody2D>().velocity = knockbackDir * 4f;
+        GetComponent<Rigidbody2D>().velocity = knockbackDir * knockback;
 
         AudioManager.PlayOneShot(AudioManager.GetAudioData().enemyDamageTaken);
 
@@ -87,6 +90,11 @@ public class EnemyHP : MonoBehaviour
             CameraShake.ShakeCamera(amplitude: 2f, duration: 0.3f, isImpactFrame: true);
             AudioManager.PlayOneShot(sound: AudioManager.GetAudioData().enemyDeath, delay: 0.3f);
             Die();
+        }
+        else
+        {
+            StopCoroutine(InvincFrameVisualizer());
+            StartCoroutine(InvincFrameVisualizer());
         }
     }
 
@@ -107,8 +115,6 @@ public class EnemyHP : MonoBehaviour
         spriteRenderer.material = originalMaterial;
     }
 
-
-
     private void Die()
     {
         //EnemyManager.instance.enemies.Remove(gameObject.GetComponent<Enemy>());
@@ -127,5 +133,19 @@ public class EnemyHP : MonoBehaviour
         rb.AddTorque(100f);
 
         Destroy(gameObject, 0.7f);
+    }
+
+    private IEnumerator InvincFrameVisualizer()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        // SpriteRenderer shadow = GetComponent<DropShadow>().currentShadow.GetComponent<SpriteRenderer>();
+
+        yield return new WaitForSeconds(enemyData.invincibilityCooldown * 0.1f);
+        Color currColor = spriteRenderer.color;
+        spriteRenderer.color = new Color(currColor.r, currColor.g, currColor.b, 0.8f);
+
+        yield return new WaitForSeconds(enemyData.invincibilityCooldown * 0.9f);
+
+        spriteRenderer.color = currColor;
     }
 }

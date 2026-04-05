@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 1926850097214102282}
   - component: {fileID: 2777718196688764207}
   - component: {fileID: 7624988931635914483}
+  - component: {fileID: -397206766633316036}
   m_Layer: 7
   m_Name: VampireSquid
   m_TagString: Enemy
@@ -258,7 +259,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 567007121
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2006677336, guid: 5a0483ed3d41a44448f944c1c8156321, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -465,6 +466,21 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 8b5a6ff04d6e55541978449eff4f6d64, type: 2}
   flashMaterial: {fileID: 2100000, guid: 433e791fb3efde643b72301832499cf3, type: 2}
   currentHP: 0
+--- !u!114 &-397206766633316036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016624854893773111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859920b5b2ec85449bfdccb8c0e1432e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowPrefab: {fileID: 6016523607786192960, guid: 59a92a05bc3e12d4996a06516f4e8aca, type: 3}
+  offset: {x: 0, y: -0.4, z: 0}
+  scale: {x: 0.7, y: 0.3, z: 1}
 --- !u!1 &5513548699939915809
 GameObject:
   m_ObjectHideFlags: 0
