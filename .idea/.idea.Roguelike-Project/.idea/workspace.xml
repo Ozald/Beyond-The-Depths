@@ -10,10 +10,7 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/SpeedUpgradeStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/SpeedUpgradeStats.cs" afterDir="false" />
-    </list>
+    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -212,7 +209,7 @@
       <workItem from="1775401061843" duration="117000" />
       <workItem from="1775402788612" duration="42000" />
       <workItem from="1775409999211" duration="1716000" />
-      <workItem from="1775411849060" duration="658000" />
+      <workItem from="1775411849060" duration="1184000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -454,7 +451,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775411624871</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Fixed the stats not incrementing properly">
+      <option name="closed" value="true" />
+      <created>1775412659430</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1775412659430</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +498,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixed null reference in enemy spawning" />
     <MESSAGE value="Door prefab reference is no longer needed" />
     <MESSAGE value="Yet another unused reference" />
     <MESSAGE value="Small cleanup" />
@@ -518,7 +522,8 @@
     <MESSAGE value="Quick change to allow UpgradeInventory to be useful" />
     <MESSAGE value="Reworked the stat system to be structs" />
     <MESSAGE value="Uncommitted change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Uncommitted change" />
+    <MESSAGE value="Fixed the stats not incrementing properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the stats not incrementing properly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
