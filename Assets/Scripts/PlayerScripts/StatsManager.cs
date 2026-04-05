@@ -11,8 +11,14 @@ public class StatsManager : MonoBehaviour
     public int baseMaxHP;
 
     public int bonusMaxHP;
-    public int maxHP;
     public int currentHP;
+    public int maxHP;
+
+    [Header("Speed")] 
+    public float baseSpeed;
+
+    public float bonusSpeed;
+    public float speed;
 
     [Header("CashMoneyFlow")]
     public int doubloons;
@@ -34,7 +40,9 @@ public class StatsManager : MonoBehaviour
 
     void Start()
     {
-        maxHP = baseMaxHP + bonusMaxHP;
+        UpdateMaxHP();
+        UpdateSpeed();
+        
         currentHP = maxHP;
         timeSinceLastHit = 0f;
     }
@@ -72,6 +80,11 @@ public class StatsManager : MonoBehaviour
     public void UpdateMaxHP()
     {
         maxHP = baseMaxHP + bonusMaxHP;
+    }
+
+    public void UpdateSpeed()
+    {
+        speed = baseSpeed + bonusSpeed;
     }
 
     // Attack Damage

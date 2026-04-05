@@ -1,7 +1,7 @@
 ﻿public class Upgrade : Interactable
 {
     public UpgradeStats stats;
-
+    
     public override void Interact(PlayerInteraction player)
     {
         UpgradeInventory inv = player.GetComponent<UpgradeInventory>();
