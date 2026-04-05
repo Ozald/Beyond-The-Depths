@@ -13,6 +13,6 @@
             stats.Apply(manager);
         }
         
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

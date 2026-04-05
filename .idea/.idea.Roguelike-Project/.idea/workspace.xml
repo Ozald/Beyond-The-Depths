@@ -11,16 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/SpeedUpgradeStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/indexLayout.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player/TestPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player/TestPlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Upgrades/HealthUpgrade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Upgrades/HealthUpgrade.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Upgrade Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Upgrade Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/StatsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/StatsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +207,8 @@
       <workItem from="1775245883651" duration="574000" />
       <workItem from="1775378194659" duration="155000" />
       <workItem from="1775389813869" duration="6301000" />
+      <workItem from="1775397320212" duration="44000" />
+      <workItem from="1775398989574" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -424,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775393759057</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Particle changes and a speed upgrade">
+      <option name="closed" value="true" />
+      <created>1775397360057</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1775397360057</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +465,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Door prefabs are now directly attached to the room prefabs." />
     <MESSAGE value="Added spawnpoint prefab and laid down groundwork for rooms to spawn enemies." />
     <MESSAGE value="Changed RoomTypeData to LevelData" />
     <MESSAGE value="Enemies spawn when the player enters a room." />
@@ -488,7 +489,8 @@
     <MESSAGE value="Upgrade particle effect" />
     <MESSAGE value="Updates to the particle" />
     <MESSAGE value="Working health upgrade" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working health upgrade" />
+    <MESSAGE value="Particle changes and a speed upgrade" />
+    <option name="LAST_COMMIT_MESSAGE" value="Particle changes and a speed upgrade" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
