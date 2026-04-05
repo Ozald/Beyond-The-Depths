@@ -7,7 +7,6 @@ public class HealthUpgradeStats : UpgradeStats
     
     public override void Apply(StatsManager manager)
     {
-        manager.bonusMaxHP += extraHP;
-        manager.UpdateMaxHP();
+        manager.maxHealth.Update(extraHP);
     }
 }

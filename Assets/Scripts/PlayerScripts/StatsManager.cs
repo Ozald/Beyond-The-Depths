@@ -1,24 +1,47 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.Serialization;
+
+[Serializable]
+public struct IntegerStat
+{
+    public int baseValue;
+    public int bonusValue;
+    public int value;
+
+    public void Update(int increment)
+    {
+        bonusValue += increment;
+        value = baseValue + increment;
+    }
+}
+
+[Serializable]
+public struct FloatStat
+{
+    public float baseValue;
+    public float bonusValue;
+    public float value;
+
+    public void Update(float increment)
+    {
+        bonusValue += increment;
+        value = baseValue + increment;
+    }
+}
 
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
 
-    [Header("Health")] 
-    public int baseMaxHP;
-
-    public int bonusMaxHP;
+    [FormerlySerializedAs("health")] [Header("Health")] 
+    public IntegerStat maxHealth;
+    
     public int currentHP;
-    public int maxHP;
-
+    
     [Header("Speed")] 
-    public float baseSpeed;
-
-    public float bonusSpeed;
-    public float speed;
+    public FloatStat speed;
 
     [Header("CashMoneyFlow")]
     public int doubloons;
@@ -40,10 +63,10 @@ public class StatsManager : MonoBehaviour
 
     void Start()
     {
-        UpdateMaxHP();
-        UpdateSpeed();
+        maxHealth.Update(0);
+        speed.Update(0);
         
-        currentHP = maxHP;
+        currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
     }
 
@@ -76,17 +99,7 @@ public class StatsManager : MonoBehaviour
             Instance.StartCoroutine(Instance.InvincFrameVisualizer());
         }
     }
-
-    public void UpdateMaxHP()
-    {
-        maxHP = baseMaxHP + bonusMaxHP;
-    }
-
-    public void UpdateSpeed()
-    {
-        speed = baseSpeed + bonusSpeed;
-    }
-
+    
     // Attack Damage
     void OnTriggerStay2D(Collider2D collision)
     {

@@ -7,7 +7,6 @@ public class SpeedUpgradeStats : UpgradeStats
     
     public override void Apply(StatsManager manager)
     {
-        manager.bonusSpeed += extraSpeed;
-        manager.UpdateSpeed();
+        manager.speed.Update(extraSpeed);
     }
 }
