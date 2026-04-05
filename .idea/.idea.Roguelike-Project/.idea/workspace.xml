@@ -12,10 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/StatsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/StatsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI_Manager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/HealthUpgradeStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/HealthUpgradeStats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/SpeedUpgradeStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/SpeedUpgradeStats.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,7 +211,8 @@
       <workItem from="1775398989574" duration="1000" />
       <workItem from="1775401061843" duration="117000" />
       <workItem from="1775402788612" duration="42000" />
-      <workItem from="1775409999211" duration="1405000" />
+      <workItem from="1775409999211" duration="1716000" />
+      <workItem from="1775411849060" duration="658000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -441,7 +438,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775401171562</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Reworked the stat system to be structs">
+      <option name="closed" value="true" />
+      <created>1775411611191</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1775411611191</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Uncommitted change">
+      <option name="closed" value="true" />
+      <created>1775411624871</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1775411624871</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,8 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Changed RoomTypeData to LevelData" />
-    <MESSAGE value="Enemies spawn when the player enters a room." />
     <MESSAGE value="Fixed null reference in enemy spawning" />
     <MESSAGE value="Door prefab reference is no longer needed" />
     <MESSAGE value="Yet another unused reference" />
@@ -505,7 +516,9 @@
     <MESSAGE value="Working health upgrade" />
     <MESSAGE value="Particle changes and a speed upgrade" />
     <MESSAGE value="Quick change to allow UpgradeInventory to be useful" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quick change to allow UpgradeInventory to be useful" />
+    <MESSAGE value="Reworked the stat system to be structs" />
+    <MESSAGE value="Uncommitted change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Uncommitted change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

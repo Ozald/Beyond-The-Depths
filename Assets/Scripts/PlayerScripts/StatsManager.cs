@@ -13,7 +13,7 @@ public struct IntegerStat
     public void Update(int increment)
     {
         bonusValue += increment;
-        value = baseValue + increment;
+        value = baseValue + bonusValue;
     }
 }
 
@@ -27,7 +27,7 @@ public struct FloatStat
     public void Update(float increment)
     {
         bonusValue += increment;
-        value = baseValue + increment;
+        value = baseValue + bonusValue;
     }
 }
 
