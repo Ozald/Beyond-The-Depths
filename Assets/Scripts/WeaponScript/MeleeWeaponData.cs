@@ -20,7 +20,7 @@ public class MeleeWeaponData : WeaponData
             attack.speed = 0;
             attack.direction = Vector3.zero;
             attack.maxLifetime = attackLifetime;
-            attack.damage = damage;
+            attack.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
             attack.knockback = knockback;
         }
     }

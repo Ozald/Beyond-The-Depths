@@ -43,6 +43,12 @@ public class StatsManager : MonoBehaviour
     [Header("Speed")] 
     public FloatStat speed;
 
+    [Header("Damage")] 
+    public IntegerStat bonusDamage;
+
+    [Header("Defense")]
+    public IntegerStat defense;
+
     [Header("CashMoneyFlow")]
     public int doubloons;
 
@@ -65,6 +71,8 @@ public class StatsManager : MonoBehaviour
     {
         maxHealth.Update(0);
         speed.Update(0);
+        bonusDamage.Update(0);
+        defense.Update(0);
         
         currentHP = maxHealth.value;
         timeSinceLastHit = 0f;

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168fed221dee4b71a71f51b7e084051b, type: 3}
-  m_Name: SpeedUpgradeStats
+  m_Script: {fileID: 11500000, guid: 1ed8b9117fb441ea9bafdaec81f99d3f, type: 3}
+  m_Name: AttackUpgradeStats
   m_EditorClassIdentifier: 
-  extraSpeed: 0.5
+  extraDamage: 1
