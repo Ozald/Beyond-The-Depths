@@ -6,6 +6,7 @@ public class EnemyHP : MonoBehaviour
 {
     public EnemyData enemyData;
     public Material flashMaterial;
+    public GameObject HP_Drop;
 
     [SerializeField] public int currentHP;
     private float timeSinceLastHit;
@@ -131,6 +132,13 @@ public class EnemyHP : MonoBehaviour
         rb.freezeRotation = false;
         rb.velocity = knockbackDir * 15f;
         rb.AddTorque(100f);
+
+        float dropChance = Random.value;
+
+        if (dropChance <= 1)
+        {
+            Instantiate(HP_Drop, transform.position, Quaternion.identity);
+        }
 
         Destroy(gameObject, 0.7f);
     }
