@@ -10,6 +10,7 @@
         if (inv is not null && manager is not null)
         {
             inv.PickupUpgrade(this);
+            CameraShake.ShakeCamera(1.2f, 1f, false);
             stats.Apply(manager);
         }
         
