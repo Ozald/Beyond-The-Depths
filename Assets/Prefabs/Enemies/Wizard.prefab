@@ -618,6 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 2373e0bd078d6aa4caa34890c704ba61, type: 2}
   flashMaterial: {fileID: 2100000, guid: 433e791fb3efde643b72301832499cf3, type: 2}
+  HP_Drop: {fileID: 2415940918555332364, guid: 5be237c1cdda17f4ca6e281204e2256b, type: 3}
   currentHP: 0
 --- !u!114 &-1546575100898876370
 MonoBehaviour:
@@ -634,6 +635,7 @@ MonoBehaviour:
   shadowPrefab: {fileID: 6016523607786192960, guid: 59a92a05bc3e12d4996a06516f4e8aca, type: 3}
   offset: {x: 0, y: -0.4, z: 0}
   scale: {x: 0.7, y: 0.3, z: 1}
+  currentShadow: {fileID: 0}
 --- !u!1 &5878596193160607993
 GameObject:
   m_ObjectHideFlags: 0

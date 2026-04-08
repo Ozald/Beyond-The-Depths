@@ -28,6 +28,6 @@ public class AttackHitboxData : MonoBehaviour
 
         currLifetime += Time.deltaTime;
         if (currLifetime > maxLifetime)
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
     }
 }
