@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 [Serializable]
@@ -103,7 +104,6 @@ public class StatsManager : MonoBehaviour
         if (Instance.currentHP <= 0)
         {
             Debug.Log("PLAYER HAS DIED");
-            Destroy(Instance.gameObject);
             Die();
         }
         else
@@ -121,7 +121,15 @@ public class StatsManager : MonoBehaviour
     private IEnumerator FadeTransition()
     {
         fadeAnimator.SetTrigger("Transition");
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine(ReturnToMenu());
+    }
+
+    private IEnumerator ReturnToMenu()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        Debug.Log("Returned to menu");
+        yield return new WaitForSecondsRealtime(0.2f);
     }
 
     // Attack Damage

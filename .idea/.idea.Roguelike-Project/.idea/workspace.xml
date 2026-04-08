@@ -65,7 +65,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/ca/b7ea5847/Component.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6970d6af0b0404e8396e5c31beed58927800/0b/0236ce8f/Animator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Data/Level Data.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/LongOne.prefab" root0="FORCE_HIGHLIGHTING" />
@@ -213,7 +213,9 @@
       <workItem from="1775592200059" duration="17000" />
       <workItem from="1775681582043" duration="147000" />
       <workItem from="1775681787134" duration="82000" />
-      <workItem from="1775682302020" duration="1010000" />
+      <workItem from="1775682302020" duration="1236000" />
+      <workItem from="1775683957078" duration="58000" />
+      <workItem from="1775684350603" duration="1963000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -487,7 +489,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775682378592</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Player death fades out">
+      <option name="closed" value="true" />
+      <created>1775683837109</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1775683837109</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +536,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Cleaning" />
     <MESSAGE value="Refactored Spawnpoint so that they can work for things other than enemies" />
     <MESSAGE value="Integrated new room prefabs and an offset value" />
     <MESSAGE value="Somehow this value got lost" />
@@ -551,7 +560,8 @@
     <MESSAGE value="Tiny adjustment" />
     <MESSAGE value="Changed speed upgrade color" />
     <MESSAGE value="Fixed reference issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed reference issues" />
+    <MESSAGE value="Player death fades out" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player death fades out" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
