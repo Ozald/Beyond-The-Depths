@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -34,6 +35,7 @@ public struct FloatStat
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
+    public Animator fadeAnimator;
 
     [FormerlySerializedAs("health")] [Header("Health")] 
     public IntegerStat maxHealth;
@@ -76,6 +78,8 @@ public class StatsManager : MonoBehaviour
         
         currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
+
+        fadeAnimator = Fade.instance.GetComponent<Animator>();
     }
 
     void Update()
@@ -84,7 +88,7 @@ public class StatsManager : MonoBehaviour
             timeSinceLastHit += Time.deltaTime;
     }
 
-    public static void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (Instance.timeSinceLastHit < Instance.invincibilityCooldown)
             return;
@@ -100,6 +104,7 @@ public class StatsManager : MonoBehaviour
         {
             Debug.Log("PLAYER HAS DIED");
             Destroy(Instance.gameObject);
+            Die();
         }
         else
         {
@@ -107,7 +112,18 @@ public class StatsManager : MonoBehaviour
             Instance.StartCoroutine(Instance.InvincFrameVisualizer());
         }
     }
-    
+
+    void Die()
+    {
+        StartCoroutine(FadeTransition());
+    }
+
+    private IEnumerator FadeTransition()
+    {
+        fadeAnimator.SetTrigger("Transition");
+        yield return new WaitForSecondsRealtime(0.75f);
+    }
+
     // Attack Damage
     void OnTriggerStay2D(Collider2D collision)
     {
