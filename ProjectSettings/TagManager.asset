@@ -8,6 +8,8 @@ TagManager:
   - Door
   - Weapon
   - Enemy
+  - Bullet
+  - Upgrade
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Obstacles
   - Enemy
-  - 
+  - Weapon
   - 
   - 
   - 
@@ -44,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 567007121
     locked: 0

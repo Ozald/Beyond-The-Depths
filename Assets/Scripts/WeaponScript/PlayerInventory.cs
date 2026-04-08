@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public static PlayerInventory instance;
+
     public List<Weapon> playerInv;
     private bool isInTriggerZone = false;
     private Weapon nearbyWeapon = null;
@@ -11,9 +13,10 @@ public class PlayerInventory : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (instance == null)
+            instance = this;
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown("r"))
         {
+            
             if (playerInv.Count > 1)
             {
                 Weapon temp = playerInv[1];
@@ -34,8 +38,9 @@ public class PlayerInventory : MonoBehaviour
 
                 playerInv[0].gameObject.SetActive(true);
                 playerInv[1].gameObject.SetActive(false);
-            }
 
+            }
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -54,14 +59,32 @@ public class PlayerInventory : MonoBehaviour
             lastAttackTime = Time.time;
 
             currentWeapon.weaponData.Attack(gameObject);
+            Debug.Log("Attack done");
         }
 
         if (playerInv.Count > 0 && playerInv[0] != null)
         {
+            /*
             Weapon currentWeapon = playerInv[0];
             currentWeapon.transform.SetParent(this.transform, false);
             currentWeapon.transform.localPosition = Vector3.zero;
             currentWeapon.transform.localRotation = Quaternion.identity;
+            */
+
+            Weapon currentWeapon = playerInv[0];
+
+            currentWeapon.transform.position = transform.position;
+
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 viewportPos = new Vector3(mousePos.x / Screen.width, mousePos.y / Screen.height, 0);
+
+            float distanceToWeapon = currentWeapon.transform.position.z - Camera.main.transform.position.z;
+            mousePos = Camera.main.ViewportToWorldPoint(new Vector3(viewportPos.x, viewportPos.y, distanceToWeapon));
+
+            Vector3 attackDir = mousePos - currentWeapon.transform.position;
+            float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
+
+            currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
@@ -69,19 +92,29 @@ public class PlayerInventory : MonoBehaviour
     {
         if (nearbyWeapon == null) return;
 
-        if (playerInv.Count <= 1)
+        if (playerInv.Count < 1)
         {
             playerInv.Add(nearbyWeapon);
             //nearbyWeapon.gameObject.SetActive(false);
         }
+        else if (playerInv.Count == 1)
+        {
+            playerInv.Add(nearbyWeapon);
+            Weapon temp = playerInv[1];
+            playerInv[1] = playerInv[0];
+            playerInv[0] = temp;
+
+            playerInv[0].gameObject.SetActive(true);
+            playerInv[1].gameObject.SetActive(false);
+
+        }
         else
         {
-            Weapon droppedWeapon = playerInv[1];
+            Weapon droppedWeapon = playerInv[0];
 
             droppedWeapon.transform.position = nearbyWeapon.transform.position;
             droppedWeapon.gameObject.SetActive(true);
 
-            playerInv[1] = playerInv[0];
             playerInv[0] = nearbyWeapon;
 
             //nearbyWeapon.gameObject.SetActive(false);

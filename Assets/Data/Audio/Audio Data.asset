@@ -26,10 +26,24 @@ MonoBehaviour:
       Data3: 148139410
       Data4: 389755042
     Path: event:/Music/Floor1 BGMusic
-  damageTaken:
+  playerDamageTaken:
     Guid:
       Data1: -2129321489
       Data2: 1289133156
       Data3: 219830437
       Data4: 1206456033
     Path: event:/SFX/Player Damage
+  enemyDamageTaken:
+    Guid:
+      Data1: -1699540143
+      Data2: 1204257837
+      Data3: 819313578
+      Data4: 38124465
+    Path: event:/SFX/Enemy Damage
+  enemyDeath:
+    Guid:
+      Data1: 262686074
+      Data2: 1284079515
+      Data3: -1973141595
+      Data4: -1720526206
+    Path: event:/SFX/Enemy Death

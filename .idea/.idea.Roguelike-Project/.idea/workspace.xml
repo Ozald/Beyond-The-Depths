@@ -3,8 +3,17 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="" />
+    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Shaders-and-VFX-(Osvaldo)" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,16 +42,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="upgrade-system" />
+                    <option name="lastUsedInstant" value="1775569843" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1774207954" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="Shaders-and-VFX-(Osvaldo)" />
-                    <option name="lastUsedInstant" value="1774207814" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="spawnpoints" />
-                    <option name="lastUsedInstant" value="1774079026" />
+                    <option name="lastUsedInstant" value="1775377701" />
                   </RecentBranch>
                 </list>
               </option>
@@ -56,19 +61,30 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Ozald/Roguelike-Project.git&quot;,
-    &quot;accountId&quot;: &quot;dd885a1c-ca75-4393-9c23-079bb2047f10&quot;
+    &quot;accountId&quot;: &quot;b9bbdd28-e491-4c8a-bf76-925eddb482b6&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/ca/b7ea5847/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Data/Level Data.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/LongOne.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/Room.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Spawnpoint.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Upgrades/SpeedUpgrade.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/EnemyManager Test.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Generation.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/Spawnpoint.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generation/TileGraph.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeInventory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/AttackUpgradeStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/DefenseUpgradeStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/HealthUpgradeStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Upgrades/UpgradeStats/SpeedUpgradeStats.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -84,15 +100,20 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;upgrade-system&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -162,6 +183,32 @@
       <workItem from="1774113966894" duration="256000" />
       <workItem from="1774130092174" duration="335000" />
       <workItem from="1774336347202" duration="433000" />
+      <workItem from="1774633822936" duration="121000" />
+      <workItem from="1774634055292" duration="1997000" />
+      <workItem from="1774638583656" duration="2421000" />
+      <workItem from="1774687539739" duration="2605000" />
+      <workItem from="1774714462040" duration="784000" />
+      <workItem from="1774716866479" duration="2118000" />
+      <workItem from="1774724570897" duration="1138000" />
+      <workItem from="1774728229094" duration="5000" />
+      <workItem from="1774732762851" duration="210000" />
+      <workItem from="1775239564875" duration="126000" />
+      <workItem from="1775240102248" duration="3124000" />
+      <workItem from="1775244659835" duration="1170000" />
+      <workItem from="1775245883651" duration="574000" />
+      <workItem from="1775378194659" duration="155000" />
+      <workItem from="1775389813869" duration="6301000" />
+      <workItem from="1775397320212" duration="44000" />
+      <workItem from="1775398989574" duration="1000" />
+      <workItem from="1775401061843" duration="117000" />
+      <workItem from="1775402788612" duration="42000" />
+      <workItem from="1775409999211" duration="1716000" />
+      <workItem from="1775411849060" duration="1374000" />
+      <workItem from="1775413778652" duration="27000" />
+      <workItem from="1775418935023" duration="46000" />
+      <workItem from="1775459348200" duration="476000" />
+      <workItem from="1775569822444" duration="59000" />
+      <workItem from="1775589847186" duration="435000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -275,7 +322,159 @@
       <option name="project" value="LOCAL" />
       <updated>1774336470993</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Delay enemy spawning by 1 second">
+      <option name="closed" value="true" />
+      <created>1774638861254</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1774638861254</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Restored door opening code">
+      <option name="closed" value="true" />
+      <created>1774650624942</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1774650624942</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fade animation does not play, screen is stuck black">
+      <option name="closed" value="true" />
+      <created>1774688923021</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1774688923021</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1774689855673</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1774689855673</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Disabled the fade shader">
+      <option name="closed" value="true" />
+      <created>1774714938646</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1774714938646</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fixed the camera not tracking">
+      <option name="closed" value="true" />
+      <created>1774716886894</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1774716886894</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room.">
+      <option name="closed" value="true" />
+      <created>1774718882021</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1774718882021</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Enemies should now be removed from list on death">
+      <option name="closed" value="true" />
+      <created>1774725250919</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1774725250919</updated>
+    </task>
+    <task id="LOCAL-00023" summary="EnemyManager changed to a counter">
+      <option name="closed" value="true" />
+      <created>1774732969379</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1774732969379</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Upgrade particle effect">
+      <option name="closed" value="true" />
+      <created>1775245155832</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1775245155832</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Updates to the particle">
+      <option name="closed" value="true" />
+      <created>1775245758160</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1775245758160</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Working health upgrade">
+      <option name="closed" value="true" />
+      <created>1775393759057</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1775393759057</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Particle changes and a speed upgrade">
+      <option name="closed" value="true" />
+      <created>1775397360057</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1775397360057</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Quick change to allow UpgradeInventory to be useful">
+      <option name="closed" value="true" />
+      <created>1775401171562</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1775401171562</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Reworked the stat system to be structs">
+      <option name="closed" value="true" />
+      <created>1775411611191</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1775411611191</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Uncommitted change">
+      <option name="closed" value="true" />
+      <created>1775411624871</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1775411624871</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed the stats not incrementing properly">
+      <option name="closed" value="true" />
+      <created>1775412659430</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1775412659430</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Tiny adjustment">
+      <option name="closed" value="true" />
+      <created>1775413225812</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1775413225812</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Changed speed upgrade color">
+      <option name="closed" value="true" />
+      <created>1775418976491</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1775418976491</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +499,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="spawnpoints" />
+                        <option value="upgrade-system" />
                       </list>
                     </value>
                   </entry>
@@ -314,22 +513,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixed issue with end room doors' parent room not being properly set." />
-    <MESSAGE value="." />
-    <MESSAGE value="Door prefabs are now directly attached to the room prefabs." />
-    <MESSAGE value="Added spawnpoint prefab and laid down groundwork for rooms to spawn enemies." />
-    <MESSAGE value="Changed RoomTypeData to LevelData" />
-    <MESSAGE value="Enemies spawn when the player enters a room." />
-    <MESSAGE value="Fixed null reference in enemy spawning" />
-    <MESSAGE value="Door prefab reference is no longer needed" />
-    <MESSAGE value="Yet another unused reference" />
     <MESSAGE value="Small cleanup" />
     <MESSAGE value="Cleaning" />
     <MESSAGE value="Refactored Spawnpoint so that they can work for things other than enemies" />
     <MESSAGE value="Integrated new room prefabs and an offset value" />
     <MESSAGE value="Somehow this value got lost" />
     <MESSAGE value="Made the GenerationManager's TileGraph public" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the GenerationManager's TileGraph public" />
+    <MESSAGE value="Delay enemy spawning by 1 second" />
+    <MESSAGE value="Restored door opening code" />
+    <MESSAGE value="Fade animation does not play, screen is stuck black" />
+    <MESSAGE value="Fixes" />
+    <MESSAGE value="Disabled the fade shader" />
+    <MESSAGE value="Fixed the camera not tracking" />
+    <MESSAGE value="Fixes to doors. Doors for some reason don't disable when enemies are alive in a room." />
+    <MESSAGE value="Enemies should now be removed from list on death" />
+    <MESSAGE value="EnemyManager changed to a counter" />
+    <MESSAGE value="Upgrade particle effect" />
+    <MESSAGE value="Updates to the particle" />
+    <MESSAGE value="Working health upgrade" />
+    <MESSAGE value="Particle changes and a speed upgrade" />
+    <MESSAGE value="Quick change to allow UpgradeInventory to be useful" />
+    <MESSAGE value="Reworked the stat system to be structs" />
+    <MESSAGE value="Uncommitted change" />
+    <MESSAGE value="Fixed the stats not incrementing properly" />
+    <MESSAGE value="Tiny adjustment" />
+    <MESSAGE value="Changed speed upgrade color" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed speed upgrade color" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -348,5 +557,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

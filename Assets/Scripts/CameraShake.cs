@@ -1,5 +1,6 @@
 using Cinemachine;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
@@ -19,18 +20,20 @@ public class CameraShake : MonoBehaviour
     void Start()
     {
         camShaker = GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        instance.camShaker.m_AmplitudeGain = 0f;
     }
 
-    public static void ShakeCamera(float amplitude, float duration, bool isImpactFrame)
+    public static async void ShakeCamera(float amplitude, float duration, bool isImpactFrame)
     {
-        instance.camShaker.m_AmplitudeGain = amplitude;
-        instance.timerStart = duration;
-        instance.timerCurr = instance.timerStart;
-
         if (isImpactFrame)
         {
             instance.StartCoroutine(instance.OnImpactFrame(duration));
+            await Task.Delay((int)(duration * 1000));
         }
+
+        instance.camShaker.m_AmplitudeGain = amplitude;
+        instance.timerStart = duration;
+        instance.timerCurr = instance.timerStart;
     }
 
     // Update is called once per frame

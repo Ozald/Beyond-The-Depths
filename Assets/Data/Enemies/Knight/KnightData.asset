@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
+  m_Name: KnightData
+  m_EditorClassIdentifier: 
+  HP: 7
+  invincibilityCooldown: 1
+  initalState: {fileID: 11400000, guid: 1635ed160d42c5d449bef951adbceec9, type: 2}
+  transitions:
+  - transitionMode: 0
+    fromState: {fileID: 11400000, guid: 1635ed160d42c5d449bef951adbceec9, type: 2}
+    destinations:
+    - weight: 1
+      toState: {fileID: 11400000, guid: 23368835634e0a34bb4a8828e356d32d, type: 2}
+      condition: {fileID: 11400000, guid: 95f10b4376a2061478eee0e0ef8cfdc4, type: 2}
+  - transitionMode: 0
+    fromState: {fileID: 11400000, guid: 23368835634e0a34bb4a8828e356d32d, type: 2}
+    destinations:
+    - weight: 1
+      toState: {fileID: 11400000, guid: 958a5014203c52049bce5bfc22b4d330, type: 2}
+      condition: {fileID: 11400000, guid: 4cc759ffd71990a49a0d897666b0dafb, type: 2}
+  - transitionMode: 0
+    fromState: {fileID: 11400000, guid: 958a5014203c52049bce5bfc22b4d330, type: 2}
+    destinations:
+    - weight: 1
+      toState: {fileID: 11400000, guid: 1635ed160d42c5d449bef951adbceec9, type: 2}
+      condition: {fileID: 11400000, guid: 462c7dcf234cdb149b9ad0cfbbb8599e, type: 2}

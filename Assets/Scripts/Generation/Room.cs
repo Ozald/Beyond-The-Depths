@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using Pathfinding;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -114,6 +113,13 @@ public class Room : Connectable
         if (isOrigin)
             roomType = RoomType.StartRoom;
     }
+    
+    void Update()
+    {
+        if(EnemyManager.instance.currentRoom == this 
+            && EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
+            OpenDoors();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -121,11 +127,31 @@ public class Room : Connectable
         if (!other.gameObject.CompareTag("Player"))
             return;
 
+        if (hasBeenExplored)
+        {
+            OpenDoors();
+            return;
+        }
+
         if (!hasBeenExplored && enemySpawnpoints.Length > 0)
-            SpawnEnemies();
+        {
+            if (leftDoor is not null)
+                leftDoor.enabled = false;
+        
+            if (rightDoor is not null)
+                rightDoor.enabled = false;
+        
+            if (downDoor is not null)
+                downDoor.enabled = false;
+        
+            if (upDoor is not null)
+                upDoor.enabled = false;
+            
+            StartCoroutine(SpawnEnemies());
+        }
     }
 
-    private void SpawnEnemies()
+    private IEnumerator<YieldInstruction> SpawnEnemies()
     {
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
         int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
@@ -133,8 +159,12 @@ public class Room : Connectable
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
-            enemySpawns.Add(spawnpoint);
+
+            if (!enemySpawns.Add(spawnpoint))
+                i--;
         }
+        
+        yield return new WaitForSeconds(1);
         
         foreach (Spawnpoint point in enemySpawns)
         {
@@ -146,11 +176,32 @@ public class Room : Connectable
             
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
+            EnemyManager.instance.enemyCount++;
+            Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
+            
             point.hasSpawned = true;
-            spawnedEnemies.Add(enemy);
         }
+        
+        EnemyManager.instance.currentRoom = this;
     }
 
+    private void OpenDoors()
+    {
+        hasBeenExplored = true;
+        
+        if (leftDoor is not null)
+            leftDoor.enabled = true;
+        
+        if (rightDoor is not null)
+            rightDoor.enabled = true;
+        
+        if (downDoor is not null)
+            downDoor.enabled = true;
+        
+        if (upDoor is not null)
+            upDoor.enabled = true;
+    }
+    
     public override string ToString()
     {
         if (roomType == RoomType.StartRoom)

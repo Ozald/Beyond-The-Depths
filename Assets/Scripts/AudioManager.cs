@@ -24,21 +24,10 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            PlayOneShot(audioData.testSFX);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("DEBUG: Changed music to \"Battle\" intensity.");
-            currentBGMusic.setParameterByName("Intensity", 1);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Debug.Log("DEBUG: Changed music to \"Calm\" intensity.");
-            currentBGMusic.setParameterByName("Intensity", 0);
-        }
+        if (EnemyManager.instance.currentRoom.hasBeenExplored)
+            instance.currentBGMusic.setParameterByName("Intensity", 0);
+        else
+            instance.currentBGMusic.setParameterByName("Intensity", 1);
     }
 
     public static void PlayOneShot(EventReference sound)

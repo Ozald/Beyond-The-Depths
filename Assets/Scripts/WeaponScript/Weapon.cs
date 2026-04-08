@@ -5,23 +5,17 @@ using UnityEngine;
 public class Weapon : Interactable
 {
     public WeaponData weaponData;
-    public PlayerInventory playerInv;
     public override void Interact(PlayerInteraction player)
     {
-        playerInv.PickupWeapon(this);
-    }
+        PlayerInventory inv = player.GetComponent<PlayerInventory>();
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (inv != null && !inv.playerInv.Contains(this))
+        {
+            inv.PickupWeapon(this);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerInventory not found on player!");
+        }
     }
 }
