@@ -10,10 +10,7 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrades/Upgrade.cs" afterDir="false" />
-    </list>
+    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +62,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/37cc348edc804f4cb176b63962c716e7177200/ca/b7ea5847/Component.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6970d6af0b0404e8396e5c31beed58927800/0b/0236ce8f/Animator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Data/Level Data.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Door_Placeholder.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Generation/Rooms/LongOne.prefab" root0="FORCE_HIGHLIGHTING" />
@@ -106,7 +103,7 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;upgrade-system&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -209,6 +206,13 @@
       <workItem from="1775459348200" duration="476000" />
       <workItem from="1775569822444" duration="59000" />
       <workItem from="1775589847186" duration="435000" />
+      <workItem from="1775592101190" duration="33000" />
+      <workItem from="1775592200059" duration="17000" />
+      <workItem from="1775681582043" duration="147000" />
+      <workItem from="1775681787134" duration="82000" />
+      <workItem from="1775682302020" duration="1236000" />
+      <workItem from="1775683957078" duration="58000" />
+      <workItem from="1775684350603" duration="2087000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -474,7 +478,31 @@
       <option name="project" value="LOCAL" />
       <updated>1775418976491</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed reference issues">
+      <option name="closed" value="true" />
+      <created>1775682378592</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1775682378592</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Player death fades out">
+      <option name="closed" value="true" />
+      <created>1775683837109</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1775683837109</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Fade now transitions to the main menu">
+      <option name="closed" value="true" />
+      <created>1775686402344</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1775686402344</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,7 +527,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="upgrade-system" />
+                        <option value="origin/special-room-test" />
                       </list>
                     </value>
                   </entry>
@@ -513,9 +541,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Small cleanup" />
-    <MESSAGE value="Cleaning" />
-    <MESSAGE value="Refactored Spawnpoint so that they can work for things other than enemies" />
     <MESSAGE value="Integrated new room prefabs and an offset value" />
     <MESSAGE value="Somehow this value got lost" />
     <MESSAGE value="Made the GenerationManager's TileGraph public" />
@@ -538,7 +563,10 @@
     <MESSAGE value="Fixed the stats not incrementing properly" />
     <MESSAGE value="Tiny adjustment" />
     <MESSAGE value="Changed speed upgrade color" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed speed upgrade color" />
+    <MESSAGE value="Fixed reference issues" />
+    <MESSAGE value="Player death fades out" />
+    <MESSAGE value="Fade now transitions to the main menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fade now transitions to the main menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
