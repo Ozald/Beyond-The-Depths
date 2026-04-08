@@ -23,7 +23,7 @@ public class HPdrop : MonoBehaviour
         {
             StatsManager statsManager = collision.GetComponent<StatsManager>();
 
-            if (statsManager != null && statsManager.currentHP < statsManager.maxHP)
+            if (statsManager != null && statsManager.currentHP < statsManager.maxHealth.value)
             {
                 statsManager.currentHP++;
 

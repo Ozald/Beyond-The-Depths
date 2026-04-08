@@ -21,6 +21,6 @@ public class HpUI : MonoBehaviour
     void Update()
     {
         currentHP.text = statsManager.currentHP.ToString();
-        maxHP.text = statsManager.maxHP.ToString();
+        maxHP.text = statsManager.maxHealth.value.ToString();
     }
 }
