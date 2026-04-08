@@ -115,6 +115,7 @@ public class StatsManager : MonoBehaviour
 
     void Die()
     {
+        Time.timeScale = 0;
         StartCoroutine(FadeTransition());
     }
 
@@ -127,6 +128,7 @@ public class StatsManager : MonoBehaviour
 
     private IEnumerator ReturnToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
         Debug.Log("Returned to menu");
         yield return new WaitForSecondsRealtime(0.2f);

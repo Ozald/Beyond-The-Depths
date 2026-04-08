@@ -10,10 +10,7 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roguelike-Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/StatsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerScripts/StatsManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="763c922a-fca5-4556-b599-484f8806907e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,7 +212,7 @@
       <workItem from="1775681787134" duration="82000" />
       <workItem from="1775682302020" duration="1236000" />
       <workItem from="1775683957078" duration="58000" />
-      <workItem from="1775684350603" duration="1963000" />
+      <workItem from="1775684350603" duration="2087000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed issue with end room doors' parent room not being properly set.">
       <option name="closed" value="true" />
@@ -497,7 +494,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775683837109</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Fade now transitions to the main menu">
+      <option name="closed" value="true" />
+      <created>1775686402344</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1775686402344</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +541,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactored Spawnpoint so that they can work for things other than enemies" />
     <MESSAGE value="Integrated new room prefabs and an offset value" />
     <MESSAGE value="Somehow this value got lost" />
     <MESSAGE value="Made the GenerationManager's TileGraph public" />
@@ -561,7 +565,8 @@
     <MESSAGE value="Changed speed upgrade color" />
     <MESSAGE value="Fixed reference issues" />
     <MESSAGE value="Player death fades out" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player death fades out" />
+    <MESSAGE value="Fade now transitions to the main menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fade now transitions to the main menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
