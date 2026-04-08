@@ -20,7 +20,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     void Update()
     {
-        _hpSlider.value = (float)statsManager.currentHP / statsManager.maxHP;
+        _hpSlider.value = (float)statsManager.currentHP / statsManager.maxHealth.value;
         transform.rotation = Camera.main.transform.rotation;
 
         /*

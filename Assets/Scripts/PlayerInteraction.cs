@@ -5,6 +5,13 @@ using UnityEngine.Events;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public static PlayerInteraction instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
     public class HoveredEvent : UnityEvent<Interactable>
     {
         
@@ -53,6 +60,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("Interactable detected as " + objectToInteract.name + ", trying interaction");
             objectToInteract.Interact(player.GetComponent<PlayerInteraction>());
+            objectToInteract = null;
 
         }
     }
@@ -79,12 +87,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        objectToInteract = collision.gameObject.GetComponent<Interactable>();
-        
-        if (objectToInteract != null)
+        Interactable interactable = collision.gameObject.GetComponent<Interactable>();
+
+        if (interactable != null && interactable != objectToInteract && (PlayerInventory.instance.playerInv.Count == 0 || interactable != PlayerInventory.instance.playerInv[0]))
         {
+            objectToInteract = interactable;
             isInTriggerZone = true;
-            objectToInteract = collision.gameObject.GetComponent<Interactable>();
         }
     }
 
@@ -98,5 +106,6 @@ public class PlayerInteraction : MonoBehaviour
             objectToInteract = null;
         }
     }
+
 }
 

@@ -311,7 +311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 88, y: -27}
+  m_AnchoredPosition: {x: 29, y: -27}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220734379
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db868c4e11be414e99d0b3fab359351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PS: {fileID: 11400000, guid: 7d9fae802ecb1a74684f258ed443337f, type: 2}
+  stats: {fileID: 0}
   canMove: 1
 --- !u!114 &401354740
 MonoBehaviour:
@@ -564,8 +564,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cce344cb026c44185b5fabf5caed68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHealth:
+    baseValue: 10
+    bonusValue: 0
+    value: 0
   currentHP: 10
+  speed:
+    baseValue: 5
+    bonusValue: 0
+    value: 0
+  bonusDamage:
+    baseValue: 1
+    bonusValue: 0
+    value: 0
+  defense:
+    baseValue: 0
+    bonusValue: 0
+    value: 0
   doubloons: 0
   invincibilityCooldown: 1
   damageEffect: {fileID: 1446433024}
@@ -1060,7 +1075,7 @@ Transform:
   m_GameObject: {fileID: 610918619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 102.114586, y: 14.256511, z: 0.027332434}
+  m_LocalPosition: {x: 203, y: 1, z: 0.027332434}
   m_LocalScale: {x: 1.0666667, y: 1.0666667, z: 1.0666667}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1192,7 +1207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47.8, y: 10.5}
+  m_AnchoredPosition: {x: -31, y: 10.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813431744
@@ -1249,7 +1264,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1672,7 +1687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 92, y: -13}
+  m_AnchoredPosition: {x: -1, y: -13}
   m_SizeDelta: {x: 235.657, y: 67.3191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000275751
@@ -1729,7 +1744,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

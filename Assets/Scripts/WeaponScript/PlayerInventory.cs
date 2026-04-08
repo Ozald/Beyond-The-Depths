@@ -29,6 +29,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown("r"))
         {
+            
             if (playerInv.Count > 1)
             {
                 Weapon temp = playerInv[1];
@@ -37,8 +38,9 @@ public class PlayerInventory : MonoBehaviour
 
                 playerInv[0].gameObject.SetActive(true);
                 playerInv[1].gameObject.SetActive(false);
-            }
 
+            }
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
