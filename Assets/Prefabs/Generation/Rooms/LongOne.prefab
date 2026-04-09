@@ -100,9 +100,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 2
+  exitDirection: {x: 0, y: 0, z: 0}
   parentRoom: {fileID: 8113397583161321766}
   enabled: 0
   fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &5011449063320611864
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6246,7 +6248,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9693,16 +9695,16 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 2013885337, guid: f9784d11abb898645af8b5f209a148a1, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 390487833, guid: b38d8ab8d46bb6b4699e13c976ab62d9, type: 3}
   - m_RefCount: 66
@@ -10004,9 +10006,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 2
+  exitDirection: {x: 0, y: 0, z: 0}
   parentRoom: {fileID: 8113397583161321766}
   enabled: 0
   fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &7527402540508300316
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10152,9 +10156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 2
+  exitDirection: {x: 0, y: 0, z: 0}
   parentRoom: {fileID: 8113397583161321766}
   enabled: 0
   fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &3293980873680949109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10300,9 +10306,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 2
+  exitDirection: {x: 0, y: 0, z: 0}
   parentRoom: {fileID: 8113397583161321766}
   enabled: 0
   fadeAnimator: {fileID: 0}
+  isTransitioning: 0
 --- !u!61 &1979752678347649953
 BoxCollider2D:
   m_ObjectHideFlags: 0

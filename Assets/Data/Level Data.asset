@@ -30,6 +30,8 @@ MonoBehaviour:
     weight: 1
   - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
     weight: 1
+  - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
+    weight: 5
   endRooms:
   - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
     weight: 1
