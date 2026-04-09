@@ -3863,7 +3863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitDirection: {x: -1.5, y: 0, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
@@ -4013,7 +4013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitDirection: {x: 0, y: -1.5, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
@@ -4280,7 +4280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitDirection: {x: 0, y: 1.5, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
@@ -4430,7 +4430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
   exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitDirection: {x: 1.5, y: 0, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
