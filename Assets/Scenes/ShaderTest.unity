@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 401354746}
   - component: {fileID: 401354747}
   - component: {fileID: 401354748}
+  - component: {fileID: 401354749}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -430,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cce344cb026c44185b5fabf5caed68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimator: {fileID: 0}
   maxHealth:
     baseValue: 10
     bonusValue: 0
@@ -437,6 +439,14 @@ MonoBehaviour:
   currentHP: 10
   speed:
     baseValue: 5
+    bonusValue: 0
+    value: 0
+  bonusDamage:
+    baseValue: 0
+    bonusValue: 0
+    value: 0
+  defense:
+    baseValue: 0
     bonusValue: 0
     value: 0
   doubloons: 0
@@ -483,8 +493,8 @@ SpriteRenderer:
   m_SortingLayerID: 567007121
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 1206037074, guid: 8789dc93431d9db4fb355472eff93a92, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -569,18 +579,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018652678, y: 0.10515645}
+  m_Offset: {x: 0.018652678, y: -0.4742012}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.71016574, y: 0.78764623}
+  m_Size: {x: 0.71016574, y: 0.9848709}
   m_EdgeRadius: 0
 --- !u!114 &401354745
 MonoBehaviour:
@@ -634,9 +644,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowPrefab: {fileID: 6016523607786192960, guid: 59a92a05bc3e12d4996a06516f4e8aca, type: 3}
-  offset: {x: 0, y: -0.3, z: 0}
+  offset: {x: 0, y: -0.9, z: 0}
   scale: {x: 0.7, y: 0.3, z: 1}
   currentShadow: {fileID: 0}
+--- !u!95 &401354749
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401354738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8502dab740b86b74cb3e7fe62649cc2c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &409894596
 GameObject:
   m_ObjectHideFlags: 0

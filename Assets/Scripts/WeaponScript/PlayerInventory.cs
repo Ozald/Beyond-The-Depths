@@ -73,18 +73,17 @@ public class PlayerInventory : MonoBehaviour
 
             Weapon currentWeapon = playerInv[0];
 
-            currentWeapon.transform.position = transform.position;
-
             Vector3 mousePos = Input.mousePosition;
             Vector3 viewportPos = new Vector3(mousePos.x / Screen.width, mousePos.y / Screen.height, 0);
 
-            float distanceToWeapon = currentWeapon.transform.position.z - Camera.main.transform.position.z;
+            float distanceToWeapon = transform.position.z - Camera.main.transform.position.z;
             mousePos = Camera.main.ViewportToWorldPoint(new Vector3(viewportPos.x, viewportPos.y, distanceToWeapon));
 
-            Vector3 attackDir = mousePos - currentWeapon.transform.position;
+            Vector3 attackDir = mousePos - transform.position;
             float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
 
-            currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+            currentWeapon.transform.position = transform.position + (attackDir).normalized - new Vector3(0, 0.6f, 0);
+            currentWeapon.transform.rotation = Quaternion.Lerp(currentWeapon.transform.rotation, Quaternion.Euler(0, 0, angle - 90), 0.2f);
         }
     }
 
@@ -123,8 +122,6 @@ public class PlayerInventory : MonoBehaviour
 
         isInTriggerZone = false;
         nearbyWeapon = null;
-
-
     }
 
 
