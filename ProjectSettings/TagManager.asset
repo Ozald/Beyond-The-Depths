@@ -47,6 +47,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
+  - name: Walls and Floors
     uniqueID: 567007121
     locked: 0
