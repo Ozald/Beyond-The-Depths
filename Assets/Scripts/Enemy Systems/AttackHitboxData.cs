@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class AttackHitboxData : MonoBehaviour
@@ -27,7 +28,12 @@ public class AttackHitboxData : MonoBehaviour
             rb.velocity = direction * speed;
 
         currLifetime += Time.deltaTime;
-        if (currLifetime > maxLifetime)
+        if (currLifetime < maxLifetime)
+            return;
+
+        if (transform.parent != null)
             Destroy(transform.parent.gameObject);
+        else
+            Destroy(gameObject);
     }
 }
