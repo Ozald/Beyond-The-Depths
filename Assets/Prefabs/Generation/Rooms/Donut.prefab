@@ -83,7 +83,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.9511671, y: -4.96611}
+  m_Offset: {x: -1.9087162, y: -4.9477863}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -94,7 +94,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 29.841711, y: 29.750038}
+  m_Size: {x: 26.021156, y: 26.31734}
   m_EdgeRadius: 0
 --- !u!114 &-3573859890246586673
 MonoBehaviour:
@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitOffset: 2
+  exitDirection: {x: 0, y: -1, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
@@ -366,8 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitOffset: 2
+  exitDirection: {x: 0, y: 1, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
@@ -12765,8 +12765,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitOffset: 2
+  exitDirection: {x: 1, y: 0, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
@@ -12915,8 +12915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedDoor: {fileID: 0}
-  exitOffset: 1
-  exitDirection: {x: 0, y: 0, z: 0}
+  exitOffset: 2
+  exitDirection: {x: -1, y: 0, z: 0}
   parentRoom: {fileID: 0}
   enabled: 0
   fadeAnimator: {fileID: 0}
