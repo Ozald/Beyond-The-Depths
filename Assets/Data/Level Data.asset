@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level Data
   m_EditorClassIdentifier: 
   startRooms:
-  - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
+  - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
     weight: 1
   specialRooms:
   - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
@@ -29,6 +29,18 @@ MonoBehaviour:
   - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
     weight: 1
   - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
+    weight: 1
+  - connectable: {fileID: 871887348868227583, guid: e2ab393dce330a0429c293ce80b23a51, type: 3}
+    weight: 1
+  - connectable: {fileID: -598439968689866140, guid: 08d897b0d3798024fa7262b4798d9664, type: 3}
+    weight: 1
+  - connectable: {fileID: -3573859890246586673, guid: c41e08e2d4ab99648ace8eb677805411, type: 3}
+    weight: 1
+  - connectable: {fileID: 5035185924873772528, guid: 0847d74293711de46b95bbba579556a7, type: 3}
+    weight: 1
+  - connectable: {fileID: 3766077978749172037, guid: 51172ebbea237fb43a8f146c948ecbb4, type: 3}
+    weight: 1
+  - connectable: {fileID: 5288363887424236422, guid: ecb281ba13af0ec4385f64a5f0f45a8d, type: 3}
     weight: 1
   endRooms:
   - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}

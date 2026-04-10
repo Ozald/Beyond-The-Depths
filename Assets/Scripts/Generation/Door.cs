@@ -53,15 +53,6 @@ public class Door : Connectable
             // other.transform.position = new Vector3(0, 0, other.transform.position.z);
 
         PlayerManager.instance.currentRoom = connectedDoor.parentRoom;
-
-        // Set camera to new room
-        CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
-
-        if (cineCam is not null)
-        {
-            cineCam.m_BoundingShape2D = connectedDoor.parentRoom.GetComponent<PolygonCollider2D>();
-            cineCam.InvalidateCache();
-        }
         
         yield return new WaitForSecondsRealtime(0.2f);
         fadeAnimator.SetTrigger("Transition");
@@ -83,6 +74,16 @@ public class Door : Connectable
         // Replaced the system above with an easier, universal system
         // The only thing you would need now is to make sure the doors are facing the right direction
         // We aren't accounting for the z-position since we are going to be using sorting layers
+
+        // Set camera to new room
+        CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
+
+        if (cineCam is not null)
+        {
+            cineCam.m_BoundingShape2D = connectedDoor.parentRoom.GetComponent<PolygonCollider2D>();
+            cineCam.InvalidateCache();
+            cineCam.GetComponent<CinemachineVirtualCamera>().PreviousStateIsValid = false;
+        }
 
         other.gameObject.transform.position = connectedDoor.transform.position + (exitOffset * -exitDirection);
 
