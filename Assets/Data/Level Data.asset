@@ -16,14 +16,14 @@ MonoBehaviour:
   - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
     weight: 1
   specialRooms:
-  - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
+  - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
     weight: 1
-  - connectable: {fileID: 8113397583161321766, guid: 5a757023aa3d25c40a7b4925d935a4a4, type: 3}
-    weight: 2
   hallways:
   - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
     weight: 1
   rooms:
+  - connectable: {fileID: -598439968689866140, guid: 08d897b0d3798024fa7262b4798d9664, type: 3}
+    weight: 1
   - connectable: {fileID: -598439968689866140, guid: 08d897b0d3798024fa7262b4798d9664, type: 3}
     weight: 1
   endRooms:
