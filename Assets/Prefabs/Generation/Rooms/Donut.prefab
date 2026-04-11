@@ -117,12 +117,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b343210a575bfb49b888181c55a01a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
   leftDoor: {fileID: 6505183795319557412}
   rightDoor: {fileID: 4584485760393340540}
   upDoor: {fileID: 7654757198790593442}
   downDoor: {fileID: 5358681505512176001}
-  enemySpawnpoints: []
+  enemySpawnpoints:
+  - {fileID: 4543242706422661979}
+  - {fileID: 1413195161522404875}
+  - {fileID: 4379301658552718563}
+  - {fileID: 855157206034089249}
+  - {fileID: 4891355369686914502}
+  - {fileID: 497549595760666502}
+  - {fileID: 4662809510503332636}
+  - {fileID: 5303846774129717979}
+  - {fileID: 1442496189623489056}
   roomType: 0
   hasBeenExplored: 0
   spawnedEnemies: []

@@ -15722,6 +15722,10 @@ MonoBehaviour:
   - {fileID: 2033923882189069196}
   - {fileID: 139940079843910615}
   - {fileID: 312681470661079497}
+  - {fileID: 1053363208844924542}
+  - {fileID: 7894121363114904378}
+  - {fileID: 6050228875060759163}
+  - {fileID: 8383571122677535659}
   roomType: 0
   hasBeenExplored: 0
   spawnedEnemies: []
