@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-
-
 public class PlayButton : MonoBehaviour
 {
     // change the scene name later once we have it.
@@ -28,7 +26,7 @@ public class PlayButton : MonoBehaviour
 
     private IEnumerator FadeTransition()
     {
-        fadeAnimator.SetTrigger("Transition");
+        fadeAnimator.SetTrigger("FadeOut");
 
         // Wait for animation to finish
         yield return new WaitForSecondsRealtime(1f);

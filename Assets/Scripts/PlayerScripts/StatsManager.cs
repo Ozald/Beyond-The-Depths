@@ -121,7 +121,7 @@ public class StatsManager : MonoBehaviour
 
     private IEnumerator FadeTransition()
     {
-        fadeAnimator.SetTrigger("Transition");
+        fadeAnimator.SetTrigger("FadeOut");
         yield return new WaitForSecondsRealtime(1f);
         StartCoroutine(ReturnToMenu());
     }
