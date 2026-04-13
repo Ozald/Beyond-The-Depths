@@ -16,27 +16,25 @@ MonoBehaviour:
   - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
     weight: 1
   specialRooms:
-  - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
+  - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
     weight: 1
-  - connectable: {fileID: 8113397583161321766, guid: 5a757023aa3d25c40a7b4925d935a4a4, type: 3}
-    weight: 2
   hallways:
   - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
     weight: 1
   rooms:
-  - connectable: {fileID: 8113397583161321766, guid: 5a757023aa3d25c40a7b4925d935a4a4, type: 3}
-    weight: 1
-  - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
-    weight: 1
-  - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
-    weight: 1
-  - connectable: {fileID: 871887348868227583, guid: e2ab393dce330a0429c293ce80b23a51, type: 3}
-    weight: 1
   - connectable: {fileID: -598439968689866140, guid: 08d897b0d3798024fa7262b4798d9664, type: 3}
     weight: 1
   - connectable: {fileID: -3573859890246586673, guid: c41e08e2d4ab99648ace8eb677805411, type: 3}
     weight: 1
   - connectable: {fileID: 5035185924873772528, guid: 0847d74293711de46b95bbba579556a7, type: 3}
+    weight: 1
+  - connectable: {fileID: 8113397583161321766, guid: 5a757023aa3d25c40a7b4925d935a4a4, type: 3}
+    weight: 1
+  - connectable: {fileID: 871887348868227583, guid: e2ab393dce330a0429c293ce80b23a51, type: 3}
+    weight: 1
+  - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
+    weight: 1
+  - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
     weight: 1
   - connectable: {fileID: 3766077978749172037, guid: 51172ebbea237fb43a8f146c948ecbb4, type: 3}
     weight: 1
@@ -47,10 +45,8 @@ MonoBehaviour:
     weight: 1
   enemies:
   - enemy: {fileID: 2777718196688764207, guid: 5dce840bb23a1c64a891c94775765290, type: 3}
-    weight: 1
-  - enemy: {fileID: 2777718196688764207, guid: e11e7104d2c2285469446c2bbf8efeb5, type: 3}
-    weight: 1
+    weight: 3
   - enemy: {fileID: 2777718196688764207, guid: 43be780d3922641478f0b3296ee70dc8, type: 3}
-    weight: 1
+    weight: 5
   - enemy: {fileID: 2777718196688764207, guid: 1f278f8d19fe2d548a6346891e5da24a, type: 3}
     weight: 1

@@ -45,7 +45,7 @@ public class Door : Connectable
         if(playerMovement is not null)
             playerMovement.canMove = false;
         
-        fadeAnimator.SetTrigger("Transition");
+        fadeAnimator.SetTrigger("FadeOut");
         yield return new WaitForSecondsRealtime(0.75f);
         
         // I have to do this, otherwise the player renders behind rooms, halls, and doors
@@ -55,7 +55,7 @@ public class Door : Connectable
         PlayerManager.instance.currentRoom = connectedDoor.parentRoom;
         
         yield return new WaitForSecondsRealtime(0.2f);
-        fadeAnimator.SetTrigger("Transition");
+        fadeAnimator.SetTrigger("FadeIn");
 
         /*
         if (connectedDoor.transform.position.x > transform.position.x)
