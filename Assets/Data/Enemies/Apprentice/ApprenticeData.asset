@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
   m_Name: ApprenticeData
   m_EditorClassIdentifier: 
-  HP: 5
-  invincibilityCooldown: 1
+  HP: 3
+  invincibilityCooldown: 0.75
   initalState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
   transitions:
   - transitionMode: 0

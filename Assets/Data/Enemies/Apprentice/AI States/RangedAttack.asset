@@ -15,4 +15,5 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4407160946478670164, guid: 87a4ce0b787aa2845ac9cdfe48792914, type: 3}
   projectileSpeed: 5
   projectileLifetime: 5
+  spreadInDegrees: 60
   attackAnimationTrigger: Attack
