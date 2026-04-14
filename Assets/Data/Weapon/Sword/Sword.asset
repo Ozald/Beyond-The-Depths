@@ -15,5 +15,5 @@ MonoBehaviour:
   cooldown: 0.5
   attackLifetime: 0.4
   damage: 1
-  knockback: 4
+  knockback: 5
   hitbox: {fileID: 1576376823788937087, guid: 544c09767717b864ca1701b86db94b93, type: 3}
