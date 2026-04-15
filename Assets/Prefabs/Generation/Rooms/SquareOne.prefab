@@ -4025,7 +4025,7 @@ GameObject:
   - component: {fileID: 3975439285514520074}
   - component: {fileID: 8080170218188167393}
   - component: {fileID: 6121203258907572369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SquareOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}

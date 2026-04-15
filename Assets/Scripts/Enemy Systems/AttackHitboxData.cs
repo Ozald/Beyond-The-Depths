@@ -45,24 +45,18 @@ public class AttackHitboxData : MonoBehaviour
         EnemyHP enemy = collider.gameObject.GetComponent<EnemyHP>();
         // StatsManager player = collider.gameObject.GetComponent<StatsManager>();
 
-        if (!collider.gameObject.CompareTag(tagToHit))
-        {
-            if (destroyOnHit)
-                Destroy(gameObject);
-
-            return;
-        }
-
-        if (enemy != null)
+        if (enemy != null && collider.gameObject.CompareTag(tagToHit))
         {
             if (enemiesHit.Contains(enemy) || enemy.timeSinceLastHit < enemy.enemyData.invincibilityCooldown)
                 return;
 
             enemy.TakeDamage(damage, knockback);
             enemiesHit.Add(enemy);
-        }
 
-        if (destroyOnHit)
+            if (destroyOnHit)
+                Destroy(gameObject);
+        }
+        else if (destroyOnHit && collider.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
             Destroy(gameObject);
     }
 }
