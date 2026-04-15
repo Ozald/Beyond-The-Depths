@@ -59,8 +59,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 567007121
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &4797985475225141304
 MonoBehaviour:
@@ -501,6 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 2d51180076a10e0429e1929fbdab70f1, type: 2}
   flashMaterial: {fileID: 2100000, guid: 433e791fb3efde643b72301832499cf3, type: 2}
+  HP_Drop: {fileID: 2415940918555332364, guid: 5be237c1cdda17f4ca6e281204e2256b, type: 3}
   currentHP: 0
 --- !u!114 &-1523464755193472055
 MonoBehaviour:
@@ -517,6 +518,7 @@ MonoBehaviour:
   shadowPrefab: {fileID: 6016523607786192960, guid: 59a92a05bc3e12d4996a06516f4e8aca, type: 3}
   offset: {x: 0, y: -0.4, z: 0}
   scale: {x: 0.7, y: 0.3, z: 1}
+  currentShadow: {fileID: 0}
 --- !u!1 &6503656583783994474
 GameObject:
   m_ObjectHideFlags: 0

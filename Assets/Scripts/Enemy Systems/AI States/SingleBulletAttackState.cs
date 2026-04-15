@@ -8,6 +8,7 @@ public class SingleBulletAttackState : AIState
     public AttackHitboxData projectilePrefab;
     public float projectileSpeed = 5f;
     public float projectileLifetime = 5f;
+    public float spreadInDegrees = 5f;
     public string attackAnimationTrigger;
 
     public override void OnEnter(Enemy enemy)
@@ -51,10 +52,13 @@ public class SingleBulletAttackState : AIState
 
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        Vector3 attackDir = (player.position - enemy.transform.position).normalized;
+        Vector2 attackDir = ((Vector2)player.position - (Vector2)enemy.transform.position).normalized;
+        float angle = Random.Range(-spreadInDegrees, spreadInDegrees);
+
+        
         AttackHitboxData projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
         projectile.speed = projectileSpeed;
-        projectile.direction = new Vector2(attackDir.x, attackDir.y);
+        projectile.direction = Quaternion.Euler(0, 0, angle) * attackDir;
         projectile.maxLifetime = projectileLifetime;
         projectile.damage = 1;
     }

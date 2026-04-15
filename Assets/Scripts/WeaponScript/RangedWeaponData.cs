@@ -21,8 +21,10 @@ public class RangedWeaponData : WeaponData
             projectile.speed = bulletSpeed;
             projectile.direction = new Vector2(firePoint.right.x, firePoint.right.y).normalized;
             projectile.maxLifetime = attackLifetime;
-            projectile.damage = damage;
+            projectile.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
             projectile.knockback = knockback;
+            projectile.destroyOnHit = true;
+            projectile.tagToHit = "Enemy";
 
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
@@ -35,8 +37,6 @@ public class RangedWeaponData : WeaponData
 
             Destroy(projectile.gameObject, attackLifetime);
         }
-
-        
     }
 
     private IEnumerator DisableHitbox(Collider2D hitbox, float delay)

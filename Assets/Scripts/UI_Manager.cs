@@ -12,12 +12,12 @@ public class UI_Manager : MonoBehaviour
     
     void Start()
     {
-        StatsManager.Instance.currentHP = StatsManager.Instance.maxHP;
+        StatsManager.Instance.currentHP = StatsManager.Instance.maxHealth.value;
     }
 
     // Update is called once per frame
     void Update()
     {
-        TextHP.text = "HP: " + StatsManager.Instance.currentHP + "/" + StatsManager.Instance.maxHP;
+        TextHP.text = "HP: " + StatsManager.Instance.currentHP + "/" + StatsManager.Instance.maxHealth.value;
     }
 }

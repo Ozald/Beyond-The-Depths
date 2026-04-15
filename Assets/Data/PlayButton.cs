@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-
-
 public class PlayButton : MonoBehaviour
 {
     // change the scene name later once we have it.
@@ -12,15 +10,28 @@ public class PlayButton : MonoBehaviour
     public Button yourButton;
     public Canvas mainMenu;
     public Canvas settings;
+    public Animator fadeAnimator;
 
     void Start()
     {
+        fadeAnimator = Fade.instance.GetComponent<Animator>();
         yourButton.onClick.AddListener(TaskOnClick);
     }
 
     void TaskOnClick()
     {
         Debug.Log("You have clicked the button!");
+        StartCoroutine(FadeTransition());
+    }
+
+    private IEnumerator FadeTransition()
+    {
+        fadeAnimator.SetTrigger("FadeOut");
+
+        // Wait for animation to finish
+        yield return new WaitForSecondsRealtime(1f);
+
         SceneManager.LoadScene(sceneName);
     }
+
 }

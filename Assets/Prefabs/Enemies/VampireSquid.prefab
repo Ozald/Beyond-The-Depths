@@ -59,8 +59,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 567007121
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &1245081454075215939
 MonoBehaviour:
@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 2777718196688764207}
   - component: {fileID: 7624988931635914483}
   - component: {fileID: -397206766633316036}
+  - component: {fileID: 3982951709205138167}
   m_Layer: 7
   m_Name: VampireSquid
   m_TagString: Enemy
@@ -465,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 8b5a6ff04d6e55541978449eff4f6d64, type: 2}
   flashMaterial: {fileID: 2100000, guid: 433e791fb3efde643b72301832499cf3, type: 2}
+  HP_Drop: {fileID: 2415940918555332364, guid: 5be237c1cdda17f4ca6e281204e2256b, type: 3}
   currentHP: 0
 --- !u!114 &-397206766633316036
 MonoBehaviour:
@@ -481,6 +483,44 @@ MonoBehaviour:
   shadowPrefab: {fileID: 6016523607786192960, guid: 59a92a05bc3e12d4996a06516f4e8aca, type: 3}
   offset: {x: 0, y: -0.4, z: 0}
   scale: {x: 0.7, y: 0.3, z: 1}
+  currentShadow: {fileID: 0}
+--- !u!114 &3982951709205138167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016624854893773111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 0000000091d7cb21
+  m_ShapePath:
+  - {x: -0.36419702, y: -0.43471014, z: 0}
+  - {x: -0.27362275, y: 0.1364986, z: 0}
+  - {x: -0.38592148, y: 0.15477976, z: 0}
+  - {x: -0.37808657, y: 0.28535965, z: 0}
+  - {x: -0.34069228, y: 0.40337095, z: 0}
+  - {x: -0.23444867, y: 0.4525019, z: 0}
+  - {x: 0.21272421, y: 0.45560277, z: 0}
+  - {x: 0.37405348, y: 0.36109596, z: 0}
+  - {x: 0.37927675, y: 0.133887, z: 0}
+  - {x: 0.2748127, y: 0.1260522, z: 0}
+  - {x: 0.36419725, y: -0.43732166, z: 0}
+  m_ShapePathHash: 2001674119
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -120408
+  m_LocalBounds:
+    m_Center: {x: -0.003322363, y: 0.009140551, z: 0}
+    m_Extent: {x: 0.38259912, y: 0.4464622, z: 0}
 --- !u!1 &5513548699939915809
 GameObject:
   m_ObjectHideFlags: 0

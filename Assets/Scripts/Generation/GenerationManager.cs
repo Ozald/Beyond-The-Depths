@@ -33,14 +33,6 @@ public class GenerationManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {   
-        #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Y))
-            GenerateFloorLayout();
-        #endif
-    }
-
     void GenerateFloorLayout()
     {
         List<Connectable> roomCollection = new List<Connectable>(FindObjectsByType<Connectable>(FindObjectsSortMode.None));

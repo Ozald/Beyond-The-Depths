@@ -1,14 +1,17 @@
 using Pathfinding;
 using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemyHP : MonoBehaviour
 {
     public EnemyData enemyData;
     public Material flashMaterial;
+    public GameObject HP_Drop;
 
     [SerializeField] public int currentHP;
-    private float timeSinceLastHit;
+    public float timeSinceLastHit { private set; get; }
 
     void Start()
     {
@@ -20,57 +23,6 @@ public class EnemyHP : MonoBehaviour
     {
         if (Time.timeScale > 0)
             timeSinceLastHit += Time.deltaTime;
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            Destroy(collision.gameObject, 0.05f);
-
-            if (timeSinceLastHit < enemyData.invincibilityCooldown)
-                return;
-
-            timeSinceLastHit = 0;
-            AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
-            TakeDamage(damage: projectile.damage, knockback: projectile.knockback);
-            return;
-        }
-
-        /*
-        if ((collision.gameObject.CompareTag("Player") && timeSinceLastHit > enemyData.invincibilityCooldown))
-        {
-            // Find the active child of the player
-            foreach (Transform child in collision.transform)
-            {
-                if (child.gameObject.activeInHierarchy)
-                {
-                    Weapon weapon = child.GetComponent<Weapon>();
-                    // Check if any of its grandchildren are active
-                    foreach (Transform grandchild in child)
-                    {
-                        if (weapon != null && weapon.weaponData != null)
-                        {
-                            timeSinceLastHit = 0;
-
-                            // Use damage from WeaponData
-                            int damageAmount = weapon.weaponData.damage;
-                            TakeDamage(damage: damageAmount);
-
-                            return;
-                        }
-                    }
-                }
-            }
-        }*/
-
-        if (collision.gameObject.CompareTag("Weapon") && timeSinceLastHit > enemyData.invincibilityCooldown)
-        {
-            timeSinceLastHit = 0;
-            AttackHitboxData attack = collision.GetComponent<AttackHitboxData>();
-            TakeDamage(attack.damage, attack.knockback);
-            return;
-        }
     }
 
     /********************************************************************/
@@ -91,11 +43,8 @@ public class EnemyHP : MonoBehaviour
             AudioManager.PlayOneShot(sound: AudioManager.GetAudioData().enemyDeath, delay: 0.3f);
             Die();
         }
-        else
-        {
-            StopCoroutine(InvincFrameVisualizer());
-            StartCoroutine(InvincFrameVisualizer());
-        }
+
+        timeSinceLastHit = 0;
     }
 
     public IEnumerator FlashEnemy()
@@ -130,22 +79,17 @@ public class EnemyHP : MonoBehaviour
 
         rb.freezeRotation = false;
         rb.velocity = knockbackDir * 15f;
-        rb.AddTorque(100f);
+        rb.angularVelocity = 1000f;
 
+        gameObject.layer = LayerMask.NameToLayer("DeadEnemy");
+
+        float dropChance = Random.value;
+
+        if (dropChance <= 1)
+        {
+            Instantiate(HP_Drop, transform.position, Quaternion.identity);
+        }
+        
         Destroy(gameObject, 0.7f);
-    }
-
-    private IEnumerator InvincFrameVisualizer()
-    {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        // SpriteRenderer shadow = GetComponent<DropShadow>().currentShadow.GetComponent<SpriteRenderer>();
-
-        yield return new WaitForSeconds(enemyData.invincibilityCooldown * 0.1f);
-        Color currColor = spriteRenderer.color;
-        spriteRenderer.color = new Color(currColor.r, currColor.g, currColor.b, 0.8f);
-
-        yield return new WaitForSeconds(enemyData.invincibilityCooldown * 0.9f);
-
-        spriteRenderer.color = currColor;
     }
 }

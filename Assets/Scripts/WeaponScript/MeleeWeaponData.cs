@@ -13,15 +13,17 @@ public class MeleeWeaponData : WeaponData
 
         if (hitbox != null)
         {
-            AttackHitboxData attack = Instantiate(hitbox.gameObject, player.transform.position, PlayerInventory.instance.playerInv[0].transform.rotation).GetComponentInChildren<AttackHitboxData>();
+            AttackHitboxData attack = Instantiate(hitbox.gameObject, player.transform.position, PlayerInventory.instance.playerInv[0].transform.rotation * Quaternion.Euler(0, 0, 90)).GetComponentInChildren<AttackHitboxData>();
             if (attack == null)
                 return;
 
             attack.speed = 0;
             attack.direction = Vector3.zero;
             attack.maxLifetime = attackLifetime;
-            attack.damage = damage;
+            attack.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
             attack.knockback = knockback;
+            attack.destroyOnHit = false;
+            attack.tagToHit = "Enemy";
         }
     }
 }
