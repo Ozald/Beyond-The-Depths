@@ -42,9 +42,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5438212432343439849}
   - component: {fileID: 6702341452859593621}
-  - component: {fileID: 6978842445096223699}
   - component: {fileID: 4678171124529771424}
   - component: {fileID: 4197427295480809018}
+  - component: {fileID: 8807847291917388045}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Weapon
@@ -119,24 +119,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6978842445096223699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6399301053366600014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f68545c0f89a094fafa6f9f4a6aff27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  direction: {x: 0, y: 0}
-  maxLifetime: 0
-  damage: 0
-  knockback: 0
-  tagToHit: Enemy
 --- !u!95 &4678171124529771424
 Animator:
   serializedVersion: 5
@@ -203,3 +185,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36806342, y: 1.0684688}
   m_EdgeRadius: 0
+--- !u!114 &8807847291917388045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399301053366600014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f68545c0f89a094fafa6f9f4a6aff27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  direction: {x: 0, y: 0}
+  maxLifetime: 0
+  damage: 0
+  knockback: 0
+  destroyOnHit: 0
+  tagToHit: 

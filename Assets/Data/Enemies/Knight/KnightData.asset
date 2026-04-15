@@ -11,9 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
   m_Name: KnightData
-  m_EditorClassIdentifier: 
-  HP: 7
-  invincibilityCooldown: 1
+  m_EditorClassIdentifier:
+  HP: 6
+  invincibilityCooldown: 0.1
   initalState: {fileID: 11400000, guid: 1635ed160d42c5d449bef951adbceec9, type: 2}
   transitions:
   - transitionMode: 0

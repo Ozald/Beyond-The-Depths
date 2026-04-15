@@ -47,6 +47,6 @@ MonoBehaviour:
   - enemy: {fileID: 2777718196688764207, guid: 5dce840bb23a1c64a891c94775765290, type: 3}
     weight: 3
   - enemy: {fileID: 2777718196688764207, guid: 43be780d3922641478f0b3296ee70dc8, type: 3}
-    weight: 5
+    weight: 7
   - enemy: {fileID: 2777718196688764207, guid: 1f278f8d19fe2d548a6346891e5da24a, type: 3}
     weight: 1
