@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 2777718196688764207}
   - component: {fileID: 7624988931635914483}
   - component: {fileID: -6837357269974807532}
+  - component: {fileID: 5137407194213618630}
   m_Layer: 7
   m_Name: Apprentice
   m_TagString: Enemy
@@ -636,6 +637,47 @@ MonoBehaviour:
   offset: {x: 0, y: -0.4, z: 0}
   scale: {x: 0.7, y: 0.3, z: 1}
   currentShadow: {fileID: 0}
+--- !u!114 &5137407194213618630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016624854893773111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 0000000091d7cb21
+  m_ShapePath:
+  - {x: -0.67928505, y: -0.4464373, z: 0}
+  - {x: -0.77308464, y: -0.34650707, z: 0}
+  - {x: -0.7642977, y: -0.23667318, z: 0}
+  - {x: -0.57538366, y: 0.00056800246, z: 0}
+  - {x: -0.27224207, y: 0.031321466, z: 0}
+  - {x: -0.18437505, y: 0.15872878, z: 0}
+  - {x: 0.052865982, y: 0.24659586, z: 0}
+  - {x: 0.56842756, y: 0.22237611, z: 0}
+  - {x: 0.89895296, y: 0.090575516, z: 0}
+  - {x: 0.9139638, y: -0.18395293, z: 0}
+  - {x: 0.42630148, y: -0.24545991, z: 0}
+  - {x: 0.4175148, y: -0.45194757, z: 0}
+  - {x: 0.26630974, y: -0.5650579, z: 0}
+  - {x: -0.21073508, y: -0.72433555, z: 0}
+  - {x: -0.52266335, y: -0.5925349, z: 0}
+  m_ShapePathHash: 645174743
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -124966
+  m_LocalBounds:
+    m_Center: {x: 0.07043958, y: -0.23886985, z: 0}
+    m_Extent: {x: 0.8435242, y: 0.4854657, z: 0}
 --- !u!1 &5878596193160607993
 GameObject:
   m_ObjectHideFlags: 0

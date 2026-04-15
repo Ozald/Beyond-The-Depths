@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 2777718196688764207}
   - component: {fileID: 7624988931635914483}
   - component: {fileID: -1546575100898876370}
+  - component: {fileID: 8790464425831720674}
   m_Layer: 7
   m_Name: Wizard
   m_TagString: Enemy
@@ -636,6 +637,42 @@ MonoBehaviour:
   offset: {x: 0, y: -0.5, z: 0}
   scale: {x: 0.7, y: 0.3, z: 1}
   currentShadow: {fileID: 0}
+--- !u!114 &8790464425831720674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016624854893773111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 0000000091d7cb21
+  m_ShapePath:
+  - {x: -0.376379, y: -0.44764972, z: 0}
+  - {x: -0.47326374, y: -0.28271216, z: 0}
+  - {x: -0.4450395, y: -0.014394999, z: 0}
+  - {x: -0.20163465, y: 0.7185098, z: 0}
+  - {x: 0.0034766197, y: 0.9245579, z: 0}
+  - {x: 0.20321369, y: 0.73670524, z: 0}
+  - {x: 0.49085665, y: -0.09124231, z: 0}
+  - {x: 0.4730091, y: -0.28045374, z: 0}
+  - {x: 0.38843298, y: -0.4398765, z: 0}
+  - {x: 0.0032601357, y: -0.50403607, z: 0}
+  m_ShapePathHash: 1168099265
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -116408
+  m_LocalBounds:
+    m_Center: {x: 0.0087964535, y: 0.21026093, z: 0}
+    m_Extent: {x: 0.4820602, y: 0.714297, z: 0}
 --- !u!1 &5878596193160607993
 GameObject:
   m_ObjectHideFlags: 0

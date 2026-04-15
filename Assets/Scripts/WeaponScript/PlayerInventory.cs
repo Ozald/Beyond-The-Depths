@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviour
             //PickupWeapon();
         }
 
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("q"))
         {
             
             if (playerInv.Count > 1)
@@ -43,7 +43,7 @@ public class PlayerInventory : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Space pressed");
             if (playerInv.Count == 0) return;

@@ -22,6 +22,8 @@ public class MeleeWeaponData : WeaponData
             attack.maxLifetime = attackLifetime;
             attack.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
             attack.knockback = knockback;
+            attack.destroyOnHit = false;
+            attack.tagToHit = "Enemy";
         }
     }
 }

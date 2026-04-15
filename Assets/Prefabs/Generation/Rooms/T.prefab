@@ -9563,8 +9563,8 @@ GameObject:
   m_Component:
   - component: {fileID: 401915535198215030}
   - component: {fileID: 8735538508737069476}
-  - component: {fileID: 4408428977788479220}
   - component: {fileID: 5288363887424236422}
+  - component: {fileID: 3546957230088159694}
   m_Layer: 6
   m_Name: T
   m_TagString: Untagged
@@ -9610,8 +9610,35 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!61 &4408428977788479220
-BoxCollider2D:
+--- !u!114 &5288363887424236422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487524990654647069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b343210a575bfb49b888181c55a01a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
+  leftDoor: {fileID: 4402095817519900997}
+  rightDoor: {fileID: 8328090303856473223}
+  upDoor: {fileID: 664387678951040707}
+  downDoor: {fileID: 1708380056333844997}
+  enemySpawnpoints:
+  - {fileID: 2684866984886924244}
+  - {fileID: 2663861145950739822}
+  - {fileID: 138152100323654922}
+  - {fileID: 146272619868082168}
+  - {fileID: 7412107736963631621}
+  - {fileID: 395891051937416994}
+  roomType: 0
+  hasBeenExplored: 0
+  spawnedEnemies: []
+--- !u!60 &3546957230088159694
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9642,7 +9669,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2195549, y: -2.5308352}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9652,36 +9679,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 22.520401, y: 17.12646}
-  m_EdgeRadius: 0
---- !u!114 &5288363887424236422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8487524990654647069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b343210a575bfb49b888181c55a01a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelData: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
-  leftDoor: {fileID: 4402095817519900997}
-  rightDoor: {fileID: 8328090303856473223}
-  upDoor: {fileID: 664387678951040707}
-  downDoor: {fileID: 1708380056333844997}
-  enemySpawnpoints:
-  - {fileID: 2684866984886924244}
-  - {fileID: 2663861145950739822}
-  - {fileID: 138152100323654922}
-  - {fileID: 146272619868082168}
-  - {fileID: 7412107736963631621}
-  - {fileID: 395891051937416994}
-  roomType: 0
-  hasBeenExplored: 0
-  spawnedEnemies: []
+  m_Points:
+    m_Paths:
+    - - {x: 12, y: 6}
+      - {x: -11, y: 6}
+      - {x: -11, y: -11}
+      - {x: 12, y: -11}
+  m_UseDelaunayMesh: 0
 --- !u!1 &8656612150744855330
 GameObject:
   m_ObjectHideFlags: 0
