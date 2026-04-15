@@ -703,7 +703,7 @@ MonoBehaviour:
   mapHeight: 11
   maxRoomsPerBranch: 8
   extraHallsChance: 0.055
-  specialRoomsChance: 0.0225
+  specialRoomsChance: 0.1
   roomOffset: 25
   map: {fileID: 0}
 --- !u!4 &409894598
