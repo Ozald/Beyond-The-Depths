@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ac1adfc4318b34fa968975f230e1d3, type: 3}
   m_Name: RangedAttack
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 4407160946478670164, guid: 87a4ce0b787aa2845ac9cdfe48792914, type: 3}
+  projectilePrefab: {fileID: 4407160946478670164, guid: 11f6ab6f834046f4f8d3ffdea10e3b22, type: 3}
   projectileSpeed: 5
   projectileLifetime: 5
   spreadInDegrees: 15

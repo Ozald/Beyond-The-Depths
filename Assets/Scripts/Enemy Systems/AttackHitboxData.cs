@@ -56,7 +56,5 @@ public class AttackHitboxData : MonoBehaviour
             if (destroyOnHit)
                 Destroy(gameObject);
         }
-        else if (destroyOnHit && collider.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
-            Destroy(gameObject);
     }
 }
