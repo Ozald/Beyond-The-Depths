@@ -85,7 +85,7 @@ public class EnemyHP : MonoBehaviour
 
         float dropChance = Random.value;
 
-        if (dropChance <= 1)
+        if (dropChance <= 0.1)
         {
             Instantiate(HP_Drop, transform.position, Quaternion.identity);
         }

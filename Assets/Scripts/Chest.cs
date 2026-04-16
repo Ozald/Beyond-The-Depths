@@ -11,10 +11,14 @@ public class Chest : Interactable
         if (!isOpen)
         {
             isOpen = true;
+            Destroy(this);
 
-            this.gameObject.SetActive(false);
+            Destroy(transform.GetChild(0).gameObject);
+
+            //this.gameObject.SetActive(false);
             int randomIndex = Random.Range(0, weaponList.Count);
             Instantiate(weaponList[randomIndex], this.gameObject.transform.position, this.gameObject.transform.rotation);
+            
         }
     }
 
