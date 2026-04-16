@@ -7,32 +7,29 @@ public class Chest : Interactable
     public List<Weapon> weaponList = new List<Weapon>();
     public bool isOpen = false;
     public Animator animator;
+
     public override void Interact(PlayerInteraction player)
     {
         if (!isOpen)
         {
             isOpen = true;
-            animator.SetBool("isOpen", true);
-            Destroy(this);
 
-            Destroy(transform.GetChild(0).gameObject);
+            this.enabled = false;
 
-            //this.gameObject.SetActive(false);
-            int randomIndex = Random.Range(0, weaponList.Count);
-            Instantiate(weaponList[randomIndex], this.gameObject.transform.position, this.gameObject.transform.rotation);
-            
+            animator.SetBool("IsOpen", true);
+
+            StartCoroutine(OpenChestRoutine());
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private IEnumerator OpenChestRoutine()
     {
-        
-    }
+        yield return new WaitForSeconds(0.40f);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        int randomIndex = Random.Range(0, weaponList.Count);
+
+        Instantiate(
+            weaponList[randomIndex], transform.position, transform.rotation);
+        Destroy(this);
     }
 }
