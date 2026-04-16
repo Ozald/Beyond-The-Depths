@@ -112,6 +112,7 @@ public class PlayerInventory : MonoBehaviour
             Weapon droppedWeapon = playerInv[0];
 
             droppedWeapon.transform.position = nearbyWeapon.transform.position;
+            droppedWeapon.transform.rotation = new Quaternion(0, 0, 0, 0);
             droppedWeapon.gameObject.SetActive(true);
 
             playerInv[0] = nearbyWeapon;

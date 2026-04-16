@@ -57,5 +57,15 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = true;
         else if (mouseDir.x > 0.01f)
             spriteRenderer.flipX = false;
+
+        float speed = rb2d.velocity.magnitude;
+
+        if (speed < 0.05f)
+            speed = 0f;
+
+        animator.SetFloat("Speed", speed);
     }
+
+
+    
 }
