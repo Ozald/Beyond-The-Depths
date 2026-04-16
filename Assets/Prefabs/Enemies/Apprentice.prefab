@@ -59,8 +59,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 567007121
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &1594794802436817467
 MonoBehaviour:
@@ -214,7 +214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.6}
+  m_AnchoredPosition: {x: 0, y: 0.4}
   m_SizeDelta: {x: 100, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &700176207394567788
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7624988931635914483}
-  offset: {x: 0, y: 0.6, z: 0}
+  offset: {x: 0, y: 0.4, z: 0}
 --- !u!1 &3291792406836196705
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 2777718196688764207}
   - component: {fileID: 7624988931635914483}
   - component: {fileID: -6837357269974807532}
+  - component: {fileID: 5137407194213618630}
   m_Layer: 7
   m_Name: Apprentice
   m_TagString: Enemy
@@ -413,8 +414,8 @@ SpriteRenderer:
   m_SortingLayerID: 567007121
   m_SortingLayer: 1
   m_SortingOrder: 5
-  m_Sprite: {fileID: 2006677336, guid: 5a0483ed3d41a44448f944c1c8156321, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.17201257, a: 1}
+  m_Sprite: {fileID: -1825400870, guid: 80c2b7f394f059b40af972aa1d820954, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -483,18 +484,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0032486916, y: -0.059855953}
+  m_Offset: {x: 0.07316661, y: -0.22988293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.72063255, y: 0.6918771}
+  m_Size: {x: 1.6676993, y: 0.9238766}
   m_EdgeRadius: 0
 --- !u!95 &3554006687875314784
 Animator:
@@ -506,7 +507,7 @@ Animator:
   m_GameObject: {fileID: 5016624854893773111}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 47c905d7b3d99cd4cbc2d6c4ecd49d36, type: 2}
+  m_Controller: {fileID: 9100000, guid: 05475f04163050841ac633494c7ef054, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -618,6 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: b17f04565a0f0b746bac4906fcf45416, type: 2}
   flashMaterial: {fileID: 2100000, guid: 433e791fb3efde643b72301832499cf3, type: 2}
+  HP_Drop: {fileID: 2415940918555332364, guid: 5be237c1cdda17f4ca6e281204e2256b, type: 3}
   currentHP: 0
 --- !u!114 &-6837357269974807532
 MonoBehaviour:
@@ -634,6 +636,48 @@ MonoBehaviour:
   shadowPrefab: {fileID: 6016523607786192960, guid: 59a92a05bc3e12d4996a06516f4e8aca, type: 3}
   offset: {x: 0, y: -0.4, z: 0}
   scale: {x: 0.7, y: 0.3, z: 1}
+  currentShadow: {fileID: 0}
+--- !u!114 &5137407194213618630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016624854893773111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 0000000091d7cb21
+  m_ShapePath:
+  - {x: -0.67928505, y: -0.4464373, z: 0}
+  - {x: -0.77308464, y: -0.34650707, z: 0}
+  - {x: -0.7642977, y: -0.23667318, z: 0}
+  - {x: -0.57538366, y: 0.00056800246, z: 0}
+  - {x: -0.27224207, y: 0.031321466, z: 0}
+  - {x: -0.18437505, y: 0.15872878, z: 0}
+  - {x: 0.052865982, y: 0.24659586, z: 0}
+  - {x: 0.56842756, y: 0.22237611, z: 0}
+  - {x: 0.89895296, y: 0.090575516, z: 0}
+  - {x: 0.9139638, y: -0.18395293, z: 0}
+  - {x: 0.42630148, y: -0.24545991, z: 0}
+  - {x: 0.4175148, y: -0.45194757, z: 0}
+  - {x: 0.26630974, y: -0.5650579, z: 0}
+  - {x: -0.21073508, y: -0.72433555, z: 0}
+  - {x: -0.52266335, y: -0.5925349, z: 0}
+  m_ShapePathHash: 645174743
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -124966
+  m_LocalBounds:
+    m_Center: {x: 0.07043958, y: -0.23886985, z: 0}
+    m_Extent: {x: 0.8435242, y: 0.4854657, z: 0}
 --- !u!1 &5878596193160607993
 GameObject:
   m_ObjectHideFlags: 0

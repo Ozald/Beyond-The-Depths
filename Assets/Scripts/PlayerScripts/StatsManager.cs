@@ -1,15 +1,56 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+
+[Serializable]
+public struct IntegerStat
+{
+    public int baseValue;
+    public int bonusValue;
+    public int value;
+
+    public void Update(int increment)
+    {
+        bonusValue += increment;
+        value = baseValue + bonusValue;
+    }
+}
+
+[Serializable]
+public struct FloatStat
+{
+    public float baseValue;
+    public float bonusValue;
+    public float value;
+
+    public void Update(float increment)
+    {
+        bonusValue += increment;
+        value = baseValue + bonusValue;
+    }
+}
 
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
+    public Animator fadeAnimator;
 
-    [Header("Health")]
-    public int maxHP;
+    [FormerlySerializedAs("health")] [Header("Health")] 
+    public IntegerStat maxHealth;
+    
     public int currentHP;
+    
+    [Header("Speed")] 
+    public FloatStat speed;
+
+    [Header("Damage")] 
+    public IntegerStat bonusDamage;
+
+    [Header("Defense")]
+    public IntegerStat defense;
 
     [Header("CashMoneyFlow")]
     public int doubloons;
@@ -31,8 +72,15 @@ public class StatsManager : MonoBehaviour
 
     void Start()
     {
-        currentHP = maxHP;
+        maxHealth.Update(0);
+        speed.Update(0);
+        bonusDamage.Update(0);
+        defense.Update(0);
+        
+        currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
+
+        fadeAnimator = Fade.instance.GetComponent<Animator>();
     }
 
     void Update()
@@ -41,7 +89,7 @@ public class StatsManager : MonoBehaviour
             timeSinceLastHit += Time.deltaTime;
     }
 
-    public static void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (Instance.timeSinceLastHit < Instance.invincibilityCooldown)
             return;
@@ -56,13 +104,34 @@ public class StatsManager : MonoBehaviour
         if (Instance.currentHP <= 0)
         {
             Debug.Log("PLAYER HAS DIED");
-            Destroy(Instance.gameObject);
+            Die();
         }
         else
         {
             Instance.StopCoroutine(Instance.InvincFrameVisualizer());
             Instance.StartCoroutine(Instance.InvincFrameVisualizer());
         }
+    }
+
+    void Die()
+    {
+        Time.timeScale = 0;
+        StartCoroutine(FadeTransition());
+    }
+
+    private IEnumerator FadeTransition()
+    {
+        fadeAnimator.SetTrigger("FadeOut");
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine(ReturnToMenu());
+    }
+
+    private IEnumerator ReturnToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        Debug.Log("Returned to menu");
+        yield return new WaitForSecondsRealtime(0.2f);
     }
 
     // Attack Damage

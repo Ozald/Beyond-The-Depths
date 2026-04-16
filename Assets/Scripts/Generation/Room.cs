@@ -1,7 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
 
 /*
 Todo: Detection to remove enemies so that a room can be
@@ -113,7 +116,31 @@ public class Room : Connectable
         if (isOrigin)
             roomType = RoomType.StartRoom;
     }
-    
+
+    void Start()
+    {
+        StartCoroutine(initRoom());
+
+        if (enemySpawnpoints.Count() == 0)
+            OpenDoors();
+    }
+
+    private IEnumerator initRoom()
+    {
+        yield return null;
+
+        TilemapCollider2D[] tilemaps = GetComponentsInChildren<TilemapCollider2D>();
+        foreach (TilemapCollider2D tm in tilemaps)
+        {
+            CompositeCollider2D compColl = tm.GetComponent<CompositeCollider2D>();
+            tm.usedByComposite = false;
+            tm.ProcessTilemapChanges();
+            tm.usedByComposite = true;
+        }
+
+        Physics2D.SyncTransforms();
+    }
+
     void Update()
     {
         if(EnemyManager.instance.currentRoom == this 

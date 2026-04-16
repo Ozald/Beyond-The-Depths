@@ -8,6 +8,7 @@ public class MultiBulletAttackState : AIState
     public AttackHitboxData projectilePrefab;
     public float projectileSpeed = 5f;
     public float projectileLifetime = 5f;
+    public float spreadInDegrees = 45f;
     public string attackAnimationTrigger;
 
     public override void OnEnter(Enemy enemy)
@@ -55,8 +56,8 @@ public class MultiBulletAttackState : AIState
         Vector3[] attackDirs =
         {
             playerDir,
-            Quaternion.Euler(0f, 0f, -45f) * playerDir,
-            Quaternion.Euler(0f, 0f, 45f) * playerDir
+            Quaternion.Euler(0f, 0f, -spreadInDegrees) * playerDir,
+            Quaternion.Euler(0f, 0f, spreadInDegrees) * playerDir
         };
 
         foreach (Vector3 attackDir in attackDirs)
