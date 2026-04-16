@@ -6,11 +6,13 @@ public class Chest : Interactable
 {
     public List<Weapon> weaponList = new List<Weapon>();
     public bool isOpen = false;
+    public Animator animator;
     public override void Interact(PlayerInteraction player)
     {
         if (!isOpen)
         {
             isOpen = true;
+            animator.SetBool("isOpen", true);
             Destroy(this);
 
             Destroy(transform.GetChild(0).gameObject);
