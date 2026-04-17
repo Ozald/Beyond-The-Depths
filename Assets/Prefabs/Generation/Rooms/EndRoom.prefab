@@ -365,16 +365,7 @@ MonoBehaviour:
   upDoor: {fileID: 1463088097816225704}
   downDoor: {fileID: 8938529282497132560}
   enemySpawnpoints:
-  - {fileID: 5378635588575833438}
-  - {fileID: 2852713374285572091}
-  - {fileID: 9170488426325682265}
-  - {fileID: 8162725124624914940}
-  - {fileID: 7513969349313324398}
-  - {fileID: 4190809119989611488}
-  - {fileID: 213204582745795781}
-  - {fileID: 5722459635519423902}
-  - {fileID: 1918228451178647518}
-  - {fileID: 6929674953572163289}
+  - {fileID: 0}
   roomType: 0
   hasBeenExplored: 0
   spawnedEnemies: []
