@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
         instance.currentBGMusic.start();
     }
 
-    public static void StopBGMusic(EventReference music)
+    public static void StopCurrentBGMusic()
     {
         instance.currentBGMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
