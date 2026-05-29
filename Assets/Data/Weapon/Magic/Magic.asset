@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 2
   knockback: 1
   bulletSpeed: 10
-  bulletPrefab: {fileID: 9048629083875518825, guid: 59d6001652a90cd4396b1005969fadaf, type: 3}
+  bulletPrefab: {fileID: 1056719614797597177, guid: 2c3501c4b8c2fe44a8d3e48c25415243, type: 3}

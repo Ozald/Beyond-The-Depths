@@ -16,4 +16,4 @@ MonoBehaviour:
   attackLifetime: 0.7
   damage: 2
   knockback: 3
-  hitbox: {fileID: 1576376823788937087, guid: 36cdd97ad5526be44a87b8dfbbec80b1, type: 3}
+  hitbox: {fileID: 1576376823788937087, guid: 544c09767717b864ca1701b86db94b93, type: 3}

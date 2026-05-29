@@ -70,6 +70,9 @@ public class EightWayAttackState : AIState
             projectile.direction = new Vector2(attack.x, attack.y).normalized;
             projectile.maxLifetime = projectileLifetime;
             projectile.damage = 1;
+
+            float angle = Mathf.Atan2(attack.y, attack.x) * Mathf.Rad2Deg;
+            projectile.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         }
     }
 }

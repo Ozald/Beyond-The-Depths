@@ -129,7 +129,7 @@ public class StatsManager : MonoBehaviour
     private IEnumerator ReturnToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene("DeathScreen");
         Debug.Log("Returned to menu");
         yield return new WaitForSecondsRealtime(0.2f);
     }

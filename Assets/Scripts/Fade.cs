@@ -24,7 +24,6 @@ public class Fade : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 👇 THIS is what you want
         animator.SetTrigger("FadeIn");
     }
 

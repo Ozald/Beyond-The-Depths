@@ -379,6 +379,19 @@ public class TileGraph : MonoBehaviour
         {
             Room end = Instantiate(roomTypes.GetEndRoom().gameObject, farthest.transform.position, Quaternion.identity).GetComponent<Room>();
 
+            // Not having this almost screwed us over 3 hours before demo
+            if(end.leftDoor is not null)
+                end.leftDoor.parentRoom = end;
+            
+            if(end.rightDoor is not null)
+                end.rightDoor.parentRoom = end;
+            
+            if (end.upDoor is not null)
+                end.upDoor.parentRoom = end;
+            
+            if (end.downDoor is not null)
+                end.downDoor.parentRoom = end;
+            
             if (farthest.leftDoor.connectedDoor is not null)
             {
                 farthest.leftDoor.connectedDoor.connectedDoor = end.leftDoor;
