@@ -97,10 +97,10 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639118215300578613
+  lastModified: 639166079196887513
   FileSizes:
   - Name: Desktop
-    Value: 10176
+    Value: 10336
   Exists: 1
 --- !u!114 &-2698998588985535172
 MonoBehaviour:
@@ -120,6 +120,33 @@ MonoBehaviour:
     Data2: 1204257837
     Data3: 819313578
     Data4: 38124465
+  Banks:
+  - {fileID: 972544075647684114}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1013379916409263155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/SFX Slider Change
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/SFX Slider Change
+  Guid:
+    Data1: 17860141
+    Data2: 1244163545
+    Data3: 88725675
+    Data4: -2068181633
   Banks:
   - {fileID: 972544075647684114}
   IsStream: 0
@@ -152,12 +179,13 @@ MonoBehaviour:
   - {fileID: -8072437539736812807}
   - {fileID: -2698998588985535172}
   - {fileID: -7315655261927124999}
+  - {fileID: -1013379916409263155}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4334583495900658831}
   StringsBanks:
   - {fileID: 7535056699383527469}
-  cacheTime: 639156757467237334
+  cacheTime: 639166079197109370
   cacheVersion: 131635
 --- !u!114 &972544075647684114
 MonoBehaviour:
@@ -174,10 +202,10 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639156750351097226
+  lastModified: 639166079197109370
   FileSizes:
   - Name: Desktop
-    Value: 12896
+    Value: 15872
   Exists: 1
 --- !u!114 &1510890313597233453
 MonoBehaviour:
@@ -194,7 +222,7 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639156757467237334
+  lastModified: 639166069959306080
   FileSizes:
   - Name: Desktop
     Value: 2336576
@@ -267,8 +295,8 @@ MonoBehaviour:
   Path: Assets/FMOD Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639156750350808740
+  lastModified: 639166079196907747
   FileSizes:
   - Name: Desktop
-    Value: 1150
+    Value: 1232
   Exists: 1

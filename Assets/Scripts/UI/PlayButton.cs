@@ -31,6 +31,7 @@ public class PlayButton : MonoBehaviour
         // Wait for animation to finish
         yield return new WaitForSecondsRealtime(1f);
 
+        AudioManager.StopCurrentBGMusic();
         SceneManager.LoadScene(sceneName);
     }
 
