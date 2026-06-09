@@ -26,6 +26,13 @@ MonoBehaviour:
       Data3: 148139410
       Data4: 389755042
     Path: event:/Music/Floor1 BGMusic
+  sfxSliderChange:
+    Guid:
+      Data1: 17860141
+      Data2: 1244163545
+      Data3: 88725675
+      Data4: -2068181633
+    Path: event:/SFX/SFX Slider Change
   playerDamageTaken:
     Guid:
       Data1: -2129321489
