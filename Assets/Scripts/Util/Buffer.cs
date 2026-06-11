@@ -83,6 +83,37 @@ public class Buffer<T>
     }
 
     /// <summary>
+    /// Removes a certain number of items if possible
+    /// </summary>
+    /// <param name="items">
+    /// The number of items to remove
+    /// </param>
+    /// <param name="reAdd">
+    /// Whether to re-add removed items
+    /// </param>
+    /// <returns>
+    /// A list of removed items
+    /// </returns>
+    public List<T> Remove(int items, bool reAdd = true)
+    {
+        List<T> removed = new List<T>();
+
+        for (int i = 0; i < items; i++)
+        {
+            if (BufferedItems.Count == 0)
+                break;
+            
+            BufferedItem item = BufferedItems.Dequeue();
+            removed.Add(item.Item);
+            
+            if(reAdd)
+                BufferedItems.Enqueue(item);
+        }
+        
+        return removed;
+    }
+
+    /// <summary>
     /// Removes as many items as possible without exceeding
     /// a specified budget value. Removal is still done in
     /// FIFO order. Be careful of item value as an infinite loop
