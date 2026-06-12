@@ -46,6 +46,7 @@ public class ShopInventory : MonoBehaviour
         // still taking money.
         if (player.doubloons >= item.cost)
         {
+            player.doubloons -= item.cost;
             item.quantity--;
             return true;
         }
