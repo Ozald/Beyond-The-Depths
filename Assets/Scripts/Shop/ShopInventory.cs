@@ -16,7 +16,8 @@ public struct ShopItem
 
 /// <summary>
 /// The inventory for a shop. Needs to be
-/// attached to a UI.
+/// attached to a Shop interactable which will
+/// also have the UI attached to it in some way.
 /// </summary>
 public class ShopInventory : MonoBehaviour
 {
