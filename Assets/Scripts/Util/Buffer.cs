@@ -76,7 +76,7 @@ public class Buffer<T>
         
         BufferedItem item = BufferedItems.Dequeue();
         
-        if (reAdd)
+        if (reAdd && item.Item != null)
             BufferedItems.Enqueue(item);
 
         return item.Item;
@@ -106,7 +106,7 @@ public class Buffer<T>
             BufferedItem item = BufferedItems.Dequeue();
             removed.Add(item.Item);
             
-            if(reAdd)
+            if(reAdd && item.Item != null)
                 BufferedItems.Enqueue(item);
         }
         
@@ -139,7 +139,7 @@ public class Buffer<T>
             BufferedItem item = BufferedItems.Dequeue();
             removedValue += item.Value;
         
-            if (reAdd)
+            if (reAdd && item.Item != null)
                 BufferedItems.Enqueue(item);
             
             removed.Add(item.Item);
@@ -174,7 +174,7 @@ public class Buffer<T>
             BufferedItem item = BufferedItems.Dequeue();
             removedValue += item.Value;
         
-            if (reAdd)
+            if (reAdd && item.Item != null)
                 BufferedItems.Enqueue(item);
             
             removed.Add(item.Item);
