@@ -154,6 +154,9 @@ public class Room : Connectable
         if (!other.gameObject.CompareTag("Player"))
             return;
 
+        if(!hasBeenExplored)
+            EnemyAttackManager.instance.Enemies.Clear();
+
         if (hasBeenExplored)
         {
             OpenDoors();
@@ -204,6 +207,7 @@ public class Room : Connectable
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
             EnemyManager.instance.enemyCount++;
+            EnemyAttackManager.instance.Enemies.Add(enemy);
             Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
             
             point.hasSpawned = true;
