@@ -186,6 +186,7 @@ public class Room : Connectable
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
+            spawnpoint.spawnParticles.Play();
 
             if (!enemySpawns.Add(spawnpoint))
                 i--;
