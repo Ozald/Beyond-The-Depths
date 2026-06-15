@@ -194,7 +194,7 @@ public class Room : Connectable
                 i--;
         }
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         
         foreach (Spawnpoint point in enemySpawns)
         {
@@ -203,6 +203,8 @@ public class Room : Connectable
 
             if (point.hasSpawned)
                 continue;
+            
+            yield return new WaitForSeconds(0.25f);
             
             Enemy enemy = levelData.GetEnemy();
             Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
