@@ -8,7 +8,9 @@ public class EnemyAttackManager : MonoBehaviour
     public Queue<Enemy> ApprovedEnemies;
 
     public int MaxAttackingEnemies = 3;
-
+    public float UpdateRate = 0.15f;
+    public float ResetApprovalDelay = 1.75f;
+    
     void Awake()
     {
         instance = this;
@@ -18,8 +20,8 @@ public class EnemyAttackManager : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("UpdateEnemies", 0, 0.15f);
-        InvokeRepeating("ClearApproved", 0, 2f);
+        InvokeRepeating("UpdateEnemies", 0, UpdateRate);
+        InvokeRepeating("ClearApproved", 0, ResetApprovalDelay);
     }
 
     void ClearApproved()
