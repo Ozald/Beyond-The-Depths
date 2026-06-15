@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-class ItemSelector<T> where T : notnull
+public class ItemSelector<T> where T : notnull
 {
     private readonly Random random = new();
     private readonly Dictionary<T, int> entries;

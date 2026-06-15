@@ -1,12 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public struct WeightedItem
+{
+    public Interactable item;
+    public int weight;
+}
+
 public class Chest : Interactable
 {
-    public List<Weapon> weaponList = new List<Weapon>();
+    public WeightedItem[] items;
+    private ItemSelector<Interactable> LootPool;
     public bool isOpen = false;
     public Animator animator;
+
+    void Start()
+    {
+        foreach (WeightedItem item in items)
+            LootPool.AddItem(item.item, item.weight);
+    }
 
     public override void Interact(PlayerInteraction player)
     {
@@ -26,10 +41,9 @@ public class Chest : Interactable
     {
         yield return new WaitForSeconds(0.40f);
 
-        int randomIndex = Random.Range(0, weaponList.Count);
+        Interactable item = LootPool.Roll();
 
-        Instantiate(
-            weaponList[randomIndex], transform.position, transform.rotation);
+        Instantiate(item, transform.position, transform.rotation);
         Destroy(this);
     }
 }
