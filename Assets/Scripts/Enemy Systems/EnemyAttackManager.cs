@@ -41,8 +41,6 @@ public class EnemyAttackManager : MonoBehaviour
             if(!ApprovedEnemies.Contains(e))
                 ApprovedEnemies.Enqueue(e);
         }
-        
-        Debug.Log(ApprovedEnemies.Count);
     }
 
     /// <summary>
