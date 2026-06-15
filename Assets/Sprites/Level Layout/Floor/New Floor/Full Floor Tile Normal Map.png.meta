@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fc9dbdf8450215a4195d4439196c850e
+guid: 8c89583e729dd40199c8592548c474ac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FULL_FLOOR_0
+      name: Full Floor Tile Normal Map_0
       rect:
         serializedVersion: 2
         x: 0
@@ -105,20 +105,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54497ea22d985044cb598cae2b103c05
-      internalID: -1136183747
+      spriteID: 9ba33466cfcc2414e9ee4d4aa85704a9
+      internalID: 1802595477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_1
+      name: Full Floor Tile Normal Map_1
       rect:
         serializedVersion: 2
         x: 32
@@ -126,20 +126,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3917f255cc8ab54c98571ea6e11af6d
-      internalID: 992258233
+      spriteID: 74dab1992aa714e6db1fc655b9616b70
+      internalID: -1684991773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_2
+      name: Full Floor Tile Normal Map_2
       rect:
         serializedVersion: 2
         x: 64
@@ -147,20 +147,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 951b42b98757dac4f9656782fb910b0b
-      internalID: 1269316657
+      spriteID: a804ef2223eb14ccdafb55b77d28a322
+      internalID: 1476582766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_3
+      name: Full Floor Tile Normal Map_3
       rect:
         serializedVersion: 2
         x: 96
@@ -168,20 +168,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 912a6f9cd2ee9064fb84e0e2deecb029
-      internalID: 1534707558
+      spriteID: 9b0913e655d054836abb0d942a60c1f1
+      internalID: -1950169092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_4
+      name: Full Floor Tile Normal Map_4
       rect:
         serializedVersion: 2
         x: 128
@@ -189,20 +189,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c8053a54c240174f9d50fdd55b836cc
-      internalID: -440121200
+      spriteID: 4b5c7c6e7501343f2ac67e1445c1c32c
+      internalID: -1398217307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_5
+      name: Full Floor Tile Normal Map_5
       rect:
         serializedVersion: 2
         x: 160
@@ -210,20 +210,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c696469378f8174e801234154c830c2
-      internalID: 1562503576
+      spriteID: 44c022b48c620460089090013001308d
+      internalID: -1595045473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_6
+      name: Full Floor Tile Normal Map_6
       rect:
         serializedVersion: 2
         x: 192
@@ -231,20 +231,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a87104cfd1184c64d9ac9367f651c154
-      internalID: 1649777497
+      spriteID: e5288fe7490a5474d891ea51238b0b0c
+      internalID: -254994999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_7
+      name: Full Floor Tile Normal Map_7
       rect:
         serializedVersion: 2
         x: 224
@@ -252,20 +252,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f07efd1a6659c345b9285c7a0367b66
-      internalID: 2057459867
+      spriteID: dea7e024e289a4e63a9ef9c0530f0b7f
+      internalID: -913551795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_8
+      name: Full Floor Tile Normal Map_8
       rect:
         serializedVersion: 2
         x: 0
@@ -273,20 +273,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6703c50a18220f84287082c4e7d6b7ad
-      internalID: 1195003715
+      spriteID: be57dac0897b744a3991d507e5061596
+      internalID: -940514330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_9
+      name: Full Floor Tile Normal Map_9
       rect:
         serializedVersion: 2
         x: 32
@@ -294,20 +294,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12f23f58cb3f4e64abe4d6ce2a641dce
-      internalID: 1132291097
+      spriteID: 46f82e72c60e94b7da226f951d10b308
+      internalID: 235565920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_10
+      name: Full Floor Tile Normal Map_10
       rect:
         serializedVersion: 2
         x: 64
@@ -315,20 +315,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe6045b5c7a6ee141aa6fb131fc141bc
-      internalID: -132607685
+      spriteID: 349bfa2d5aa494a39910cefce24793cc
+      internalID: 243575625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_11
+      name: Full Floor Tile Normal Map_11
       rect:
         serializedVersion: 2
         x: 96
@@ -336,20 +336,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0260b81faa8e99a4c85d80bb217fb525
-      internalID: -817999964
+      spriteID: 49e7b695e66324f3abaf9855f9bf6787
+      internalID: 174233319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_12
+      name: Full Floor Tile Normal Map_12
       rect:
         serializedVersion: 2
         x: 128
@@ -357,20 +357,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e180cd0878eb7d42bc21877719f9161
-      internalID: -1905025850
+      spriteID: 6eee715bb31c94d1c95fc18e80d3611b
+      internalID: -1639551839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_13
+      name: Full Floor Tile Normal Map_13
       rect:
         serializedVersion: 2
         x: 160
@@ -378,20 +378,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0657f8e65a67b4743952689cdf2f71a0
-      internalID: -674304105
+      spriteID: c8c228c203e54406dab6dcb3385f7cc3
+      internalID: -289370786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_14
+      name: Full Floor Tile Normal Map_14
       rect:
         serializedVersion: 2
         x: 192
@@ -399,20 +399,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d379b946a96a28c4d9139e5d84fe1c0e
-      internalID: -1930176326
+      spriteID: 612bae4ebdea24388924c6065ebc35f9
+      internalID: -297971680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_15
+      name: Full Floor Tile Normal Map_15
       rect:
         serializedVersion: 2
         x: 224
@@ -420,20 +420,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aaf643788ab488428ccfb7d693899a8
-      internalID: -636114306
+      spriteID: 3262d2083b898496cb031d8e84e62c98
+      internalID: 1160209072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_16
+      name: Full Floor Tile Normal Map_16
       rect:
         serializedVersion: 2
         x: 0
@@ -441,20 +441,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff607339354cfc64d9a1c953fc50c7fa
-      internalID: 900582230
+      spriteID: d8093c4747e2a4fe081796e40fbccc54
+      internalID: 608590997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_17
+      name: Full Floor Tile Normal Map_17
       rect:
         serializedVersion: 2
         x: 32
@@ -462,20 +462,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31aacef552c62b846bb449c68843ee21
-      internalID: 813137508
+      spriteID: cfc357133ea9b4db5b38d51a4ac1162a
+      internalID: 1806270714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_18
+      name: Full Floor Tile Normal Map_18
       rect:
         serializedVersion: 2
         x: 64
@@ -483,20 +483,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec901c1dd3b95ed45860ee09da9708dc
-      internalID: 337063919
+      spriteID: 4dcd277709e9e4ecca175fdb7fe48051
+      internalID: -1249003969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_19
+      name: Full Floor Tile Normal Map_19
       rect:
         serializedVersion: 2
         x: 96
@@ -504,20 +504,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e479e12493e05d0499f7697172da6363
-      internalID: -1012763915
+      spriteID: 2a32a7644f0674630adc2340b45a8f52
+      internalID: -691123563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_20
+      name: Full Floor Tile Normal Map_20
       rect:
         serializedVersion: 2
         x: 128
@@ -525,20 +525,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1035de719b6160e459a874408d2e9ff0
-      internalID: -1546590939
+      spriteID: d398e4cacfe774d97acc208c4ce00a14
+      internalID: 178950282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_21
+      name: Full Floor Tile Normal Map_21
       rect:
         serializedVersion: 2
         x: 160
@@ -546,20 +546,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efea48868c6d5254584c5728fce4f252
-      internalID: -1343680008
+      spriteID: 1e3b1cf23e1d846cf93108e90c2fb950
+      internalID: 1783077205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_22
+      name: Full Floor Tile Normal Map_22
       rect:
         serializedVersion: 2
         x: 192
@@ -567,20 +567,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d7818117a91e0f41bab73adc179d8ee
-      internalID: 225214869
+      spriteID: c52757832b1714ba5aa7a99d7431c44d
+      internalID: 42403840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_23
+      name: Full Floor Tile Normal Map_23
       rect:
         serializedVersion: 2
         x: 224
@@ -588,20 +588,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40eed2cd1c9043543b7fb7ab839f6ee4
-      internalID: -1649779614
+      spriteID: bee1c23ff9ee442ee95b327dba956004
+      internalID: 1774618493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_24
+      name: Full Floor Tile Normal Map_24
       rect:
         serializedVersion: 2
         x: 0
@@ -609,20 +609,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28f71c69b3d714d44887ecf27355baaa
-      internalID: -1216204638
+      spriteID: 82ff5848ec6894c05af31d5cfe5f2d69
+      internalID: 639706048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_25
+      name: Full Floor Tile Normal Map_25
       rect:
         serializedVersion: 2
         x: 32
@@ -630,20 +630,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07c4f988d61743c42be562b94b9b50b5
-      internalID: -518473541
+      spriteID: 83aa951f39e3747dcb3dda18babac845
+      internalID: -353452420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_26
+      name: Full Floor Tile Normal Map_26
       rect:
         serializedVersion: 2
         x: 64
@@ -651,20 +651,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53af9daba09545a4d98c6cca44c02a0f
-      internalID: -1989081538
+      spriteID: 31d1118820f24401996f2205edab9e88
+      internalID: -1659774698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_27
+      name: Full Floor Tile Normal Map_27
       rect:
         serializedVersion: 2
         x: 96
@@ -672,20 +672,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3decdc443ff7176498838ed86c9f6b5b
-      internalID: 838092575
+      spriteID: a07c6ccf46ab0419989826efb4082582
+      internalID: 617731376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_28
+      name: Full Floor Tile Normal Map_28
       rect:
         serializedVersion: 2
         x: 128
@@ -693,20 +693,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b18337d101f23174faadf7e710479263
-      internalID: -1210644547
+      spriteID: 4ae3158eb022f4fde88ff3218f9f466d
+      internalID: 1265230401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_29
+      name: Full Floor Tile Normal Map_29
       rect:
         serializedVersion: 2
         x: 160
@@ -714,20 +714,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e50ab506ae0abcf479e1bd1ddd1a8ef6
-      internalID: -1001742862
+      spriteID: b62c8a92958cb47eda383e9acec162cb
+      internalID: -89518821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_30
+      name: Full Floor Tile Normal Map_30
       rect:
         serializedVersion: 2
         x: 192
@@ -735,20 +735,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 678282eede561b54e8c2a45fd4019300
-      internalID: 668844648
+      spriteID: 604d9d33c82b84533b5f05ed9787197a
+      internalID: -1043858260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_31
+      name: Full Floor Tile Normal Map_31
       rect:
         serializedVersion: 2
         x: 224
@@ -756,20 +756,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fadf3c16ec673347a4d5b9b9d605ea2
-      internalID: -867441028
+      spriteID: 2bfc4c9540110436a9f5ddd6677fa882
+      internalID: 1541777226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_32
+      name: Full Floor Tile Normal Map_32
       rect:
         serializedVersion: 2
         x: 0
@@ -777,20 +777,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0330852643a9f549aeeec0ae1fc5423
-      internalID: -1447712682
+      spriteID: 700dc6c9db75745a7b3ba32145b65003
+      internalID: -1001129455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_33
+      name: Full Floor Tile Normal Map_33
       rect:
         serializedVersion: 2
         x: 32
@@ -798,20 +798,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81833f500b6377b4b8a6d941fbb52853
-      internalID: 63517496
+      spriteID: acf348fa281554924977df9182dd6d08
+      internalID: 69496428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_34
+      name: Full Floor Tile Normal Map_34
       rect:
         serializedVersion: 2
         x: 64
@@ -819,20 +819,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c077585b5baeeff41a06bd5496babe1d
-      internalID: 1195661773
+      spriteID: 25a19b29d7cbd4cc980efc998d32fd25
+      internalID: -968517342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_35
+      name: Full Floor Tile Normal Map_35
       rect:
         serializedVersion: 2
         x: 96
@@ -840,20 +840,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8545fc183e4a2544eb0eee12f6c044e6
-      internalID: 1880316034
+      spriteID: 5bae003143b59406ab4d2e8973f4801a
+      internalID: -697915640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_36
+      name: Full Floor Tile Normal Map_36
       rect:
         serializedVersion: 2
         x: 128
@@ -861,20 +861,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17916406e3bc23f40a7cd9af88d3a199
-      internalID: -807401645
+      spriteID: 4fa7c2bf9aa194c658bc7c21038dee0c
+      internalID: 627855180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_37
+      name: Full Floor Tile Normal Map_37
       rect:
         serializedVersion: 2
         x: 160
@@ -882,20 +882,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 138614267a5049445800b05b73aed31d
-      internalID: 1823625884
+      spriteID: 5aeeb0d4b1aa0471d90bdf4b8b6827f4
+      internalID: 216666203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_38
+      name: Full Floor Tile Normal Map_38
       rect:
         serializedVersion: 2
         x: 192
@@ -903,20 +903,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d772c7633ad0cd84b8f0064ea851a6a0
-      internalID: 983095919
+      spriteID: 8ffa5ad87e0014514ae4a01cfdf02713
+      internalID: -300758988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_39
+      name: Full Floor Tile Normal Map_39
       rect:
         serializedVersion: 2
         x: 224
@@ -924,20 +924,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecf3ae84e9ad09d44b890685786e3bea
-      internalID: 682962379
+      spriteID: a24d47903e8b9473d8862237d67b031f
+      internalID: -1571958099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_40
+      name: Full Floor Tile Normal Map_40
       rect:
         serializedVersion: 2
         x: 0
@@ -945,20 +945,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b217f144d2ddec543b75e3cfce5a3860
-      internalID: -881645959
+      spriteID: 6eae4144cfac246d1a3dd5e356498259
+      internalID: 1807674346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_41
+      name: Full Floor Tile Normal Map_41
       rect:
         serializedVersion: 2
         x: 32
@@ -966,20 +966,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fde29e2b22a35640b49155e7d17db9b
-      internalID: -576637797
+      spriteID: 0ac43fd6d35994b369ad46728de13dcd
+      internalID: 1070722555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_42
+      name: Full Floor Tile Normal Map_42
       rect:
         serializedVersion: 2
         x: 64
@@ -987,20 +987,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b64e48846e6af404abc040ff563e3252
-      internalID: 1918752230
+      spriteID: 79cef71a449c249bb82e5a1e655fa3df
+      internalID: 1793194206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_43
+      name: Full Floor Tile Normal Map_43
       rect:
         serializedVersion: 2
         x: 96
@@ -1008,20 +1008,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d2c3f974f176c1409645b66aeee4ca1
-      internalID: -529753974
+      spriteID: 019799f78b9d74dea9818499e1e6da6c
+      internalID: 1197400244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_44
+      name: Full Floor Tile Normal Map_44
       rect:
         serializedVersion: 2
         x: 128
@@ -1029,20 +1029,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51a7aa2e6e5c3224eb2d7d8c49b99b5e
-      internalID: 2004931749
+      spriteID: a8be4f774698a41e2b3cce4dac404c9c
+      internalID: -1725935066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_45
+      name: Full Floor Tile Normal Map_45
       rect:
         serializedVersion: 2
         x: 160
@@ -1050,20 +1050,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c440f4c5d21dc0a469975f5a3aa799f0
-      internalID: -1107895284
+      spriteID: 367dd3e09789147599a5d665fde8b9c0
+      internalID: -1736562388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_46
+      name: Full Floor Tile Normal Map_46
       rect:
         serializedVersion: 2
         x: 192
@@ -1071,20 +1071,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ba50ec8488cd124e9bcadcdbc32f825
-      internalID: -733110478
+      spriteID: af2f30d95eecf4569a4f0e31823936a5
+      internalID: 1814198386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FULL_FLOOR_47
+      name: Full Floor Tile Normal Map_47
       rect:
         serializedVersion: 2
         x: 224
@@ -1092,14 +1092,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b38329ec2b4aeb54888016547f9f9c21
-      internalID: 1963036570
+      spriteID: 9b6d3f3e261134fc5ba1b6f30f52c379
+      internalID: 1709151462
       vertices: []
       indices: 
       edges: []
@@ -1113,58 +1113,56 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 8c89583e729dd40199c8592548c474ac, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
     nameFileIdTable:
-      FULL_FLOOR_0: -1136183747
-      FULL_FLOOR_1: 992258233
-      FULL_FLOOR_10: -132607685
-      FULL_FLOOR_11: -817999964
-      FULL_FLOOR_12: -1905025850
-      FULL_FLOOR_13: -674304105
-      FULL_FLOOR_14: -1930176326
-      FULL_FLOOR_15: -636114306
-      FULL_FLOOR_16: 900582230
-      FULL_FLOOR_17: 813137508
-      FULL_FLOOR_18: 337063919
-      FULL_FLOOR_19: -1012763915
-      FULL_FLOOR_2: 1269316657
-      FULL_FLOOR_20: -1546590939
-      FULL_FLOOR_21: -1343680008
-      FULL_FLOOR_22: 225214869
-      FULL_FLOOR_23: -1649779614
-      FULL_FLOOR_24: -1216204638
-      FULL_FLOOR_25: -518473541
-      FULL_FLOOR_26: -1989081538
-      FULL_FLOOR_27: 838092575
-      FULL_FLOOR_28: -1210644547
-      FULL_FLOOR_29: -1001742862
-      FULL_FLOOR_3: 1534707558
-      FULL_FLOOR_30: 668844648
-      FULL_FLOOR_31: -867441028
-      FULL_FLOOR_32: -1447712682
-      FULL_FLOOR_33: 63517496
-      FULL_FLOOR_34: 1195661773
-      FULL_FLOOR_35: 1880316034
-      FULL_FLOOR_36: -807401645
-      FULL_FLOOR_37: 1823625884
-      FULL_FLOOR_38: 983095919
-      FULL_FLOOR_39: 682962379
-      FULL_FLOOR_4: -440121200
-      FULL_FLOOR_40: -881645959
-      FULL_FLOOR_41: -576637797
-      FULL_FLOOR_42: 1918752230
-      FULL_FLOOR_43: -529753974
-      FULL_FLOOR_44: 2004931749
-      FULL_FLOOR_45: -1107895284
-      FULL_FLOOR_46: -733110478
-      FULL_FLOOR_47: 1963036570
-      FULL_FLOOR_5: 1562503576
-      FULL_FLOOR_6: 1649777497
-      FULL_FLOOR_7: 2057459867
-      FULL_FLOOR_8: 1195003715
-      FULL_FLOOR_9: 1132291097
+      Full Floor Tile Normal Map_0: 1802595477
+      Full Floor Tile Normal Map_1: -1684991773
+      Full Floor Tile Normal Map_10: 243575625
+      Full Floor Tile Normal Map_11: 174233319
+      Full Floor Tile Normal Map_12: -1639551839
+      Full Floor Tile Normal Map_13: -289370786
+      Full Floor Tile Normal Map_14: -297971680
+      Full Floor Tile Normal Map_15: 1160209072
+      Full Floor Tile Normal Map_16: 608590997
+      Full Floor Tile Normal Map_17: 1806270714
+      Full Floor Tile Normal Map_18: -1249003969
+      Full Floor Tile Normal Map_19: -691123563
+      Full Floor Tile Normal Map_2: 1476582766
+      Full Floor Tile Normal Map_20: 178950282
+      Full Floor Tile Normal Map_21: 1783077205
+      Full Floor Tile Normal Map_22: 42403840
+      Full Floor Tile Normal Map_23: 1774618493
+      Full Floor Tile Normal Map_24: 639706048
+      Full Floor Tile Normal Map_25: -353452420
+      Full Floor Tile Normal Map_26: -1659774698
+      Full Floor Tile Normal Map_27: 617731376
+      Full Floor Tile Normal Map_28: 1265230401
+      Full Floor Tile Normal Map_29: -89518821
+      Full Floor Tile Normal Map_3: -1950169092
+      Full Floor Tile Normal Map_30: -1043858260
+      Full Floor Tile Normal Map_31: 1541777226
+      Full Floor Tile Normal Map_32: -1001129455
+      Full Floor Tile Normal Map_33: 69496428
+      Full Floor Tile Normal Map_34: -968517342
+      Full Floor Tile Normal Map_35: -697915640
+      Full Floor Tile Normal Map_36: 627855180
+      Full Floor Tile Normal Map_37: 216666203
+      Full Floor Tile Normal Map_38: -300758988
+      Full Floor Tile Normal Map_39: -1571958099
+      Full Floor Tile Normal Map_4: -1398217307
+      Full Floor Tile Normal Map_40: 1807674346
+      Full Floor Tile Normal Map_41: 1070722555
+      Full Floor Tile Normal Map_42: 1793194206
+      Full Floor Tile Normal Map_43: 1197400244
+      Full Floor Tile Normal Map_44: -1725935066
+      Full Floor Tile Normal Map_45: -1736562388
+      Full Floor Tile Normal Map_46: 1814198386
+      Full Floor Tile Normal Map_47: 1709151462
+      Full Floor Tile Normal Map_5: -1595045473
+      Full Floor Tile Normal Map_6: -254994999
+      Full Floor Tile Normal Map_7: -913551795
+      Full Floor Tile Normal Map_8: -940514330
+      Full Floor Tile Normal Map_9: 235565920
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
