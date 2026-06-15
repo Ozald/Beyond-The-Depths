@@ -19,6 +19,8 @@ public class Chest : Interactable
 
     void Start()
     {
+        LootPool = new ItemSelector<Interactable>();
+        
         foreach (WeightedItem item in items)
             LootPool.AddItem(item.item, item.weight);
     }
