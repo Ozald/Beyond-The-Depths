@@ -108,3 +108,4 @@ fmod_editor.log
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
 /Assets/Third-Party/FMOD/Cache/
+Assets/Third-Party/FMOD/Cache/Editor/FMODStudioCache.asset
