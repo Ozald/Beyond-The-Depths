@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &3145256588682802344
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &3656609486061636066
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &3924663942356081678
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &4271513433002048426
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &4925457806229837573
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &6565085586960878618
 GameObject:
   m_ObjectHideFlags: 0
@@ -13385,6 +13391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &7218218731957334148
 GameObject:
   m_ObjectHideFlags: 0
@@ -13580,6 +13587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &8706205425511944746
 GameObject:
   m_ObjectHideFlags: 0
@@ -13625,3 +13633,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}

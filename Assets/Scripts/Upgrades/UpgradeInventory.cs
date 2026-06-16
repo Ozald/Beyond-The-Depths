@@ -9,6 +9,7 @@ public class UpgradeInventory : MonoBehaviour
     public void PickupUpgrade(Upgrade nearbyUpgrade)
     {
         upgrades.Add(nearbyUpgrade);
-        particles.Play();
+        ParticleSystem particle = Instantiate(particles, transform.position, transform.rotation);
+        particle.Play();
     }
 }

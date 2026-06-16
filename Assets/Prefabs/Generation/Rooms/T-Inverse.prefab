@@ -9028,6 +9028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &5641757660565493566
 GameObject:
   m_ObjectHideFlags: 0
@@ -9073,6 +9074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &6451542674541366786
 GameObject:
   m_ObjectHideFlags: 0
@@ -9118,6 +9120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &6778526706545602680
 GameObject:
   m_ObjectHideFlags: 0
@@ -9313,6 +9316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &7089620679047811757
 GameObject:
   m_ObjectHideFlags: 0
@@ -9358,6 +9362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &8171554066194991250
 GameObject:
   m_ObjectHideFlags: 0
@@ -9403,6 +9408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &8472809739710166802
 GameObject:
   m_ObjectHideFlags: 0
@@ -9448,6 +9454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
 --- !u!1 &8605342223646142605
 GameObject:
   m_ObjectHideFlags: 0
