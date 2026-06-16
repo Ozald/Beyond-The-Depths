@@ -27,6 +27,8 @@ public class Buffer<T>
     
     private Queue<BufferedItem> BufferedItems;
     
+    public int Count { get { return BufferedItems.Count; } }
+    
     public Buffer()
     {
         BufferedItems = new Queue<BufferedItem>();
@@ -76,7 +78,7 @@ public class Buffer<T>
         
         BufferedItem item = BufferedItems.Dequeue();
         
-        if (reAdd && item.Item != null)
+        if (reAdd && item.Item is not null)
             BufferedItems.Enqueue(item);
 
         return item.Item;
@@ -106,7 +108,7 @@ public class Buffer<T>
             BufferedItem item = BufferedItems.Dequeue();
             removed.Add(item.Item);
             
-            if(reAdd && item.Item != null)
+            if(reAdd && item.Item is not null)
                 BufferedItems.Enqueue(item);
         }
         
@@ -139,7 +141,7 @@ public class Buffer<T>
             BufferedItem item = BufferedItems.Dequeue();
             removedValue += item.Value;
         
-            if (reAdd && item.Item != null)
+            if (reAdd && item.Item is not null)
                 BufferedItems.Enqueue(item);
             
             removed.Add(item.Item);
@@ -174,13 +176,21 @@ public class Buffer<T>
             BufferedItem item = BufferedItems.Dequeue();
             removedValue += item.Value;
         
-            if (reAdd && item.Item != null)
+            if (reAdd && item.Item is not null)
                 BufferedItems.Enqueue(item);
             
             removed.Add(item.Item);
         }
         
         return removed;
+    }
+
+    /// <summary>
+    /// Clears the buffer
+    /// </summary>
+    public void Clear()
+    {
+        BufferedItems.Clear();
     }
 
     public override string ToString()

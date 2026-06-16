@@ -24,6 +24,10 @@ public class SingleBulletAttackState : AIState
         if (projectilePrefab == null)
             return;
 
+        // Holy crap I hate this solution to this problem
+        if (!EnemyAttackManager.instance.RequestAttack(enemy))
+            return;
+
         enemy.StartCoroutine(SpawnProjectile(enemy));
     }
 

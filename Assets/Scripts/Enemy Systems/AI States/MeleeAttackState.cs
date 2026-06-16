@@ -23,6 +23,10 @@ public class MeleeAttackState : AIState
 
         if (enemyAnim != null)
             enemyAnim.SetTrigger(attackAnimationTrigger);
+        
+        // Holy crap I hate this solution to this problem
+        if (!EnemyAttackManager.instance.RequestAttack(enemy))
+            return;
 
         enemy.transform.rotation = Quaternion.identity;
     }
