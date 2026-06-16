@@ -1,0 +1,10 @@
+﻿<Solution>
+  <Project Path="AstarPathfindingProject.csproj" />
+  <Project Path="FMODUnityEditor.csproj" />
+  <Project Path="AstarPathfindingProjectEditor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="PackageToolsEditor.csproj" />
+  <Project Path="FMODUnity.csproj" />
+  <Project Path="FMODUnityResonance.csproj" />
+  <Project Path="FMODUnityResonanceEditor.csproj" />
+</Solution>
