@@ -23,6 +23,9 @@ public class Chest : Interactable
 
         foreach (WeightedItem item in items)
             LootPool.AddItem(item.item, item.weight);
+        
+        Debug.Log("Item array size: " + items.Length);
+        Debug.Log("Loot pool items: " + LootPool.Size);
     }
 
     public override void Interact(PlayerInteraction player)
