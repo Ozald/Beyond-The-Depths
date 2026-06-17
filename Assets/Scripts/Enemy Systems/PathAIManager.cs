@@ -54,12 +54,17 @@ public class PathAIManager : MonoBehaviour
         }
     }
 
-    public void RequestPathUpdate(Enemy enemy, Action callback)
+    /// <summary>
+    /// Places a request for an enemy to have their path updated. If the enemy already has a pending request, the new request will be ignored.
+    /// </summary>
+    /// <param name="enemy">The enemy requesting a path update.</param>
+    /// <param name="callback">The callback to execute once the path update is processed.</param>
+    public static void RequestPathUpdate(Enemy enemy, Action callback)
     {
         PathRequest newRequest = new PathRequest(enemy, callback);
-        if (pathRequestBuffer.Contains(newRequest))
+        if (instance.pathRequestBuffer.Contains(newRequest))
             return;
 
-        pathRequestBuffer.Add(newRequest);
+        instance.pathRequestBuffer.Add(newRequest);
     }
 }

@@ -33,7 +33,7 @@ public class RunawayState : AIState
         if (enemyAI != null && enemyRB != null)
         {
             // This sends a request to update the path in batches rather than every frame, which is more efficient. The callback is used to calculate the path once the request is processed.
-            PathAIManager.instance.RequestPathUpdate(enemy, () => CalculatePath(enemy));
+            PathAIManager.RequestPathUpdate(enemy, () => CalculatePath(enemy));
 
             if (enemy.currentPath == null)
                 return;
@@ -48,29 +48,30 @@ public class RunawayState : AIState
                 enemy.reachedEndOfPath = false;
             }
 
-            // How the enemy traverses the path (Rigidbody for a floaty feel)
-
-            Vector2 moveDir = ((Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position).normalized;
-
-            enemyRB.AddForce(moveDir * moveSpeed);
-
-            // To make the enemy face the direction of where it is moving
-
-            Vector2 dir = (Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.Euler(0, 0, angle - 90), 10f * Time.fixedDeltaTime);
-
-            // To continue to the next waypoint in the path
-
-            float distance = Vector2.Distance(enemyRB.position, enemy.currentPath.vectorPath[enemy.currentWaypoint]);
-            if (distance < 2f)
-            {
-                enemy.currentWaypoint++;
-            }
+            Move(enemy, enemyRB);
         }
     }
 
     /***********************************************************************************/
+
+    void Move(Enemy enemy, Rigidbody2D enemyRB)
+    {
+        // How the enemy traverses the path (Rigidbody for a floaty feel)
+        Vector2 moveDir = ((Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position).normalized;
+        enemyRB.AddForce(moveDir * moveSpeed);
+
+        // To make the enemy face the direction of where it is moving
+        Vector2 dir = (Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.Euler(0, 0, angle - 90), 10f * Time.fixedDeltaTime);
+
+        // To continue to the next waypoint in the path
+        float distance = Vector2.Distance(enemyRB.position, enemy.currentPath.vectorPath[enemy.currentWaypoint]);
+        if (distance < 2f)
+        {
+            enemy.currentWaypoint++;
+        }
+    }
 
     void CalculatePath(Enemy enemy)
     {
@@ -89,25 +90,29 @@ public class RunawayState : AIState
         Vector3 targetPosition = AstarPath.active.GetNearest(runawayDir).position;
         
         // Calculate the final path
-        enemyAI.StartPath(enemy.transform.position, targetPosition, (Path p) =>
+        enemyAI.StartPath(enemy.transform.position, targetPosition, (Path p) => OnPathGenerate(p, enemy));
+    }
+
+    void OnPathGenerate(Path p, Enemy enemy)
+    {
+        // If there is no error with the path, set the enemy's current path to the new path and reset the waypoint index
+        if (!p.error)
         {
-            if (!p.error)
+            enemy.currentPath = p;
+            int newWaypoint = 0;
+
+            for (int i = 0; i < p.vectorPath.Count; i++)
             {
-                enemy.currentPath = p;
-                int newWaypoint = 0;
-
-                for (int i = 0; i < p.vectorPath.Count; i++)
+                // This is to prevent the enemy from trying to move to a waypoint that is too close to it, which can cause jittery movement
+                float distance = Vector2.Distance(enemy.transform.position, p.vectorPath[i]);
+                if (distance >= 1f)
                 {
-                    float distance = Vector2.Distance(enemy.transform.position, p.vectorPath[i]);
-                    if (distance >= 1f)
-                    {
-                        newWaypoint = i;
-                        break;
-                    }
+                    newWaypoint = i;
+                    break;
                 }
-
-                enemy.currentWaypoint = newWaypoint;
             }
-        });
+
+            enemy.currentWaypoint = newWaypoint;
+        }
     }
 }

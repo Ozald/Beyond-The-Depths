@@ -1,0 +1,112 @@
+using Pathfinding;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Enemy AI/States/Chase (Swimming)")]
+public class SwimmingChaseState : AIState
+{
+    public float moveSpeed;
+    public string chaseAnimationTrigger;
+
+    public override void OnEnter(Enemy enemy)
+    {
+        AIPath enemyAI = enemy.GetComponent<AIPath>();
+        Animator enemyAnim = enemy.GetComponent<Animator>();
+
+        if (enemyAI != null)
+            enemyAI.isStopped = false;
+
+        if (enemyAnim != null)
+            enemyAnim.SetTrigger(chaseAnimationTrigger);
+    }
+
+    public override void OnExit(Enemy enemy) {}
+
+    public override void OnUpdate(Enemy enemy) {}
+
+    public override void OnFixedUpdate(Enemy enemy) 
+    {
+        Seeker enemyAI = enemy.GetComponent<Seeker>();
+        Rigidbody2D enemyRB = enemy.GetComponent<Rigidbody2D>();
+
+        if (enemyAI != null && enemyRB != null)
+        {
+            // This is to prevent multiple path requests from being made in a single frame, which can cause performance issues.
+            PathAIManager.RequestPathUpdate(enemy, () => CalculatePath(enemy));
+
+            if (enemy.currentPath == null)
+                return;
+
+            if (enemy.currentWaypoint >= enemy.currentPath.vectorPath.Count)
+            {
+                enemy.reachedEndOfPath = true;
+                return;
+            }
+            else
+            {
+                enemy.reachedEndOfPath = false;
+            }
+
+            Move(enemy, enemyRB);
+        }
+    }
+
+    /***********************************************************************************/
+
+    void Move(Enemy enemy, Rigidbody2D enemyRB)
+    {
+        // How the enemy traverses the path (Rigidbody for a floaty feel)
+        Vector2 moveDir = ((Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position).normalized;
+        enemyRB.AddForce(moveDir * moveSpeed);
+
+        // To make the enemy face the direction of where it is moving
+        Vector2 dir = (Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.Euler(0, 0, angle - 90), 10f * Time.fixedDeltaTime);
+
+        // To continue to the next waypoint in the path
+        float distance = Vector2.Distance(enemyRB.position, enemy.currentPath.vectorPath[enemy.currentWaypoint]);
+        if (distance < 2f)
+        {
+            enemy.currentWaypoint++;
+        }
+    }
+
+    void CalculatePath(Enemy enemy)
+    {
+        Seeker enemyAI = enemy.GetComponent<Seeker>();
+
+        // This is not the best way to do this, but to avoid merge conflicts I am going to keep it like this. Sue me.
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (player == null)
+            return;
+
+        enemyAI.StartPath(enemy.transform.position, player.position, (Path p) => OnPathGenerate(p, enemy));
+    }
+
+    void OnPathGenerate(Path p, Enemy enemy)
+    {
+        // If there is no error with the path, set the enemy's current path to the new path and reset the waypoint index
+        if (!p.error)
+        {
+            enemy.currentPath = p;
+            int newWaypoint = 0;
+
+            for (int i = 0; i < p.vectorPath.Count; i++)
+            {
+                // This is to prevent the enemy from trying to move to a waypoint that is too close to it, which can cause jittery movement
+                float distance = Vector2.Distance(enemy.transform.position, p.vectorPath[i]);
+                if (distance >= 1f)
+                {
+                    newWaypoint = i;
+                    break;
+                }
+            }
+
+            enemy.currentWaypoint = newWaypoint;
+        }
+    }
+}
