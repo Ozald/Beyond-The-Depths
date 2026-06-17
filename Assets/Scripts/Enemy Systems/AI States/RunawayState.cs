@@ -32,7 +32,8 @@ public class RunawayState : AIState
 
         if (enemyAI != null && enemyRB != null)
         {
-            CalculatePath(enemy);
+            // This sends a request to update the path in batches rather than every frame, which is more efficient. The callback is used to calculate the path once the request is processed.
+            PathAIManager.instance.RequestPathUpdate(enemy, () => CalculatePath(enemy));
 
             if (enemy.currentPath == null)
                 return;
@@ -86,7 +87,7 @@ public class RunawayState : AIState
         Vector3 runawayDir = enemy.transform.position + dir * 2;
 
         Vector3 targetPosition = AstarPath.active.GetNearest(runawayDir).position;
-
+        
         // Calculate the final path
         enemyAI.StartPath(enemy.transform.position, targetPosition, (Path p) =>
         {

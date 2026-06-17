@@ -32,7 +32,7 @@ public class SwimmingChaseState : AIState
 
         if (enemyAI != null && enemyRB != null)
         {
-            CalculatePath(enemy);
+            PathAIManager.instance.RequestPathUpdate(enemy, () => CalculatePath(enemy));
 
             if (enemy.currentPath == null)
                 return;
