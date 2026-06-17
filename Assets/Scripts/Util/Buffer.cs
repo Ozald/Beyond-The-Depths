@@ -193,6 +193,23 @@ public class Buffer<T>
         BufferedItems.Clear();
     }
 
+    /// <summary>
+    /// Checks if the buffer contains a specific item
+    /// </summary>
+    /// <param name="item">The item to check for</param>
+    /// <returns>True if the item is in the buffer, false otherwise</returns>
+    public bool Contains(T item)
+    {
+        foreach (BufferedItem bufferedItem in BufferedItems)
+        {
+            if (EqualityComparer<T>.Default.Equals(bufferedItem.Item, item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public override string ToString()
     {
         string s = "";
