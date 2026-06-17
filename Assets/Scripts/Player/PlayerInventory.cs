@@ -52,7 +52,7 @@ public class PlayerInventory : MonoBehaviour
 
             if (currentWeapon == null || currentWeapon.weaponData == null) return;
 
-            float attackSpeed = currentWeapon.weaponData.cooldown;
+            float attackSpeed = currentWeapon.weaponData.cooldown - StatsManager.Instance.bonusAttackSpeed.value;
 
             if (Time.time - lastAttackTime < attackSpeed) return;
 
