@@ -21,7 +21,7 @@ public class MeleeAttackState : AIState
         GameObject attackHitbox = Instantiate(hitboxObject, enemy.transform);
 
         // Store the active attack hitbox in the enemy's context for later use
-        enemy.GetContext().SetAttribute(attackHitboxKey, attackHitbox);
+        enemy.GetData().SetAttribute(attackHitboxKey, attackHitbox);
 
         attackHitbox.transform.localPosition = Vector3.zero;
         attackHitbox.transform.localRotation = Quaternion.identity;
@@ -34,11 +34,11 @@ public class MeleeAttackState : AIState
 
     public override void OnExit(Enemy enemy)
     {
-        GameObject attackHitbox = enemy.GetContext().GetAttribute<GameObject>(attackHitboxKey);
+        GameObject attackHitbox = enemy.GetData().GetAttribute<GameObject>(attackHitboxKey);
 
         if (attackHitbox is not null)
         {
-            enemy.GetContext().DeleteAttribute(attackHitboxKey);
+            enemy.GetData().DeleteAttribute(attackHitboxKey);
             Destroy(attackHitbox);
         }
     }
@@ -47,7 +47,7 @@ public class MeleeAttackState : AIState
     {
         Transform player = PlayerManager.instance.transform;
         SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
-        GameObject attackHitbox = enemy.GetContext().GetAttribute<GameObject>(attackHitboxKey);
+        GameObject attackHitbox = enemy.GetData().GetAttribute<GameObject>(attackHitboxKey);
 
         if (player == null || attackHitbox == null)
             return;

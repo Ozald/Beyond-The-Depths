@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     /**************************************************************************************/
 
-    public EnemyContext GetContext()
+    public EnemyContext GetData()
     {
         return context;
     }
