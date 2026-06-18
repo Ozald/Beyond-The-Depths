@@ -49,6 +49,9 @@ public class StatsManager : MonoBehaviour
     [Header("Damage")] 
     public IntegerStat bonusDamage;
 
+    [Header("Crit Chance")]
+    public FloatStat critChance;
+
     [Header("Attack Speed")] 
     public FloatStat bonusAttackSpeed;
 
