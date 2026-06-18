@@ -8,10 +8,10 @@ using Pathfinding;
 public class Enemy : MonoBehaviour
 {
     public EnemyData enemyData;
+    private EnemyContext context;   // This is used to store any data that the states or transitions need to share with each other, such as a reference to the current attack hitbox.
 
     public float stateTimer { get; private set; }
     [SerializeField] private AIState currentState;
-    [NonSerialized] public GameObject activeAttackHitbox;
 
     // Pathfinding storage, use the state machine system to modify these values
     [NonSerialized] public Path currentPath;
@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
 
         currentPath = null;
         currentWaypoint = 0;
+
+        context = new EnemyContext();
     }
 
     void FixedUpdate()
@@ -45,9 +47,15 @@ public class Enemy : MonoBehaviour
 
     /**************************************************************************************/
 
+    public EnemyContext GetContext()
+    {
+        return context;
+    }
+
+    /**************************************************************************************/
+
     private void TransitionHandler()
     {
-
         // Find every valid destination in a transition, store in a list, and then pick one of them
         foreach (EnemyStateTransition transition in enemyData.transitions)
         {
