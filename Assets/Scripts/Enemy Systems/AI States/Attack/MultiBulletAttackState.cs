@@ -13,25 +13,20 @@ public class MultiBulletAttackState : AIState
 
     public override void OnEnter(Enemy enemy)
     {
+        enemy.transform.rotation = Quaternion.identity;
+
+        if (!EnemyAttackManager.instance.RequestAttack(enemy))
+            return;
+
         Animator enemyAnim = enemy.GetComponent<Animator>();
         SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
 
         if (enemyAnim != null)
             enemyAnim.SetTrigger(attackAnimationTrigger);
 
-        enemy.transform.rotation = Quaternion.identity;
-
-        if (projectilePrefab == null)
-            return;
-        
-        // Holy crap I hate this solution to this problem
-        if (!EnemyAttackManager.instance.RequestAttack(enemy))
-            return;
-
-        enemy.StartCoroutine(SpawnProjectiles(enemy));
+        if (projectilePrefab != null)
+            enemy.StartCoroutine(SpawnProjectiles(enemy));
     }
-
-    public override void OnExit(Enemy enemy) { }
 
     public override void OnUpdate(Enemy enemy)
     {
@@ -48,7 +43,11 @@ public class MultiBulletAttackState : AIState
     }
 
     public override void OnFixedUpdate(Enemy enemy) { }
+    public override void OnExit(Enemy enemy) { }
 
+    /****************************************************************************/
+
+    // Note: This causes a bug where an enemy can spawn projectiles ever after it's dead if it dies during the attack animation, so this should be changed in the future.
     IEnumerator SpawnProjectiles(Enemy enemy)
     {
         yield return new WaitForSeconds(0.5f);

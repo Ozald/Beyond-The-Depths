@@ -13,25 +13,20 @@ public class SingleBulletAttackState : AIState
 
     public override void OnEnter(Enemy enemy)
     {
+        enemy.transform.rotation = Quaternion.identity;
+
+        if (!EnemyAttackManager.instance.RequestAttack(enemy))
+            return;
+
         Animator enemyAnim = enemy.GetComponent<Animator>();
         SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
 
         if (enemyAnim != null)
             enemyAnim.SetTrigger(attackAnimationTrigger);
 
-        enemy.transform.rotation = Quaternion.identity;
-
-        if (projectilePrefab == null)
-            return;
-
-        // Holy crap I hate this solution to this problem
-        if (!EnemyAttackManager.instance.RequestAttack(enemy))
-            return;
-
-        enemy.StartCoroutine(SpawnProjectile(enemy));
+        if (projectilePrefab != null)
+            enemy.StartCoroutine(SpawnProjectile(enemy));
     }
-
-    public override void OnExit(Enemy enemy) {}
 
     public override void OnUpdate(Enemy enemy)
     {
@@ -49,7 +44,11 @@ public class SingleBulletAttackState : AIState
 
     // Unused
     public override void OnFixedUpdate(Enemy enemy) { }
+    public override void OnExit(Enemy enemy) { }
 
+    /****************************************************************************/
+
+    // Note: This causes a bug where an enemy can spawn projectiles ever after it's dead if it dies during the attack animation, so this should be changed in the future.
     IEnumerator SpawnProjectile(Enemy enemy)
     {
         yield return new WaitForSeconds(0.5f);
@@ -58,7 +57,6 @@ public class SingleBulletAttackState : AIState
 
         Vector2 attackDir = ((Vector2)player.position - (Vector2)enemy.transform.position).normalized;
         float angle = Random.Range(-spreadInDegrees, spreadInDegrees);
-
         
         AttackHitboxData projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
         projectile.speed = projectileSpeed;
