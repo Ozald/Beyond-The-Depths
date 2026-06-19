@@ -109,9 +109,6 @@ MonoBehaviour:
   - item: {fileID: 2625777978731625262, guid: 6a0b1c6d7c4bbba4a8c71ab72e1fadc8, type: 3}
     LuckAffected: 1
     weight: 4
-  - item: {fileID: 2625777978731625262, guid: b98aeb1b826bd4c498eb378ec8cf1688, type: 3}
-    LuckAffected: 1
-    weight: 4
   - item: {fileID: 2625777978731625262, guid: 002201143e1efb844bd22cd0ec7f5e53, type: 3}
     LuckAffected: 1
     weight: 2

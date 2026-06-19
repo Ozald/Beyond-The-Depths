@@ -32,8 +32,9 @@ public class Chest : Interactable
         {
             foreach (WeightedItem item in items)
             {
-                if(item.LuckAffected)
-                    LootPool.AddItem(item.item, item.weight + player.player.GetComponent<StatsManager>().luck.value);
+                if(item.LuckAffected) 
+                    LootPool.AddItem(item.item, Math.Max( // Math.Max is there to just prevent issues with negative luck
+                        1, item.weight + player.player.GetComponent<StatsManager>().luck.value));
                 else
                     LootPool.AddItem(item.item, item.weight);
             }
