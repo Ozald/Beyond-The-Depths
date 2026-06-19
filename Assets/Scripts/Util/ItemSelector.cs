@@ -19,6 +19,18 @@ class ItemSelector<T> where T : notnull
         totalWeight = 0;
     }
 
+    /// <summary>
+    /// Adds an item to the ItemSelector
+    /// </summary>
+    /// <param name="item">
+    /// The item to add
+    /// </param>
+    /// <param name="weight">
+    /// The weight of the item
+    /// </param>
+    /// <exception cref="ArgumentException">
+    /// If the weight is less than or equal to 0
+    /// </exception>
     public void AddItem(T item, int weight)
     {
         if (entries.ContainsKey(item))
@@ -35,6 +47,12 @@ class ItemSelector<T> where T : notnull
         totalWeight += weight;
     }
 
+    /// <summary>
+    /// Removes an item from the ItemSelector
+    /// </summary>
+    /// <param name="item">
+    /// The item to remove
+    /// </param>
     public void RemoveItem(T item)
     {
         if (!entries.TryGetValue(item, out _))
@@ -44,6 +62,16 @@ class ItemSelector<T> where T : notnull
         entries.Remove(item);
     }
 
+    /// <summary>
+    /// Finds the weight of an item.
+    /// </summary>
+    /// <param name="item">
+    /// The item
+    /// </param>
+    /// <returns>
+    /// The weight of the item or -1 if it is not
+    /// found
+    /// </returns>
     public long Weight(T item)
     {
         if (!Contains(item))
@@ -52,11 +80,48 @@ class ItemSelector<T> where T : notnull
         return entries[item];
     }
 
+    /// <summary>
+    /// Set the weight of an item
+    /// </summary>
+    /// <param name="item">
+    /// The item
+    /// </param>
+    /// <param name="weight">
+    /// The weight of the item
+    /// </param>
+    public void SetWeight(T item, int weight)
+    {
+        if (!Contains(item))
+            return;
+        
+        RemoveItem(item);
+        AddItem(item, weight);
+    }
+
+    /// <summary>
+    /// Determines if an item is in the
+    /// ItemSelector.
+    /// </summary>
+    /// <param name="item">
+    /// The item
+    /// </param>
+    /// <returns>
+    /// If the item is found
+    /// </returns>
     public bool Contains(T item)
     {
         return entries.ContainsKey(item);
     }
 
+    /// <summary>
+    /// Rolls the ItemSelector for an item
+    /// </summary>
+    /// <returns>
+    /// The rolled item
+    /// </returns>
+    /// <exception cref="Exception">
+    /// Occurs if the ItemSelector is empty
+    /// </exception>
     public T Roll()
     {
         long value = random.Next(totalWeight);
@@ -75,6 +140,15 @@ class ItemSelector<T> where T : notnull
         throw new Exception("Impossible state");
     }
 
+    /// <summary>
+    /// The probability of receiving an item from a roll
+    /// </summary>
+    /// <param name="item">
+    /// The item
+    /// </param>
+    /// <returns>
+    /// The probability of receiving the item
+    /// </returns>
     public float Chance(T item)
     {
         if (!Contains(item))
