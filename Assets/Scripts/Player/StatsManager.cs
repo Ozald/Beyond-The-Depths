@@ -82,6 +82,7 @@ public class StatsManager : MonoBehaviour
         speed.Update(0);
         bonusDamage.Update(0);
         defense.Update(0);
+        critChance.Update(0.1f);
         
         currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
