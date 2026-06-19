@@ -81,6 +81,7 @@ public class StatsManager : MonoBehaviour
         speed.Update(0);
         bonusDamage.Update(0);
         defense.Update(0);
+        
         luck.Update(0);
         
         currentHP = maxHealth.value;
