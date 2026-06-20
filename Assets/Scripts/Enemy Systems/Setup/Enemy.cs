@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         stateTimer = 0;
-        currentState = enemyData.initalState;
+        currentState = enemyData.initialState;
         currentState.OnEnter(this);
 
         currentPath = null;
@@ -57,14 +57,14 @@ public class Enemy : MonoBehaviour
     private void TransitionHandler()
     {
         // Find every valid destination in a transition, store in a list, and then pick one of them
-        foreach (EnemyStateTransition transition in enemyData.transitions)
+        foreach (StateNode transition in enemyData.states)
         {
-            if (transition.fromState != currentState)
+            if (transition.state != currentState)
                 continue;
 
-            List<TransitionDestination> validDestinations = new List<TransitionDestination>();
+            List<Transition> validDestinations = new List<Transition>();
 
-            foreach (TransitionDestination destination in transition.destinations)
+            foreach (Transition destination in transition.transitions)
             {
                 if (destination.condition.Check(this))
                     validDestinations.Add(destination);
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void PickValidDestination(List<TransitionDestination> destinations, TransitionMode transitionMode)
+    private void PickValidDestination(List<Transition> destinations, TransitionMode transitionMode)
     {
         currentState.OnExit(this);
 

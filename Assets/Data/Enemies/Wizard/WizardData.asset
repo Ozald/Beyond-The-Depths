@@ -11,29 +11,68 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
   m_Name: WizardData
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   HP: 4
   invincibilityCooldown: 0.1
-  initalState: {fileID: 11400000, guid: 817a67000ae56384abbce0f9d88430df, type: 2}
-  transitions:
+  initialState: {fileID: 11400000, guid: e06607669b32c8f4eac7b41b0a50c8cf, type: 2}
+  states:
   - transitionMode: 0
-    fromState: {fileID: 11400000, guid: 817a67000ae56384abbce0f9d88430df, type: 2}
-    destinations:
-    - weight: 1
-      toState: {fileID: 11400000, guid: e06607669b32c8f4eac7b41b0a50c8cf, type: 2}
-      condition: {fileID: 11400000, guid: 3480bfa69ebdd194b9529dff35d7ad80, type: 2}
+    state: {fileID: 11400000, guid: e06607669b32c8f4eac7b41b0a50c8cf, type: 2}
+    transitions:
     - weight: 1
       toState: {fileID: 11400000, guid: ccaa8d35fa58fd44cab8dcf181331bee, type: 2}
-      condition: {fileID: 11400000, guid: 2406dec20fa85c44297cca1f63314bdb, type: 2}
-  - transitionMode: 0
-    fromState: {fileID: 11400000, guid: ccaa8d35fa58fd44cab8dcf181331bee, type: 2}
-    destinations:
+      condition:
+        rid: 5368160364798672922
     - weight: 1
       toState: {fileID: 11400000, guid: 817a67000ae56384abbce0f9d88430df, type: 2}
-      condition: {fileID: 11400000, guid: 1c5ad70ce4684e646b7943a7a205edf2, type: 2}
+      condition:
+        rid: 5368160364798672923
   - transitionMode: 0
-    fromState: {fileID: 11400000, guid: e06607669b32c8f4eac7b41b0a50c8cf, type: 2}
-    destinations:
+    state: {fileID: 11400000, guid: ccaa8d35fa58fd44cab8dcf181331bee, type: 2}
+    transitions:
+    - weight: 1
+      toState: {fileID: 11400000, guid: 817a67000ae56384abbce0f9d88430df, type: 2}
+      condition:
+        rid: 5368160364798672925
+  - transitionMode: 0
+    state: {fileID: 11400000, guid: 817a67000ae56384abbce0f9d88430df, type: 2}
+    transitions:
+    - weight: 1
+      toState: {fileID: 11400000, guid: e06607669b32c8f4eac7b41b0a50c8cf, type: 2}
+      condition:
+        rid: 5368160364798672926
     - weight: 1
       toState: {fileID: 11400000, guid: ccaa8d35fa58fd44cab8dcf181331bee, type: 2}
-      condition: {fileID: 11400000, guid: 712cc222e6de5ed47af6272a4f3c1f38, type: 2}
+      condition:
+        rid: 5368160364798672927
+  references:
+    version: 2
+    RefIds:
+    - rid: 5368160364798672922
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 6
+        distanceThreshold2: 8
+        comparisonOperator: 2
+    - rid: 5368160364798672923
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 5
+        distanceThreshold2: 20
+        comparisonOperator: 0
+    - rid: 5368160364798672925
+      type: {class: TimerCondition, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.2
+    - rid: 5368160364798672926
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 9
+        distanceThreshold2: 20
+        comparisonOperator: 1
+    - rid: 5368160364798672927
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 6
+        distanceThreshold2: 8
+        comparisonOperator: 2

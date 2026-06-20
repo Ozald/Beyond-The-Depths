@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Condition : ScriptableObject
+[System.Serializable]
+public abstract class Condition
 {
     public abstract bool Check(Enemy enemy);
 }

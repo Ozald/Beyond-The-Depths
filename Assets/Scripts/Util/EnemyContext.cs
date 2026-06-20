@@ -51,4 +51,9 @@ public class EnemyContext
         else
             Debug.LogWarning($"SharedContext: Key '{key}' not found. Cannot delete.");
     }
+
+    public bool HasAttribute(string key)
+    {
+        return attributes.ContainsKey(key);
+    }
 }
