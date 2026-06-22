@@ -921,6 +921,14 @@ MonoBehaviour:
     baseValue: 0
     bonusValue: 0
     value: 0
+  critChance:
+    baseValue: 0.1
+    bonusValue: 0
+    value: 0
+  bonusAttackSpeed:
+    baseValue: 0
+    bonusValue: 0
+    value: 0
   defense:
     baseValue: 0
     bonusValue: 0
@@ -1182,8 +1190,8 @@ MonoBehaviour:
   - {x: 0.24163605, y: -0.8648729, z: 0}
   - {x: 0.19892357, y: -0.9629133, z: 0}
   m_ShapePathHash: -313925516
-  m_Mesh: {fileID: 1871074844}
-  m_InstanceId: 35882
+  m_Mesh: {fileID: 2025366397}
+  m_InstanceId: 30454
   m_LocalBounds:
     m_Center: {x: -0.0068460107, y: -0.22593164, z: 0}
     m_Extent: {x: 0.61193335, y: 0.73698163, z: 0}
@@ -6894,7 +6902,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1871074844
+--- !u!43 &2025366397
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -49,6 +49,9 @@ public class StatsManager : MonoBehaviour
     [Header("Damage")] 
     public IntegerStat bonusDamage;
 
+    [Header("Crit Chance")]
+    public FloatStat critChance;
+
     [Header("Attack Speed")] 
     public FloatStat bonusAttackSpeed;
 
@@ -81,6 +84,7 @@ public class StatsManager : MonoBehaviour
         speed.Update(0);
         bonusDamage.Update(0);
         defense.Update(0);
+        critChance.Update(0.1f);
         
         luck.Update(0);
         
