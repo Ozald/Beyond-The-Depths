@@ -33,6 +33,13 @@ public class LevelData : ScriptableObject
     public WeightedRoom[] endRooms;
     public WeightedEnemy[] enemies;
     
+    public int mapWidth;
+    public int mapHeight;
+    public int maxRoomsPerBranch;
+    public float extraHallsChance;
+    public float specialRoomsChance;
+    public int roomOffset;
+    
     public Room GetStartRoom()
     {
         ItemSelector<Room> selector = new ItemSelector<Room>();
