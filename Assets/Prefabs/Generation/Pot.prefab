@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4598692424291421003}
   - component: {fileID: 6939631501884896349}
   - component: {fileID: 2486088528623153039}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -149,8 +149,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 1.5, y: 1.5}
+  m_EdgeRadius: 0.1
 --- !u!95 &2486088528623153039
 Animator:
   serializedVersion: 5

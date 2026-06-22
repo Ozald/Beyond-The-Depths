@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Pot : Interactable
+public class Pot : MonoBehaviour
 {
     public WeightedItem[] items;
     private ItemSelector<Interactable> LootPool;
@@ -14,33 +14,22 @@ public class Pot : Interactable
 
         foreach (WeightedItem item in items)
             LootPool.AddItem(item.item, item.weight);
-        
-        Debug.Log("Item array size: " + items.Length);
-        Debug.Log("Loot pool items: " + LootPool.Size);
     }
 
-    public override void Interact(PlayerInteraction player)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (!isOpen)
-        {
-            isOpen = true;
-
-            this.enabled = false;
-
-            //animator.SetBool("IsOpen", true);
-
             StartCoroutine(OpenPot());
-        }
     }
 
-    private IEnumerator OpenPot()
+    public IEnumerator OpenPot()
     {
+        isOpen = true;
         yield return new WaitForSeconds(0.2f);
 
         Interactable item = LootPool.Roll();
 
-        Instantiate(item, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+        Instantiate(item, gameObject.transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
-        
