@@ -7,6 +7,7 @@ using UnityEngine;
 public struct WeightedItem
 {
     public Interactable item;
+    public bool LuckAffected;
     public int weight;
 }
 
@@ -20,9 +21,6 @@ public class Chest : Interactable
     void Start()
     {
         LootPool = new ItemSelector<Interactable>();
-
-        foreach (WeightedItem item in items)
-            LootPool.AddItem(item.item, item.weight);
         
         Debug.Log("Item array size: " + items.Length);
         Debug.Log("Loot pool items: " + LootPool.Size);
@@ -32,6 +30,15 @@ public class Chest : Interactable
     {
         if (!isOpen)
         {
+            foreach (WeightedItem item in items)
+            {
+                if(item.LuckAffected) 
+                    LootPool.AddItem(item.item, Math.Max( // Math.Max is there to just prevent issues with negative luck
+                        1, item.weight + player.player.GetComponent<StatsManager>().luck.value));
+                else
+                    LootPool.AddItem(item.item, item.weight);
+            }
+
             isOpen = true;
 
             this.enabled = false;

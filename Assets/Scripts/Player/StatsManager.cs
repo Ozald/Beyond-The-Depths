@@ -61,6 +61,8 @@ public class StatsManager : MonoBehaviour
     [Header("Extra")]
     public float invincibilityCooldown;
     private float timeSinceLastHit;
+    
+    public IntegerStat luck;
 
     [Header("FX")]
     public ParticleSystem damageEffect;
@@ -79,6 +81,8 @@ public class StatsManager : MonoBehaviour
         speed.Update(0);
         bonusDamage.Update(0);
         defense.Update(0);
+        
+        luck.Update(0);
         
         currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
