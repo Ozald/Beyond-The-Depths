@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 [CreateAssetMenu(menuName = "Weapon Data/Melee Weapon")]
 public class MeleeWeaponData : WeaponData
@@ -21,6 +22,10 @@ public class MeleeWeaponData : WeaponData
             attack.direction = Vector3.zero;
             attack.maxLifetime = attackLifetime;
             attack.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
+            
+            if (new Random().NextDouble() < player.GetComponent<StatsManager>().critChance.value)
+                attack.damage *= 2;
+            
             attack.knockback = knockback;
             attack.destroyOnHit = false;
             attack.tagToHit = "Enemy";

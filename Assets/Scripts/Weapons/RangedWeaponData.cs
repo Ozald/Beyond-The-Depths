@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 [CreateAssetMenu(menuName = "Weapon Data/Ranged Weapon")]
 
@@ -22,6 +23,10 @@ public class RangedWeaponData : WeaponData
             projectile.direction = new Vector2(firePoint.right.x, firePoint.right.y).normalized;
             projectile.maxLifetime = attackLifetime;
             projectile.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
+            
+            if (new Random().NextDouble() < player.GetComponent<StatsManager>().critChance.value)
+                projectile.damage *= 2;
+            
             projectile.knockback = knockback;
             projectile.destroyOnHit = true;
             projectile.tagToHit = "Enemy";
