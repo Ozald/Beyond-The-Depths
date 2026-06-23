@@ -45,7 +45,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Space pressed");
+            //Debug.Log("Space pressed");
             if (playerInv.Count == 0) return;
 
             Weapon currentWeapon = playerInv[0];
@@ -59,7 +59,7 @@ public class PlayerInventory : MonoBehaviour
             lastAttackTime = Time.time;
 
             currentWeapon.weaponData.Attack(gameObject);
-            Debug.Log("Attack done");
+            //Debug.Log("Attack done");
         }
 
         if (playerInv.Count > 0 && playerInv[0] != null)
