@@ -39,20 +39,26 @@ public class LevelData : ScriptableObject
     [Header("Enemy Spawns")]
     public WeightedEnemy[] enemies;
     
-    [Header("Map Parameters")]
+    [Header("Global Map Parameters")]
     public int mapWidth;
     public int mapHeight;
-    [FormerlySerializedAs("MaxMapRooms")] public int maxMapRooms = 1;
-    public int maxRoomsPerBranch;
-    public float extraHallsChance;
+    [FormerlySerializedAs("MaxMapRooms")] public int maxMapRooms = 10;
     public float specialRoomsChance;
-    public bool CanLoop;
-    public bool MapDepthPenalty;
-    public bool AttemptSpreadBalancing;
+    
+    [Header("Standard Generation Parameters")]
+    public float extraHallsChance;
+    public bool canLoop;
+    public int maxRoomsPerBranch;
+    public bool mapDepthPenalty;
+    public bool attemptSpreadBalancing;
     public Room.ConnectionDirection[] validDirections;
+
+    [Header("Alternative Generation Parameters")] 
+    public bool useAlternativeGeneration;
+    public double generationChance = 0.5;
     
     [Header("Map Randomization")]
-    [FormerlySerializedAs("RandomizerSeed")] public int GeneratorRandomizerSeed;
+    [FormerlySerializedAs("RandomizerSeed")] public int generatorRandomizerSeed;
     //public int EnemySelectionSeed; Removed because it led to only one type of enemy ever spawning
     
     [Header("Room Spacing")]
@@ -60,7 +66,7 @@ public class LevelData : ScriptableObject
     
     public Room GetStartRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(GeneratorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
         
         foreach (WeightedRoom item in startRooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -70,7 +76,7 @@ public class LevelData : ScriptableObject
     
     public Room GetEndRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(GeneratorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
         
         foreach (WeightedRoom item in endRooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -80,7 +86,7 @@ public class LevelData : ScriptableObject
     
     public Room GetSpecialRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(GeneratorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
         
         foreach (WeightedRoom item in specialRooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -90,7 +96,7 @@ public class LevelData : ScriptableObject
     
     public Room GetRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(GeneratorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
         
         foreach (WeightedRoom item in rooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -100,7 +106,7 @@ public class LevelData : ScriptableObject
 
     public Hallway GetHallway()
     {
-        ItemSelector<Hallway> selector = new ItemSelector<Hallway>(GeneratorRandomizerSeed);
+        ItemSelector<Hallway> selector = new ItemSelector<Hallway>(generatorRandomizerSeed);
         
         foreach (WeightedRoom item in hallways)
             selector.AddItem((Hallway)item.connectable, item.weight);

@@ -12,7 +12,7 @@ public class GenerationManager : MonoBehaviour
     void Start()
     {
         map = new TileGraph(roomTypes.mapWidth, roomTypes.mapHeight, 
-            roomTypes.maxRoomsPerBranch, roomTypes.GeneratorRandomizerSeed);
+            roomTypes.maxRoomsPerBranch, roomTypes.generatorRandomizerSeed);
         
         GenerateFloorLayout();
         GenerateNavMesh();
@@ -37,7 +37,7 @@ public class GenerationManager : MonoBehaviour
         
         if(map is null)
             map = new TileGraph(roomTypes.mapWidth, roomTypes.mapHeight, 
-                roomTypes.maxRoomsPerBranch, roomTypes.GeneratorRandomizerSeed);
+                roomTypes.maxRoomsPerBranch, roomTypes.generatorRandomizerSeed);
         
         Debug.Log($"Map null: {map is null}");
         
@@ -46,10 +46,12 @@ public class GenerationManager : MonoBehaviour
         map.specialRoomsChance = roomTypes.specialRoomsChance;
         map.offset = roomTypes.roomOffset;
         map.validDirections = roomTypes.validDirections;
-        map.CanLoop = roomTypes.CanLoop;
-        map.EnableDepthPenalty = roomTypes.MapDepthPenalty;
-        map.AttemptBalancing = roomTypes.AttemptSpreadBalancing;
+        map.CanLoop = roomTypes.canLoop;
+        map.EnableDepthPenalty = roomTypes.mapDepthPenalty;
+        map.AttemptBalancing = roomTypes.attemptSpreadBalancing;
         map.MaximumRooms = roomTypes.maxMapRooms;
+        map.UseAlternateGeneration = roomTypes.useAlternativeGeneration;
+        map.GenerationChance = roomTypes.generationChance;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         

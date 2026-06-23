@@ -54,13 +54,15 @@ MonoBehaviour:
     weight: 1
   mapWidth: 15
   mapHeight: 15
-  maxMapRooms: 5
-  maxRoomsPerBranch: 6
-  extraHallsChance: 0.055
+  maxMapRooms: 25
   specialRoomsChance: 0.1
-  CanLoop: 1
-  MapDepthPenalty: 1
-  AttemptSpreadBalancing: 1
+  extraHallsChance: 0.055
+  canLoop: 1
+  maxRoomsPerBranch: 7
+  mapDepthPenalty: 1
+  attemptSpreadBalancing: 1
   validDirections: 00000000010000000200000003000000
-  GeneratorRandomizerSeed: 0
+  useAlternativeGeneration: 1
+  generationChance: 0.95
+  generatorRandomizerSeed: 86
   roomOffset: 25
