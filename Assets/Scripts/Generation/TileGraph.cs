@@ -211,22 +211,23 @@ public class TileGraph : MonoBehaviour
 
             for (int i = 0; i < MaximumBranchAttempts; i++)
             {
+                if (rooms.Count >= MaximumRooms)
+                    break;
+                
                 if (random.NextDouble() < generationChance)
                 {
                     Room next = roomTypes.GetRoom().GetComponent<Room>();
-                    next.levelData = roomTypes;
                     Vector2 direction = directions[random.Next(0, directions.Length)];
-                    position += direction;
-
-                    if (PlaceAt(ref next, position))
+                    
+                    if (PlaceAt(ref next, position + direction))
                     {
                         next.leftDoor.enabled = true;
                         next.rightDoor.enabled = true;
                         next.upDoor.enabled = true;
                         next.downDoor.enabled = true;
 
-                        rooms.Add(next, position);
-
+                        rooms.Add(next, position + direction);
+                        
                         if (direction.Equals(directions[0]) && origin.Left is null)
                         {
                             origin.Left = next;
@@ -668,10 +669,13 @@ public class TileGraph : MonoBehaviour
             if (door.connectedDoor is null)
                 Destroy(door.gameObject);
 
-            if (door.connectedDoor is not null && door.connectedDoor.parentRoom.Equals(door.parentRoom))
+            if (door.connectedDoor is not null && door.connectedDoor.parentRoom is not null)
             {
-                Destroy(door.connectedDoor.gameObject);
-                Destroy(door.gameObject);
+                if (door.connectedDoor.parentRoom == door.parentRoom)
+                {
+                    Destroy(door.connectedDoor.gameObject);
+                    Destroy(door.gameObject);
+                }
             }
         }
     }

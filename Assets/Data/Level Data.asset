@@ -64,5 +64,6 @@ MonoBehaviour:
   validDirections: 00000000010000000200000003000000
   useAlternativeGeneration: 1
   generationChance: 0.95
+  maximumBranchAttempts: 4
   generatorRandomizerSeed: 86
   roomOffset: 25
