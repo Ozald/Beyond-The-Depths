@@ -52,9 +52,9 @@ MonoBehaviour:
     weight: 1
   - enemy: {fileID: 2777718196688764207, guid: e11e7104d2c2285469446c2bbf8efeb5, type: 3}
     weight: 1
-  mapWidth: 15
-  mapHeight: 15
-  maxMapRooms: 25
+  mapWidth: 13
+  mapHeight: 13
+  maxMapRooms: 20
   specialRoomsChance: 0.1
   extraHallsChance: 0.055
   canLoop: 1
@@ -66,5 +66,5 @@ MonoBehaviour:
   generationChance: 0.95
   generationChanceDecay: 0.05
   maximumBranchAttempts: 4
-  generatorRandomizerSeed: 563
+  generatorRandomizerSeed: 0
   roomOffset: 25
