@@ -56,6 +56,7 @@ public class LevelData : ScriptableObject
     [Header("Alternative Generation Parameters")] 
     public bool useAlternativeGeneration;
     public double generationChance = 0.5;
+    [FormerlySerializedAs("MaximumBranchAttempts")] public int maximumBranchAttempts = 4;
     
     [Header("Map Randomization")]
     [FormerlySerializedAs("RandomizerSeed")] public int generatorRandomizerSeed;

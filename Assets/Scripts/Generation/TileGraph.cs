@@ -37,6 +37,7 @@ public class TileGraph : MonoBehaviour
     // For the experimental alternative generation algorithm
     public bool UseAlternateGeneration;
     public double GenerationChance;
+    public int MaximumBranchAttempts;
     
     public Room.ConnectionDirection[] validDirections;
 
@@ -170,6 +171,8 @@ public class TileGraph : MonoBehaviour
         Start = startRoom;
         rooms.Add(startRoom, startPosition);
         grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
+
+        startRoom.levelData = roomTypes;
         
         startRoom.leftDoor.enabled = true;
         startRoom.rightDoor.enabled = true;
@@ -190,6 +193,7 @@ public class TileGraph : MonoBehaviour
         while (roomQueue.Count > 0 && rooms.Count < MaximumRooms)
         {
             Room origin = roomQueue.Dequeue();
+            origin.levelData = roomTypes;
             Vector2 position = rooms[origin];
             
             // Set up the doors
@@ -205,63 +209,67 @@ public class TileGraph : MonoBehaviour
             if(origin.rightDoor is not null)
                 origin.rightDoor.parentRoom = origin;
 
-            if (random.NextDouble() < generationChance)
+            for (int i = 0; i < MaximumBranchAttempts; i++)
             {
-                Room next = roomTypes.GetRoom().GetComponent<Room>();
-                Vector2 direction = directions[random.Next(0, directions.Length)];
-                position += direction;
-
-                if (PlaceAt(ref next, position))
+                if (random.NextDouble() < generationChance)
                 {
-                    next.leftDoor.enabled = true;
-                    next.rightDoor.enabled = true;
-                    next.upDoor.enabled = true;
-                    next.downDoor.enabled = true;
-                    
-                    rooms.Add(next, position);
+                    Room next = roomTypes.GetRoom().GetComponent<Room>();
+                    next.levelData = roomTypes;
+                    Vector2 direction = directions[random.Next(0, directions.Length)];
+                    position += direction;
 
-                    if (direction.Equals(directions[0]) && origin.Left is null)
+                    if (PlaceAt(ref next, position))
                     {
-                        origin.Left = next;
+                        next.leftDoor.enabled = true;
+                        next.rightDoor.enabled = true;
+                        next.upDoor.enabled = true;
+                        next.downDoor.enabled = true;
 
-                        if (next.leftDoor is not null)
+                        rooms.Add(next, position);
+
+                        if (direction.Equals(directions[0]) && origin.Left is null)
                         {
-                            next.leftDoor.connectedDoor = origin.rightDoor;
-                            origin.rightDoor.connectedDoor = next.leftDoor;
-                        }
-                    }
-                    else if (direction.Equals(directions[1]) && origin.Right is null)
-                    {
-                        origin.Right = next;
+                            origin.Left = next;
 
-                        if (next.rightDoor is not null)
+                            if (next.leftDoor is not null)
+                            {
+                                next.leftDoor.connectedDoor = origin.rightDoor;
+                                origin.rightDoor.connectedDoor = next.leftDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[1]) && origin.Right is null)
                         {
-                            next.rightDoor.connectedDoor = origin.leftDoor;
-                            origin.leftDoor.connectedDoor = next.rightDoor;
-                        }
-                    }
-                    else if (direction.Equals(directions[2]) && origin.Up is null)
-                    {
-                        origin.Up = next;
+                            origin.Right = next;
 
-                        if (next.downDoor is not null)
+                            if (next.rightDoor is not null)
+                            {
+                                next.rightDoor.connectedDoor = origin.leftDoor;
+                                origin.leftDoor.connectedDoor = next.rightDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[2]) && origin.Up is null)
                         {
-                            next.downDoor.connectedDoor = origin.upDoor;
-                            origin.upDoor.connectedDoor = next.downDoor;
-                        }
-                    }
-                    else if (direction.Equals(directions[3]) && origin.Down is null)
-                    {
-                        origin.Down = next;
+                            origin.Up = next;
 
-                        if (next.upDoor is not null)
+                            if (next.downDoor is not null)
+                            {
+                                next.downDoor.connectedDoor = origin.upDoor;
+                                origin.upDoor.connectedDoor = next.downDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[3]) && origin.Down is null)
                         {
-                            next.upDoor.connectedDoor = origin.downDoor;
-                            origin.downDoor.connectedDoor = next.upDoor;
-                        }
-                    }
+                            origin.Down = next;
 
-                    roomQueue.Enqueue(next);
+                            if (next.upDoor is not null)
+                            {
+                                next.upDoor.connectedDoor = origin.downDoor;
+                                origin.downDoor.connectedDoor = next.upDoor;
+                            }
+                        }
+
+                        roomQueue.Enqueue(next);
+                    }
                 }
             }
         }
