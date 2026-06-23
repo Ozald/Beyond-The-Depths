@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &2177921199393602878
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &2311496913463861596
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &2505079547019095788
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +451,7 @@ MonoBehaviour:
   downDoor: {fileID: 8938529282497132560}
   enemySpawnpoints:
   - {fileID: 0}
-  roomType: 0
+  roomType: 2
   hasBeenExplored: 0
   spawnedEnemies: []
 --- !u!60 &5928307981669382818
@@ -545,6 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &3564849610484049529
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &4113262268148227534
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &5462074623938885502
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &5505025909054115265
 GameObject:
   m_ObjectHideFlags: 0
@@ -13284,6 +13291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &6620867871623388164
 GameObject:
   m_ObjectHideFlags: 0
@@ -13479,6 +13487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}
 --- !u!1 &8091253051128587292
 GameObject:
   m_ObjectHideFlags: 0
@@ -13822,3 +13831,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpawned: 0
+  spawnParticles: {fileID: 0}

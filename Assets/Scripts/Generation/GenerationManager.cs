@@ -7,18 +7,12 @@ public class GenerationManager : MonoBehaviour
 {
     public LevelData roomTypes;
 
-    public int mapWidth;
-    public int mapHeight;
-    public int maxRoomsPerBranch;
-    public float extraHallsChance;
-    public float specialRoomsChance;
-    public int roomOffset;
-
     public TileGraph map;
     
     void Start()
     {
-        map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
+        map = new TileGraph(roomTypes.mapWidth, roomTypes.mapHeight, 
+            roomTypes.maxRoomsPerBranch, roomTypes.generatorRandomizerSeed);
         
         GenerateFloorLayout();
         GenerateNavMesh();
@@ -42,14 +36,24 @@ public class GenerationManager : MonoBehaviour
             Destroy(room.gameObject);
         
         if(map is null)
-            map = new TileGraph(mapWidth, mapHeight, maxRoomsPerBranch);
+            map = new TileGraph(roomTypes.mapWidth, roomTypes.mapHeight, 
+                roomTypes.maxRoomsPerBranch, roomTypes.generatorRandomizerSeed);
         
         Debug.Log($"Map null: {map is null}");
         
-        map.extraHallsChance = extraHallsChance;
-        map.specialRoomsChance = specialRoomsChance;
         map.roomTypes = roomTypes;
-        map.offset = roomOffset;
+        map.extraHallsChance = roomTypes.extraHallsChance;
+        map.specialRoomsChance = roomTypes.specialRoomsChance;
+        map.offset = roomTypes.roomOffset;
+        map.validDirections = roomTypes.validDirections;
+        map.CanLoop = roomTypes.canLoop;
+        map.EnableDepthPenalty = roomTypes.mapDepthPenalty;
+        map.AttemptBalancing = roomTypes.attemptSpreadBalancing;
+        map.MaximumRooms = roomTypes.maxMapRooms;
+        map.UseAlternateGeneration = roomTypes.useAlternativeGeneration;
+        map.GenerationChance = roomTypes.generationChance;
+        map.GenerationChanceReduction = roomTypes.generationChanceDecay;
+        map.MaximumBranchAttempts = roomTypes.maximumBranchAttempts;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         
@@ -73,7 +77,8 @@ public class GenerationManager : MonoBehaviour
         dungeonNavMesh.RelocateNodes(center: map.StartRoom.transform.position, rotation: Quaternion.identity, nodeSize: dungeonNavMesh.nodeSize);
 
         dungeonNavMesh.rotation = new Vector3(90, 0, 0);
-        dungeonNavMesh.SetDimensions(width: mapWidth * roomOffset * 2, depth: mapHeight * roomOffset * 2, dungeonNavMesh.nodeSize);
+        dungeonNavMesh.SetDimensions(width: roomTypes.mapWidth * roomTypes.roomOffset * 2,
+            depth: roomTypes.mapHeight * roomTypes.roomOffset * 2, dungeonNavMesh.nodeSize);
 
         AstarPath.active.Scan();
     }

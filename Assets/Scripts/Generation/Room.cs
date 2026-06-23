@@ -123,6 +123,9 @@ public class Room : Connectable
 
         if (enemySpawnpoints.Count() == 0)
             OpenDoors();
+
+        if (roomType == RoomType.EndRoom)
+            OpenDoors();
     }
 
     private IEnumerator initRoom()
@@ -183,8 +186,11 @@ public class Room : Connectable
 
     private IEnumerator<YieldInstruction> SpawnEnemies()
     {
+        if (enemySpawnpoints.Length == 0)
+            yield break;
+        
         HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
-        int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length + 1);
+        int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length);
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {

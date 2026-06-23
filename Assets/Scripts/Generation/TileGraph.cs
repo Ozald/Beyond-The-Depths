@@ -12,15 +12,15 @@ public class TileGraph : MonoBehaviour
     {
         Left,
         Right,
-        Top,
-        Bottom
+        Up,
+        Down
     }
 
     private int width;
     private int height;
     private Connectable[,] grid;
     private int maxRoomsPerBranch;
-    private readonly Random random = new();
+    private readonly Random random;
     private readonly Dictionary<Room, Vector2> rooms;
     private readonly Dictionary<Hallway, Vector2> halls;
     private Vector2 startPos;
@@ -28,9 +28,22 @@ public class TileGraph : MonoBehaviour
     public float extraHallsChance;
     public float specialRoomsChance;
     public int offset;
+    public int MaximumRooms;
+
+    public bool CanLoop;
+    public bool EnableDepthPenalty;
+    public bool AttemptBalancing;
+
+    // For the experimental alternative generation algorithm
+    public bool UseAlternateGeneration;
+    public double GenerationChance;
+    public int MaximumBranchAttempts;
+    public double GenerationChanceReduction;
+    
+    public Room.ConnectionDirection[] validDirections;
 
     public LevelData roomTypes;
-    
+
     public float ExtraHallsChance { get => extraHallsChance; set => extraHallsChance = value; }
 
     public int Width
@@ -95,7 +108,7 @@ public class TileGraph : MonoBehaviour
         private set { Start = value; }
     }
 
-    public TileGraph(int width, int height, int maxRoomsPerBranch)
+    public TileGraph(int width, int height, int maxRoomsPerBranch, int randomSeed)
     {
         this.width = width;
         this.height = height;
@@ -105,6 +118,8 @@ public class TileGraph : MonoBehaviour
         startPos = new Vector2(-1, -1);
 
         grid = new Connectable[width, height];
+
+        random = new Random(randomSeed);
     }
 
     // Depth-first generation
@@ -115,22 +130,35 @@ public class TileGraph : MonoBehaviour
         
         if (!InBounds(startPosition))
             throw new ArgumentException("Start position is not in the map.");
+        
+        if(UseAlternateGeneration)
+        {
+            GenerateAlternative(startPosition, GenerationChance);
+            
+            if (CanLoop)
+                AddHalls(extraHallsChance);
+        }
+        else
+        {
+            // Create the starting room and start the recursive generation
+            Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
+                new Vector3(startPosition.x * offset, startPosition.y * offset, 0), Quaternion.identity).GetComponent<Room>();
+            StartPosition = startPosition;
+            Start = startRoom;
+            rooms.Add(startRoom, startPosition);
+            grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
 
-        // Create the starting room and start the recursive generation
-        Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
-            new Vector3(startPosition.x * offset, startPosition.y * offset, 0), Quaternion.identity).GetComponent<Room>();
-        StartPosition = startPosition;
-        Start = startRoom;
-        rooms.Add(startRoom, startPosition);
-        grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
+            startRoom.upDoor.enabled = true;
+            startRoom.downDoor.enabled = true;
+            startRoom.leftDoor.enabled = true;
+            startRoom.rightDoor.enabled = true;
+        
+            GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
 
-        startRoom.upDoor.enabled = true;
-        startRoom.downDoor.enabled = true;
-        startRoom.leftDoor.enabled = true;
-        startRoom.rightDoor.enabled = true;
+            if (CanLoop)
+                AddHalls(extraHallsChance);
+        }
 
-        GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
-        AddHalls(extraHallsChance);
         SetEndRoom();
         CleanDoors();
         
@@ -138,12 +166,140 @@ public class TileGraph : MonoBehaviour
         Debug.Log($"Generated {halls.Count} halls.");
     }
 
+    // An alternative, simpler procedural generation algorithm
+    public void GenerateAlternative(Vector2 startPosition, double generationChance)
+    {
+        Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
+            new Vector3(startPosition.x * offset, startPosition.y * offset, 0), Quaternion.identity).GetComponent<Room>();
+        StartPosition = startPosition;
+        Start = startRoom;
+        rooms.Add(startRoom, startPosition);
+        grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
+
+        startRoom.levelData = roomTypes;
+        
+        startRoom.leftDoor.enabled = true;
+        startRoom.rightDoor.enabled = true;
+        startRoom.upDoor.enabled = true;
+        startRoom.downDoor.enabled = true;
+
+        Queue<Room> roomQueue = new Queue<Room>();
+        roomQueue.Enqueue(startRoom);
+
+        List<Vector2> directions = new();
+        foreach (Room.ConnectionDirection dir in validDirections)
+        {
+            if (dir == Room.ConnectionDirection.Up)
+                directions.Add(new Vector2(0, 2));
+            
+            if(dir == Room.ConnectionDirection.Down)
+                directions.Add(new Vector2(0, -2));
+            
+            if(dir == Room.ConnectionDirection.Left)
+                directions.Add(new Vector2(-2, 0));
+            
+            if(dir == Room.ConnectionDirection.Right)
+                directions.Add(new Vector2(2, 0));
+        }
+
+        while (roomQueue.Count > 0 && rooms.Count < MaximumRooms)
+        {
+            Room origin = roomQueue.Dequeue();
+            origin.levelData = roomTypes;
+            Vector2 position = rooms[origin];
+            
+            // Set up the doors
+            if(origin.upDoor is not null)
+                origin.upDoor.parentRoom = origin;
+            
+            if(origin.downDoor is not null)
+                origin.downDoor.parentRoom = origin;
+            
+            if(origin.leftDoor is not null)
+                origin.leftDoor.parentRoom = origin;
+            
+            if(origin.rightDoor is not null)
+                origin.rightDoor.parentRoom = origin;
+
+            for (int i = 0; i < MaximumBranchAttempts; i++)
+            {
+                if (rooms.Count >= MaximumRooms)
+                    break;
+                
+                if (random.NextDouble() < generationChance)
+                {
+                    Room next = roomTypes.GetRoom().GetComponent<Room>();
+                    Vector2 direction = directions[random.Next(0, directions.Count)];
+                    
+                    if (PlaceAt(ref next, position + direction))
+                    {
+                        next.leftDoor.enabled = true;
+                        next.rightDoor.enabled = true;
+                        next.upDoor.enabled = true;
+                        next.downDoor.enabled = true;
+
+                        next.leftDoor.parentRoom = next;
+                        next.rightDoor.parentRoom = next;
+                        next.upDoor.parentRoom = next;
+                        next.downDoor.parentRoom = next;
+
+                        rooms.Add(next, position + direction);
+                        
+                        if (direction.Equals(directions[0]) && origin.Left is null)
+                        {
+                            origin.Left = next;
+
+                            if (next.rightDoor is not null)
+                            {
+                                next.rightDoor.connectedDoor = origin.leftDoor;
+                                origin.leftDoor.connectedDoor = next.rightDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[1]) && origin.Right is null)
+                        {
+                            origin.Right = next;
+
+                            if (next.leftDoor is not null)
+                            {
+                                next.leftDoor.connectedDoor = origin.rightDoor;
+                                origin.rightDoor.connectedDoor = next.leftDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[2]) && origin.Up is null)
+                        {
+                            origin.Up = next;
+
+                            if (next.upDoor is not null)
+                            {
+                                next.upDoor.connectedDoor = origin.downDoor;
+                                origin.downDoor.connectedDoor = next.upDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[3]) && origin.Down is null)
+                        {
+                            origin.Down = next;
+
+                            if (next.downDoor is not null)
+                            {
+                                next.downDoor.connectedDoor = origin.upDoor;
+                                origin.upDoor.connectedDoor = next.downDoor;
+                            }
+                        }
+
+                        generationChance -= GenerationChanceReduction;
+                        roomQueue.Enqueue(next);
+                    }
+                }
+            }
+        }
+    }
+
     // Recursive helper for standard depth-first generation
     [CanBeNull]
     private Room GenerateFrom(Room start, Vector2 startVector, int roomsGenerated, int penaltySafety, out Room room)
     {
         start.levelData = roomTypes;
-        if (roomsGenerated > maxRoomsPerBranch)
+        if (roomsGenerated > maxRoomsPerBranch || rooms.Count >= MaximumRooms)
         {
             room = null;
             return null;
@@ -207,22 +363,34 @@ public class TileGraph : MonoBehaviour
         // Honestly quite dumb the way we had to get this.
         PriorityQueue<Room.ConnectionDirection> connections = new();
 
-        foreach (Room.ConnectionDirection direction in Enum.GetValues(typeof(Room.ConnectionDirection)))
+        if (AttemptBalancing)
         {
-            // Attempt to bring some balance to the distribution of the rooms
-            Half leastPopulated = LeastPopulatedHalf();
-            float multiplier = 1 - roomsGenerated * 0.03f * (float)random.NextDouble();
+            foreach (Room.ConnectionDirection direction in Enum.GetValues(typeof(Room.ConnectionDirection)))
+            {
+                // If no direction is valid, this will probably explode the generation
+                if (!validDirections.Contains(direction))
+                    continue;
 
-            if (leastPopulated == Half.Top && direction == Room.ConnectionDirection.Up)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else if (leastPopulated == Half.Bottom && direction == Room.ConnectionDirection.Down)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else if (leastPopulated == Half.Left && direction == Room.ConnectionDirection.Left)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else if (leastPopulated == Half.Right && direction == Room.ConnectionDirection.Right)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else
-                connections.Enqueue(direction, random.Next(4));
+                // Attempt to bring some balance to the distribution of the rooms
+                Half leastPopulated = LeastPopulatedHalf();
+                float multiplier = 1 - roomsGenerated * 0.03f * (float)random.NextDouble();
+
+                if (leastPopulated == Half.Up && direction == Room.ConnectionDirection.Up)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else if (leastPopulated == Half.Down && direction == Room.ConnectionDirection.Down)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else if (leastPopulated == Half.Left && direction == Room.ConnectionDirection.Left)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else if (leastPopulated == Half.Right && direction == Room.ConnectionDirection.Right)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else
+                    connections.Enqueue(direction, random.Next(4));
+            }
+        }
+        else
+        {
+            foreach (Room.ConnectionDirection direction in Enum.GetValues(typeof(Room.ConnectionDirection)))
+                connections.Enqueue(direction, 1);
         }
 
         // Add some connections, maybe not all
@@ -231,7 +399,7 @@ public class TileGraph : MonoBehaviour
                                                 (1d - (double)roomsGenerated / maxRoomsPerBranch)) + random.Next(-1, 1);
 
         // Heuristic to decrease the amount of depth we can get from the recursion
-        if (roomsGenerated > penaltySafety)
+        if (roomsGenerated > penaltySafety && EnableDepthPenalty)
         {
             float depthPenalty = CalculateDepthPenalty(roomsGenerated);
             usedConnections = (int)Math.Floor(usedConnections * depthPenalty);
@@ -373,7 +541,7 @@ public class TileGraph : MonoBehaviour
     // Places the end room
     private void SetEndRoom()
     {
-        Room farthest = GetFarthestDeadEnd();
+        Room farthest = UseAlternateGeneration ? GetFarthestRoom() : GetFarthestDeadEnd();
 
         if (farthest is not null)
         {
@@ -518,325 +686,17 @@ public class TileGraph : MonoBehaviour
         {
             if (door.connectedDoor is null)
                 Destroy(door.gameObject);
+
+            if (door.connectedDoor is not null && door.connectedDoor.parentRoom is not null)
+            {
+                if (door.connectedDoor.parentRoom == door.parentRoom)
+                {
+                    Destroy(door.connectedDoor.gameObject);
+                    Destroy(door.gameObject);
+                }
+            }
         }
     }
-
-    /*
-    // Generates the map from a random walk.
-    // No immediate doubling back is allowed.
-    public void GenerateRandomWalk(int maxSteps, int minStepSize, int maxStepSize, double roomGenChance, Vector2 startPos)
-    {
-        Room start = new(4, true);
-        PlaceAt(start, startPos);
-        StartPosition = startPos;
-
-        int roomsGenerated = 0;
-        int steps = 0;
-        Vector2 currentPosition = startPos;
-
-        List<Vector2> directions = [new(1, 0), new(-1, 0), new(0, 1), new(0, -1)];
-        Vector2 previousDirection = Vector2.Zero;
-
-        while (steps < maxSteps && roomsGenerated < MaxRoomsPerBranch)
-        {
-            if (!InBounds(currentPosition))
-            {
-                break;
-            }
-
-            // Generate a room based on chance parameter
-            if (random.NextDouble() < roomGenChance)
-            {
-                if (PlaceAt(new Room(4, false), currentPosition))
-                {
-                    roomsGenerated++;
-                    if (GetAt(currentPosition) != null)
-                    {
-                        rooms[(Room)GetAt(currentPosition)] = currentPosition;
-                    }
-
-                    roomGenChance *= 0.9;
-                }
-            }
-
-            Vector2 direction = directions[random.Next(directions.Count)];
-
-            while (direction == previousDirection)
-            {
-                direction = directions[random.Next(directions.Count)];
-            }
-
-            int stepSize = random.Next(minStepSize, maxStepSize + 1);
-
-            currentPosition += direction * stepSize;
-            steps++;
-            previousDirection = direction;
-        }
-
-        Console.WriteLine("Took " + steps + " steps and generated " + roomsGenerated + " rooms.");
-
-        ConnectRooms();
-        SetEndRoom();
-    }
-
-    // Connects rooms together with hallways
-    public void ConnectRooms()
-    {
-        List<Room> connected = [(Room)GetAt(StartPosition)];
-        Vector2 currentPos = StartPosition;
-        Connectable? previous = GetAt(currentPos);
-
-        while (connected.Count < rooms.Keys.Count + 1)
-        {
-            Room nearest = FindNearestUnconnected(currentPos, connected);
-            Vector2 targetPos = rooms[nearest];
-
-            while (currentPos != targetPos)
-            {
-                Vector2 step = Vector2.Zero;
-
-                if (random.NextDouble() < 0.5)
-                {
-                    step.x = Math.Sign(targetPos.x - currentPos.x);
-                }
-                else
-                {
-                    step.y = Math.Sign(targetPos.y - currentPos.y);
-                }
-
-                currentPos += step;
-
-                if (IsSpotEmpty(currentPos))
-                {
-                    Hallway hall = new() { Origin = previous };
-                    if (previous is Hallway h) h.End = hall;
-                    PlaceHallAt(currentPos, previous, hall);
-                    previous = hall;
-                }
-            }
-
-            connected.Add(nearest);
-            previous = GetAt(currentPos);
-        }
-    }
-
-    // Connects rooms together with more linear hallways
-    public void ConnectRoomsLinear()
-    {
-        List<Room> connected = [];
-
-        Vector2 currentPosition = StartPosition;
-        int connectedRooms = 0;
-        Connectable? previous = GetAt(currentPosition);
-        connected.Add((Room)previous);
-
-        while (connectedRooms < rooms.Keys.Count)
-        {
-            Room nearest = FindNearestUnconnected(currentPosition, connected);
-            int xDist = (int)(currentPosition.x - rooms[nearest].x);
-            int yDist = (int)(currentPosition.y - rooms[nearest].y);
-
-            //Console.WriteLine(xDist + " " + yDist);
-
-            while (xDist != 0 || yDist != 0)
-            {
-                xDist = (int)(currentPosition.x - rooms[nearest].x);
-                yDist = (int)(currentPosition.y - rooms[nearest].y);
-
-                if (xDist == 0 && yDist == 0)
-                {
-                    //Console.WriteLine("Connected rooms");
-                    break;
-                }
-
-                int xOry = -1;
-
-                if (xDist == 0 && yDist != 0)
-                {
-                    xOry = yDist;
-                }
-                else if (xDist != 0 && yDist == 0)
-                {
-                    xOry = xDist;
-                }
-                else if (xDist != 0 && yDist != 0)
-                {
-                    xOry = Math.Max(xDist, yDist);
-                }
-
-                if (xOry == xDist)
-                {
-                    while (xDist != 0)
-                    {
-                        xDist = (int)(currentPosition.x - rooms[nearest].x);
-
-                        if (xDist > 0)
-                        {
-                            //Console.WriteLine("Going left");
-                            currentPosition += new Vector2(-1, 0);
-                        }
-                        else if (xDist < 0)
-                        {
-                            //Console.WriteLine("Going right");
-                            currentPosition += new Vector2(1, 0);
-                        }
-
-                        Hallway hall = new();
-
-                        if (previous != null)
-                        {
-                            if (previous is Hallway h)
-                            {
-                                h.End = hall;
-                            }
-
-                            hall.Origin = previous;
-                        }
-
-                        PlaceHallAt(currentPosition, previous, hall);
-                        previous = hall;
-                    }
-                }
-                else
-                {
-                    while (yDist != 0)
-                    {
-                        yDist = (int)(currentPosition.y - rooms[nearest].y);
-                        if (yDist > 0)
-                        {
-                            //Console.WriteLine("Going down");
-                            currentPosition += new Vector2(0, -1);
-                        }
-                        else if (yDist < 0)
-                        {
-                            //Console.WriteLine("Going up");
-                            currentPosition += new Vector2(0, 1);
-                        }
-
-                        Hallway hall = new();
-
-                        if (previous != null)
-                        {
-                            if (previous is Hallway h)
-                            {
-                                h.End = hall;
-                            }
-
-                            hall.Origin = previous;
-                        }
-
-                        PlaceHallAt(currentPosition, previous, hall);
-                        previous = hall;
-                    }
-                }
-            }
-
-            connected.Add(nearest);
-            connectedRooms++;
-        }
-    }
-
-
-    // Generates rooms with a snowflake like
-    // patern. Will start at the center of the
-    // grid.
-    public void Snowflake(int baseDist)
-    {
-        List<Vector2> directions = [new(baseDist, 0), new(-baseDist, 0), new(0, baseDist), new(0, -baseDist)];
-
-        Snowflake(0, new Vector2(Width / 2, Height / 2), directions, baseDist);
-        ConnectRoomsLinear();
-        SetEndRoom();
-    }
-
-    // Recursive helper for Snowflake generation
-    private void Snowflake(int recursions, Vector2 startPos, List<Vector2> directions, int baseDist)
-    {
-        if (!InBounds(startPos))
-            return;
-
-        if (!IsSpotEmpty(startPos))
-            return;
-
-        if (recursions > MaxRoomsPerBranch)
-            return;
-
-        if (recursions == 0)
-        {
-            StartPosition = startPos;
-            PlaceAt(new Room(4, true), startPos);
-        }
-        else
-        {
-            PlaceAt(new Room(4, false), startPos);
-        }
-
-        rooms[(Room)GetAt(startPos)] = startPos;
-
-        foreach (Vector2 direction in directions)
-        {
-            Vector2 nextStart = startPos + direction;
-
-            if (recursions > 1)
-            {
-                int xOffset = 0;
-                int yOffset = 0;
-
-                if (Vector2.Normalize(direction) == Vector2.Unitx || Vector2.Normalize(direction) == -Vector2.Unitx)
-                {
-                    yOffset = random.Next(-1, 2);
-                }
-
-                if (Vector2.Normalize(direction) == Vector2.Unity || Vector2.Normalize(direction) == -Vector2.Unity)
-                {
-                    xOffset = random.Next(-1, 2);
-                }
-
-                nextStart.x += xOffset;
-                nextStart.y += yOffset;
-            }
-
-            List<Vector2> dirs = [];
-
-            if (Vector2.Normalize(direction) == Vector2.Unitx || Vector2.Normalize(direction) == -Vector2.Unitx)
-            {
-                dirs.Add(new Vector2(0, baseDist + recursions));
-                dirs.Add(new Vector2(0, -baseDist - recursions));
-            }
-
-            if (Vector2.Normalize(direction) == Vector2.Unity || Vector2.Normalize(direction) == -Vector2.Unity)
-            {
-                dirs.Add(new Vector2(baseDist + recursions, 0));
-                dirs.Add(new Vector2(-baseDist - recursions, 0));
-            }
-
-            Snowflake(recursions + 1, nextStart, dirs, baseDist);
-        }
-    }
-
-    // Finds the nearest unconnected room
-    public Room FindNearestUnconnected(Vector2 position, List<Room> connected)
-    {
-        Room nearest = rooms.Keys.First();
-        float minDist = float.MaxValue;
-        Connectable? current = GetAt(position);
-
-        foreach (Room room in rooms.Keys)
-        {
-            if (current != null && room == current || connected.Contains(room))
-            {
-                continue;
-            }
-
-            if (Vector2.Distance(rooms[room], position) < minDist)
-            {
-                minDist = Vector2.Distance(rooms[room], position);
-                nearest = room;
-            }
-        }
-
-        return nearest;
-    }*/
 
     // Places a hallway
     public bool PlaceHallAt(Vector2 pos, Connectable? origin, Connectable? end)
@@ -983,10 +843,10 @@ public class TileGraph : MonoBehaviour
 
         if (topOrBottom == CountTopHalf())
         {
-            return Half.Top;
+            return Half.Up;
         }
 
-        return Half.Bottom;
+        return Half.Down;
     }
 
     // Calculates a penalty to slow increasing of the recursion depth
@@ -1078,107 +938,31 @@ public class TileGraph : MonoBehaviour
                 }
             }
         }
-
+        
         return farthest;
     }
 
-    /*
-    // Sets some rooms as "special" rooms
-    public void SetSpecialRooms()
+    // Finds the farthest room from the starting point
+    public Room? GetFarthestRoom()
     {
-        if(Start == null)
-            return;
+        Room farthest = (Room)GetAt(StartPosition);
+        double farthestDistance = 0;
 
-        int generated = 0;
-
-        foreach(Room room in rooms.Keys)
+        foreach (Room room in rooms.Keys)
         {
-            if(generated >= maxSpecialRooms)
-                break;
-
-            if(room.roomType != RoomType.Room)
-                continue;
-
-            if(random.NextDouble() < specialRoomsChance)
+            if (room.roomType != RoomType.SpecialRoom && room.roomType != RoomType.StartRoom)
             {
-                room.gameObject.GetComponent<Renderer>().material.color = Color.magenta;
-                room.gameObject.name = "Special_Room_" + (generated + 1);
-                room.roomType = RoomType.SpecialRoom;
-                
-                // Most likely will need code to replace the room
-                // with a special room that is randomly rolled
-
-                generated++;
+                if (Vector2.Distance(StartPosition, rooms[room]) > farthestDistance)
+                {
+                    farthest = room;
+                    farthestDistance = Vector2.Distance(StartPosition, rooms[room]);
+                }
             }
         }
+        
+        return farthest;
     }
-    */
     
-    /*
-    // Prints a compressed view of the
-    // grid.
-    public void PrintCompressed()
-    {
-        for (int i = 0; i < Grid.GetLength(0); i++)
-        {
-            for (int j = 0; j < Grid.GetLength(1); j++)
-            {
-                if (Grid[i, j] is null)
-                    Console.Write(" ");
-                else
-                    Console.Write(Grid[i, j]);
-            }
-
-            Console.WriteLine();
-        }
-    }
-
-    // Breadth-first traversal of the tile graph
-    public void BreadthFirstTraversal()
-    {
-        Queue<Room> roomQueue = new Queue<Room>();
-
-        if (Start == null)
-            return;
-
-        roomQueue.Enqueue(Start);
-
-        while (roomQueue.Count > 0)
-        {
-            Room room = roomQueue.Dequeue();
-            Console.WriteLine(room);
-
-            if (room.Left != null)
-            {
-                roomQueue.Enqueue((Room)room.Left);
-                // Generate a hall between the current room
-                // and the new room.
-            }
-
-            if (room.Right != null)
-            {
-                roomQueue.Enqueue((Room)room.Right);
-                // Generate a hall between the current room
-                // and the new room.
-            }
-
-            if (room.Up != null)
-            {
-                roomQueue.Enqueue((Room)room.Up);
-                // Generate a hall between the current room
-                // and the new room.
-            }
-
-            if (room.Down != null)
-            {
-                roomQueue.Enqueue((Room)room.Down);
-                // Generate a hall between the current room
-                // and the new room.
-            }
-        }
-    }
-    */
-
     public override string ToString()
     {
         string s = string.Empty;

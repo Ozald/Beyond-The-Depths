@@ -220,7 +220,7 @@ MonoBehaviour:
   upDoor: {fileID: 1619981380164226314}
   downDoor: {fileID: 3308699315634070801}
   enemySpawnpoints: []
-  roomType: 0
+  roomType: 1
   hasBeenExplored: 0
   spawnedEnemies: []
 --- !u!60 &7569097631817672992
