@@ -38,6 +38,7 @@ public class TileGraph : MonoBehaviour
     public bool UseAlternateGeneration;
     public double GenerationChance;
     public int MaximumBranchAttempts;
+    public double GenerationChanceReduction;
     
     public Room.ConnectionDirection[] validDirections;
 
@@ -133,6 +134,9 @@ public class TileGraph : MonoBehaviour
         if(UseAlternateGeneration)
         {
             GenerateAlternative(startPosition, GenerationChance);
+            
+            if (CanLoop)
+                AddHalls(extraHallsChance);
         }
         else
         {
@@ -274,6 +278,7 @@ public class TileGraph : MonoBehaviour
                             }
                         }
 
+                        generationChance -= GenerationChanceReduction;
                         roomQueue.Enqueue(next);
                     }
                 }

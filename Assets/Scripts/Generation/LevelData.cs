@@ -44,9 +44,9 @@ public class LevelData : ScriptableObject
     public int mapHeight;
     [FormerlySerializedAs("MaxMapRooms")] public int maxMapRooms = 10;
     public float specialRoomsChance;
+    public float extraHallsChance;
     
     [Header("Standard Generation Parameters")]
-    public float extraHallsChance;
     public bool canLoop;
     public int maxRoomsPerBranch;
     public bool mapDepthPenalty;
@@ -56,6 +56,7 @@ public class LevelData : ScriptableObject
     [Header("Alternative Generation Parameters")] 
     public bool useAlternativeGeneration;
     public double generationChance = 0.5;
+    public double generationChanceDecay = 0.05; // This is additive, not multiplicative
     [FormerlySerializedAs("MaximumBranchAttempts")] public int maximumBranchAttempts = 4;
     
     [Header("Map Randomization")]
