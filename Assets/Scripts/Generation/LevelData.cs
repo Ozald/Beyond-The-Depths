@@ -45,14 +45,14 @@ public class LevelData : ScriptableObject
     [FormerlySerializedAs("MaxMapRooms")] public int maxMapRooms = 10;
     public float specialRoomsChance;
     public float extraHallsChance;
+    public bool canLoop;
+    public Room.ConnectionDirection[] validDirections;
     
     [Header("Standard Generation Parameters")]
-    public bool canLoop;
     public int maxRoomsPerBranch;
     public bool mapDepthPenalty;
     public bool attemptSpreadBalancing;
-    public Room.ConnectionDirection[] validDirections;
-
+    
     [Header("Alternative Generation Parameters")] 
     public bool useAlternativeGeneration;
     public double generationChance = 0.5;

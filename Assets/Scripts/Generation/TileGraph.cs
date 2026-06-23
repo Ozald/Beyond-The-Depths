@@ -186,13 +186,21 @@ public class TileGraph : MonoBehaviour
         Queue<Room> roomQueue = new Queue<Room>();
         roomQueue.Enqueue(startRoom);
 
-        Vector2[] directions =
+        List<Vector2> directions = new();
+        foreach (Room.ConnectionDirection dir in validDirections)
         {
-            new Vector2(2, 0),
-            new Vector2(-2, 0),
-            new Vector2(0, -2),
-            new Vector2(0, 2),
-        };
+            if (dir == Room.ConnectionDirection.Up)
+                directions.Add(new Vector2(0, 2));
+            
+            if(dir == Room.ConnectionDirection.Down)
+                directions.Add(new Vector2(0, -2));
+            
+            if(dir == Room.ConnectionDirection.Left)
+                directions.Add(new Vector2(-2, 0));
+            
+            if(dir == Room.ConnectionDirection.Right)
+                directions.Add(new Vector2(2, 0));
+        }
 
         while (roomQueue.Count > 0 && rooms.Count < MaximumRooms)
         {
@@ -221,7 +229,7 @@ public class TileGraph : MonoBehaviour
                 if (random.NextDouble() < generationChance)
                 {
                     Room next = roomTypes.GetRoom().GetComponent<Room>();
-                    Vector2 direction = directions[random.Next(0, directions.Length)];
+                    Vector2 direction = directions[random.Next(0, directions.Count)];
                     
                     if (PlaceAt(ref next, position + direction))
                     {
