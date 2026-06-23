@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/Transition Conditions/Timer")]
-public class TimerCondition : Condition
+public class Time_Elapsed : Condition
 {
     public float timeElapsed = 5f;
 
@@ -18,7 +17,7 @@ public class TimerCondition : Condition
 }
 
 #if UNITY_EDITOR
-[CustomPropertyDrawer(typeof(TimerCondition))]
+[CustomPropertyDrawer(typeof(Time_Elapsed))]
 public class TimerConditionEditor : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

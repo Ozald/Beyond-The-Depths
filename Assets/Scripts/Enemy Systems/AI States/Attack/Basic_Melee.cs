@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/Melee Attack")]
-public class MeleeAttackState : AIState
+[System.Serializable]
+public class Basic_Melee : AIState
 {
     public GameObject hitboxObject;
     public string attackAnimationTrigger;
@@ -18,7 +19,7 @@ public class MeleeAttackState : AIState
             return;
 
         Animator enemyAnim = enemy.GetComponent<Animator>();
-        GameObject attackHitbox = Instantiate(hitboxObject, enemy.transform);
+        GameObject attackHitbox = Object.Instantiate(hitboxObject, enemy.transform);
 
         // Store the active attack hitbox in the enemy's context for later use
         enemy.GetData().SetAttribute(attackHitboxKey, attackHitbox);
@@ -39,7 +40,7 @@ public class MeleeAttackState : AIState
         if (attackHitbox is not null)
         {
             enemy.GetData().DeleteAttribute(attackHitboxKey);
-            Destroy(attackHitbox);
+            Object.Destroy(attackHitbox);
         }
     }
 
@@ -77,3 +78,35 @@ public class MeleeAttackState : AIState
     // Unused
     public override void OnFixedUpdate(Enemy enemy) {}
 }
+
+/*******************************************************************/
+
+#if UNITY_EDITOR
+[CustomPropertyDrawer(typeof(Basic_Melee))]
+public class BasicMeleeEditor : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        float lineHeight = EditorGUIUtility.singleLineHeight;
+
+        Rect r = position;
+        r.height = lineHeight;
+
+        GUIStyle titleStyle = new GUIStyle(EditorStyles.boldLabel);
+        titleStyle.alignment = TextAnchor.MiddleCenter;
+        titleStyle.fontSize = 12;
+        EditorGUI.LabelField(r, "Parameters", titleStyle);
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("hitboxObject"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("attackAnimationTrigger"));
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUIUtility.singleLineHeight * 5 + 10;
+    }
+}
+#endif

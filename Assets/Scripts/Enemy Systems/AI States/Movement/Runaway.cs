@@ -1,10 +1,11 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/Runaway")]
-public class RunawayState : AIState
+[System.Serializable]
+public class Runaway : AIState
 {
     public float moveSpeed;
     public string runningAnimationTrigger;
@@ -116,3 +117,35 @@ public class RunawayState : AIState
         }
     }
 }
+
+/*******************************************************************/
+
+#if UNITY_EDITOR
+[CustomPropertyDrawer(typeof(Runaway))]
+public class RunawayEditor : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        float lineHeight = EditorGUIUtility.singleLineHeight;
+
+        Rect r = position;
+        r.height = lineHeight;
+
+        GUIStyle titleStyle = new GUIStyle(EditorStyles.boldLabel);
+        titleStyle.alignment = TextAnchor.MiddleCenter;
+        titleStyle.fontSize = 12;
+        EditorGUI.LabelField(r, "Parameters", titleStyle);
+        
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("moveSpeed"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("runningAnimationTrigger"));
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUIUtility.singleLineHeight * 4 + 10;
+    }
+}
+#endif

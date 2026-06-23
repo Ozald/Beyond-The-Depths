@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public abstract class AIState : ScriptableObject
+public abstract class AIState
 {
     public abstract void OnEnter(Enemy enemy);
     public abstract void OnUpdate(Enemy enemy);

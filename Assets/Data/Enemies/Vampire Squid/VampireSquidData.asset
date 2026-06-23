@@ -14,32 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 3
   invincibilityCooldown: 0.1
-  initialState: {fileID: 11400000, guid: 3f9cd480f93f3e84398fba3b300a590f, type: 2}
+  initialState:
+    rid: 5368160439009542148
   states:
   - transitionMode: 0
-    state: {fileID: 11400000, guid: 3f9cd480f93f3e84398fba3b300a590f, type: 2}
-    transitions:
-    - weight: 1
-      toState: {fileID: 11400000, guid: cb09cc1076064bd42bb0844966f1417c, type: 2}
-      condition:
-        rid: 5368160364798672920
-  - transitionMode: 0
-    state: {fileID: 11400000, guid: cb09cc1076064bd42bb0844966f1417c, type: 2}
-    transitions:
-    - weight: 1
-      toState: {fileID: 11400000, guid: 3f9cd480f93f3e84398fba3b300a590f, type: 2}
-      condition:
-        rid: 5368160364798672921
+    state:
+      rid: 5368160439009542148
+    transitions: []
   references:
     version: 2
     RefIds:
-    - rid: 5368160364798672920
-      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+    - rid: 5368160439009542148
+      type: {class: Chase, ns: , asm: Assembly-CSharp}
       data:
-        distanceThreshold: 2
-        distanceThreshold2: 20
-        comparisonOperator: 0
-    - rid: 5368160364798672921
-      type: {class: TimerCondition, ns: , asm: Assembly-CSharp}
-      data:
-        timeElapsed: 1
+        moveSpeed: 4
+        chaseAnimationTrigger: Chase

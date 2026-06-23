@@ -14,30 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 6
   invincibilityCooldown: 0.1
-  initialState: {fileID: 11400000, guid: 1635ed160d42c5d449bef951adbceec9, type: 2}
+  initialState:
+    rid: 5368160439009542144
   states:
   - transitionMode: 0
-    state: {fileID: 11400000, guid: 1635ed160d42c5d449bef951adbceec9, type: 2}
+    state:
+      rid: 5368160439009542144
     transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: 23368835634e0a34bb4a8828e356d32d, type: 2}
+      toState:
+        rid: 5368160439009542145
       condition:
-        rid: 5368160364798672918
+        rid: 5368160439009542146
   - transitionMode: 0
-    state: {fileID: 11400000, guid: 23368835634e0a34bb4a8828e356d32d, type: 2}
+    state:
+      rid: 5368160439009542145
     transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: 1635ed160d42c5d449bef951adbceec9, type: 2}
+      toState:
+        rid: 5368160439009542144
       condition:
-        rid: 5368160364798672919
+        rid: 5368160439009542147
   references:
     version: 2
     RefIds:
-    - rid: 5368160364798672918
-      type: {class: TimerCondition, ns: , asm: Assembly-CSharp}
+    - rid: 5368160439009542144
+      type: {class: Chase, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 3
+        chaseAnimationTrigger: Chase
+    - rid: 5368160439009542145
+      type: {class: Octo_Shot, ns: , asm: Assembly-CSharp}
+      data:
+        projectilePrefab: {fileID: 4407160946478670164, guid: 87a4ce0b787aa2845ac9cdfe48792914, type: 3}
+        projectileSpeed: 3
+        projectileLifetime: 5
+        attackAnimationTrigger: Attack
+    - rid: 5368160439009542146
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
         timeElapsed: 3
-    - rid: 5368160364798672919
-      type: {class: TimerCondition, ns: , asm: Assembly-CSharp}
+    - rid: 5368160439009542147
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 1.5
+        timeElapsed: 1.25

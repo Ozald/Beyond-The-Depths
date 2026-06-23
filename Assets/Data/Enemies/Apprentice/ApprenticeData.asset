@@ -14,35 +14,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 3
   invincibilityCooldown: 0.1
-  initialState: {fileID: 11400000, guid: f5db5dde028d74644911b295047055c1, type: 2}
+  initialState:
+    rid: 5368160412672983108
   states:
   - transitionMode: 0
-    state: {fileID: 11400000, guid: f5db5dde028d74644911b295047055c1, type: 2}
+    state:
+      rid: 5368160412672983108
     transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
+      toState:
+        rid: 5368160412672983109
       condition:
         rid: 5368160364798672907
     - weight: 1
-      toState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
+      toState:
+        rid: 5368160412672983110
       condition:
         rid: 5368160364798672916
   - transitionMode: 0
-    state: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
+    state:
+      rid: 5368160412672983109
     transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
+      toState:
+        rid: 5368160412672983108
       condition:
-        rid: 5368160364798672917
+        rid: 5368160412672983111
   - transitionMode: 0
-    state: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
+    state:
+      rid: 5368160412672983110
     transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
+      toState:
+        rid: 5368160412672983109
       condition:
         rid: 5368160364798672910
     - weight: 1
-      toState: {fileID: 11400000, guid: f5db5dde028d74644911b295047055c1, type: 2}
+      toState:
+        rid: 5368160412672983108
       condition:
         rid: 5368160364798672911
   references:
@@ -72,7 +81,25 @@ MonoBehaviour:
         distanceThreshold: 3
         distanceThreshold2: 20
         comparisonOperator: 0
-    - rid: 5368160364798672917
-      type: {class: TimerCondition, ns: , asm: Assembly-CSharp}
+    - rid: 5368160412672983108
+      type: {class: Chase, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 1.2
+        moveSpeed: 8
+        chaseAnimationTrigger: Running
+    - rid: 5368160412672983109
+      type: {class: Triple_Shot, ns: , asm: Assembly-CSharp}
+      data:
+        projectilePrefab: {fileID: 4407160946478670164, guid: ad8dd13b3e56d7942b3dc65b643f8242, type: 3}
+        projectileSpeed: 5
+        projectileLifetime: 5
+        spreadInDegrees: 60
+        attackAnimationTrigger: Attack
+    - rid: 5368160412672983110
+      type: {class: Runaway, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 7
+        runningAnimationTrigger: Running
+    - rid: 5368160412672983111
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.25

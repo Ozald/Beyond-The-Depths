@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/Idle")]
-public class IdleState : AIState
+[System.Serializable]
+public class Idle : AIState
 {
     // This class rn does literally nothing until further notice
     public override void OnEnter(Enemy enemy)

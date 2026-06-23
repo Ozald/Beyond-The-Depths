@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/8-Way Bullet Attack")]
-public class EightWayAttackState : AIState
+[System.Serializable]
+public class Octo_Shot : AIState
 {
     public AttackHitboxData projectilePrefab;
     public float projectileSpeed = 5f;
@@ -67,7 +68,7 @@ public class EightWayAttackState : AIState
 
         foreach (Vector2 attack in attackDirections)
         {
-            AttackHitboxData projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
+            AttackHitboxData projectile = Object.Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
             projectile.speed = projectileSpeed;
             projectile.direction = new Vector2(attack.x, attack.y).normalized;
             projectile.maxLifetime = projectileLifetime;
@@ -78,3 +79,39 @@ public class EightWayAttackState : AIState
         }
     }
 }
+
+#if UNITY_EDITOR
+[CustomPropertyDrawer(typeof(Octo_Shot))]
+public class OctoShotEditor : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        float lineHeight = EditorGUIUtility.singleLineHeight;
+
+        Rect r = position;
+        r.height = lineHeight;
+
+        GUIStyle titleStyle = new GUIStyle(EditorStyles.boldLabel);
+        titleStyle.alignment = TextAnchor.MiddleCenter;
+        titleStyle.fontSize = 12;
+        EditorGUI.LabelField(r, "Parameters", titleStyle);
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("projectilePrefab"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("projectileSpeed"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("projectileLifetime"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("attackAnimationTrigger"));
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUIUtility.singleLineHeight * 6 + 10;
+    }
+}
+#endif

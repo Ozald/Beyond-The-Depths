@@ -16,6 +16,8 @@ public enum TransitionMode : byte
 public class Transition
 {
     public int weight;
+
+    [SerializeReference]
     public AIState toState;
 
     [SerializeReference]
@@ -26,7 +28,10 @@ public class Transition
 public class StateNode
 {
     public TransitionMode transitionMode;
+
+    [SerializeReference]
     public AIState state;
+
     public List<Transition> transitions;
 }
 
@@ -36,7 +41,9 @@ public class EnemyData : ScriptableObject
     public int HP;
     public float invincibilityCooldown;
 
+    [SerializeReference]
     public AIState initialState;
+
     public List<StateNode> states;
 }
 
@@ -49,12 +56,18 @@ public class EnemyData : ScriptableObject
 public class EnemyDataEditor : Editor
 {
     private static Type[] conditionTypes;
+    private static Type[] stateTypes;
 
     // Find all subclasses of Condition across the project file
     static EnemyDataEditor()
     {
         conditionTypes = TypeCache
             .GetTypesDerivedFrom<Condition>()
+            .Where(t => !t.IsAbstract)
+            .ToArray();
+
+        stateTypes = TypeCache
+            .GetTypesDerivedFrom<AIState>()
             .Where(t => !t.IsAbstract)
             .ToArray();
     }
@@ -94,7 +107,17 @@ public class EnemyDataEditor : Editor
         SerializedProperty states = serializedObject.FindProperty("states");
         SerializedProperty initialState = serializedObject.FindProperty("initialState");
 
-        EditorGUILayout.PropertyField(initialState);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Initial State");
+
+        string dropdownLabel = initialState.managedReferenceValue != null ? initialState.managedReferenceValue.GetType().Name : "None";
+        if (EditorGUILayout.DropdownButton(new GUIContent(dropdownLabel), FocusType.Keyboard))
+        {
+            PickExistingState(initialState);
+        }
+        EditorGUILayout.EndHorizontal();
+
+
         EditorGUILayout.Space();
 
         for (int i = 0; i < states.arraySize; i++)
@@ -121,8 +144,10 @@ public class EnemyDataEditor : Editor
     {
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-        string label = stateNode.FindPropertyRelative("state").objectReferenceValue != null
-            ? stateNode.FindPropertyRelative("state").objectReferenceValue.name
+        SerializedProperty state = stateNode.FindPropertyRelative("state");
+
+        string label = state.managedReferenceValue != null
+            ? state.managedReferenceValue.GetType().Name
             : "Empty State";
 
         GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout);
@@ -149,11 +174,31 @@ public class EnemyDataEditor : Editor
             EditorGUILayout.Space(30);
             EditorGUI.indentLevel++;
 
-            SerializedProperty state = stateNode.FindPropertyRelative("state");
-            EditorGUILayout.PropertyField(state);
+            EditorGUILayout.BeginHorizontal();
+
+            EditorGUILayout.LabelField("State Type");
+            string dropdownLabel = state.managedReferenceValue != null ? state.managedReferenceValue.GetType().Name : "None";
+
+            if (EditorGUILayout.DropdownButton(new GUIContent(dropdownLabel), FocusType.Keyboard))
+            {
+                PickState(state);
+            }
+            EditorGUILayout.EndHorizontal();
 
             SerializedProperty transitionMode = stateNode.FindPropertyRelative("transitionMode");
             EditorGUILayout.PropertyField(transitionMode);
+
+            if (state.managedReferenceValue != null)
+            {
+                EditorGUILayout.Space();
+                GUIStyle boxStyle = new GUIStyle(EditorStyles.helpBox);
+                boxStyle.margin = new RectOffset(10, 0, 5, 5);
+
+                EditorGUILayout.BeginVertical(boxStyle);
+                EditorGUILayout.PropertyField(state);
+                EditorGUILayout.EndVertical();
+                EditorGUILayout.Space();
+            }
 
             EditorGUILayout.Space(15);
 
@@ -207,8 +252,10 @@ public class EnemyDataEditor : Editor
         style.margin = new RectOffset(10, 10, 0, 0);
         EditorGUILayout.BeginVertical(style);
 
-        string label = transition.FindPropertyRelative("toState").objectReferenceValue != null
-            ? transition.FindPropertyRelative("toState").objectReferenceValue.name
+        SerializedProperty toState = transition.FindPropertyRelative("toState");
+
+        string label = toState.managedReferenceValue != null
+            ? toState.managedReferenceValue.GetType().Name
             : "Empty Transition";
 
         GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout);
@@ -230,8 +277,16 @@ public class EnemyDataEditor : Editor
                 EditorGUILayout.PropertyField(weight);
             }
 
-            SerializedProperty toState = transition.FindPropertyRelative("toState");
-            EditorGUILayout.PropertyField(toState, label: new GUIContent("Destination"));
+            //EditorGUILayout.PropertyField(toState, label: new GUIContent("Destination"));
+            string dropdownLabel = toState.managedReferenceValue != null ? toState.managedReferenceValue.GetType().Name : "None";
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Destination");
+            if (EditorGUILayout.DropdownButton(new GUIContent(dropdownLabel), FocusType.Keyboard))
+            {
+                PickExistingState(toState);
+            }
+            EditorGUILayout.EndHorizontal();
 
             DrawCondition(transition);
 
@@ -365,6 +420,64 @@ public class EnemyDataEditor : Editor
 
                 serializedObject.ApplyModifiedProperties();
             });
+        }
+
+        menu.ShowAsContext();
+    }
+
+    private void PickState(SerializedProperty stateNode)
+    {
+        GenericMenu menu = new GenericMenu();
+
+        foreach (Type type in stateTypes)
+        {
+            menu.AddItem(new GUIContent(type.Name), false, () =>
+            {
+                serializedObject.Update();
+
+                stateNode.managedReferenceValue = Activator.CreateInstance(type);
+
+                Undo.RecordObject(target, "Add State to State Node");
+                EditorUtility.SetDirty(target);
+
+                serializedObject.ApplyModifiedProperties();
+            });
+        }
+
+        menu.ShowAsContext();
+    }
+
+    private void PickExistingState(SerializedProperty destination)
+    {
+        GenericMenu menu = new GenericMenu();
+
+        SerializedProperty statesArray = serializedObject.FindProperty("states");
+
+        for (int i = 0; i < statesArray.arraySize; i++)
+        {
+            SerializedProperty stateNode = statesArray.GetArrayElementAtIndex(i);
+            SerializedProperty state = stateNode.FindPropertyRelative("state");
+
+            if (state.managedReferenceValue != null)
+            {
+                string stateName = state.managedReferenceValue.GetType().Name;
+                AIState stateRef = state.managedReferenceValue as AIState;
+
+
+                menu.AddItem(new GUIContent(stateName), false, () =>
+                {
+                    serializedObject.Update();
+
+                    destination.managedReferenceValue = stateRef;
+
+                    Undo.RecordObject(target, "Add State to Transition");
+                    EditorUtility.SetDirty(target);
+
+                    serializedObject.ApplyModifiedProperties();
+                });
+            }
+
+            
         }
 
         menu.ShowAsContext();

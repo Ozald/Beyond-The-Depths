@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/States/Multi Bullet Attack")]
-public class MultiBulletAttackState : AIState
+[System.Serializable]
+
+public class Triple_Shot : AIState
 {
     public AttackHitboxData projectilePrefab;
     public float projectileSpeed = 5f;
@@ -65,7 +67,7 @@ public class MultiBulletAttackState : AIState
 
         foreach (Vector3 attackDir in attackDirs)
         {
-            AttackHitboxData projectile = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
+            AttackHitboxData projectile = Object.Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
             projectile.speed = projectileSpeed;
             projectile.direction = new Vector2(attackDir.x, attackDir.y);
             projectile.maxLifetime = projectileLifetime;
@@ -73,3 +75,49 @@ public class MultiBulletAttackState : AIState
         }
     }
 }
+
+/*******************************************************************/
+
+#if UNITY_EDITOR
+[CustomPropertyDrawer(typeof(Triple_Shot))]
+public class TripleShotEditor : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        float lineHeight = EditorGUIUtility.singleLineHeight;
+
+        Rect r = position;
+        r.height = lineHeight;
+
+    //public AttackHitboxData projectilePrefab;
+    //public float projectileSpeed = 5f;
+    //public float projectileLifetime = 5f;
+    //public float spreadInDegrees = 45f;
+
+        GUIStyle titleStyle = new GUIStyle(EditorStyles.boldLabel);
+        titleStyle.alignment = TextAnchor.MiddleCenter;
+        titleStyle.fontSize = 12;
+        EditorGUI.LabelField(r, "Parameters", titleStyle);
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("projectilePrefab"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("projectileSpeed"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("projectileLifetime"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("spreadInDegrees"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("attackAnimationTrigger"));
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUIUtility.singleLineHeight * 7 + 10;
+    }
+}
+#endif
