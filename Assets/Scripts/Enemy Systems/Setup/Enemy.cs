@@ -63,10 +63,17 @@ public class Enemy : MonoBehaviour
                 continue;
 
             List<Transition> validDestinations = new List<Transition>();
-
+            
             foreach (Transition destination in transition.transitions)
             {
-                if (destination.condition.Check(this))
+                bool validTransition = true;
+                foreach (Condition condition in destination.conditions)
+                {
+                    if (!condition.Check(this))
+                        validTransition = false;
+                }
+
+                if (validTransition)
                     validDestinations.Add(destination);
             }
 
@@ -77,8 +84,6 @@ public class Enemy : MonoBehaviour
 
     private void PickValidDestination(List<Transition> destinations, TransitionMode transitionMode)
     {
-        currentState.OnExit(this);
-
         // Pick a valid destination based on the transition mode
         AIState newState = null;
 
@@ -112,12 +117,9 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        if (newState != currentState)
-        {
-            currentState.OnExit(this);
-            currentState = newState;
-            currentState.OnEnter(this);
-            stateTimer = 0;
-        }
+        currentState.OnExit(this);
+        currentState = newState;
+        currentState.OnEnter(this);
+        stateTimer = 0;
     }
 }

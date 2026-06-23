@@ -21,7 +21,7 @@ public class Transition
     public AIState toState;
 
     [SerializeReference]
-    public Condition condition;
+    public List<Condition> conditions;
 }
 
 [Serializable]
@@ -311,19 +311,39 @@ public class EnemyDataEditor : Editor
 
     public void DrawCondition(SerializedProperty transition)
     {
-        SerializedProperty condition = transition.FindPropertyRelative("condition");
+        SerializedProperty conditions = transition.FindPropertyRelative("conditions");
 
-        if (condition.managedReferenceValue == null)
+        if (conditions.arraySize > 0)
         {
-            EditorGUILayout.BeginHorizontal();
-
-            EditorGUILayout.LabelField("Condition", GUILayout.Width(100));
-            GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Add Condition"))
+            EditorGUI.indentLevel++;
+            EditorGUILayout.Space(20);
+            for (int i = 0; i < conditions.arraySize; i++)
             {
-                AddCondition(condition);
+                SerializedProperty condition = conditions.GetArrayElementAtIndex(i);
+                
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.PropertyField(condition, true);
+
+                if (GUILayout.Button("X", GUILayout.Width(20)))
+                {
+                    conditions.DeleteArrayElementAtIndex(i);
+                    Undo.RecordObject(target, "Delete Condition");
+                    EditorUtility.SetDirty(target);
+                    break;
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+            EditorGUI.indentLevel--;
+
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+
+            if (GUILayout.Button("Add Condition", GUILayout.Width(100)))
+            {
+                AddCondition(conditions);
             }
 
+            GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
         }
         else
@@ -332,23 +352,52 @@ public class EnemyDataEditor : Editor
 
             EditorGUILayout.LabelField("Condition", GUILayout.Width(100));
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Delete Condition"))
+            if (GUILayout.Button("Add Condition"))
             {
-                condition.managedReferenceValue = null;
-                Undo.RecordObject(target, "Delete Condition");
-                EditorUtility.SetDirty(target);
+                AddCondition(conditions);
             }
 
             EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.Space(10);
-            EditorGUILayout.PropertyField(condition, true);
-
-            if (condition.managedReferenceValue is IntCondition || condition.managedReferenceValue is BoolCondition || condition.managedReferenceValue is FloatCondition)
-                EditorGUILayout.HelpBox("Ensure that there are no typos in the attribute names. It is case-sensitive and must match exactly to an attribute that is stored within the enemy's EnemyContext.", MessageType.Warning);
-
-            
         }
+
+        EditorGUILayout.Space();
+
+        //if (condition.managedReferenceValue == null)
+        //{
+        //    EditorGUILayout.BeginHorizontal();
+
+        //    EditorGUILayout.LabelField("Condition", GUILayout.Width(100));
+        //    GUILayout.FlexibleSpace();
+        //    if (GUILayout.Button("Add Condition"))
+        //    {
+        //        AddCondition(condition);
+        //    }
+
+        //    EditorGUILayout.EndHorizontal();
+        //}
+        //else
+        //{
+        //    EditorGUILayout.BeginHorizontal();
+
+        //    EditorGUILayout.LabelField("Condition", GUILayout.Width(100));
+        //    GUILayout.FlexibleSpace();
+        //    if (GUILayout.Button("Delete Condition"))
+        //    {
+        //        condition.managedReferenceValue = null;
+        //        Undo.RecordObject(target, "Delete Condition");
+        //        EditorUtility.SetDirty(target);
+        //    }
+
+        //    EditorGUILayout.EndHorizontal();
+
+        //    EditorGUILayout.Space(10);
+        //    EditorGUILayout.PropertyField(condition, true);
+
+        //    if (condition.managedReferenceValue is IntCondition || condition.managedReferenceValue is BoolCondition || condition.managedReferenceValue is FloatCondition)
+        //        EditorGUILayout.HelpBox("Ensure that there are no typos in the attribute names. It is case-sensitive and must match exactly to an attribute that is stored within the enemy's EnemyContext.", MessageType.Warning);
+
+
+        //}
 
         EditorGUILayout.Space();
     }
@@ -393,7 +442,9 @@ public class EnemyDataEditor : Editor
 
         newTransition.FindPropertyRelative("weight").intValue = 1;
         newTransition.FindPropertyRelative("toState").objectReferenceValue = null;
-        newTransition.FindPropertyRelative("condition").managedReferenceValue = null;
+
+        SerializedProperty conditions = newTransition.FindPropertyRelative("conditions");
+        conditions.arraySize = 0;
 
         newTransition.isExpanded = true;
 
@@ -403,7 +454,7 @@ public class EnemyDataEditor : Editor
         EditorUtility.SetDirty(target);
     }
 
-    private void AddCondition(SerializedProperty condition)
+    private void AddCondition(SerializedProperty conditions)
     {
         GenericMenu menu = new GenericMenu();
 
@@ -413,7 +464,10 @@ public class EnemyDataEditor : Editor
             {
                 serializedObject.Update();
 
-                condition.managedReferenceValue = Activator.CreateInstance(type);
+                int newIndex = conditions.arraySize;
+                conditions.arraySize++;
+                SerializedProperty newCondition = conditions.GetArrayElementAtIndex(newIndex);
+                newCondition.managedReferenceValue = Activator.CreateInstance(type);
 
                 Undo.RecordObject(target, "Add Condition");
                 EditorUtility.SetDirty(target);

@@ -24,13 +24,13 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160439009542150
-      condition:
-        rid: 5368160439009542152
+      conditions:
+      - rid: 5368160440542822417
     - weight: 1
       toState:
         rid: 5368160439009542151
-      condition:
-        rid: 5368160439009542153
+      conditions:
+      - rid: 5368160440542822418
   - transitionMode: 0
     state:
       rid: 5368160439009542150
@@ -38,8 +38,20 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160439009542149
-      condition:
-        rid: 5368160439009542155
+      conditions:
+      - rid: 5368160440542822419
+      - rid: 5368160440542822422
+    - weight: 1
+      toState:
+        rid: 5368160439009542151
+      conditions:
+      - rid: 5368160440542822420
+      - rid: 5368160440542822423
+    - weight: 1
+      toState:
+        rid: 5368160439009542150
+      conditions:
+      - rid: 5368160440542822421
   - transitionMode: 0
     state:
       rid: 5368160439009542151
@@ -47,13 +59,13 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160439009542149
-      condition:
-        rid: 5368160439009542156
+      conditions:
+      - rid: 5368160440542822425
     - weight: 1
       toState:
         rid: 5368160439009542150
-      condition:
-        rid: 5368160439009542157
+      conditions:
+      - rid: 5368160440542822426
   references:
     version: 2
     RefIds:
@@ -75,31 +87,51 @@ MonoBehaviour:
       data:
         moveSpeed: 3
         runningAnimationTrigger: Running
-    - rid: 5368160439009542152
+    - rid: 5368160440542822417
       type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
       data:
         distanceThreshold: 5
-        distanceThreshold2: 7
+        distanceThreshold2: 8
         comparisonOperator: 2
-    - rid: 5368160439009542153
+    - rid: 5368160440542822418
       type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
       data:
         distanceThreshold: 4
         distanceThreshold2: 20
         comparisonOperator: 0
-    - rid: 5368160439009542155
+    - rid: 5368160440542822419
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 1.25
-    - rid: 5368160439009542156
+        timeElapsed: 0.75
+    - rid: 5368160440542822420
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 0.75
+    - rid: 5368160440542822421
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 0.75
+    - rid: 5368160440542822422
       type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
       data:
-        distanceThreshold: 8
+        distanceThreshold: 9
         distanceThreshold2: 20
         comparisonOperator: 1
-    - rid: 5368160439009542157
+    - rid: 5368160440542822423
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 4
+        distanceThreshold2: 20
+        comparisonOperator: 0
+    - rid: 5368160440542822425
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 9
+        distanceThreshold2: 20
+        comparisonOperator: 1
+    - rid: 5368160440542822426
       type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
       data:
         distanceThreshold: 5
-        distanceThreshold2: 7
+        distanceThreshold2: 8
         comparisonOperator: 2

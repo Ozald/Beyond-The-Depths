@@ -24,13 +24,13 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160412672983109
-      condition:
-        rid: 5368160364798672907
+      conditions:
+      - rid: 5368160440542822406
     - weight: 1
       toState:
         rid: 5368160412672983110
-      condition:
-        rid: 5368160364798672916
+      conditions:
+      - rid: 5368160440542822407
   - transitionMode: 0
     state:
       rid: 5368160412672983109
@@ -38,8 +38,20 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160412672983108
-      condition:
-        rid: 5368160412672983111
+      conditions:
+      - rid: 5368160440542822408
+      - rid: 5368160440542822409
+    - weight: 1
+      toState:
+        rid: 5368160412672983110
+      conditions:
+      - rid: 5368160440542822410
+      - rid: 5368160440542822411
+    - weight: 1
+      toState:
+        rid: 5368160412672983109
+      conditions:
+      - rid: 5368160440542822412
   - transitionMode: 0
     state:
       rid: 5368160412672983110
@@ -47,40 +59,16 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160412672983109
-      condition:
-        rid: 5368160364798672910
+      conditions:
+      - rid: 5368160440542822413
     - weight: 1
       toState:
         rid: 5368160412672983108
-      condition:
-        rid: 5368160364798672911
+      conditions:
+      - rid: 5368160440542822414
   references:
     version: 2
     RefIds:
-    - rid: 5368160364798672907
-      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
-      data:
-        distanceThreshold: 4
-        distanceThreshold2: 6
-        comparisonOperator: 2
-    - rid: 5368160364798672910
-      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
-      data:
-        distanceThreshold: 4
-        distanceThreshold2: 6
-        comparisonOperator: 2
-    - rid: 5368160364798672911
-      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
-      data:
-        distanceThreshold: 7
-        distanceThreshold2: 20
-        comparisonOperator: 1
-    - rid: 5368160364798672916
-      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
-      data:
-        distanceThreshold: 3
-        distanceThreshold2: 20
-        comparisonOperator: 0
     - rid: 5368160412672983108
       type: {class: Chase, ns: , asm: Assembly-CSharp}
       data:
@@ -99,7 +87,51 @@ MonoBehaviour:
       data:
         moveSpeed: 7
         runningAnimationTrigger: Running
-    - rid: 5368160412672983111
+    - rid: 5368160440542822406
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 4
+        distanceThreshold2: 6
+        comparisonOperator: 2
+    - rid: 5368160440542822407
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 3
+        distanceThreshold2: 20
+        comparisonOperator: 0
+    - rid: 5368160440542822408
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
         timeElapsed: 1.25
+    - rid: 5368160440542822409
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 7
+        distanceThreshold2: 20
+        comparisonOperator: 1
+    - rid: 5368160440542822410
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.25
+    - rid: 5368160440542822411
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 3
+        distanceThreshold2: 20
+        comparisonOperator: 0
+    - rid: 5368160440542822412
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.25
+    - rid: 5368160440542822413
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 4
+        distanceThreshold2: 6
+        comparisonOperator: 2
+    - rid: 5368160440542822414
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 7
+        distanceThreshold2: 20
+        comparisonOperator: 1

@@ -24,8 +24,8 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160439009542145
-      condition:
-        rid: 5368160439009542146
+      conditions:
+      - rid: 5368160440542822415
   - transitionMode: 0
     state:
       rid: 5368160439009542145
@@ -33,8 +33,8 @@ MonoBehaviour:
     - weight: 1
       toState:
         rid: 5368160439009542144
-      condition:
-        rid: 5368160439009542147
+      conditions:
+      - rid: 5368160440542822416
   references:
     version: 2
     RefIds:
@@ -50,11 +50,11 @@ MonoBehaviour:
         projectileSpeed: 3
         projectileLifetime: 5
         attackAnimationTrigger: Attack
-    - rid: 5368160439009542146
+    - rid: 5368160440542822415
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
         timeElapsed: 3
-    - rid: 5368160439009542147
+    - rid: 5368160440542822416
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
         timeElapsed: 1.25
