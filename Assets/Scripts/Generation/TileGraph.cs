@@ -226,6 +226,11 @@ public class TileGraph : MonoBehaviour
                         next.upDoor.enabled = true;
                         next.downDoor.enabled = true;
 
+                        next.leftDoor.parentRoom = next;
+                        next.rightDoor.parentRoom = next;
+                        next.upDoor.parentRoom = next;
+                        next.downDoor.parentRoom = next;
+
                         rooms.Add(next, position + direction);
                         
                         if (direction.Equals(directions[0]) && origin.Left is null)
