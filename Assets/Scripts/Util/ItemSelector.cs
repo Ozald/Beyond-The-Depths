@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 class ItemSelector<T> where T : notnull
 {
-    private readonly Random random = new();
+    private readonly Random random;
     private readonly Dictionary<T, int> entries;
     private int totalWeight;
 
@@ -17,6 +17,14 @@ class ItemSelector<T> where T : notnull
     {
         entries = new Dictionary<T, int>();
         totalWeight = 0;
+        random = new Random();
+    }
+    
+    public ItemSelector(int seed)
+    {
+        entries = new Dictionary<T, int>();
+        totalWeight = 0;
+        random = new Random(seed);
     }
 
     /// <summary>

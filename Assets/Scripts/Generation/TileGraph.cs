@@ -12,15 +12,15 @@ public class TileGraph : MonoBehaviour
     {
         Left,
         Right,
-        Top,
-        Bottom
+        Up,
+        Down
     }
 
     private int width;
     private int height;
     private Connectable[,] grid;
     private int maxRoomsPerBranch;
-    private readonly Random random = new();
+    private readonly Random random;
     private readonly Dictionary<Room, Vector2> rooms;
     private readonly Dictionary<Hallway, Vector2> halls;
     private Vector2 startPos;
@@ -28,9 +28,16 @@ public class TileGraph : MonoBehaviour
     public float extraHallsChance;
     public float specialRoomsChance;
     public int offset;
+    public int MaximumRooms;
+
+    public bool CanLoop;
+    public bool EnableDepthPenalty;
+    public bool AttemptBalancing;
+    
+    public Room.ConnectionDirection[] validDirections;
 
     public LevelData roomTypes;
-    
+
     public float ExtraHallsChance { get => extraHallsChance; set => extraHallsChance = value; }
 
     public int Width
@@ -95,7 +102,7 @@ public class TileGraph : MonoBehaviour
         private set { Start = value; }
     }
 
-    public TileGraph(int width, int height, int maxRoomsPerBranch)
+    public TileGraph(int width, int height, int maxRoomsPerBranch, int randomSeed)
     {
         this.width = width;
         this.height = height;
@@ -105,6 +112,8 @@ public class TileGraph : MonoBehaviour
         startPos = new Vector2(-1, -1);
 
         grid = new Connectable[width, height];
+
+        random = new Random(randomSeed);
     }
 
     // Depth-first generation
@@ -130,7 +139,10 @@ public class TileGraph : MonoBehaviour
         startRoom.rightDoor.enabled = true;
 
         GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
-        AddHalls(extraHallsChance);
+        
+        if(CanLoop)
+            AddHalls(extraHallsChance);
+        
         SetEndRoom();
         CleanDoors();
         
@@ -143,7 +155,7 @@ public class TileGraph : MonoBehaviour
     private Room GenerateFrom(Room start, Vector2 startVector, int roomsGenerated, int penaltySafety, out Room room)
     {
         start.levelData = roomTypes;
-        if (roomsGenerated > maxRoomsPerBranch)
+        if (roomsGenerated > maxRoomsPerBranch || rooms.Count >= MaximumRooms)
         {
             room = null;
             return null;
@@ -207,22 +219,34 @@ public class TileGraph : MonoBehaviour
         // Honestly quite dumb the way we had to get this.
         PriorityQueue<Room.ConnectionDirection> connections = new();
 
-        foreach (Room.ConnectionDirection direction in Enum.GetValues(typeof(Room.ConnectionDirection)))
+        if (AttemptBalancing)
         {
-            // Attempt to bring some balance to the distribution of the rooms
-            Half leastPopulated = LeastPopulatedHalf();
-            float multiplier = 1 - roomsGenerated * 0.03f * (float)random.NextDouble();
+            foreach (Room.ConnectionDirection direction in Enum.GetValues(typeof(Room.ConnectionDirection)))
+            {
+                // If no direction is valid, this will probably explode the generation
+                if (!validDirections.Contains(direction))
+                    continue;
 
-            if (leastPopulated == Half.Top && direction == Room.ConnectionDirection.Up)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else if (leastPopulated == Half.Bottom && direction == Room.ConnectionDirection.Down)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else if (leastPopulated == Half.Left && direction == Room.ConnectionDirection.Left)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else if (leastPopulated == Half.Right && direction == Room.ConnectionDirection.Right)
-                connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
-            else
-                connections.Enqueue(direction, random.Next(4));
+                // Attempt to bring some balance to the distribution of the rooms
+                Half leastPopulated = LeastPopulatedHalf();
+                float multiplier = 1 - roomsGenerated * 0.03f * (float)random.NextDouble();
+
+                if (leastPopulated == Half.Up && direction == Room.ConnectionDirection.Up)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else if (leastPopulated == Half.Down && direction == Room.ConnectionDirection.Down)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else if (leastPopulated == Half.Left && direction == Room.ConnectionDirection.Left)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else if (leastPopulated == Half.Right && direction == Room.ConnectionDirection.Right)
+                    connections.Enqueue(direction, (int)(random.Next(4) * multiplier * 100));
+                else
+                    connections.Enqueue(direction, random.Next(4));
+            }
+        }
+        else
+        {
+            foreach (Room.ConnectionDirection direction in Enum.GetValues(typeof(Room.ConnectionDirection)))
+                connections.Enqueue(direction, 1);
         }
 
         // Add some connections, maybe not all
@@ -231,7 +255,7 @@ public class TileGraph : MonoBehaviour
                                                 (1d - (double)roomsGenerated / maxRoomsPerBranch)) + random.Next(-1, 1);
 
         // Heuristic to decrease the amount of depth we can get from the recursion
-        if (roomsGenerated > penaltySafety)
+        if (roomsGenerated > penaltySafety && EnableDepthPenalty)
         {
             float depthPenalty = CalculateDepthPenalty(roomsGenerated);
             usedConnections = (int)Math.Floor(usedConnections * depthPenalty);
@@ -983,10 +1007,10 @@ public class TileGraph : MonoBehaviour
 
         if (topOrBottom == CountTopHalf())
         {
-            return Half.Top;
+            return Half.Up;
         }
 
-        return Half.Bottom;
+        return Half.Down;
     }
 
     // Calculates a penalty to slow increasing of the recursion depth

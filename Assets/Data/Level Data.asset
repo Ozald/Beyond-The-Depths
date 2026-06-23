@@ -12,15 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347171feed5a3e04fad9858041dd1132, type: 3}
   m_Name: Level Data
   m_EditorClassIdentifier: 
-  startRooms:
-  - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
-    weight: 1
-  specialRooms:
-  - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
-    weight: 1
-  hallways:
-  - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
-    weight: 1
   rooms:
   - connectable: {fileID: -598439968689866140, guid: 08d897b0d3798024fa7262b4798d9664, type: 3}
     weight: 1
@@ -40,8 +31,17 @@ MonoBehaviour:
     weight: 1
   - connectable: {fileID: 5288363887424236422, guid: ecb281ba13af0ec4385f64a5f0f45a8d, type: 3}
     weight: 1
+  startRooms:
+  - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
+    weight: 1
   endRooms:
   - connectable: {fileID: -598439968689866140, guid: 3126698a294ba1643888c3d6c9b16e26, type: 3}
+    weight: 1
+  specialRooms:
+  - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
+    weight: 1
+  hallways:
+  - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
     weight: 1
   enemies:
   - enemy: {fileID: 2777718196688764207, guid: 5dce840bb23a1c64a891c94775765290, type: 3}
@@ -52,3 +52,15 @@ MonoBehaviour:
     weight: 1
   - enemy: {fileID: 2777718196688764207, guid: e11e7104d2c2285469446c2bbf8efeb5, type: 3}
     weight: 1
+  mapWidth: 15
+  mapHeight: 15
+  maxMapRooms: 5
+  maxRoomsPerBranch: 6
+  extraHallsChance: 0.055
+  specialRoomsChance: 0.1
+  CanLoop: 1
+  MapDepthPenalty: 1
+  AttemptSpreadBalancing: 1
+  validDirections: 00000000010000000200000003000000
+  GeneratorRandomizerSeed: 0
+  roomOffset: 25
