@@ -18,8 +18,12 @@ public class Pot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isOpen)
-            StartCoroutine(OpenPot());
+        if (other.CompareTag("Weapon"))
+        {
+            AttackHitboxData data = other.gameObject.GetComponent<AttackHitboxData>();
+            if (data != null && !isOpen)
+                StartCoroutine(OpenPot());
+        }
     }
 
     public IEnumerator OpenPot()
