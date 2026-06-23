@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BoolCondition", menuName = "ScriptableObjects/Conditions/Bool", order = 1)]
+[System.Serializable]
 public class BoolCondition : Condition
 {
     public string variableName;
@@ -17,3 +18,33 @@ public class BoolCondition : Condition
         return data == value;
     }
 }
+
+#if UNITY_EDITOR
+[CustomPropertyDrawer(typeof(BoolCondition))]
+public class BoolConditionEditor : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        float lineHeight = EditorGUIUtility.singleLineHeight;
+
+        Rect r = position;
+        r.height = lineHeight;
+
+        GUIStyle titleStyle = new GUIStyle(EditorStyles.boldLabel);
+        titleStyle.alignment = TextAnchor.MiddleCenter;
+        titleStyle.fontSize = 12;
+        EditorGUI.LabelField(r, "Boolean Condition", titleStyle);
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("variableName"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("value"), new GUIContent("Is True"));
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUIUtility.singleLineHeight * 4 + 10;
+    }
+}
+#endif

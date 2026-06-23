@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy AI/Transition Conditions/Distance To Player")]
+[System.Serializable]
 public class DistanceToPlayer : Condition
 {
     public enum ComparisonOperator

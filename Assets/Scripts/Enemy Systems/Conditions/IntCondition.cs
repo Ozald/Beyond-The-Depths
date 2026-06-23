@@ -88,10 +88,10 @@ public class IntConditionEditor : PropertyDrawer
             EditorGUI.PropertyField(r, property.FindPropertyRelative("value2"), new GUIContent("Max"));
 
             Rect messageRect = position;
+            messageRect.x += 20;
             messageRect.y += 110;
             messageRect.height = 40;
-            EditorGUI.HelpBox(messageRect, "Between is inclusive. Keep that in mind when setting your ranges.", MessageType.Info
-);
+            EditorGUI.HelpBox(messageRect, "Between is inclusive. Keep that in mind when setting your ranges.", MessageType.Info);
         }
         else
         {

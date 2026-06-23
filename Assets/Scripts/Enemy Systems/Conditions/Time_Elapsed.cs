@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class Time_Elapsed : Condition
 {
     public float timeElapsed = 5f;

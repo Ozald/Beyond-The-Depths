@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FloatCondition", menuName = "ScriptableObjects/Conditions/Float", order = 1)]
+[System.Serializable]
 public class FloatCondition : Condition
 {
     public enum Operator
     {
+        Equal,
         GreaterThan,
         LessThan,
-        Equal,
-        Between
+        Between,
+        NotBetween
     }
 
     public string attributeName;
@@ -29,13 +30,15 @@ public class FloatCondition : Condition
         switch (operatorType)
         {
             case Operator.Equal:
-                return data > value - 0.001 && data < value + 0.001;
+                return data > value - 0.0001 && data < value + 0.0001;
             case Operator.GreaterThan:
                 return data > value;
             case Operator.LessThan:
                 return data < value;
             case Operator.Between:
                 return data >= value && data <= value2;
+            case Operator.NotBetween:
+                return data < value || data > value2;
             default:
                 Debug.LogError("Unsupported operator type");
                 return false;
@@ -44,49 +47,57 @@ public class FloatCondition : Condition
 }
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(FloatCondition))]
-public class FloatConditionEditor : Editor
+[CustomPropertyDrawer(typeof(FloatCondition))]
+public class FloatConditionEditor : PropertyDrawer
 {
-    public override void OnInspectorGUI()
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        serializedObject.Update();
+        float lineHeight = EditorGUIUtility.singleLineHeight;
 
-        EditorGUILayout.PropertyField(
-            serializedObject.FindProperty("attributeName"));
+        Rect r = position;
+        r.height = lineHeight;
 
-        SerializedProperty op =
-            serializedObject.FindProperty("operatorType");
+        GUIStyle titleStyle = new GUIStyle(EditorStyles.boldLabel);
+        titleStyle.alignment = TextAnchor.MiddleCenter;
+        titleStyle.fontSize = 12;
+        EditorGUI.LabelField(r, "Float Condition", titleStyle);
 
-        EditorGUILayout.PropertyField(op);
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("attributeName"));
 
-        IntCondition.Operator selected =
-            (IntCondition.Operator)op.enumValueIndex;
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("operatorType"));
 
-        if (selected == IntCondition.Operator.Between)
+        FloatCondition.Operator opSelected = (FloatCondition.Operator)property.FindPropertyRelative("operatorType").enumValueIndex;
+
+        if (opSelected == FloatCondition.Operator.Between || opSelected == FloatCondition.Operator.NotBetween)
         {
-            EditorGUILayout.BeginHorizontal();
+            r.y += lineHeight + 2;
+            EditorGUI.PropertyField(r, property.FindPropertyRelative("value"), new GUIContent("Min"));
 
-            GUILayout.FlexibleSpace();
+            r.y += lineHeight + 2;
+            EditorGUI.PropertyField(r, property.FindPropertyRelative("value2"), new GUIContent("Max"));
 
-            SerializedProperty min = serializedObject.FindProperty("value");
-            SerializedProperty max = serializedObject.FindProperty("value2");
-
-            GUILayout.Label("Min", GUILayout.Width(30));
-            min.intValue = EditorGUILayout.IntField(min.intValue, GUILayout.Width(60));
-
-            GUILayout.Label("Max", GUILayout.Width(30));
-            max.intValue = EditorGUILayout.IntField(max.intValue, GUILayout.Width(60));
-
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.HelpBox("Between is inclusive. Keep that in mind when setting your ranges.", MessageType.Info);
+            Rect messageRect = position;
+            messageRect.x += 20;
+            messageRect.y += 110;
+            messageRect.height = 40;
+            EditorGUI.HelpBox(messageRect, "Between is inclusive. Keep that in mind when setting your ranges.", MessageType.Info);
         }
         else
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("value"));
+            r.y += lineHeight + 2;
+            EditorGUI.PropertyField(r, property.FindPropertyRelative("value"));
         }
+    }
 
-        serializedObject.ApplyModifiedProperties();
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        FloatCondition.Operator opSelected = (FloatCondition.Operator)property.FindPropertyRelative("operatorType").enumValueIndex;
+        if (opSelected == FloatCondition.Operator.Between || opSelected == FloatCondition.Operator.NotBetween)
+            return EditorGUIUtility.singleLineHeight * 8 + 10;
+        else
+            return EditorGUIUtility.singleLineHeight * 4 + 10;
     }
 }
 #endif
