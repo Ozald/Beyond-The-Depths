@@ -50,6 +50,9 @@ TagManager:
   - name: Walls and Floors
     uniqueID: 567007121
     locked: 0
+  - name: Lights
+    uniqueID: 2973728167
+    locked: 0
   - name: Decorations
     uniqueID: 952679909
     locked: 0
