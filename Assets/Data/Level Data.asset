@@ -66,5 +66,5 @@ MonoBehaviour:
   generationChance: 0.95
   generationChanceDecay: 0.05
   maximumBranchAttempts: 4
-  generatorRandomizerSeed: 1
+  generatorRandomizerSeed: 563
   roomOffset: 25

@@ -68,7 +68,7 @@ public class LevelData : ScriptableObject
     
     public Room GetStartRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>();
         
         foreach (WeightedRoom item in startRooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -78,7 +78,7 @@ public class LevelData : ScriptableObject
     
     public Room GetEndRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>();
         
         foreach (WeightedRoom item in endRooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -88,7 +88,7 @@ public class LevelData : ScriptableObject
     
     public Room GetSpecialRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>();
         
         foreach (WeightedRoom item in specialRooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -98,7 +98,7 @@ public class LevelData : ScriptableObject
     
     public Room GetRoom()
     {
-        ItemSelector<Room> selector = new ItemSelector<Room>(generatorRandomizerSeed);
+        ItemSelector<Room> selector = new ItemSelector<Room>();
         
         foreach (WeightedRoom item in rooms)
             selector.AddItem((Room)item.connectable, item.weight);
@@ -108,7 +108,7 @@ public class LevelData : ScriptableObject
 
     public Hallway GetHallway()
     {
-        ItemSelector<Hallway> selector = new ItemSelector<Hallway>(generatorRandomizerSeed);
+        ItemSelector<Hallway> selector = new ItemSelector<Hallway>();
         
         foreach (WeightedRoom item in hallways)
             selector.AddItem((Hallway)item.connectable, item.weight);
