@@ -11,29 +11,127 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
   m_Name: ApprenticeData
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   HP: 3
   invincibilityCooldown: 0.1
-  initalState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
-  transitions:
+  initialState:
+    rid: 5368160412672983108
+  states:
   - transitionMode: 0
-    fromState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
-    destinations:
+    state:
+      rid: 5368160412672983108
+    transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: f5db5dde028d74644911b295047055c1, type: 2}
-      condition: {fileID: 11400000, guid: 5839417c18ed1ab49ade96811be81b5c, type: 2}
+      toState:
+        rid: 5368160412672983109
+      conditions:
+      - rid: 5368160440542822406
     - weight: 1
-      toState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
-      condition: {fileID: 11400000, guid: 5e101ffd4e204fb4cae951b7dda29101, type: 2}
+      toState:
+        rid: 5368160412672983110
+      conditions:
+      - rid: 5368160440542822407
   - transitionMode: 0
-    fromState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
-    destinations:
+    state:
+      rid: 5368160412672983109
+    transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: d0789bae7ee176a4b9761c8dbc3fa6f9, type: 2}
-      condition: {fileID: 11400000, guid: 983154268362a424fbb3d97a65091211, type: 2}
+      toState:
+        rid: 5368160412672983108
+      conditions:
+      - rid: 5368160440542822408
+      - rid: 5368160440542822409
+    - weight: 1
+      toState:
+        rid: 5368160412672983110
+      conditions:
+      - rid: 5368160440542822410
+      - rid: 5368160440542822411
+    - weight: 1
+      toState:
+        rid: 5368160412672983109
+      conditions:
+      - rid: 5368160440542822412
   - transitionMode: 0
-    fromState: {fileID: 11400000, guid: f5db5dde028d74644911b295047055c1, type: 2}
-    destinations:
+    state:
+      rid: 5368160412672983110
+    transitions:
     - weight: 1
-      toState: {fileID: 11400000, guid: d7dbb05085e3ab640a00a5762c9adef0, type: 2}
-      condition: {fileID: 11400000, guid: f10a577c775a3b445bdfcd62aea7f66d, type: 2}
+      toState:
+        rid: 5368160412672983109
+      conditions:
+      - rid: 5368160440542822413
+    - weight: 1
+      toState:
+        rid: 5368160412672983108
+      conditions:
+      - rid: 5368160440542822414
+  references:
+    version: 2
+    RefIds:
+    - rid: 5368160412672983108
+      type: {class: Chase, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 8
+        chaseAnimationTrigger: Running
+    - rid: 5368160412672983109
+      type: {class: Triple_Shot, ns: , asm: Assembly-CSharp}
+      data:
+        projectilePrefab: {fileID: 4407160946478670164, guid: ad8dd13b3e56d7942b3dc65b643f8242, type: 3}
+        projectileSpeed: 5
+        projectileLifetime: 5
+        spreadInDegrees: 60
+        attackAnimationTrigger: Attack
+    - rid: 5368160412672983110
+      type: {class: Runaway, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 7
+        runningAnimationTrigger: Running
+    - rid: 5368160440542822406
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 4
+        distanceThreshold2: 6
+        comparisonOperator: 2
+    - rid: 5368160440542822407
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 3
+        distanceThreshold2: 20
+        comparisonOperator: 0
+    - rid: 5368160440542822408
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.25
+    - rid: 5368160440542822409
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 7
+        distanceThreshold2: 20
+        comparisonOperator: 1
+    - rid: 5368160440542822410
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.25
+    - rid: 5368160440542822411
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 3
+        distanceThreshold2: 20
+        comparisonOperator: 0
+    - rid: 5368160440542822412
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.25
+    - rid: 5368160440542822413
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 4
+        distanceThreshold2: 6
+        comparisonOperator: 2
+    - rid: 5368160440542822414
+      type: {class: DistanceToPlayer, ns: , asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 7
+        distanceThreshold2: 20
+        comparisonOperator: 1

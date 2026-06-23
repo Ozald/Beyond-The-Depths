@@ -8,10 +8,10 @@ using Pathfinding;
 public class Enemy : MonoBehaviour
 {
     public EnemyData enemyData;
+    private EnemyContext context;   // This is used to store any data that the states or transitions need to share with each other, such as a reference to the current attack hitbox.
 
     public float stateTimer { get; private set; }
     [SerializeField] private AIState currentState;
-    [NonSerialized] public GameObject activeAttackHitbox;
 
     // Pathfinding storage, use the state machine system to modify these values
     [NonSerialized] public Path currentPath;
@@ -23,11 +23,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         stateTimer = 0;
-        currentState = enemyData.initalState;
+        currentState = enemyData.initialState;
         currentState.OnEnter(this);
 
         currentPath = null;
         currentWaypoint = 0;
+
+        context = new EnemyContext();
     }
 
     void FixedUpdate()
@@ -45,20 +47,33 @@ public class Enemy : MonoBehaviour
 
     /**************************************************************************************/
 
+    public EnemyContext GetData()
+    {
+        return context;
+    }
+
+    /**************************************************************************************/
+
     private void TransitionHandler()
     {
-
         // Find every valid destination in a transition, store in a list, and then pick one of them
-        foreach (EnemyStateTransition transition in enemyData.transitions)
+        foreach (StateNode transition in enemyData.states)
         {
-            if (transition.fromState != currentState)
+            if (transition.state != currentState)
                 continue;
 
-            List<TransitionDestination> validDestinations = new List<TransitionDestination>();
-
-            foreach (TransitionDestination destination in transition.destinations)
+            List<Transition> validDestinations = new List<Transition>();
+            
+            foreach (Transition destination in transition.transitions)
             {
-                if (destination.condition.Check(this))
+                bool validTransition = true;
+                foreach (Condition condition in destination.conditions)
+                {
+                    if (!condition.Check(this))
+                        validTransition = false;
+                }
+
+                if (validTransition)
                     validDestinations.Add(destination);
             }
 
@@ -67,10 +82,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void PickValidDestination(List<TransitionDestination> destinations, TransitionMode transitionMode)
+    private void PickValidDestination(List<Transition> destinations, TransitionMode transitionMode)
     {
-        currentState.OnExit(this);
-
         // Pick a valid destination based on the transition mode
         AIState newState = null;
 
@@ -104,12 +117,9 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        if (newState != currentState)
-        {
-            currentState.OnExit(this);
-            currentState = newState;
-            currentState.OnEnter(this);
-            stateTimer = 0;
-        }
+        currentState.OnExit(this);
+        currentState = newState;
+        currentState.OnEnter(this);
+        stateTimer = 0;
     }
 }
