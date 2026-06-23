@@ -249,40 +249,40 @@ public class TileGraph : MonoBehaviour
                         {
                             origin.Left = next;
 
-                            if (next.leftDoor is not null)
-                            {
-                                next.leftDoor.connectedDoor = origin.rightDoor;
-                                origin.rightDoor.connectedDoor = next.leftDoor;
-                            }
-                        }
-                        else if (direction.Equals(directions[1]) && origin.Right is null)
-                        {
-                            origin.Right = next;
-
                             if (next.rightDoor is not null)
                             {
                                 next.rightDoor.connectedDoor = origin.leftDoor;
                                 origin.leftDoor.connectedDoor = next.rightDoor;
                             }
                         }
+                        else if (direction.Equals(directions[1]) && origin.Right is null)
+                        {
+                            origin.Right = next;
+
+                            if (next.leftDoor is not null)
+                            {
+                                next.leftDoor.connectedDoor = origin.rightDoor;
+                                origin.rightDoor.connectedDoor = next.leftDoor;
+                            }
+                        }
                         else if (direction.Equals(directions[2]) && origin.Up is null)
                         {
                             origin.Up = next;
 
-                            if (next.downDoor is not null)
+                            if (next.upDoor is not null)
                             {
-                                next.downDoor.connectedDoor = origin.upDoor;
-                                origin.upDoor.connectedDoor = next.downDoor;
+                                next.upDoor.connectedDoor = origin.downDoor;
+                                origin.downDoor.connectedDoor = next.upDoor;
                             }
                         }
                         else if (direction.Equals(directions[3]) && origin.Down is null)
                         {
                             origin.Down = next;
 
-                            if (next.upDoor is not null)
+                            if (next.downDoor is not null)
                             {
-                                next.upDoor.connectedDoor = origin.downDoor;
-                                origin.downDoor.connectedDoor = next.upDoor;
+                                next.downDoor.connectedDoor = origin.upDoor;
+                                origin.upDoor.connectedDoor = next.downDoor;
                             }
                         }
 
