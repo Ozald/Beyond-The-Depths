@@ -49,6 +49,9 @@ public class StatsManager : MonoBehaviour
     [Header("Damage")] 
     public IntegerStat bonusDamage;
 
+    [Header("Attack Range")] 
+    public FloatStat attackRange;
+
     [Header("Crit Chance")]
     public FloatStat critChance;
 
@@ -85,7 +88,7 @@ public class StatsManager : MonoBehaviour
         bonusDamage.Update(0);
         defense.Update(0);
         critChance.Update(0.1f);
-        
+        attackRange.Update(1);
         luck.Update(0);
         
         currentHP = maxHealth.value;

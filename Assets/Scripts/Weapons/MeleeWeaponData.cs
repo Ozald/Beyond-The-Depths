@@ -14,6 +14,7 @@ public class MeleeWeaponData : WeaponData
 
         if (hitbox != null)
         {
+            hitbox.transform.localScale *= player.GetComponent<StatsManager>().attackRange.value;
             AttackHitboxData attack = Instantiate(hitbox.gameObject, player.transform.position, PlayerInventory.instance.playerInv[0].transform.rotation * Quaternion.Euler(0, 0, 90)).GetComponentInChildren<AttackHitboxData>();
             if (attack == null)
                 return;
