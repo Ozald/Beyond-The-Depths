@@ -136,7 +136,7 @@ public class TileGraph : MonoBehaviour
             GenerateAlternative(startPosition, GenerationChance);
             
             if (CanLoop)
-                AddHalls(extraHallsChance);
+                AddConnections(extraHallsChance);
         }
         else
         {
@@ -156,7 +156,7 @@ public class TileGraph : MonoBehaviour
             GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
 
             if (CanLoop)
-                AddHalls(extraHallsChance);
+                AddConnections(extraHallsChance);
         }
 
         SetEndRoom();
@@ -422,7 +422,7 @@ public class TileGraph : MonoBehaviour
                     {
                         Console.WriteLine("Generating left branch");
                         start.Left = tempLeft;
-                        PlaceHallAt(startVector + new Vector2(-1, 0), start, tempLeft);
+                        //PlaceHallAt(startVector + new Vector2(-1, 0), start, tempLeft);
                         connectionCount++;
                         
                         // I hate this so much
@@ -450,7 +450,7 @@ public class TileGraph : MonoBehaviour
                     {
                         Console.WriteLine("Generating left branch");
                         start.Right = tempRight;
-                        PlaceHallAt(startVector + new Vector2(1, 0), start, tempRight);
+                        //PlaceHallAt(startVector + new Vector2(1, 0), start, tempRight);
                         connectionCount++;
 
                         // I hate this so much
@@ -478,7 +478,7 @@ public class TileGraph : MonoBehaviour
                     {
                         Console.WriteLine("Generating left branch");
                         start.Up = tempUp;
-                        PlaceHallAt(startVector + new Vector2(0, -1), start, tempUp);
+                        //PlaceHallAt(startVector + new Vector2(0, -1), start, tempUp);
                         connectionCount++;
 
                         // I hate this so much
@@ -506,7 +506,7 @@ public class TileGraph : MonoBehaviour
                     {
                         Console.WriteLine("Generating left branch");
                         start.Up = tempDown;
-                        PlaceHallAt(startVector + new Vector2(0, 1), start, tempDown);
+                        //PlaceHallAt(startVector + new Vector2(0, 1), start, tempDown);
                         connectionCount++;
 
                         // I hate this so much
@@ -588,8 +588,8 @@ public class TileGraph : MonoBehaviour
         }
     }
 
-    // Adds extra halls to the map
-    private void AddHalls(float chance)
+    // Adds extra connections to the map
+    private void AddConnections(float chance)
     {
         List<Room> roomList = rooms.Keys.ToList();
 
@@ -612,26 +612,24 @@ public class TileGraph : MonoBehaviour
                     {
                         if (XDist(originRoom, end) == -2)
                         {
-                            if (PlaceHallAt(rooms[originRoom] + new Vector2(1, 0), originRoom, end))
+                            Debug.Log("Added extra right connection");
+                            if (originRoom.rightDoor is not null)
                             {
-                                Debug.Log("Added extra right hall");
-                                if (originRoom.rightDoor is not null)
-                                {
-                                    originRoom.rightDoor.connectedDoor = end.leftDoor;
-                                    end.leftDoor.connectedDoor = originRoom.rightDoor;
-                                }
+                                originRoom.rightDoor.connectedDoor = end.leftDoor;
+                                end.leftDoor.connectedDoor = originRoom.rightDoor;
+                                originRoom.Right = end;
+                                end.Left = originRoom;
                             }
                         }
                         else if (XDist(originRoom, end) == 2)
                         {
-                            if (PlaceHallAt(rooms[originRoom] + new Vector2(-1, 0), originRoom, end))
+                            Debug.Log("Added extra left connection");
+                            if (originRoom.leftDoor is not null)
                             {
-                                Debug.Log("Added extra left hall");
-                                if (originRoom.leftDoor is not null)
-                                {
-                                    originRoom.leftDoor.connectedDoor = end.rightDoor;
-                                    end.rightDoor.connectedDoor = originRoom.leftDoor;
-                                }
+                                originRoom.leftDoor.connectedDoor = end.rightDoor;
+                                end.rightDoor.connectedDoor = originRoom.leftDoor;
+                                originRoom.Left = end;
+                                end.Right = originRoom;
                             }
                         }
                     }
@@ -639,34 +637,24 @@ public class TileGraph : MonoBehaviour
                     {
                         if (YDist(originRoom, end) == 2)
                         {
-                            if (PlaceHallAt(rooms[originRoom] + new Vector2(0, -1), originRoom, end))
+                            Debug.Log("Added extra up connection");
+                            if (originRoom.upDoor is not null)
                             {
-                                Debug.Log("Added extra up hall");
-                                // OH MY GOD, THIS TOOK MULTIPLE DAYS TO SOLVE
-                                // originRoom.upDoor = end.downDoor;
-                                // to
-                                // originRoom.upDoor.connectedDoor = end.downDoor;
-                                if (originRoom.upDoor is not null)
-                                {
-                                    originRoom.upDoor.connectedDoor = end.downDoor;
-                                    end.downDoor.connectedDoor = originRoom.upDoor;
-                                }
+                                originRoom.upDoor.connectedDoor = end.downDoor;
+                                end.downDoor.connectedDoor = originRoom.upDoor;
+                                originRoom.Up = end;
+                                end.Down = originRoom;
                             }
                         }
                         else if (YDist(originRoom, end) == -2)
                         {
-                            if (PlaceHallAt(rooms[originRoom] + new Vector2(0, 1), originRoom, end))
+                            Debug.Log("Added extra down connection");
+                            if (originRoom.downDoor is not null)
                             {
-                                Debug.Log("Added extra down hall");
-                                // OH MY GOD, THIS TOOK MULTIPLE DAYS TO SOLVE
-                                // originRoom.downDoor = end.upDoor;
-                                // to
-                                // originRoom.downDoor.connectedDoor = end.upDoor;
-                                if (originRoom.downDoor is not null)
-                                {
-                                    originRoom.downDoor.connectedDoor = end.upDoor;
-                                    end.upDoor.connectedDoor = originRoom.downDoor;
-                                }
+                                originRoom.downDoor.connectedDoor = end.upDoor;
+                                end.upDoor.connectedDoor = originRoom.downDoor;
+                                originRoom.Down = end;
+                                end.Up = originRoom;
                             }
                         }
                     }
@@ -698,25 +686,6 @@ public class TileGraph : MonoBehaviour
         }
     }
 
-    // Places a hallway
-    public bool PlaceHallAt(Vector2 pos, Connectable? origin, Connectable? end)
-    {
-        Hallway hall = Instantiate(roomTypes.GetHallway().gameObject, 
-            new Vector3(pos.x * offset, pos.y * offset, 0), Quaternion.identity).GetComponent<Hallway>();
-
-        hall.Origin = origin;
-        hall.End = end;
-        
-        if (PlaceAt(ref hall, pos))
-        {
-            halls.Add(hall, pos);
-            return true;
-        }
-
-        Destroy(hall.gameObject);
-        return false;
-    }
-
 
     // Places an item at a grid position.
     // Holy crap does this solution suck
@@ -733,20 +702,6 @@ public class TileGraph : MonoBehaviour
         grid[(int)pos.x, (int)pos.y] = room;
 
         return true;
-    }
-    
-    // Places an item at a grid position
-    // Holy crap does this solution suck
-    public bool PlaceAt(ref Hallway hall, Vector2 pos)
-    {
-        if (!IsSpotEmpty(pos))
-            return false;
-        
-        hall = Instantiate(hall.gameObject, new Vector3(pos.x * offset, pos.y * offset, 0), Quaternion.identity).GetComponent<Hallway>();
-        grid[(int)pos.x, (int)pos.y] = hall;
-
-        return true;
-        
     }
 
     // Gets the feature at a position
@@ -895,10 +850,10 @@ public class TileGraph : MonoBehaviour
     public bool IsDeadEnd(Room room)
     {
         List<Vector2> directions = new();
-        directions.Add(new Vector2(1, 0));
-        directions.Add(new Vector2(-1, 0));
-        directions.Add(new Vector2(0, -1));
-        directions.Add(new Vector2(0, 1));
+        directions.Add(new Vector2(2, 0));
+        directions.Add(new Vector2(-2, 0));
+        directions.Add(new Vector2(0, -2));
+        directions.Add(new Vector2(0, 2));
         
         List<Connectable> list = new();
 
