@@ -21,7 +21,7 @@ public struct IntegerStat
     public void SetBaseValue(int baseVal)
     {
         baseValue = baseVal;
-        baseVal = baseValue + bonusValue;
+        value = baseValue + bonusValue;
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public struct FloatStat
     public void SetBaseValue(float baseVal)
     {
         baseValue = baseVal;
-        baseVal = baseValue + bonusValue;
+        value = baseValue + bonusValue;
     }
 
     /// <summary>
