@@ -24,7 +24,7 @@ public class MeleeWeaponData : WeaponData
             attack.speed = 0;
             attack.direction = Vector3.zero;
             attack.maxLifetime = attackLifetime;
-            attack.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
+            attack.damage = damage + player.GetComponent<StatsManager>().damage.value;
             
             if (new Random().NextDouble() < player.GetComponent<StatsManager>().critChance.value)
                 attack.damage *= 2;
