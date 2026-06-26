@@ -917,22 +917,49 @@ public class TileGraph : MonoBehaviour
         
         return farthest;
     }
+
+    /// <summary>
+    /// Corrects the 2D map array to be
+    /// oriented upright instead of rotated
+    /// 90 degrees counterclockwise about the
+    /// y-axis. (I hate using this band-aid fix,
+    /// but whatever).
+    /// </summary>
+    /// <returns>
+    /// The corrected grid
+    /// </returns>
+    public Connectable[,] RotateToUpright()
+    {
+        int rows = grid.GetLength(0);
+        int cols = grid.GetLength(1);
+        
+        Connectable[,] map = new Connectable[cols, rows];
+
+        for (int y = 0; y < rows; y++)
+        {
+            for (int x = 0; x < cols; x++)
+                map[cols - 1 - x, y] = grid[y, x];
+        }
+
+        return map;
+    }
     
     public override string ToString()
     {
         string s = string.Empty;
+        Connectable[,] map = RotateToUpright();
 
-        for (int i = 0; i < grid.GetLength(0); i++)
+        for (int i = 0; i < map.GetLength(0); i++)
         {
-            for (int j = 0; j < grid.GetLength(1); j++)
+            for (int j = 0; j < map.GetLength(1); j++)
             {
-                if (grid[i, j] is null)
+                if (map[i, j] is null)
                 {
                     s += "- ";
                     continue;
                 }
 
-                s += grid[i, j] + " ";
+                s += map[i, j] + " ";
             }
 
             s += '\n';
