@@ -9,7 +9,7 @@ public class PlayerSizeUpgradeStats : UpgradeStats
     public override void Apply(StatsManager manager)
     {
         // Prevent negative scale values
-        if (manager.playerSize.value > 0.2)
+        if (manager.playerSize.value > 0.1)
         {
             manager.playerSize.Update(-scaleAmount);
             
