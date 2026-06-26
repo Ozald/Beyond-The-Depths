@@ -67,6 +67,8 @@ public class StatsManager : MonoBehaviour
     
     public IntegerStat luck;
 
+    public FloatStat playerSize;
+
     [Header("FX")]
     public ParticleSystem damageEffect;
 
@@ -87,6 +89,7 @@ public class StatsManager : MonoBehaviour
         critChance.Update(0.1f);
         
         luck.Update(0);
+        playerSize.Update(1);
         
         currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
