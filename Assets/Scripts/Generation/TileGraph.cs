@@ -190,16 +190,16 @@ public class TileGraph : MonoBehaviour
         foreach (Room.ConnectionDirection dir in validDirections)
         {
             if (dir == Room.ConnectionDirection.Up)
-                directions.Add(new Vector2(0, 2));
+                directions.Insert(2, new Vector2(0, 2));
             
             if(dir == Room.ConnectionDirection.Down)
-                directions.Add(new Vector2(0, -2));
+                directions.Insert(3, new Vector2(0, -2));
             
             if(dir == Room.ConnectionDirection.Left)
-                directions.Add(new Vector2(-2, 0));
+                directions.Insert(0, new Vector2(-2, 0));
             
             if(dir == Room.ConnectionDirection.Right)
-                directions.Add(new Vector2(2, 0));
+                directions.Insert(1, new Vector2(2, 0));
         }
 
         while (roomQueue.Count > 0 && rooms.Count < MaximumRooms)
