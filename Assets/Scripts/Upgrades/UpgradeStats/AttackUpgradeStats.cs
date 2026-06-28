@@ -7,6 +7,6 @@ public class AttackUpgradeStats : UpgradeStats
     
     public override void Apply(StatsManager manager)
     {
-        manager.bonusDamage.Update(extraDamage);
+        manager.damage.Update(extraDamage);
     }
 }
