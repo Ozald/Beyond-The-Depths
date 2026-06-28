@@ -7,6 +7,6 @@ public class AttackSpeedUpgradeStats : UpgradeStats
     
     public override void Apply(StatsManager manager)
     {
-        manager.bonusAttackSpeed.Update(extraAttackSpeed);
+        manager.attackSpeed.Update(extraAttackSpeed);
     }
 }

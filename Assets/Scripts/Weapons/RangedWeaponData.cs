@@ -22,7 +22,7 @@ public class RangedWeaponData : WeaponData
             projectile.speed = bulletSpeed;
             projectile.direction = new Vector2(firePoint.right.x, firePoint.right.y).normalized;
             projectile.maxLifetime = attackLifetime;
-            projectile.damage = damage + player.GetComponent<StatsManager>().bonusDamage.value;
+            projectile.damage = damage + player.GetComponent<StatsManager>().damage.value;
             
             if (new Random().NextDouble() < player.GetComponent<StatsManager>().critChance.value)
                 projectile.damage *= 2;

@@ -12,6 +12,24 @@ public struct IntegerStat
     public int bonusValue;
     public int value;
 
+    /// <summary>
+    /// Sets the base value of a stat
+    /// </summary>
+    /// <param name="baseVal">
+    /// The base value to set
+    /// </param>
+    public void SetBaseValue(int baseVal)
+    {
+        baseValue = baseVal;
+        value = baseValue + bonusValue;
+    }
+
+    /// <summary>
+    /// Adds bonus value to a stat
+    /// </summary>
+    /// <param name="increment">
+    /// The amount to add
+    /// </param>
     public void Update(int increment)
     {
         bonusValue += increment;
@@ -26,6 +44,24 @@ public struct FloatStat
     public float bonusValue;
     public float value;
 
+    /// <summary>
+    /// Sets the base value of a stat
+    /// </summary>
+    /// <param name="baseVal">
+    /// The base value to set
+    /// </param>
+    public void SetBaseValue(float baseVal)
+    {
+        baseValue = baseVal;
+        value = baseValue + bonusValue;
+    }
+
+    /// <summary>
+    /// Adds bonus value to a stat
+    /// </summary>
+    /// <param name="increment">
+    /// The amount to add
+    /// </param>
     public void Update(float increment)
     {
         bonusValue += increment;
@@ -46,14 +82,17 @@ public class StatsManager : MonoBehaviour
     [Header("Speed")] 
     public FloatStat speed;
 
-    [Header("Damage")] 
-    public IntegerStat bonusDamage;
+    [FormerlySerializedAs("bonusDamage")] [Header("Damage")] 
+    public IntegerStat damage;
+
+    [Header("Attack Range")] 
+    public FloatStat attackRange;
 
     [Header("Crit Chance")]
     public FloatStat critChance;
 
-    [Header("Attack Speed")] 
-    public FloatStat bonusAttackSpeed;
+    [FormerlySerializedAs("bonusAttackSpeed")] [Header("Attack Speed")] 
+    public FloatStat attackSpeed;
 
     [Header("Defense")]
     public IntegerStat defense;
@@ -80,13 +119,14 @@ public class StatsManager : MonoBehaviour
 
     void Start()
     {
-        maxHealth.Update(0);
-        speed.Update(0);
-        bonusDamage.Update(0);
-        defense.Update(0);
-        critChance.Update(0.1f);
-        
-        luck.Update(0);
+        maxHealth.SetBaseValue(10);
+        speed.SetBaseValue(5);
+        attackSpeed.SetBaseValue(0);
+        damage.SetBaseValue(0);
+        defense.SetBaseValue(0);
+        critChance.SetBaseValue(0.1f);
+        attackRange.SetBaseValue(1);
+        luck.SetBaseValue(0);
         
         currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
