@@ -106,6 +106,8 @@ public class StatsManager : MonoBehaviour
     
     public IntegerStat luck;
 
+    public FloatStat playerSize;
+
     [Header("FX")]
     public ParticleSystem damageEffect;
 
