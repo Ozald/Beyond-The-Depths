@@ -16,6 +16,13 @@ public class TileGraph : MonoBehaviour
         Down
     }
 
+    public enum Algorithm
+    {
+        Standard,
+        BreadthFirst,
+        DepthFirst
+    }
+
     private int width;
     private int height;
     private Connectable[,] grid;
@@ -34,8 +41,8 @@ public class TileGraph : MonoBehaviour
     public bool EnableDepthPenalty;
     public bool AttemptBalancing;
 
-    // For the experimental alternative generation algorithm
-    public bool UseAlternateGeneration;
+    // For the experimental alternative generation algorithms
+    public Algorithm algorithm;
     public double GenerationChance;
     public int MaximumBranchAttempts;
     public double GenerationChanceReduction;
@@ -131,33 +138,34 @@ public class TileGraph : MonoBehaviour
         if (!InBounds(startPosition))
             throw new ArgumentException("Start position is not in the map.");
         
-        if(UseAlternateGeneration)
+        switch(algorithm)
         {
-            GenerateAlternative(startPosition, GenerationChance);
-            
-            if (CanLoop)
-                AddConnections(extraHallsChance);
-        }
-        else
-        {
-            // Create the starting room and start the recursive generation
-            Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
-                new Vector3(startPosition.x * offset, startPosition.y * offset, 0), Quaternion.identity).GetComponent<Room>();
-            StartPosition = startPosition;
-            Start = startRoom;
-            rooms.Add(startRoom, startPosition);
-            grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
+            case Algorithm.BreadthFirst:
+                GenerateAlternative(startPosition, GenerationChance);
+                break;
+            case Algorithm.Standard:
+                // Create the starting room and start the recursive generation
+                Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
+                    new Vector3(startPosition.x * offset, startPosition.y * offset, 0), Quaternion.identity).GetComponent<Room>();
+                StartPosition = startPosition;
+                Start = startRoom;
+                rooms.Add(startRoom, startPosition);
+                grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
 
-            startRoom.upDoor.enabled = true;
-            startRoom.downDoor.enabled = true;
-            startRoom.leftDoor.enabled = true;
-            startRoom.rightDoor.enabled = true;
+                startRoom.upDoor.enabled = true;
+                startRoom.downDoor.enabled = true;
+                startRoom.leftDoor.enabled = true;
+                startRoom.rightDoor.enabled = true;
         
-            GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
-
-            if (CanLoop)
-                AddConnections(extraHallsChance);
+                GenerateFrom(startRoom, startPosition, 0, (int)(MaxRoomsPerBranch * 0.75), out startRoom);
+                break;
+            case Algorithm.DepthFirst:
+                GenerateAlternativeDepthFirst(startPosition, GenerationChance);
+                break;
         }
+        
+        if (CanLoop)
+            AddConnections(extraHallsChance);
 
         SetEndRoom();
         CleanDoors();
@@ -294,6 +302,134 @@ public class TileGraph : MonoBehaviour
         }
     }
 
+    // An alternative, simpler procedural generation algorithm based on DFS
+    public void GenerateAlternativeDepthFirst(Vector2 startPosition, double generationChance)
+    {
+        Room startRoom = Instantiate(roomTypes.GetStartRoom().gameObject, 
+            new Vector3(startPosition.x * offset, startPosition.y * offset, 0), Quaternion.identity).GetComponent<Room>();
+        StartPosition = startPosition;
+        Start = startRoom;
+        rooms.Add(startRoom, startPosition);
+        grid[(int)startPosition.x, (int)startPosition.y] = startRoom;
+
+        startRoom.levelData = roomTypes;
+        
+        startRoom.leftDoor.enabled = true;
+        startRoom.rightDoor.enabled = true;
+        startRoom.upDoor.enabled = true;
+        startRoom.downDoor.enabled = true;
+
+        Stack<Room> roomStack = new Stack<Room>();
+        roomStack.Push(startRoom);
+
+        List<Vector2> directions = new();
+        foreach (Room.ConnectionDirection dir in validDirections)
+        {
+            if (dir == Room.ConnectionDirection.Up)
+                directions.Insert(2, new Vector2(0, 2));
+            
+            if(dir == Room.ConnectionDirection.Down)
+                directions.Insert(3, new Vector2(0, -2));
+            
+            if(dir == Room.ConnectionDirection.Left)
+                directions.Insert(0, new Vector2(-2, 0));
+            
+            if(dir == Room.ConnectionDirection.Right)
+                directions.Insert(1, new Vector2(2, 0));
+        }
+
+        while (roomStack.Count > 0 && rooms.Count < MaximumRooms)
+        {
+            Room origin = roomStack.Pop();
+            origin.levelData = roomTypes;
+            Vector2 position = rooms[origin];
+            
+            // Set up the doors
+            if(origin.upDoor is not null)
+                origin.upDoor.parentRoom = origin;
+            
+            if(origin.downDoor is not null)
+                origin.downDoor.parentRoom = origin;
+            
+            if(origin.leftDoor is not null)
+                origin.leftDoor.parentRoom = origin;
+            
+            if(origin.rightDoor is not null)
+                origin.rightDoor.parentRoom = origin;
+
+            for (int i = 0; i < MaximumBranchAttempts; i++)
+            {
+                if (rooms.Count >= MaximumRooms)
+                    break;
+                
+                if (random.NextDouble() < generationChance)
+                {
+                    Room next = roomTypes.GetRoom().GetComponent<Room>();
+                    Vector2 direction = directions[random.Next(0, directions.Count)];
+                    
+                    if (PlaceAt(ref next, position + direction))
+                    {
+                        next.leftDoor.enabled = true;
+                        next.rightDoor.enabled = true;
+                        next.upDoor.enabled = true;
+                        next.downDoor.enabled = true;
+
+                        next.leftDoor.parentRoom = next;
+                        next.rightDoor.parentRoom = next;
+                        next.upDoor.parentRoom = next;
+                        next.downDoor.parentRoom = next;
+
+                        rooms.Add(next, position + direction);
+                        
+                        if (direction.Equals(directions[0]) && origin.Left is null)
+                        {
+                            origin.Left = next;
+
+                            if (next.rightDoor is not null)
+                            {
+                                next.rightDoor.connectedDoor = origin.leftDoor;
+                                origin.leftDoor.connectedDoor = next.rightDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[1]) && origin.Right is null)
+                        {
+                            origin.Right = next;
+
+                            if (next.leftDoor is not null)
+                            {
+                                next.leftDoor.connectedDoor = origin.rightDoor;
+                                origin.rightDoor.connectedDoor = next.leftDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[2]) && origin.Up is null)
+                        {
+                            origin.Up = next;
+
+                            if (next.upDoor is not null)
+                            {
+                                next.upDoor.connectedDoor = origin.downDoor;
+                                origin.downDoor.connectedDoor = next.upDoor;
+                            }
+                        }
+                        else if (direction.Equals(directions[3]) && origin.Down is null)
+                        {
+                            origin.Down = next;
+
+                            if (next.downDoor is not null)
+                            {
+                                next.downDoor.connectedDoor = origin.upDoor;
+                                origin.upDoor.connectedDoor = next.downDoor;
+                            }
+                        }
+
+                        generationChance -= GenerationChanceReduction;
+                        roomStack.Push(next);
+                    }
+                }
+            }
+        }
+    }
+    
     // Recursive helper for standard depth-first generation
     [CanBeNull]
     private Room GenerateFrom(Room start, Vector2 startVector, int roomsGenerated, int penaltySafety, out Room room)
@@ -541,7 +677,7 @@ public class TileGraph : MonoBehaviour
     // Places the end room
     private void SetEndRoom()
     {
-        Room farthest = UseAlternateGeneration ? GetFarthestRoom() : GetFarthestDeadEnd();
+        Room farthest = algorithm is Algorithm.DepthFirst or Algorithm.BreadthFirst ? GetFarthestRoom() : GetFarthestDeadEnd();
 
         if (farthest is not null)
         {

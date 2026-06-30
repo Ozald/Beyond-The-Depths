@@ -59,10 +59,10 @@ MonoBehaviour:
   extraHallsChance: 0.055
   canLoop: 1
   validDirections: 00000000020000000100000003000000
+  algorithm: 1
   maxRoomsPerBranch: 7
   mapDepthPenalty: 1
   attemptSpreadBalancing: 1
-  useAlternativeGeneration: 1
   generationChance: 0.95
   generationChanceDecay: 0.05
   maximumBranchAttempts: 4

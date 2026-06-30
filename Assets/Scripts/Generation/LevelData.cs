@@ -47,14 +47,14 @@ public class LevelData : ScriptableObject
     public float extraHallsChance;
     public bool canLoop;
     public Room.ConnectionDirection[] validDirections;
+    public TileGraph.Algorithm algorithm;
     
     [Header("Standard Generation Parameters")]
     public int maxRoomsPerBranch;
     public bool mapDepthPenalty;
     public bool attemptSpreadBalancing;
     
-    [Header("Alternative Generation Parameters")] 
-    public bool useAlternativeGeneration;
+    [Header("Alternative Generation Parameters (Breadth First/Depth First)")] 
     public double generationChance = 0.5;
     public double generationChanceDecay = 0.05; // This is additive, not multiplicative
     [FormerlySerializedAs("MaximumBranchAttempts")] public int maximumBranchAttempts = 4;
