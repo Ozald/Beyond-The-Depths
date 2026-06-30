@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //[RequireComponent(typeof(OutlineThing))]
-public abstract class Interactable : MonoBehaviour 
+public abstract class Interactable : MonoBehaviour
 {
+    public bool CanInteract = true;
+    
     /*
     void Awake()
     {
@@ -21,7 +23,8 @@ public abstract class Interactable : MonoBehaviour
     //This is meant to be overridden by subclasses of Interactable
     public virtual void Interact(PlayerInteraction player)
     {
-        
+        if (!CanInteract)
+            return;
     }
     
     //This creates a blue box above any interactable object (debug purposes)

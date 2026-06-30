@@ -1,0 +1,37 @@
+﻿using UnityEngine;
+
+public class ShopPedestal : Interactable
+{
+    public Interactable item;
+    public int cost;
+    private float counter = 0;
+    public bool purchased = false;
+
+    void Start()
+    {
+        if (item is not null) 
+        {
+            Instantiate(item, gameObject.transform.position + Vector3.up, Quaternion.identity);
+            item.CanInteract = false;
+        }
+    }
+
+    public void Purchase(PlayerInteraction player)
+    {
+        if (player.player.GetComponent<StatsManager>().doubloons >= cost)
+        {
+            if (purchased)
+                return;
+
+            purchased = true;
+            CanInteract = false;
+            item.CanInteract = true;
+            player.player.GetComponent<StatsManager>().doubloons -= cost;
+        }
+    }
+
+    public override void Interact(PlayerInteraction player)
+    {
+        Purchase(player);
+    }
+}
