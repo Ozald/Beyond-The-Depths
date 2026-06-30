@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class ShopPedestal : Interactable
 {
@@ -6,6 +7,7 @@ public class ShopPedestal : Interactable
     public int cost;
     private float counter = 0;
     public bool purchased = false;
+    public TextMeshPro costTest;
 
     void Start()
     {
@@ -13,6 +15,7 @@ public class ShopPedestal : Interactable
         {
             Instantiate(item, gameObject.transform.position + Vector3.up, Quaternion.identity);
             item.CanInteract = false;
+            costTest.text = cost.ToString();
         }
     }
 
