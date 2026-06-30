@@ -34,7 +34,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
 
-        if (objectToInteract != null && objectToInteract != lastInteractable)
+        if (objectToInteract != null && objectToInteract != lastInteractable && objectToInteract.CanInteract)
         {
             // Turn ON new outline
             ToggleOutline(objectToInteract, true);
