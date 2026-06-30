@@ -18,6 +18,9 @@ public class ShopPedestal : Interactable
 
     public void Purchase(PlayerInteraction player)
     {
+        if (item is null)
+            return;
+        
         if (player.player.GetComponent<StatsManager>().doubloons >= cost)
         {
             if (purchased)
@@ -27,6 +30,7 @@ public class ShopPedestal : Interactable
             CanInteract = false;
             item.CanInteract = true;
             player.player.GetComponent<StatsManager>().doubloons -= cost;
+            gameObject.GetComponent<ParticleSystem>().Stop();
         }
     }
 
