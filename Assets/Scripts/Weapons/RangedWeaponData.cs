@@ -27,7 +27,7 @@ public class RangedWeaponData : WeaponData
             if (new Random().NextDouble() < player.GetComponent<StatsManager>().critChance.value)
                 projectile.damage *= 2;
             
-            projectile.knockback = knockback;
+            projectile.knockback = knockback * player.GetComponent<StatsManager>().knockback.value;
             projectile.destroyOnHit = true;
             projectile.tagToHit = "Enemy";
 
