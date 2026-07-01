@@ -38,7 +38,7 @@ public class StateNode
 [CreateAssetMenu(menuName = "Enemy AI/EnemyData")]
 public class EnemyData : ScriptableObject
 {
-    public int HP;
+    public float HP;
     public float invincibilityCooldown;
 
     [SerializeReference]

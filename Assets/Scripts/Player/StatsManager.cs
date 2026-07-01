@@ -75,9 +75,9 @@ public class StatsManager : MonoBehaviour
     public Animator fadeAnimator;
 
     [FormerlySerializedAs("health")] [Header("Health")] 
-    public IntegerStat maxHealth;
+    public FloatStat maxHealth;
     
-    public int currentHP;
+    public float currentHP;
     
     [Header("Speed")] 
     public FloatStat speed;
@@ -142,7 +142,7 @@ public class StatsManager : MonoBehaviour
             timeSinceLastHit += Time.deltaTime;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (Instance.timeSinceLastHit < Instance.invincibilityCooldown)
             return;

@@ -8,8 +8,8 @@ public class AttackHitboxData : MonoBehaviour
     public float speed;
     public Vector2 direction;
     public float maxLifetime;
-    public int damage;
-    public int knockback;
+    public float damage;
+    public float knockback;
     public bool destroyOnHit = false;
 
     public string tagToHit;
