@@ -9,7 +9,7 @@ public class AttackHitboxData : MonoBehaviour
     public Vector2 direction;
     public float maxLifetime;
     public int damage;
-    public int knockback;
+    public float knockback;
     public bool destroyOnHit = false;
 
     public string tagToHit;

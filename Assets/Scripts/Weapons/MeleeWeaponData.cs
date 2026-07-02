@@ -29,7 +29,7 @@ public class MeleeWeaponData : WeaponData
             if (new Random().NextDouble() < player.GetComponent<StatsManager>().critChance.value)
                 attack.damage *= 2;
             
-            attack.knockback = knockback;
+            attack.knockback = knockback * player.GetComponent<StatsManager>().knockback.value;
             attack.destroyOnHit = false;
             attack.tagToHit = "Enemy";
         }

@@ -84,6 +84,9 @@ public class StatsManager : MonoBehaviour
 
     [FormerlySerializedAs("bonusDamage")] [Header("Damage")] 
     public IntegerStat damage;
+    
+    [Header("Knockback")]
+    public FloatStat knockback;
 
     [Header("Attack Range")] 
     public FloatStat attackRange;
@@ -129,6 +132,7 @@ public class StatsManager : MonoBehaviour
         critChance.SetBaseValue(0.1f);
         attackRange.SetBaseValue(1);
         luck.SetBaseValue(0);
+        knockback.SetBaseValue(1);
         
         currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
