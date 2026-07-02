@@ -27,7 +27,7 @@ public class EnemyHP : MonoBehaviour
 
     /********************************************************************/
 
-    public void TakeDamage(int damage, int knockback)
+    public void TakeDamage(int damage, float knockback)
     {
         currentHP -= damage;
         StartCoroutine(FlashEnemy());
