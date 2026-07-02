@@ -273,8 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanInteract: 1
-  item: {fileID: 0}
-  cost: 0
+  ItemPool: {fileID: 11400000, guid: c8a7866e649cb5e42b3c584fb776f7f5, type: 2}
   purchased: 0
   costTest: {fileID: 784769948238659860}
 --- !u!61 &6798273381656404

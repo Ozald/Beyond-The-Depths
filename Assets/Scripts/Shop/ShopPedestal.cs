@@ -3,19 +3,23 @@ using UnityEngine;
 
 public class ShopPedestal : Interactable
 {
-    public Interactable item;
-    public int cost;
     private float counter = 0;
+    public ShopItems ItemPool;
     public bool purchased = false;
     public TextMeshPro costTest;
+    private SellableItem sellableItem;
+    private Interactable item;
 
     void Start()
     {
+        sellableItem = ItemPool.GetItem();
+        item = sellableItem.item;
+        
         if (item is not null) 
         {
             Instantiate(item, gameObject.transform.position + Vector3.up, Quaternion.identity);
             item.CanInteract = false;
-            costTest.text = cost.ToString();
+            costTest.text = sellableItem.price.ToString();
         }
     }
 
@@ -24,7 +28,7 @@ public class ShopPedestal : Interactable
         if (item is null)
             return;
         
-        if (player.player.GetComponent<StatsManager>().doubloons >= cost)
+        if (player.player.GetComponent<StatsManager>().doubloons >= sellableItem.price)
         {
             if (purchased)
                 return;
@@ -32,7 +36,7 @@ public class ShopPedestal : Interactable
             purchased = true;
             CanInteract = false;
             item.CanInteract = true;
-            player.player.GetComponent<StatsManager>().doubloons -= cost;
+            player.player.GetComponent<StatsManager>().doubloons -= sellableItem.price;
             gameObject.GetComponent<ParticleSystem>().Stop();
         }
     }

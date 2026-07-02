@@ -40,6 +40,8 @@ MonoBehaviour:
   specialRooms:
   - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
     weight: 1
+  - connectable: {fileID: 7850640461209332830, guid: 9641e866c461b9e4792e292bfbe34e88, type: 3}
+    weight: 1
   hallways:
   - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
     weight: 1
