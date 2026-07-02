@@ -75,9 +75,9 @@ public class StatsManager : MonoBehaviour
     public Animator fadeAnimator;
 
     [FormerlySerializedAs("health")] [Header("Health")] 
-    public FloatStat maxHealth;
+    public IntegerStat maxHealth;
     
-    public float currentHP;
+    public int currentHP;
     
     [Header("Speed")] 
     public FloatStat speed;
@@ -142,7 +142,7 @@ public class StatsManager : MonoBehaviour
             timeSinceLastHit += Time.deltaTime;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if (Instance.timeSinceLastHit < Instance.invincibilityCooldown)
             return;
@@ -195,7 +195,7 @@ public class StatsManager : MonoBehaviour
             AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
 
             if (projectile != null)
-                TakeDamage(damage: projectile.damage);
+                TakeDamage(projectile.damage);
             else
                 TakeDamage(1);
         }
