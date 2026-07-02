@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4671680451211022437}
   - component: {fileID: 2625777978731625262}
   m_Layer: 0
-  m_Name: AttackRangeUpgrade 2
+  m_Name: AttackRangeUpgrade
   m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

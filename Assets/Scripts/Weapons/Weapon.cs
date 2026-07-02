@@ -7,6 +7,8 @@ public class Weapon : Interactable
     public WeaponData weaponData;
     public override void Interact(PlayerInteraction player)
     {
+        base.Interact(player);
+        
         PlayerInventory inv = player.GetComponent<PlayerInventory>();
 
         if (inv != null && !inv.playerInv.Contains(this))

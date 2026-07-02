@@ -43,25 +43,34 @@ public class LevelData : ScriptableObject
     public int mapWidth;
     public int mapHeight;
     [FormerlySerializedAs("MaxMapRooms")] public int maxMapRooms = 10;
-    public float specialRoomsChance;
-    public float extraHallsChance;
+    [Range(0, 1)] public float specialRoomsChance;
+    [Range(0, 1)] public float extraHallsChance;
     public bool canLoop;
-    public Room.ConnectionDirection[] validDirections;
+    public Room.ConnectionDirection[] validDirections = new Room.ConnectionDirection[]
+    {
+        Room.ConnectionDirection.Up,
+        Room.ConnectionDirection.Down,
+        Room.ConnectionDirection.Right,
+        Room.ConnectionDirection.Left
+    };
+    
+    [Header("Algorithm")]
+    public TileGraph.Algorithm algorithm;
     
     [Header("Standard Generation Parameters")]
     public int maxRoomsPerBranch;
     public bool mapDepthPenalty;
     public bool attemptSpreadBalancing;
     
-    [Header("Alternative Generation Parameters")] 
-    public bool useAlternativeGeneration;
-    public double generationChance = 0.5;
-    public double generationChanceDecay = 0.05; // This is additive, not multiplicative
-    [FormerlySerializedAs("MaximumBranchAttempts")] public int maximumBranchAttempts = 4;
-    
+    [Header("Alternative Generation Parameters (Breadth First/Depth First)")] 
+    [Range(0, 1)] public double generationChance = 0.5;
+    [Range(0, 1)] public double generationChanceDecay = 0.05; // This is additive, not multiplicative
+    [Range(0, 4)] [FormerlySerializedAs("MaximumBranchAttempts")] public int maximumBranchAttempts = 4;
+
     [Header("Map Randomization")]
+    public bool provideRandomizedSeed = true;
     [FormerlySerializedAs("RandomizerSeed")] public int generatorRandomizerSeed;
-    //public int EnemySelectionSeed; Removed because it led to only one type of enemy ever spawning
+    // public int EnemySelectionSeed; Removed because it led to only one type of enemy ever spawning
     
     [Header("Room Spacing")]
     public int roomOffset;

@@ -40,6 +40,8 @@ MonoBehaviour:
   specialRooms:
   - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
     weight: 1
+  - connectable: {fileID: 7850640461209332830, guid: 9641e866c461b9e4792e292bfbe34e88, type: 3}
+    weight: 1
   hallways:
   - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
     weight: 1
@@ -52,19 +54,20 @@ MonoBehaviour:
     weight: 1
   - enemy: {fileID: 2777718196688764207, guid: e11e7104d2c2285469446c2bbf8efeb5, type: 3}
     weight: 1
-  mapWidth: 13
-  mapHeight: 13
-  maxMapRooms: 20
+  mapWidth: 11
+  mapHeight: 11
+  maxMapRooms: 25
   specialRoomsChance: 0.1
   extraHallsChance: 0.055
   canLoop: 1
   validDirections: 00000000020000000100000003000000
-  maxRoomsPerBranch: 7
+  algorithm: 2
+  maxRoomsPerBranch: 5
   mapDepthPenalty: 1
   attemptSpreadBalancing: 1
-  useAlternativeGeneration: 1
   generationChance: 0.95
   generationChanceDecay: 0.05
   maximumBranchAttempts: 4
-  generatorRandomizerSeed: 0
+  provideRandomizedSeed: 1
+  generatorRandomizerSeed: 45
   roomOffset: 25

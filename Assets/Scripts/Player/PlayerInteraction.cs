@@ -34,7 +34,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
 
-        if (objectToInteract != null && objectToInteract != lastInteractable)
+        if (objectToInteract != null && objectToInteract != lastInteractable && objectToInteract.CanInteract)
         {
             // Turn ON new outline
             ToggleOutline(objectToInteract, true);
@@ -58,6 +58,9 @@ public class PlayerInteraction : MonoBehaviour
         // If an Interactable object was found, interact with it when you press the Interact key
         if (Input.GetKeyDown(KeyCode.E) && objectToInteract != null)
         {
+            if (!objectToInteract.CanInteract)
+                return;
+            
             Debug.Log("Interactable detected as " + objectToInteract.name + ", trying interaction");
             objectToInteract.Interact(player.GetComponent<PlayerInteraction>());
             objectToInteract = null;
