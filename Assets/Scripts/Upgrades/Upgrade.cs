@@ -4,6 +4,8 @@
     
     public override void Interact(PlayerInteraction player)
     {
+        base.Interact(player);
+        
         UpgradeInventory inv = player.GetComponent<UpgradeInventory>();
         StatsManager manager = player.GetComponent<StatsManager>();
         

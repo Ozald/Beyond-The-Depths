@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public struct WeightedItem
 {
-    public Interactable item;
+    public GameObject item;
     public bool LuckAffected;
     public int weight;
 }
@@ -14,13 +14,13 @@ public struct WeightedItem
 public class Chest : Interactable
 {
     public WeightedItem[] items;
-    private ItemSelector<Interactable> LootPool;
+    private ItemSelector<GameObject> LootPool;
     public bool isOpen = false;
     public Animator animator;
 
     void Start()
     {
-        LootPool = new ItemSelector<Interactable>();
+        LootPool = new ItemSelector<GameObject>();
         
         Debug.Log("Item array size: " + items.Length);
         Debug.Log("Loot pool items: " + LootPool.Size);
@@ -53,7 +53,7 @@ public class Chest : Interactable
     {
         yield return new WaitForSeconds(0.40f);
 
-        Interactable item = LootPool.Roll();
+        GameObject item = LootPool.Roll();
 
         Instantiate(item, transform.position, transform.rotation);
         Destroy(this);

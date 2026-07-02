@@ -2,6 +2,8 @@
 {
     public override void Interact(PlayerInteraction player)
     {
+        base.Interact(player);
+        
         int health = player.player.GetComponent<StatsManager>().currentHP;
         int maxHealth = player.player.GetComponent<StatsManager>().maxHealth.value;
 

@@ -100,21 +100,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - item: {fileID: 657121370835302512, guid: da8b23c3442387a429d0ab376c4f1728, type: 3}
+  - item: {fileID: 6702582414140046772, guid: da8b23c3442387a429d0ab376c4f1728, type: 3}
     LuckAffected: 0
     weight: 20
-  - item: {fileID: 4592145569582754314, guid: d10ac90cda763d541b8b9ce951e852ce, type: 3}
+  - item: {fileID: 7271290015237435675, guid: d10ac90cda763d541b8b9ce951e852ce, type: 3}
     LuckAffected: 0
     weight: 40
-  - item: {fileID: 2625777978731625262, guid: 6a0b1c6d7c4bbba4a8c71ab72e1fadc8, type: 3}
+  - item: {fileID: 5297787871965694085, guid: 6a0b1c6d7c4bbba4a8c71ab72e1fadc8, type: 3}
     LuckAffected: 1
     weight: 4
-  - item: {fileID: 2625777978731625262, guid: 002201143e1efb844bd22cd0ec7f5e53, type: 3}
+  - item: {fileID: 5297787871965694085, guid: 248ba5e30c0bc4543b88716ba18d7a25, type: 3}
     LuckAffected: 1
     weight: 2
-  - item: {fileID: 2625777978731625262, guid: d735f9256ef1e3c42a57ea6291da51bd, type: 3}
+  - item: {fileID: 5297787871965694085, guid: d735f9256ef1e3c42a57ea6291da51bd, type: 3}
     LuckAffected: 1
     weight: 3
+  - item: {fileID: 5297787871965694085, guid: 1680fc73565ab6b429d8bc2d910e3241, type: 3}
+    LuckAffected: 1
+    weight: 2
+  - item: {fileID: 5297787871965694085, guid: afe1ecce4a502004299ed178a4b5e9cd, type: 3}
+    LuckAffected: 1
+    weight: 2
+  - item: {fileID: 5297787871965694085, guid: 6d8872e843350c949b62b7d05d05eb77, type: 3}
+    LuckAffected: 1
+    weight: 2
+  - item: {fileID: 5297787871965694085, guid: 4bcd866df1e998d4bb03f8e248ae22e4, type: 3}
+    LuckAffected: 1
+    weight: 2
+  - item: {fileID: 5297787871965694085, guid: 002201143e1efb844bd22cd0ec7f5e53, type: 3}
+    LuckAffected: 1
+    weight: 2
   isOpen: 0
   animator: {fileID: 2416877196998332872}
 --- !u!61 &6537538669196194807

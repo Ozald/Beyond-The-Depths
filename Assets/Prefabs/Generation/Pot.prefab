@@ -101,9 +101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - item: {fileID: 883872285429918215, guid: a5ef9892eb2eadd43b31309f5b6ca02a, type: 3}
+  - item: {fileID: 9055578516041778905, guid: 0522eb9cc745ead4f83494bc69e1d9ad, type: 3}
+    LuckAffected: 0
     weight: 1
-  - item: {fileID: 6622990355870641510, guid: 0522eb9cc745ead4f83494bc69e1d9ad, type: 3}
+  - item: {fileID: 2415940918555332364, guid: 5be237c1cdda17f4ca6e281204e2256b, type: 3}
+    LuckAffected: 0
     weight: 1
   isOpen: 0
   animator: {fileID: 0}
