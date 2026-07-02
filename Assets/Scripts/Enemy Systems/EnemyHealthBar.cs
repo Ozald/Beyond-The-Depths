@@ -20,7 +20,7 @@ public class EnemyHealthBar : MonoBehaviour
 
     void Update()
     {
-        _hpSlider.value = (float) enemy.currentHP / enemy.enemyData.HP;
+        _hpSlider.value = enemy.currentHP / enemy.enemyData.HP;
         transform.rotation = Camera.main.transform.rotation;
         transform.position = enemy.transform.position + offset;
 

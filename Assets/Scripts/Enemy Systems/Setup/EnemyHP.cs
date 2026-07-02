@@ -10,7 +10,7 @@ public class EnemyHP : MonoBehaviour
     public Material flashMaterial;
     public GameObject HP_Drop;
 
-    [SerializeField] public int currentHP;
+    [SerializeField] public float currentHP;
     public float timeSinceLastHit { private set; get; }
 
     void Start()
@@ -27,7 +27,7 @@ public class EnemyHP : MonoBehaviour
 
     /********************************************************************/
 
-    public void TakeDamage(int damage, float knockback)
+    public void TakeDamage(float damage, float knockback)
     {
         currentHP -= damage;
         StartCoroutine(FlashEnemy());

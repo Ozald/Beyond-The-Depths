@@ -199,7 +199,7 @@ public class StatsManager : MonoBehaviour
             AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
 
             if (projectile != null)
-                TakeDamage(damage: projectile.damage);
+                TakeDamage(projectile.damage);
             else
                 TakeDamage(1);
         }
