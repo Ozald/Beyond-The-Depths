@@ -54,6 +54,7 @@ public class LevelData : ScriptableObject
         Room.ConnectionDirection.Left
     };
     
+    [Header("Algorithm")]
     public TileGraph.Algorithm algorithm;
     
     [Header("Standard Generation Parameters")]
@@ -65,10 +66,11 @@ public class LevelData : ScriptableObject
     [Range(0, 1)] public double generationChance = 0.5;
     [Range(0, 1)] public double generationChanceDecay = 0.05; // This is additive, not multiplicative
     [Range(0, 4)] [FormerlySerializedAs("MaximumBranchAttempts")] public int maximumBranchAttempts = 4;
-    
+
     [Header("Map Randomization")]
+    public bool provideRandomizedSeed = true;
     [FormerlySerializedAs("RandomizerSeed")] public int generatorRandomizerSeed;
-    //public int EnemySelectionSeed; Removed because it led to only one type of enemy ever spawning
+    // public int EnemySelectionSeed; Removed because it led to only one type of enemy ever spawning
     
     [Header("Room Spacing")]
     public int roomOffset;

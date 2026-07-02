@@ -677,7 +677,9 @@ public class TileGraph : MonoBehaviour
     // Places the end room
     private void SetEndRoom()
     {
-        Room farthest = algorithm is Algorithm.DepthFirst or Algorithm.BreadthFirst ? GetFarthestRoom() : GetFarthestDeadEnd();
+        Room farthest = algorithm is Algorithm.DepthFirst or Algorithm.BreadthFirst 
+            ? GetFarthestRoom() : !(GetFarthestDeadEnd() == Start || GetFarthestDeadEnd() is null)
+                ? GetFarthestDeadEnd() : GetFarthestRoom(); // Failsafe, hopefully
 
         if (farthest is not null)
         {

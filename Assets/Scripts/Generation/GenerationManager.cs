@@ -2,6 +2,7 @@
 using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GenerationManager : MonoBehaviour
 {
@@ -11,9 +12,6 @@ public class GenerationManager : MonoBehaviour
     
     void Start()
     {
-        map = new TileGraph(roomTypes.mapWidth, roomTypes.mapHeight, 
-            roomTypes.maxRoomsPerBranch, roomTypes.generatorRandomizerSeed);
-        
         GenerateFloorLayout();
         GenerateNavMesh();
         
@@ -34,11 +32,18 @@ public class GenerationManager : MonoBehaviour
         
         foreach (Connectable room in roomCollection)
             Destroy(room.gameObject);
-        
-        if(map is null)
-            map = new TileGraph(roomTypes.mapWidth, roomTypes.mapHeight, 
-                roomTypes.maxRoomsPerBranch, roomTypes.generatorRandomizerSeed);
-        
+
+        if (map is null)
+        {
+            int seed = roomTypes.provideRandomizedSeed ? Random.Range(int.MinValue, int.MaxValue)
+                : roomTypes.generatorRandomizerSeed;
+            
+            Debug.Log($"Generating using seed: {seed}.");
+            
+            map = new TileGraph(roomTypes.mapWidth, roomTypes.mapHeight,
+                roomTypes.maxRoomsPerBranch, seed);
+        }
+
         Debug.Log($"Map null: {map is null}");
         
         map.roomTypes = roomTypes;
