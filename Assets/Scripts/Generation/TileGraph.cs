@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = System.Random;
 using Vector2 = UnityEngine.Vector2;
 
@@ -46,6 +47,7 @@ public class TileGraph : MonoBehaviour
     public double GenerationChance;
     public int MaximumBranchAttempts;
     public double GenerationChanceReduction;
+    [FormerlySerializedAs("MinimumRooms")] public int GenerationChanceBuffer;
     
     public Room.ConnectionDirection[] validDirections;
 
@@ -294,7 +296,9 @@ public class TileGraph : MonoBehaviour
                             }
                         }
 
-                        generationChance -= GenerationChanceReduction;
+                        if (rooms.Count >= GenerationChanceBuffer)
+                            generationChance -= GenerationChanceReduction;
+
                         roomQueue.Enqueue(next);
                     }
                 }
