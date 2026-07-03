@@ -17,8 +17,8 @@ public class ShopPedestal : Interactable
 
         if (item is not null)
         {   
-            Interactable i = Instantiate(item, gameObject.transform.position + Vector3.up, Quaternion.identity);
-            i.CanInteract = false;
+            item = Instantiate(item, gameObject.transform.position + Vector3.up, Quaternion.identity);
+            item.CanInteract = false;
             costTest.text = sellableItem.price.ToString();
         }
     }
