@@ -378,6 +378,7 @@ MonoBehaviour:
   - {fileID: 1918228451178647518}
   - {fileID: 6929674953572163289}
   roomType: 0
+  specificType: 2
   hasBeenExplored: 0
   spawnedEnemies: []
 --- !u!60 &5928307981669382818

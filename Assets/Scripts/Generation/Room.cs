@@ -6,10 +6,6 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
-/*
-Todo: Detection to remove enemies so that a room can be
-cleared when all enemies are defeated
-*/
 public class Room : Connectable
 {
     // void Awake()
@@ -54,6 +50,7 @@ public class Room : Connectable
     [FormerlySerializedAs("spawnpoints")] public Spawnpoint[] enemySpawnpoints;
 
     public RoomType roomType;
+    public SpecificRoomType specificType;
     public bool hasBeenExplored = false;
     public List<Enemy> spawnedEnemies = new List<Enemy>();
 

@@ -1,15 +1,26 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Random = System.Random;
 
+// General room types
 public enum RoomType
 {
     Room,
     StartRoom,
     EndRoom,
     SpecialRoom
+}
+
+// Very specific room type
+public enum SpecificRoomType
+{
+    Start,
+    End,
+    Combat,
+    Shop,
+    Chest,
+    Boss, // Not implemented yet
+    Healing, // Not implemented yet
 }
 
 [Serializable]

@@ -34,6 +34,8 @@ MonoBehaviour:
   startRooms:
   - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
     weight: 1
+  - connectable: {fileID: 5330091141466109851, guid: 1e52268000f8ee34eb3ec415c38bc752, type: 3}
+    weight: 1
   endRooms:
   - connectable: {fileID: -598439968689866140, guid: 3126698a294ba1643888c3d6c9b16e26, type: 3}
     weight: 1
