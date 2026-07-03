@@ -7165,13 +7165,7 @@ MonoBehaviour:
   rightDoor: {fileID: 1991675986667136266}
   upDoor: {fileID: 5233314812639983713}
   downDoor: {fileID: 6384593634832239673}
-  enemySpawnpoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemySpawnpoints: []
   roomType: 3
   hasBeenExplored: 0
   spawnedEnemies: []

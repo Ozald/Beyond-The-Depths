@@ -23,8 +23,6 @@ public abstract class Interactable : MonoBehaviour
     //This is meant to be overridden by subclasses of Interactable
     public virtual void Interact(PlayerInteraction player)
     {
-        if (!CanInteract)
-            return;
     }
     
     //This creates a blue box above any interactable object (debug purposes)

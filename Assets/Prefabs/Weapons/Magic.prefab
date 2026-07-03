@@ -228,4 +228,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dbc4c3d8f7aa04faac2946cc49e4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanInteract: 1
   weaponData: {fileID: 11400000, guid: c3b645558b87c874bb299c455a349297, type: 2}
