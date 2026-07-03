@@ -50,6 +50,8 @@ public class TileGraph : MonoBehaviour
     [FormerlySerializedAs("MinimumRooms")] public int GenerationChanceBuffer;
     
     public Room.ConnectionDirection[] validDirections;
+    
+    public List<RoomGenRule> roomRules;
 
     public LevelData roomTypes;
 

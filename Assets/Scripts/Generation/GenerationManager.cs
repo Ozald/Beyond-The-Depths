@@ -60,6 +60,7 @@ public class GenerationManager : MonoBehaviour
         map.GenerationChance = roomTypes.generationChance;
         map.GenerationChanceReduction = roomTypes.generationChanceDecay;
         map.MaximumBranchAttempts = roomTypes.maximumBranchAttempts;
+        map.roomRules = roomTypes.RoomRules;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         

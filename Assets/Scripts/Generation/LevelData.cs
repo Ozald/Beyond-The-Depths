@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -35,6 +36,18 @@ public struct WeightedEnemy
 {
     public Enemy enemy;
     public int weight;
+}
+
+[Serializable]
+public struct RoomGenRule
+{
+    public SpecificRoomType startType;
+    public List<SpecificRoomType> allowedTypes;
+
+    public bool Allowed(SpecificRoomType type)
+    {
+        return allowedTypes.Contains(type);
+    }
 }
 
 [CreateAssetMenu(fileName = "Level Data", menuName = "ScriptableObjects/LevelData", order = 1)]
@@ -120,6 +133,11 @@ public class LevelData : ScriptableObject
     
     [Tooltip("The number of attempts that can be made to branch out in generation")]
     [Range(0, 4)] public int maximumBranchAttempts = 4;
+
+    [Header("Generation Rules (Work In Progress)")] 
+    
+    [Tooltip("Rules for what room types can spawn adjacent to one another")]
+    public List<RoomGenRule> RoomRules;
 
     [Header("Map Randomization")]
     
