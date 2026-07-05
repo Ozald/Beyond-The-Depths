@@ -314,7 +314,9 @@ public class TileGraph : MonoBehaviour
                             }
                         }
 
-                        genChance += genChanceIncrease;
+                        if(!guaranteeGracePeriod)
+                            genChance += genChanceIncrease;
+                        
                         roomStack.Push(next);
                     }
 
@@ -448,7 +450,9 @@ public class TileGraph : MonoBehaviour
                             }
                         }
 
-                        genChance += genChanceIncrease;
+                        if(!guaranteeGracePeriod)
+                            genChance += genChanceIncrease;
+                        
                         roomQueue.Enqueue(next);
                     }
                 }
