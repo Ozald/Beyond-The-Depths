@@ -109,9 +109,9 @@ public class LevelData : ScriptableObject
     [Tooltip("The algorithm being used to generate the map")]
     public TileGraph.Algorithm algorithm;
     
-    [Header("Standard Generation Parameters (Does not apply to breadth first or depth first generation")]
+    [Header("Recursive Generation Parameters")]
     
-    [Tooltip("Maximum rooms per branch of the standard algorithm")]
+    [Tooltip("Maximum rooms per branch of the recursive algorithm")]
     public int maxRoomsPerBranch;
     
     [Tooltip("If there is a penalty for deeper map generation")]
@@ -120,7 +120,7 @@ public class LevelData : ScriptableObject
     [Tooltip("If the algorithm should attempt to spread the rooms out across each direction")]
     public bool attemptSpreadBalancing;
     
-    [Header("Alternative Generation Parameters (Breadth First/Depth First)")]
+    [Header("Breadth First/Depth First Generation Parameters")]
     
     [Tooltip("The number of rooms to generate before the odds of generating more begin to decrease")]
     public int GenerationChanceBuffer;

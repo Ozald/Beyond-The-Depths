@@ -188,7 +188,7 @@ public class TileGraph : MonoBehaviour
         CleanDoors();
         
         Debug.Log($"Generated {rooms.Count} rooms.");
-        Debug.Log($"Generated {halls.Count} halls.");
+        //Debug.Log($"Generated {halls.Count} halls.");
     }
 
     // An algorithm that generates rooms more densely further out
