@@ -43,6 +43,7 @@ public class Chase : AIState
             if (enemy.currentWaypoint >= enemy.currentPath.vectorPath.Count)
             {
                 enemy.reachedEndOfPath = true;
+                enemyRB.velocity = Vector2.zero;
                 return;
             }
             else
@@ -58,20 +59,50 @@ public class Chase : AIState
 
     void Move(Enemy enemy, Rigidbody2D enemyRB)
     {
-        // How the enemy traverses the path (Rigidbody for a floaty feel)
-        Vector2 moveDir = ((Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position).normalized;
-        enemyRB.AddForce(moveDir * moveSpeed);
+        int currWaypoint = enemy.currentWaypoint;
+        int totalWaypoints = enemy.currentPath.vectorPath.Count;
 
-        // To make the enemy face the direction of where it is moving
-        Vector2 dir = (Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.Euler(0, 0, angle - 90), 10f * Time.fixedDeltaTime);
+        Vector2 targetPos = (Vector2)enemy.currentPath.vectorPath[currWaypoint];
+        float distanceToTarget = Vector2.Distance(enemyRB.position, targetPos);
+        bool isFinalWaypoint = currWaypoint >= totalWaypoints - 1;
 
-        // To continue to the next waypoint in the path
-        float distance = Vector2.Distance(enemyRB.position, enemy.currentPath.vectorPath[enemy.currentWaypoint]);
-        if (distance < 2f)
+        // Skip to the next waypoint if the enemy is close enough to the current one
+        if (!isFinalWaypoint && distanceToTarget < 2f)
         {
             enemy.currentWaypoint++;
+            targetPos = (Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint];
+            distanceToTarget = Vector2.Distance(enemyRB.position, targetPos);
+            isFinalWaypoint = enemy.currentWaypoint >= totalWaypoints - 1;
+        }
+
+        // If the enemy is at the final waypoint and close enough, slow it down and stop moving
+        float currentSpeed = moveSpeed;
+        if (isFinalWaypoint)
+        {
+            if (distanceToTarget < 0.5f)
+            {
+                enemy.reachedEndOfPath = true;
+                enemyRB.velocity = Vector2.zero;
+                return;
+            }
+
+            if (distanceToTarget < 2f)
+            {
+                currentSpeed *= (distanceToTarget / 2f);
+            }
+        }
+
+        Vector2 moveDir = (targetPos - enemyRB.position).normalized;
+        enemyRB.AddForce(moveDir * currentSpeed);
+
+        // Rotate the enemy to face the direction of movement
+        Vector2 currVelocity = enemyRB.velocity;
+        if (currVelocity.sqrMagnitude > 0.1f)
+        {
+            float angle = Mathf.Atan2(currVelocity.y, currVelocity.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, angle - 90);
+
+            enemy.transform.rotation = Quaternion.RotateTowards(enemy.transform.rotation, targetRotation, 360f * Time.fixedDeltaTime);
         }
     }
 
@@ -100,7 +131,7 @@ public class Chase : AIState
             {
                 // This is to prevent the enemy from trying to move to a waypoint that is too close to it, which can cause jittery movement
                 float distance = Vector2.Distance(enemy.transform.position, p.vectorPath[i]);
-                if (distance >= 1f)
+                if (distance >= 0.5f)
                 {
                     newWaypoint = i;
                     break;
