@@ -38,8 +38,8 @@ MonoBehaviour:
     price: 5
     weight: 2
   - item: {fileID: 657121370835302512, guid: da8b23c3442387a429d0ab376c4f1728, type: 3}
-    price: 3
-    weight: 5
+    price: 4
+    weight: 3
   - item: {fileID: 4592145569582754314, guid: d10ac90cda763d541b8b9ce951e852ce, type: 3}
-    price: 2
-    weight: 6
+    price: 3
+    weight: 2
