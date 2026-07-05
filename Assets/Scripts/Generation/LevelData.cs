@@ -134,6 +134,17 @@ public class LevelData : ScriptableObject
     [Tooltip("The number of attempts that can be made to branch out in generation")]
     [Range(0, 4)] public int maximumBranchAttempts = 4;
 
+    [Header("Inverse Density Algorithm Settings")]
+    
+    [Tooltip("The base chance for room generation close to the center")]
+    [Range(0, 1)] public double baseGenerationChance = 0.2;
+    
+    [Tooltip("The increase in generation chance per layer")]
+    [Range(0, 1)] public double generationChanceIncrease = 0.075;
+
+    [Tooltip("The minimum number of rooms that should generate")]
+    public int guaranteedGenerationRooms;
+
     [Header("Generation Rules (Work In Progress)")] 
     
     [Tooltip("Rules for what room types can spawn adjacent to one another")]
