@@ -25,10 +25,13 @@ public class MeleeWeaponData : WeaponData
             attack.direction = Vector3.zero;
             attack.maxLifetime = attackLifetime;
             attack.damage = damage + player.GetComponent<StatsManager>().damage.value;
-            
+
             if (new Random().NextDouble() < player.GetComponent<StatsManager>().critChance.value)
+            {
                 attack.damage *= 2;
-            
+                attack.crit = true;
+            }
+
             attack.knockback = knockback * player.GetComponent<StatsManager>().knockback.value;
             attack.destroyOnHit = false;
             attack.tagToHit = "Enemy";

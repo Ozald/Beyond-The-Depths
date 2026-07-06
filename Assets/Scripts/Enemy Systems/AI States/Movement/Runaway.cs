@@ -57,20 +57,50 @@ public class Runaway : AIState
 
     void Move(Enemy enemy, Rigidbody2D enemyRB)
     {
-        // How the enemy traverses the path (Rigidbody for a floaty feel)
-        Vector2 moveDir = ((Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position).normalized;
-        enemyRB.AddForce(moveDir * moveSpeed);
+        int currWaypoint = enemy.currentWaypoint;
+        int totalWaypoints = enemy.currentPath.vectorPath.Count;
 
-        // To make the enemy face the direction of where it is moving
-        Vector2 dir = (Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint] - enemyRB.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.Euler(0, 0, angle - 90), 10f * Time.fixedDeltaTime);
+        Vector2 targetPos = (Vector2)enemy.currentPath.vectorPath[currWaypoint];
+        float distanceToTarget = Vector2.Distance(enemyRB.position, targetPos);
+        bool isFinalWaypoint = currWaypoint >= totalWaypoints - 1;
 
-        // To continue to the next waypoint in the path
-        float distance = Vector2.Distance(enemyRB.position, enemy.currentPath.vectorPath[enemy.currentWaypoint]);
-        if (distance < 2f)
+        // Skip to the next waypoint if the enemy is close enough to the current one
+        if (!isFinalWaypoint && distanceToTarget < 2f)
         {
             enemy.currentWaypoint++;
+            targetPos = (Vector2)enemy.currentPath.vectorPath[enemy.currentWaypoint];
+            distanceToTarget = Vector2.Distance(enemyRB.position, targetPos);
+            isFinalWaypoint = enemy.currentWaypoint >= totalWaypoints - 1;
+        }
+
+        // If the enemy is at the final waypoint and close enough, slow it down and stop moving
+        float currentSpeed = moveSpeed;
+        if (isFinalWaypoint)
+        {
+            if (distanceToTarget < 0.5f)
+            {
+                enemy.reachedEndOfPath = true;
+                enemyRB.velocity = Vector2.zero;
+                return;
+            }
+
+            if (distanceToTarget < 2f)
+            {
+                currentSpeed *= (distanceToTarget / 2f);
+            }
+        }
+
+        Vector2 moveDir = (targetPos - enemyRB.position).normalized;
+        enemyRB.AddForce(moveDir * currentSpeed);
+
+        // Rotate the enemy to face the direction of movement
+        Vector2 currVelocity = enemyRB.velocity;
+        if (currVelocity.sqrMagnitude > 0.1f)
+        {
+            float angle = Mathf.Atan2(currVelocity.y, currVelocity.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, angle - 90);
+
+            enemy.transform.rotation = Quaternion.RotateTowards(enemy.transform.rotation, targetRotation, 360f * Time.fixedDeltaTime);
         }
     }
 
@@ -85,11 +115,50 @@ public class Runaway : AIState
             return;
 
         // Calculate location to run to
+        float maxEscapeDistance = 1f;
         Vector3 dir = (enemy.transform.position - player.position).normalized;
-        Vector3 runawayDir = enemy.transform.position + dir * 2;
+        Debug.DrawRay(enemy.transform.position, dir * maxEscapeDistance, Color.green, 1.0f);
 
-        Vector3 targetPosition = AstarPath.active.GetNearest(runawayDir).position;
-        
+        // Check for a wall (ignoring triggers)
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(LayerMask.GetMask("Obstacles"));
+        contactFilter.useTriggers = false;
+
+        RaycastHit2D[] results = new RaycastHit2D[1];
+        int hitCount = Physics2D.Raycast(enemy.transform.position, dir, contactFilter, results, maxEscapeDistance);
+
+        if (hitCount > 0)
+        {
+            // When the enemy hits the wall, it checks which direction is safer to run to
+
+            Vector2 leftChoice = new Vector2(-dir.y, dir.x);
+            Vector2 rightChoice = new Vector2(dir.y, -dir.x);
+
+            // Cast a ray to the left
+            int leftHit = Physics2D.Raycast(enemy.transform.position, leftChoice, contactFilter, results, 3f);
+            float leftDistance = (leftHit > 0) ? results[0].distance : float.MaxValue;
+
+            // Cast a ray to the right
+            int rightHit = Physics2D.Raycast(enemy.transform.position, rightChoice, contactFilter, results, 3f);
+            float rightDistance = (rightHit > 0) ? results[0].distance : float.MaxValue;
+
+            if (leftDistance > rightDistance)
+            {
+                dir = leftChoice;
+            }
+            else
+            {
+                dir = rightChoice;
+            }
+        }
+
+        Vector3 targetPosition = enemy.transform.position + dir * 3f;
+
+        if (AstarPath.active != null)
+        {
+            targetPosition = AstarPath.active.GetNearest(targetPosition).position;
+        }
+
         // Calculate the final path
         enemyAI.StartPath(enemy.transform.position, targetPosition, (Path p) => OnPathGenerate(p, enemy));
     }
