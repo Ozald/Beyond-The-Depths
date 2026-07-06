@@ -51,6 +51,7 @@ public class Room : Connectable
 
     public RoomType roomType;
     public SpecificRoomType specificType;
+    public PolygonCollider2D boundingBox;
     public bool hasBeenExplored = false;
     public List<Enemy> spawnedEnemies = new List<Enemy>();
 
