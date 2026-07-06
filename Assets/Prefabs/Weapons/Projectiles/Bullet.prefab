@@ -166,4 +166,7 @@ MonoBehaviour:
   maxLifetime: 0
   damage: 0
   knockback: 0
+  destroyOnHit: 0
+  crit: 0
+  critEffect: {fileID: 5244863149348968394, guid: 6bf73d74c9f9c3741a8ab4db074887c1, type: 3}
   tagToHit: Enemy

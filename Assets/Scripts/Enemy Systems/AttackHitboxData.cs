@@ -11,6 +11,8 @@ public class AttackHitboxData : MonoBehaviour
     public int damage;
     public float knockback;
     public bool destroyOnHit = false;
+    public bool crit;
+    public ParticleSystem critEffect; // Only needed for player weapons
 
     public string tagToHit;
 
@@ -49,6 +51,12 @@ public class AttackHitboxData : MonoBehaviour
         {
             if (enemiesHit.Contains(enemy) || enemy.timeSinceLastHit < enemy.enemyData.invincibilityCooldown)
                 return;
+
+            if (crit && critEffect is not null)
+            {
+                ParticleSystem effect = Instantiate(critEffect, transform.position, transform.rotation);
+                effect.Play();
+            }
 
             enemy.TakeDamage(damage, knockback);
             enemiesHit.Add(enemy);
