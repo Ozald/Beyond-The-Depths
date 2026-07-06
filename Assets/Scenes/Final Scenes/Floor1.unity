@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemiesToProcessPerFrame: 5
-  timeBetweenProcessBatches: 0.5
+  timeBetweenProcessBatches: 0.1
 --- !u!4 &64667650
 Transform:
   m_ObjectHideFlags: 0
@@ -1252,8 +1252,8 @@ MonoBehaviour:
   - {x: 0.24163605, y: -0.8648729, z: 0}
   - {x: 0.19892357, y: -0.9629133, z: 0}
   m_ShapePathHash: -313925516
-  m_Mesh: {fileID: 1990061748}
-  m_InstanceId: 52340
+  m_Mesh: {fileID: 1858786781}
+  m_InstanceId: 34260
   m_LocalBounds:
     m_Center: {x: -0.0068460107, y: -0.22593164, z: 0}
     m_Extent: {x: 0.61193335, y: 0.73698163, z: 0}
@@ -6912,7 +6912,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1990061748
+--- !u!43 &1858786781
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
