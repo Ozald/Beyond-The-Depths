@@ -13,6 +13,9 @@ public class Basic_Melee : AIState
 
     public override void OnEnter(Enemy enemy)
     {
+        if (!enemy.enabled)
+            return;
+        
         enemy.transform.rotation = Quaternion.identity;
 
         if (!EnemyAttackManager.instance.RequestAttack(enemy))

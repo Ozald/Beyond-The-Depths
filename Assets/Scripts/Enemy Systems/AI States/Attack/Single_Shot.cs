@@ -54,6 +54,9 @@ public class Single_Shot : AIState
     IEnumerator SpawnProjectile(Enemy enemy)
     {
         yield return new WaitForSeconds(0.5f);
+        
+        if (!enemy.enabled)
+            yield break;
 
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 

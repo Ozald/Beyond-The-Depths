@@ -68,6 +68,9 @@ public class Octo_Shot : AIState
 
         foreach (Vector2 attack in attackDirections)
         {
+            if (!enemy.enabled)
+                yield break;
+            
             AttackHitboxData projectile = Object.Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
             projectile.speed = projectileSpeed;
             projectile.direction = new Vector2(attack.x, attack.y).normalized;

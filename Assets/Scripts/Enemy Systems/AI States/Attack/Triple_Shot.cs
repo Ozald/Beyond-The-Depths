@@ -67,6 +67,9 @@ public class Triple_Shot : AIState
 
         foreach (Vector3 attackDir in attackDirs)
         {
+            if (!enemy.enabled)
+                yield break;
+            
             AttackHitboxData projectile = Object.Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
             projectile.speed = projectileSpeed;
             projectile.direction = new Vector2(attackDir.x, attackDir.y);
