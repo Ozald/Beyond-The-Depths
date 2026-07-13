@@ -7620,6 +7620,7 @@ MonoBehaviour:
   downDoor: {fileID: 4284836367482499226}
   enemySpawnpoints: []
   roomType: 3
+  specificType: 4
   hasBeenExplored: 0
   spawnedEnemies: []
 --- !u!60 &5070012979177672340

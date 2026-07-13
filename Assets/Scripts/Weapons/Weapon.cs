@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapon : Interactable
 {
     public WeaponData weaponData;
+    
     public override void Interact(PlayerInteraction player)
     {
         base.Interact(player);

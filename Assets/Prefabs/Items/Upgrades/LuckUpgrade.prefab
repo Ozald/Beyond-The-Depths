@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b795c96dcc463c857f53f4505ff185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanInteract: 1
   stats: {fileID: 11400000, guid: 573c4ff6f706edf438028275988a4b03, type: 2}
 --- !u!1001 &8489749481171526533
 PrefabInstance:

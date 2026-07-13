@@ -55,10 +55,15 @@ public class GenerationManager : MonoBehaviour
         map.EnableDepthPenalty = roomTypes.mapDepthPenalty;
         map.AttemptBalancing = roomTypes.attemptSpreadBalancing;
         map.MaximumRooms = roomTypes.maxMapRooms;
+        map.GenerationChanceBuffer = roomTypes.GenerationChanceBuffer;
         map.algorithm = roomTypes.algorithm;
         map.GenerationChance = roomTypes.generationChance;
         map.GenerationChanceReduction = roomTypes.generationChanceDecay;
         map.MaximumBranchAttempts = roomTypes.maximumBranchAttempts;
+        map.roomRules = roomTypes.RoomRules;
+        map.baseGenerationChance = roomTypes.baseGenerationChance;
+        map.generationChanceIncrease = roomTypes.generationChanceIncrease;
+        map.guaranteedGenerationRooms = roomTypes.guaranteedGenerationRooms;
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         
