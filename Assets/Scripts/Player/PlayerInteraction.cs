@@ -48,6 +48,18 @@ public class PlayerInteraction : MonoBehaviour
             lastInteractable = objectToInteract;
         }
 
+        // Prevent weird things with chests retaining outlines
+        if (objectToInteract != null && !objectToInteract.CanInteract)
+        {
+            ToggleOutline(objectToInteract, false);
+            objectToInteract = null;
+        }
+
+        if (lastInteractable != null && !lastInteractable.CanInteract)
+        {
+            ToggleOutline(lastInteractable, false);
+        }
+
         // If nothing is in range anymore
         if (objectToInteract == null && lastInteractable != null)
         {
@@ -87,6 +99,20 @@ public class PlayerInteraction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Interactable interactable = collision.gameObject.GetComponent<Interactable>();
+
+        if (interactable != null && interactable != objectToInteract && (PlayerInventory.instance.playerInv.Count == 0 || interactable != PlayerInventory.instance.playerInv[0]))
+        {
+            objectToInteract = interactable;
+            isInTriggerZone = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Interactable interactable = collision.gameObject.GetComponent<Interactable>();
+
+        if (objectToInteract != null)
+            return;
 
         if (interactable != null && interactable != objectToInteract && (PlayerInventory.instance.playerInv.Count == 0 || interactable != PlayerInventory.instance.playerInv[0]))
         {
