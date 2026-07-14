@@ -58,6 +58,7 @@ public class PlayerInteraction : MonoBehaviour
         if (lastInteractable != null && !lastInteractable.CanInteract)
         {
             ToggleOutline(lastInteractable, false);
+            lastInteractable = null;
         }
 
         // If nothing is in range anymore
@@ -72,6 +73,13 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("Interactable detected as " + objectToInteract.name + ", trying interaction");
             objectToInteract.Interact(player.GetComponent<PlayerInteraction>());
+            
+            if(objectToInteract != null && !objectToInteract.CanInteract)
+                ToggleOutline(objectToInteract, false);
+            
+            if(lastInteractable != null && !lastInteractable.CanInteract)
+                ToggleOutline(lastInteractable, false);
+            
             objectToInteract = null;
         }
     }

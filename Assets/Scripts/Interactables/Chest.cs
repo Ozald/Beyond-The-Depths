@@ -46,6 +46,7 @@ public class Chest : Interactable
             animator.SetBool("IsOpen", true);
 
             StartCoroutine(OpenChestRoutine());
+            CanInteract = false;
         }
     }
 
