@@ -5,15 +5,24 @@ using UnityEngine;
 
 public class Door : Connectable
 {
+    [HideInInspector]
     [CanBeNull] public Door connectedDoor;
+    
+    [Header("Exit")]
     public float exitOffset;
     public Vector3 exitDirection;
 
+    [HideInInspector]
     public Room parentRoom;
+    
+    [HideInInspector]
     public bool enabled = false;
+    
+    [Header("Fade")]
     public Animator fadeAnimator;
 
     // There was a bug that cause the door transitions to loop, this fixes that
+    [HideInInspector]
     public bool isTransitioning;
 
     void Start()

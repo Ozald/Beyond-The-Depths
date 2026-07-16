@@ -36,22 +36,31 @@ public class Room : Connectable
     }
 
     private int maxConnections;
-    public LevelData levelData;
-
+    
     [CanBeNull] private Connectable left;
     [CanBeNull] private Connectable up;
     [CanBeNull] private Connectable right;
     [CanBeNull] private Connectable down;
 
+    [Header("Doors")]
     [CanBeNull] public Door leftDoor;
     [CanBeNull] public Door rightDoor;
     [CanBeNull] public Door upDoor;
     [CanBeNull] public Door downDoor;
-    [FormerlySerializedAs("spawnpoints")] public Spawnpoint[] enemySpawnpoints;
 
+    [Header("Room Settings")]
     public RoomType roomType;
-    public SpecificRoomType specificType;
+    //public SpecificRoomType specificType;
     public PolygonCollider2D boundingBox;
+    public bool SpawnsEnemies;
+    public int MinEnemySpawnAttempts;
+    public int MaxEnemySpawnAttempts;
+    
+    [Header("Spawning Particles")]
+    public ParticleSystem spawnParticles;
+    
+    [Header("Debug")]
+    public LevelData levelData;
     public bool hasBeenExplored = false;
     public List<Enemy> spawnedEnemies = new List<Enemy>();
 
@@ -119,7 +128,7 @@ public class Room : Connectable
     {
         StartCoroutine(initRoom());
 
-        if (enemySpawnpoints.Count() == 0)
+        if (MaxEnemySpawnAttempts == 0 || !SpawnsEnemies)
             OpenDoors();
 
         if (roomType == RoomType.EndRoom)
@@ -164,7 +173,7 @@ public class Room : Connectable
             return;
         }
 
-        if (!hasBeenExplored && enemySpawnpoints.Length > 0)
+        if (!hasBeenExplored && MinEnemySpawnAttempts > 0)
         {
             if (leftDoor is not null)
                 leftDoor.enabled = false;
@@ -178,48 +187,43 @@ public class Room : Connectable
             if (upDoor is not null)
                 upDoor.enabled = false;
             
-            StartCoroutine(SpawnEnemies());
+            if(SpawnsEnemies)
+                StartCoroutine(SpawnEnemies());
         }
     }
 
     private IEnumerator<YieldInstruction> SpawnEnemies()
     {
-        if (enemySpawnpoints.Length == 0)
+        if (MaxEnemySpawnAttempts == 0)
             yield break;
         
-        HashSet<Spawnpoint> enemySpawns = new HashSet<Spawnpoint>();
-        int enemiesToSpawn = Random.Range(1, enemySpawnpoints.Length);
-
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            Spawnpoint spawnpoint = enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)];
-            ParticleSystem particles = Instantiate(spawnpoint.spawnParticles,
-                spawnpoint.transform.position, spawnpoint.transform.rotation);
-            particles.Play();
-            
-            if (!enemySpawns.Add(spawnpoint))
-                i--;
-        }
-        
         yield return new WaitForSeconds(2);
-        
-        foreach (Spawnpoint point in enemySpawns)
-        {
-            if(point is null)
-                continue;
 
-            if (point.hasSpawned)
-                continue;
+        int spawnAttempts = Random.Range(MinEnemySpawnAttempts, MaxEnemySpawnAttempts + 1);
+        
+        for(int i = 0; i < spawnAttempts; i++)
+        {
+            Vector2 spawnPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+            // Temporary?
+            spawnPos.x += Random.Range(-5, 5);
+            spawnPos.y += Random.Range(-5, 5);
+
+            ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
+            particle.Play();
             
             yield return new WaitForSeconds(0.25f);
-            
-            Enemy enemy = levelData.GetEnemy();
-            Instantiate(enemy.gameObject, point.transform.position, point.transform.rotation);
-            EnemyManager.instance.enemyCount++;
-            EnemyAttackManager.instance.Enemies.Add(enemy);
-            Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
-            
-            point.hasSpawned = true;
+
+            if (boundingBox.OverlapPoint(spawnPos))
+            {
+                Enemy enemy = levelData.GetEnemy();
+
+                Instantiate(enemy.gameObject, spawnPos, Quaternion.identity);
+
+                EnemyManager.instance.enemyCount++;
+                EnemyAttackManager.instance.Enemies.Add(enemy);
+                Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
+                spawnedEnemies.Add(enemy);
+            }
         }
         
         EnemyManager.instance.currentRoom = this;
