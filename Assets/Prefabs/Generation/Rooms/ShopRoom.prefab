@@ -7168,6 +7168,7 @@ MonoBehaviour:
   enemySpawnpoints: []
   roomType: 3
   specificType: 3
+  boundingBox: {fileID: 0}
   hasBeenExplored: 0
   spawnedEnemies: []
 --- !u!60 &1283247078220158335
