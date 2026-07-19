@@ -301,7 +301,7 @@ MonoBehaviour:
   upDoor: {fileID: 1463088097816225704}
   downDoor: {fileID: 8938529282497132560}
   roomType: 2
-  boundingBox: {fileID: 1929528556046752065}
+  boundingBox: {fileID: 1854431227130659772}
   SpawnsEnemies: 0
   MinEnemySpawnAttempts: 0
   MaxEnemySpawnAttempts: 0
@@ -12878,6 +12878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2917845783519973679}
   - component: {fileID: 1929528556046752065}
+  - component: {fileID: 1854431227130659772}
   m_Layer: 0
   m_Name: BoundingBox
   m_TagString: Untagged
@@ -13010,6 +13011,19 @@ PolygonCollider2D:
       - {x: 16.534826, y: -2.1869774}
       - {x: 17.611277, y: -2.1870656}
   m_UseDelaunayMesh: 0
+--- !u!114 &1854431227130659772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519907138164369227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a193532c2f4ecc87a0ba585c4a0e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 0}
 --- !u!1 &6620867871623388164
 GameObject:
   m_ObjectHideFlags: 0

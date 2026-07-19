@@ -51,7 +51,7 @@ public class Room : Connectable
     [Header("Room Settings")]
     public RoomType roomType;
     //public SpecificRoomType specificType;
-    public PolygonCollider2D boundingBox;
+    public BoundingBox boundingBox;
     public bool SpawnsEnemies;
     public int MinEnemySpawnAttempts;
     public int MaxEnemySpawnAttempts;
@@ -133,6 +133,9 @@ public class Room : Connectable
 
         if (roomType == RoomType.EndRoom)
             OpenDoors();
+
+        // This is scuffed
+        boundingBox.OnEntered += PlayerEntered;
     }
 
     private IEnumerator initRoom()
@@ -158,12 +161,8 @@ public class Room : Connectable
             OpenDoors();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void PlayerEntered()
     {
-        // This code is important otherwise enemies can trigger room behavior accidentally
-        if (!other.gameObject.CompareTag("Player"))
-            return;
-
         if(!hasBeenExplored)
             EnemyAttackManager.instance.Enemies.Clear();
 
@@ -207,14 +206,14 @@ public class Room : Connectable
             // Temporary?
             spawnPos.x += Random.Range(-5, 5);
             spawnPos.y += Random.Range(-5, 5);
-
-            ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
-            particle.Play();
             
-            yield return new WaitForSeconds(0.25f);
-
-            if (boundingBox.OverlapPoint(spawnPos))
+            if (boundingBox.collider.OverlapPoint(spawnPos))
             {
+                ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
+                particle.Play();
+                
+                yield return new WaitForSeconds(0.25f);
+                
                 Enemy enemy = levelData.GetEnemy();
 
                 Instantiate(enemy.gameObject, spawnPos, Quaternion.identity);
