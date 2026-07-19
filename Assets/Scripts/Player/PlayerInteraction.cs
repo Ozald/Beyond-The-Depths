@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public static PlayerInteraction instance;
+    
+    [Header("Debug")]
+    public List<Interactable> nearby = new List<Interactable>();
 
     private void Awake()
     {
@@ -33,6 +37,12 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        nearby.RemoveAll(x => x is null || x.IsDestroyed());
+        nearby.RemoveAll(x => 
+            !x.GetComponent<Collider2D>().IsTouching(gameObject.GetComponentInChildren<Collider2D>()));
+        nearby.RemoveAll(x => !x.CanInteract);
+        
+        objectToInteract = NearestInteractable();
 
         if (objectToInteract != null && objectToInteract != lastInteractable && objectToInteract.CanInteract)
         {
@@ -73,6 +83,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("Interactable detected as " + objectToInteract.name + ", trying interaction");
             objectToInteract.Interact(player.GetComponent<PlayerInteraction>());
+            nearby.Remove(objectToInteract);
             
             if(objectToInteract != null && !objectToInteract.CanInteract)
                 ToggleOutline(objectToInteract, false);
@@ -107,10 +118,13 @@ public class PlayerInteraction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Interactable interactable = collision.gameObject.GetComponent<Interactable>();
+        
+        if(interactable != null && !nearby.Contains(interactable) && interactable.CanInteract)
+            nearby.Add(interactable);
 
         if (interactable != null && interactable != objectToInteract && (PlayerInventory.instance.playerInv.Count == 0 || interactable != PlayerInventory.instance.playerInv[0]))
         {
-            objectToInteract = interactable;
+            //objectToInteract = interactable;
             isInTriggerZone = true;
         }
     }
@@ -118,13 +132,16 @@ public class PlayerInteraction : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         Interactable interactable = collision.gameObject.GetComponent<Interactable>();
+        
+        if(interactable != null && !nearby.Contains(interactable) && interactable.CanInteract)
+            nearby.Add(interactable);
 
         if (objectToInteract != null)
             return;
 
         if (interactable != null && interactable != objectToInteract && (PlayerInventory.instance.playerInv.Count == 0 || interactable != PlayerInventory.instance.playerInv[0]))
         {
-            objectToInteract = interactable;
+            //objectToInteract = interactable;
             isInTriggerZone = true;
         }
     }
@@ -137,8 +154,37 @@ public class PlayerInteraction : MonoBehaviour
         {
             isInTriggerZone = false;
             objectToInteract = null;
+            
+            nearby.Remove(objectToInteract);
         }
     }
 
+    private Interactable? NearestInteractable()
+    {
+        if (nearby.Count == 0)
+            return null;
+        
+        Interactable nearest = nearby[0];
+        double nearestDistance = Vector3.Distance(nearest.transform.position, gameObject.transform.position);
+
+        foreach (Interactable interactable in nearby)
+        {
+            if (interactable == null)
+                continue;
+            
+            if(!interactable.CanInteract)
+                continue;
+            
+            double distance = Vector3.Distance(nearest.transform.position, gameObject.transform.position);
+            
+            if (distance < nearestDistance)
+            {
+                nearest = interactable;
+                nearestDistance = distance;
+            }
+        }
+        
+        return nearest;
+    }
 }
 

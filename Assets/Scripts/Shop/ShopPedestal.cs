@@ -39,6 +39,7 @@ public class ShopPedestal : Interactable
             player.player.GetComponent<StatsManager>().doubloons -= sellableItem.price;
             gameObject.GetComponent<ParticleSystem>().Stop();
             item.Interact(player);
+            Destroy(this);
         }
     }
 

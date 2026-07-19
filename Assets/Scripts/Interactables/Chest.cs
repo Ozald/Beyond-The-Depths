@@ -21,9 +21,9 @@ public class Chest : Interactable
     void Start()
     {
         LootPool = new ItemSelector<GameObject>();
-        
-        Debug.Log("Item array size: " + items.Length);
-        Debug.Log("Loot pool items: " + LootPool.Size);
+
+        //Debug.Log("Item array size: " + items.Length);
+        //Debug.Log("Loot pool items: " + LootPool.Size);
     }
 
     public override void Interact(PlayerInteraction player)
