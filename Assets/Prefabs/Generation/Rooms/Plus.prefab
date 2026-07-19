@@ -14006,7 +14006,6 @@ GameObject:
   - component: {fileID: 1532195343518883164}
   - component: {fileID: 7118565256832603894}
   - component: {fileID: 871887348868227583}
-  - component: {fileID: 8150869179095738948}
   m_Layer: 6
   m_Name: Plus
   m_TagString: Untagged
@@ -14064,7 +14063,7 @@ MonoBehaviour:
   upDoor: {fileID: 8120415843264622281}
   downDoor: {fileID: 2664883153582395226}
   roomType: 0
-  boundingBox: {fileID: 0}
+  boundingBox: {fileID: 7024304919527534865}
   SpawnsEnemies: 1
   MinEnemySpawnAttempts: 2
   MaxEnemySpawnAttempts: 4
@@ -14072,55 +14071,6 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
   hasBeenExplored: 0
   spawnedEnemies: []
---- !u!60 &8150869179095738948
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5973750675336636740}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 14, y: 14}
-      - {x: -14, y: 14}
-      - {x: -14, y: -13}
-      - {x: 14, y: -13}
-  m_UseDelaunayMesh: 0
 --- !u!1 &8816249873138151080
 GameObject:
   m_ObjectHideFlags: 0
