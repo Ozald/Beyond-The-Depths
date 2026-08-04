@@ -212,7 +212,7 @@ public class Room : Connectable
                 ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
                 particle.Play();
                 
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(1f);
                 
                 Enemy enemy = levelData.GetEnemy();
 

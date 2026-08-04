@@ -87,7 +87,7 @@ public class Door : Connectable
 
         if (cineCam is not null)
         {
-            cineCam.m_BoundingShape2D = connectedDoor.parentRoom.GetComponent<PolygonCollider2D>();
+            cineCam.m_BoundingShape2D = connectedDoor.parentRoom.boundingBox.collider;
             cineCam.InvalidateCache();
             cineCam.GetComponent<CinemachineVirtualCamera>().PreviousStateIsValid = false;
         }
