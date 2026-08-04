@@ -22,14 +22,13 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        stateTimer = 0;
-        currentState = enemyData.initialState;
-        currentState.OnEnter(this);
-
+        context = new EnemyContext();
         currentPath = null;
         currentWaypoint = 0;
 
-        context = new EnemyContext();
+        stateTimer = 0;
+        currentState = enemyData.initialState;
+        currentState.OnEnter(this);
     }
 
     void FixedUpdate()

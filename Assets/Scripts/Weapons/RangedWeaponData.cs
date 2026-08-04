@@ -29,7 +29,7 @@ public class RangedWeaponData : WeaponData
             
             projectile.knockback = knockback * player.GetComponent<StatsManager>().knockback.value;
             projectile.destroyOnHit = true;
-            projectile.tagToHit = "Enemy";
+            projectile.layerToHit = LayerMask.GetMask("Enemy");
 
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 

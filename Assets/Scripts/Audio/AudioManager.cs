@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        if (EnemyManager.instance == null)
+        if (EnemyManager.instance == null || EnemyManager.instance.currentRoom is null)
             return;
 
         if (EnemyManager.instance.currentRoom.hasBeenExplored)
