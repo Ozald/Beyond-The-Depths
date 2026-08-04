@@ -97,6 +97,7 @@ public class PlayerInventory : MonoBehaviour
         {
             playerInv.Add(nearbyWeapon);
             //nearbyWeapon.gameObject.SetActive(false);
+            nearbyWeapon.CanInteract = false;
         }
         else if (playerInv.Count == 1)
         {
@@ -107,7 +108,7 @@ public class PlayerInventory : MonoBehaviour
 
             playerInv[0].gameObject.SetActive(true);
             playerInv[1].gameObject.SetActive(false);
-
+            nearbyWeapon.CanInteract = false;
         }
         else
         {

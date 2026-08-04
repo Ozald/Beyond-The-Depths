@@ -15,6 +15,7 @@ public class Weapon : Interactable
         if (inv != null && !inv.playerInv.Contains(this))
         {
             inv.PickupWeapon(this);
+            CanInteract = false;
         }
         else
         {
