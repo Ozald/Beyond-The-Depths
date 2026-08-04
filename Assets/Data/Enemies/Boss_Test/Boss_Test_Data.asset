@@ -15,18 +15,26 @@ MonoBehaviour:
   HP: 50
   invincibilityCooldown: 0.1
   initialState:
-    rid: -2
+    rid: 7376889701371215872
   states:
   - transitionMode: 0
     state:
       rid: 7376889701371215872
-    transitions: []
+    transitions:
+    - weight: 1
+      toState:
+        rid: 7376889701371215872
+      conditions:
+      - rid: 7376889701371215874
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 7376889701371215872
       type: {class: BubbleAttack, ns: , asm: Assembly-CSharp}
       data:
-        bubblePrefab: {fileID: 0}
+        bubblePrefab: {fileID: 7567476512711658105, guid: 8b164261a8c81b84799222483de5c8dc, type: 3}
+        projectileForce: 10
+    - rid: 7376889701371215874
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 8
