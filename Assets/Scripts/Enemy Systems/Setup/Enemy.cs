@@ -45,6 +45,11 @@ public class Enemy : MonoBehaviour
         TransitionHandler();
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     /**************************************************************************************/
 
     public EnemyContext GetData()
