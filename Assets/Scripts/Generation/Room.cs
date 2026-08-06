@@ -196,7 +196,7 @@ public class Room : Connectable
         if (MaxEnemySpawnAttempts == 0)
             yield break;
         
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
 
         int spawnAttempts = Random.Range(MinEnemySpawnAttempts, MaxEnemySpawnAttempts + 1);
         
@@ -212,7 +212,7 @@ public class Room : Connectable
                 ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
                 particle.Play();
                 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1.5f);
                 
                 Enemy enemy = levelData.GetEnemy();
 
@@ -222,6 +222,8 @@ public class Room : Connectable
                 EnemyAttackManager.instance.Enemies.Add(enemy);
                 Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
                 spawnedEnemies.Add(enemy);
+                
+                yield return new WaitForSeconds(0.25f);
             }
         }
         
