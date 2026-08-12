@@ -15,11 +15,11 @@ MonoBehaviour:
   HP: 50
   invincibilityCooldown: 0.1
   initialState:
-    rid: 7376889802776903680
+    rid: 7376889870827126785
   states:
   - transitionMode: 1
     state:
-      rid: 7376889802776903680
+      rid: 7376889870827126785
     transitions:
     - weight: 2
       toState:
@@ -37,7 +37,7 @@ MonoBehaviour:
     transitions:
     - weight: 1
       toState:
-        rid: 7376889802776903680
+        rid: 7376889870827126785
       conditions:
       - rid: 7376889802776903683
   - transitionMode: 0
@@ -46,15 +46,17 @@ MonoBehaviour:
     transitions:
     - weight: 1
       toState:
-        rid: 7376889802776903680
+        rid: 7376889870827126785
       conditions:
       - rid: 7376889802776903687
+    - weight: 1
+      toState:
+        rid: 7376889870827126785
+      conditions:
+      - rid: 7376889870827126784
   references:
     version: 2
     RefIds:
-    - rid: 7376889802776903680
-      type: {class: Idle, ns: , asm: Assembly-CSharp}
-      data: 
     - rid: 7376889802776903681
       type: {class: BubbleAttack, ns: , asm: Assembly-CSharp}
       data:
@@ -63,7 +65,7 @@ MonoBehaviour:
     - rid: 7376889802776903682
       type: {class: Tackle, ns: , asm: Assembly-CSharp}
       data:
-        tackleSpeed: 5
+        tackleSpeed: 3
     - rid: 7376889802776903683
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
@@ -71,13 +73,22 @@ MonoBehaviour:
     - rid: 7376889802776903685
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 0.1
+        timeElapsed: 3
     - rid: 7376889802776903686
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 0.1
+        timeElapsed: 3
     - rid: 7376889802776903687
       type: {class: BoolCondition, ns: , asm: Assembly-CSharp}
       data:
         variableName: IsColliding
         value: 1
+    - rid: 7376889870827126784
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.5
+    - rid: 7376889870827126785
+      type: {class: Chase, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 3
+        chaseAnimationTrigger: Chase

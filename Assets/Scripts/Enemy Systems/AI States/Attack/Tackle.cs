@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,26 +11,16 @@ public class Tackle : AIState
 
     public override void OnEnter(Enemy enemy)
     {
-        
+        enemy.StartCoroutine(BeginTackle(enemy));
     }
 
     public override void OnExit(Enemy enemy)
     {
-        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.AddForce(Vector2.left * tackleSpeed, ForceMode2D.Impulse);
-        }
     }
 
     public override void OnFixedUpdate(Enemy enemy)
     {
-        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            Vector2 direction = Vector2.right;
-            rb.velocity = direction * tackleSpeed * 5;
-        }
+        
     }
 
     public override void OnUpdate(Enemy enemy)
@@ -37,6 +28,23 @@ public class Tackle : AIState
         
     }
 
+    #region Helper Methods
+
+    private IEnumerator BeginTackle(Enemy enemy)
+    {
+        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (rb != null)
+        {
+            yield return new WaitForSeconds(0.5f);
+            Vector2 direction = (player.position - enemy.transform.position).normalized;
+            yield return new WaitForSeconds(0.25f);
+            rb.AddForce(direction * tackleSpeed * 5, ForceMode2D.Impulse);
+        }
+    }
+
+    #endregion
 }
 
 #if UNITY_EDITOR

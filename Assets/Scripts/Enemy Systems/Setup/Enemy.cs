@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [NonSerialized] public Path currentPath;
     [NonSerialized] public int currentWaypoint;
     [NonSerialized] public bool reachedEndOfPath = true;
+    public bool debugMode = false;
 
     /**************************************************************************************/
 
@@ -40,6 +41,9 @@ public class Enemy : MonoBehaviour
     {
         stateTimer += Time.deltaTime;
         currentState.OnUpdate(this);
+
+        if (debugMode)
+            Debug.LogWarning($"Current State: {currentState.GetType().Name}");
 
         TransitionHandler();
     }
