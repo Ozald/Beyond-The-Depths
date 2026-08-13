@@ -172,6 +172,9 @@ MonoBehaviour:
   crit: 0
   critEffect: {fileID: 5244863149348968394, guid: 6bf73d74c9f9c3741a8ab4db074887c1, type: 3}
   tagToHit: Enemy
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!95 &7269240428991381628
 Animator:
   serializedVersion: 5
