@@ -72,7 +72,10 @@ public class EnemyHP : MonoBehaviour
         if (EnemyManager.instance.enemyCount > 0)
             EnemyManager.instance.enemyCount--;
 
-        GetComponent<Enemy>().enabled = false;
+        Enemy enemy = GetComponent<Enemy>();
+
+        if (enemy != null)
+            enemy.enabled = false;
 
         Vector3 knockbackDir = -(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
