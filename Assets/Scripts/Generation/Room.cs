@@ -51,6 +51,7 @@ public class Room : Connectable
     [Header("Room Settings")]
     public RoomType roomType;
     //public SpecificRoomType specificType;
+    public GameObject wall;
     public BoundingBox boundingBox;
     public bool SpawnsEnemies;
     public int MinEnemySpawnAttempts;
@@ -61,6 +62,7 @@ public class Room : Connectable
     
     [Header("Debug")]
     public LevelData levelData;
+    public TilemapCollider2D wallCollider;
     public bool hasBeenExplored = false;
     public List<Enemy> spawnedEnemies = new List<Enemy>();
 
@@ -136,6 +138,8 @@ public class Room : Connectable
 
         // This is scuffed
         boundingBox.OnEntered += PlayerEntered;
+
+        wallCollider = wall.GetComponent<TilemapCollider2D>();
     }
 
     private IEnumerator initRoom()
@@ -202,17 +206,21 @@ public class Room : Connectable
         
         for(int i = 0; i < spawnAttempts; i++)
         {
+            bool skip = false;
             Vector2 spawnPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
             // Temporary?
             spawnPos.x += Random.Range(-5, 5);
             spawnPos.y += Random.Range(-5, 5);
             
+            if(wallCollider.OverlapPoint(spawnPos))
+                continue;
+
             if (boundingBox.collider.OverlapPoint(spawnPos))
             {
                 ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
                 particle.Play();
                 
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(1f);
                 
                 Enemy enemy = levelData.GetEnemy();
 
@@ -220,7 +228,7 @@ public class Room : Connectable
 
                 EnemyManager.instance.enemyCount++;
                 EnemyAttackManager.instance.Enemies.Add(enemy);
-                Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
+                //Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
                 spawnedEnemies.Add(enemy);
                 
                 yield return new WaitForSeconds(0.25f);

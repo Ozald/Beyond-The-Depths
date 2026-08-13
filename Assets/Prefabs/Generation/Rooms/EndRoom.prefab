@@ -302,12 +302,14 @@ MonoBehaviour:
   upDoor: {fileID: 1463088097816225704}
   downDoor: {fileID: 8938529282497132560}
   roomType: 2
+  wall: {fileID: 5833051153828358169}
   boundingBox: {fileID: 1854431227130659772}
   SpawnsEnemies: 0
   MinEnemySpawnAttempts: 0
   MaxEnemySpawnAttempts: 0
   spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
   levelData: {fileID: 0}
+  wallCollider: {fileID: 0}
   hasBeenExplored: 0
   spawnedEnemies: []
 --- !u!1 &5505025909054115265
