@@ -5,15 +5,24 @@ using UnityEngine;
 
 public class Door : Connectable
 {
+    [HideInInspector]
     [CanBeNull] public Door connectedDoor;
+    
+    [Header("Exit")]
     public float exitOffset;
     public Vector3 exitDirection;
 
+    [HideInInspector]
     public Room parentRoom;
+    
+    [HideInInspector]
     public bool enabled = false;
+    
+    [Header("Fade")]
     public Animator fadeAnimator;
 
     // There was a bug that cause the door transitions to loop, this fixes that
+    [HideInInspector]
     public bool isTransitioning;
 
     void Start()
@@ -78,7 +87,7 @@ public class Door : Connectable
 
         if (cineCam is not null)
         {
-            cineCam.m_BoundingShape2D = connectedDoor.parentRoom.GetComponent<PolygonCollider2D>();
+            cineCam.m_BoundingShape2D = connectedDoor.parentRoom.boundingBox.collider;
             cineCam.InvalidateCache();
             cineCam.GetComponent<CinemachineVirtualCamera>().PreviousStateIsValid = false;
         }
