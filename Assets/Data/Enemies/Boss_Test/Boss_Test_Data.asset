@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
   m_Name: Boss_Test_Data
   m_EditorClassIdentifier: 
-  HP: 50
+  HP: 10
   invincibilityCooldown: 0.1
   initialState:
     rid: 7376889870827126785
@@ -26,11 +26,19 @@ MonoBehaviour:
         rid: 7376889802776903681
       conditions:
       - rid: 7376889802776903685
+      - rid: 7376889902933475335
     - weight: 1
       toState:
         rid: 7376889802776903682
       conditions:
       - rid: 7376889802776903686
+      - rid: 7376889902933475336
+    - weight: 1
+      toState:
+        rid: 7376889902933475339
+      conditions:
+      - rid: 7376889902933475337
+      - rid: 7376889902933475338
   - transitionMode: 0
     state:
       rid: 7376889802776903681
@@ -77,6 +85,15 @@ MonoBehaviour:
         rid: 7376889870827126785
       conditions:
       - rid: 7376889902933475332
+  - transitionMode: 0
+    state:
+      rid: 7376889902933475339
+    transitions:
+    - weight: 1
+      toState:
+        rid: 7376889870827126785
+      conditions:
+      - rid: 7376889902933475340
   references:
     version: 2
     RefIds:
@@ -134,3 +151,37 @@ MonoBehaviour:
       data:
         variableName: PlayerHit
         value: 0
+    - rid: 7376889902933475335
+      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
+      data:
+        attributeName: HealthPercentage
+        operatorType: 1
+        value: 0.5
+        value2: 0
+    - rid: 7376889902933475336
+      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
+      data:
+        attributeName: HealthPercentage
+        operatorType: 1
+        value: 0.5
+        value2: 0
+    - rid: 7376889902933475337
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 3
+    - rid: 7376889902933475338
+      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
+      data:
+        attributeName: HealthPercentage
+        operatorType: 2
+        value: 0.5
+        value2: 0
+    - rid: 7376889902933475339
+      type: {class: Runaway, ns: , asm: Assembly-CSharp}
+      data:
+        moveSpeed: 5
+        runningAnimationTrigger: Running
+    - rid: 7376889902933475340
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 3
