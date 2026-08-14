@@ -200,7 +200,7 @@ public class Room : Connectable
         if (MaxEnemySpawnAttempts == 0)
             yield break;
         
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         int spawnAttempts = Random.Range(MinEnemySpawnAttempts, MaxEnemySpawnAttempts + 1);
         
@@ -231,7 +231,7 @@ public class Room : Connectable
                 //Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
                 spawnedEnemies.Add(enemy);
                 
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
         
