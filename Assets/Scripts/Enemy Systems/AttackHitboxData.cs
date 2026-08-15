@@ -16,6 +16,8 @@ public class AttackHitboxData : MonoBehaviour
 
     public LayerMask layerToHit;
 
+    public bool usesAddForce = false;
+
     private float currLifetime;
     private Rigidbody2D rb;
 
@@ -29,7 +31,7 @@ public class AttackHitboxData : MonoBehaviour
 
     void Update()
     {
-        if (rb != null)
+        if (rb != null && !usesAddForce)
             rb.velocity = direction * speed;
 
         currLifetime += Time.deltaTime;

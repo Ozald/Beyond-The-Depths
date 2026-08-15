@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
   m_Name: Boss_Test_Data
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 25
   invincibilityCooldown: 0.1
   initialState:
     rid: 7376889870827126785
@@ -26,19 +26,11 @@ MonoBehaviour:
         rid: 7376889802776903681
       conditions:
       - rid: 7376889802776903685
-      - rid: 7376889902933475335
     - weight: 1
       toState:
         rid: 7376889802776903682
       conditions:
       - rid: 7376889802776903686
-      - rid: 7376889902933475336
-    - weight: 1
-      toState:
-        rid: 7376889902933475339
-      conditions:
-      - rid: 7376889902933475337
-      - rid: 7376889902933475338
   - transitionMode: 0
     state:
       rid: 7376889802776903681
@@ -85,6 +77,13 @@ MonoBehaviour:
         rid: 7376889870827126785
       conditions:
       - rid: 7376889902933475332
+      - rid: 7376889953929658371
+    - weight: 1
+      toState:
+        rid: 7376889953929658368
+      conditions:
+      - rid: 7376889953929658372
+      - rid: 7376889953929658373
   - transitionMode: 0
     state:
       rid: 7376889902933475339
@@ -94,6 +93,15 @@ MonoBehaviour:
         rid: 7376889870827126785
       conditions:
       - rid: 7376889902933475340
+  - transitionMode: 0
+    state:
+      rid: 7376889953929658368
+    transitions:
+    - weight: 1
+      toState:
+        rid: 7376889870827126785
+      conditions:
+      - rid: 7376889953929658369
   references:
     version: 2
     RefIds:
@@ -102,6 +110,7 @@ MonoBehaviour:
       data:
         bubblePrefab: {fileID: 7567476512711658105, guid: 8b164261a8c81b84799222483de5c8dc, type: 3}
         projectileForce: 10
+        damage: 1
     - rid: 7376889802776903682
       type: {class: Tackle, ns: , asm: Assembly-CSharp}
       data:
@@ -113,11 +122,11 @@ MonoBehaviour:
     - rid: 7376889802776903685
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 3
+        timeElapsed: 2
     - rid: 7376889802776903686
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 3
+        timeElapsed: 2
     - rid: 7376889802776903687
       type: {class: BoolCondition, ns: , asm: Assembly-CSharp}
       data:
@@ -130,7 +139,7 @@ MonoBehaviour:
     - rid: 7376889870827126785
       type: {class: Chase, ns: , asm: Assembly-CSharp}
       data:
-        moveSpeed: 3
+        moveSpeed: 5
         chaseAnimationTrigger: Chase
     - rid: 7376889902933475329
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
@@ -151,31 +160,6 @@ MonoBehaviour:
       data:
         variableName: PlayerHit
         value: 0
-    - rid: 7376889902933475335
-      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
-      data:
-        attributeName: HealthPercentage
-        operatorType: 1
-        value: 0.5
-        value2: 0
-    - rid: 7376889902933475336
-      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
-      data:
-        attributeName: HealthPercentage
-        operatorType: 1
-        value: 0.5
-        value2: 0
-    - rid: 7376889902933475337
-      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
-      data:
-        timeElapsed: 3
-    - rid: 7376889902933475338
-      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
-      data:
-        attributeName: HealthPercentage
-        operatorType: 2
-        value: 0.5
-        value2: 0
     - rid: 7376889902933475339
       type: {class: Runaway, ns: , asm: Assembly-CSharp}
       data:
@@ -185,3 +169,30 @@ MonoBehaviour:
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
         timeElapsed: 3
+    - rid: 7376889953929658368
+      type: {class: Summon, ns: , asm: Assembly-CSharp}
+      data:
+        enemyToSummon: {fileID: 5016624854893773111, guid: 43be780d3922641478f0b3296ee70dc8, type: 3}
+        numberOfEnemies: 3
+    - rid: 7376889953929658369
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1.5
+    - rid: 7376889953929658371
+      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
+      data:
+        attributeName: HealthPercentage
+        operatorType: 1
+        value: 0.5
+        value2: 0
+    - rid: 7376889953929658372
+      type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
+      data:
+        timeElapsed: 1
+    - rid: 7376889953929658373
+      type: {class: FloatCondition, ns: , asm: Assembly-CSharp}
+      data:
+        attributeName: HealthPercentage
+        operatorType: 2
+        value: 0.5
+        value2: 0
