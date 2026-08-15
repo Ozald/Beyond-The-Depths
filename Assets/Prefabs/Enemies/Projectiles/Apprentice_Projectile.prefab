@@ -168,7 +168,12 @@ MonoBehaviour:
   damage: 0
   knockback: 0
   destroyOnHit: 0
+  crit: 0
+  critEffect: {fileID: 0}
   tagToHit: Player
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &7541829100668513702
 GameObject:
   m_ObjectHideFlags: 0

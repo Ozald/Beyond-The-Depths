@@ -15,6 +15,7 @@ public class AttackHitboxData : MonoBehaviour
     public ParticleSystem critEffect; // Only needed for player weapons
 
     public string tagToHit;
+    public LayerMask wallLayer;
 
     private float currLifetime;
     private Rigidbody2D rb;
@@ -63,6 +64,11 @@ public class AttackHitboxData : MonoBehaviour
 
             if (destroyOnHit)
                 Destroy(gameObject);
+        }
+
+        if (wallLayer == (wallLayer | (1 << collider.gameObject.layer)))
+        {
+            Destroy(gameObject);
         }
     }
 }
