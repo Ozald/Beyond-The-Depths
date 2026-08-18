@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Random = System.Random;
 
 public class Pot : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Pot : MonoBehaviour
     {
         isOpen = true;
         yield return new WaitForSeconds(0.2f);
+        
+        if(new Random().Next(0, 2) == 1)
+            yield break;
 
         GameObject item = LootPool.Roll();
 
