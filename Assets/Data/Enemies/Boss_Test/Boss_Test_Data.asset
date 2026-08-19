@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9770c3c415b6b314ab3d5915a5013f8e, type: 3}
   m_Name: Boss_Test_Data
   m_EditorClassIdentifier: 
-  HP: 25
+  HP: 50
   invincibilityCooldown: 0.1
   initialState:
     rid: 7376889870827126785
@@ -37,7 +37,7 @@ MonoBehaviour:
     transitions:
     - weight: 1
       toState:
-        rid: 7376889870827126785
+        rid: 7376889902933475331
       conditions:
       - rid: 7376889802776903683
   - transitionMode: 0
