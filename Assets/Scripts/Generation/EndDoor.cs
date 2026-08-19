@@ -35,7 +35,7 @@ public class EndDoor : MonoBehaviour
         // Wait for animation to finish
         yield return new WaitForSecondsRealtime(1f);
 
-        SceneManager.LoadScene("EndScreen");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
 }
