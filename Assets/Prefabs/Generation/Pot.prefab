@@ -103,10 +103,10 @@ MonoBehaviour:
   items:
   - item: {fileID: 9055578516041778905, guid: 0522eb9cc745ead4f83494bc69e1d9ad, type: 3}
     LuckAffected: 0
-    weight: 1
+    weight: 7
   - item: {fileID: 2415940918555332364, guid: 5be237c1cdda17f4ca6e281204e2256b, type: 3}
     LuckAffected: 0
-    weight: 1
+    weight: 3
   isOpen: 0
   animator: {fileID: 0}
 --- !u!61 &6939631501884896349
@@ -145,7 +145,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
