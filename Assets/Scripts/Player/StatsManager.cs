@@ -83,7 +83,7 @@ public class StatsManager : MonoBehaviour
     public FloatStat speed;
 
     [FormerlySerializedAs("bonusDamage")] [Header("Damage")] 
-    public IntegerStat damage;
+    public FloatStat damage;
     
     [Header("Knockback")]
     public FloatStat knockback;
@@ -199,7 +199,7 @@ public class StatsManager : MonoBehaviour
             AttackHitboxData projectile = collision.GetComponent<AttackHitboxData>();
 
             if (projectile != null)
-                TakeDamage(projectile.damage);
+                TakeDamage((int)projectile.damage);
             else
                 TakeDamage(1);
         }
