@@ -19,6 +19,6 @@ public class CoinUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentCoins.text = "x" + statsManager.doubloons.ToString();
+        currentCoins.text = statsManager.doubloons.ToString();
     }
 }
