@@ -83,7 +83,7 @@ public class PlayerInventory : MonoBehaviour
             Vector3 attackDir = mousePos - transform.position;
             float angle = Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg;
 
-            currentWeapon.transform.position = transform.position + ((attackDir).normalized - new Vector3(0, 0.6f, 0))
+            currentWeapon.transform.position = transform.position + ((attackDir).normalized - new Vector3(0, 1f, 0))
                 * Math.Min(1, gameObject.GetComponent<StatsManager>().attackRange.value / 2); // Scale position with the weapon's scale
             currentWeapon.transform.rotation = Quaternion.Lerp(currentWeapon.transform.rotation, Quaternion.Euler(0, 0, angle - 90), 0.2f);
         }
@@ -116,6 +116,7 @@ public class PlayerInventory : MonoBehaviour
 
             droppedWeapon.transform.position = nearbyWeapon.transform.position;
             droppedWeapon.transform.rotation = new Quaternion(0, 0, 0, 0);
+            droppedWeapon.CanInteract = true;
             droppedWeapon.gameObject.SetActive(true);
 
             playerInv[0] = nearbyWeapon;

@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff08eec62c2a714399f36b2cd9a3abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: MainMenu
+  sceneName: Main Menu
   yourButton: {fileID: 1875052152}
   fadeAnimator: {fileID: 753928257}
 --- !u!1 &1887649704

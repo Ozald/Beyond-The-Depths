@@ -99,13 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f348e3d48447be40af539d5f45d603e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanInteract: 1
   items:
   - item: {fileID: 6702582414140046772, guid: da8b23c3442387a429d0ab376c4f1728, type: 3}
     LuckAffected: 0
-    weight: 20
+    weight: 10
   - item: {fileID: 7271290015237435675, guid: d10ac90cda763d541b8b9ce951e852ce, type: 3}
     LuckAffected: 0
-    weight: 40
+    weight: 25
   - item: {fileID: 5297787871965694085, guid: 6a0b1c6d7c4bbba4a8c71ab72e1fadc8, type: 3}
     LuckAffected: 1
     weight: 4
@@ -167,7 +168,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5000001, y: 0.3706643}
     oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5

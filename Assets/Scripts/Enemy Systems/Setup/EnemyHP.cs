@@ -9,6 +9,7 @@ public class EnemyHP : MonoBehaviour
     public EnemyData enemyData;
     public Material flashMaterial;
     public GameObject HP_Drop;
+    public GameObject Coin;
 
     [SerializeField] public float currentHP;
     public float timeSinceLastHit { private set; get; }
@@ -89,7 +90,11 @@ public class EnemyHP : MonoBehaviour
         {
             Instantiate(HP_Drop, transform.position, Quaternion.identity);
         }
-        
-        Destroy(gameObject, 0.7f);
+        else
+        {
+            Instantiate(Coin, transform.position, Quaternion.identity);
+        }
+
+            Destroy(gameObject, 0.7f);
     }
 }
