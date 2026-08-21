@@ -562,6 +562,10 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9140365541582954262, guid: 1b6df589ea6acb34fba1b7c7bf2f446f, type: 3}
+      propertyPath: statsManager
+      value: 
+      objectReference: {fileID: 401354740}
     - target: {fileID: 9156810027744330831, guid: 1b6df589ea6acb34fba1b7c7bf2f446f, type: 3}
       propertyPath: m_SortingOrder
       value: 1
