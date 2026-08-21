@@ -211,9 +211,26 @@ public class Room : Connectable
             // Temporary?
             spawnPos.x += Random.Range(-5, 5);
             spawnPos.y += Random.Range(-5, 5);
-            
-            if(wallCollider.OverlapPoint(spawnPos))
+
+            if (wallCollider.OverlapPoint(spawnPos))
+            {
+                Debug.Log("Skipping due to overlapping wall");
                 continue;
+            }
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPos, 3);
+
+            foreach (Collider2D overlap in colliders)
+            {
+                if(overlap == wallCollider)
+                    skip = true;
+            }
+
+            if (skip)
+            {
+                Debug.Log("Skipping due to overlapping wall");
+                continue;
+            }
 
             if (boundingBox.collider.OverlapPoint(spawnPos))
             {
