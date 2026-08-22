@@ -34,7 +34,7 @@ public class MeleeWeaponData : WeaponData
 
             attack.knockback = knockback * player.GetComponent<StatsManager>().knockback.value;
             attack.destroyOnHit = false;
-            attack.tagToHit = "Enemy";
+            attack.layerToHit = LayerMask.GetMask("Enemy");
         }
     }
 }

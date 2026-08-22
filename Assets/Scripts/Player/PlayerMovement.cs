@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb2d.velocity = movementDirection * stats.speed.value;
 
-        if (PlayerManager.instance.currentRoom.hasBeenExplored)
+        if (PlayerManager.instance.currentRoom is not null && PlayerManager.instance.currentRoom.hasBeenExplored)
             rb2d.velocity *= 1.5f;
         
         // rb2d.rotation = Vector2.SignedAngle(Vector2.up, movementDirection);
