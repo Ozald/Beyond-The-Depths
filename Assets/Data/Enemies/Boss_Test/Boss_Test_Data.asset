@@ -23,7 +23,7 @@ MonoBehaviour:
     transitions:
     - weight: 2
       toState:
-        rid: 7376889802776903681
+        rid: 7376890094570438656
       conditions:
       - rid: 7376889802776903685
     - weight: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
       - rid: 7376889802776903686
   - transitionMode: 0
     state:
-      rid: 7376889802776903681
+      rid: 7376890094570438656
     transitions:
     - weight: 1
       toState:
@@ -105,16 +105,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7376889802776903681
-      type: {class: BubbleAttack, ns: , asm: Assembly-CSharp}
-      data:
-        bubblePrefab: {fileID: 7567476512711658105, guid: 8b164261a8c81b84799222483de5c8dc, type: 3}
-        projectileForce: 10
-        damage: 1
     - rid: 7376889802776903682
       type: {class: Tackle, ns: , asm: Assembly-CSharp}
       data:
         tackleSpeed: 7
+        tackleAnimationTrigger: Tackle
     - rid: 7376889802776903683
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
@@ -140,14 +135,16 @@ MonoBehaviour:
       type: {class: Chase, ns: , asm: Assembly-CSharp}
       data:
         moveSpeed: 5
-        chaseAnimationTrigger: Chase
+        chaseAnimationTrigger: Idle
+        facePlayer: 0
     - rid: 7376889902933475329
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
         timeElapsed: 5
     - rid: 7376889902933475330
       type: {class: Stunned, ns: , asm: Assembly-CSharp}
-      data: 
+      data:
+        stunnedAnimationTrigger: Stunned
     - rid: 7376889902933475331
       type: {class: Idle, ns: , asm: Assembly-CSharp}
       data: 
@@ -196,3 +193,10 @@ MonoBehaviour:
         operatorType: 2
         value: 0.5
         value2: 0
+    - rid: 7376890094570438656
+      type: {class: BubbleAttack, ns: , asm: Assembly-CSharp}
+      data:
+        bubblePrefab: {fileID: 7567476512711658105, guid: 8b164261a8c81b84799222483de5c8dc, type: 3}
+        projectileForce: 10
+        damage: 1
+        attackAnimationTrigger: Shoot

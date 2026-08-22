@@ -10,6 +10,7 @@ public class BubbleAttack : AIState
     public GameObject bubblePrefab;
     public float projectileForce = 10f;
     public int damage = 1;
+    public string attackAnimationTrigger = "Shoot";
 
     public override void OnEnter(Enemy enemy)
     {
@@ -56,10 +57,16 @@ public class BubbleAttack : AIState
     private IEnumerator Attack(Enemy enemy)
     {
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        Animator animator = enemy.GetComponent<Animator>();
 
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < 4; i++)
         {
+            if (animator is not null)
+            {
+                animator.SetTrigger(attackAnimationTrigger);
+            }
+
             AttackHitboxData bubble = Object.Instantiate(bubblePrefab, enemy.transform.position, Quaternion.identity).GetComponent<AttackHitboxData>();
 
             Vector2 attackDir = ((Vector2)player.position - (Vector2)enemy.transform.position).normalized;
@@ -71,6 +78,11 @@ public class BubbleAttack : AIState
             bubble.maxLifetime = 5f;
 
             yield return new WaitForSeconds(1f);
+        }
+
+        if (animator is not null)
+        {
+            animator.SetTrigger(attackAnimationTrigger);
         }
 
         Rigidbody2D chud = GameObject.FindGameObjectWithTag("Chud").GetComponent<Rigidbody2D>();

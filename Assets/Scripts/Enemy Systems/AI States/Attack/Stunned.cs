@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Stunned : AIState
 {
+    public string stunnedAnimationTrigger = "Stunned";
+
     public override void OnEnter(Enemy enemy)
     {
         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
@@ -19,7 +21,13 @@ public class Stunned : AIState
             chud.GetComponent<SpriteRenderer>().enabled = true;
             chud.GetComponent<Collider2D>().enabled = true;
 
-            Vector2 attackDir = -enemy.transform.up;
+            Animator animator = enemy.GetComponent<Animator>();
+            if (animator is not null)
+            {
+                animator.SetTrigger(stunnedAnimationTrigger);
+            }
+
+           Vector2 attackDir = -enemy.transform.up;
             chud.AddForce(attackDir * 10, ForceMode2D.Impulse);
         }
     }

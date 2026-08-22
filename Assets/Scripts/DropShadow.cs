@@ -14,13 +14,14 @@ public class DropShadow : MonoBehaviour
     void Start()
     {
         currentShadow = Instantiate(shadowPrefab);
-        currentShadow.transform.localScale = scale;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         currentShadow.transform.position = transform.position + offset;
+        currentShadow.transform.localScale = scale;
     }
 
     void OnDestroy()

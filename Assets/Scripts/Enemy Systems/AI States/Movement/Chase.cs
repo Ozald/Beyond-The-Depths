@@ -10,6 +10,7 @@ public class Chase : AIState
 {
     public float moveSpeed;
     public string chaseAnimationTrigger;
+    public bool facePlayer = true;
 
     public override void OnEnter(Enemy enemy)
     {
@@ -102,7 +103,19 @@ public class Chase : AIState
             float angle = Mathf.Atan2(currVelocity.y, currVelocity.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0, 0, angle - 90);
 
-            enemy.transform.rotation = Quaternion.RotateTowards(enemy.transform.rotation, targetRotation, 360f * Time.fixedDeltaTime);
+            if (facePlayer)
+            {
+                enemy.transform.rotation = Quaternion.RotateTowards(enemy.transform.rotation, targetRotation, 360f * Time.fixedDeltaTime);
+            }
+            else
+            {
+                SpriteRenderer enemySprite = enemy.GetComponent<SpriteRenderer>();
+
+                if (currVelocity.x > 0)
+                    enemySprite.flipX = true;
+                else if (currVelocity.x < 0)
+                    enemySprite.flipX = false;
+            }
         }
     }
 
@@ -166,6 +179,9 @@ public class SwimmingChaseEditor : PropertyDrawer
 
         r.y += lineHeight + 2;
         EditorGUI.PropertyField(r, property.FindPropertyRelative("chaseAnimationTrigger"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("facePlayer"));
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
