@@ -222,8 +222,11 @@ public class Room : Connectable
 
             foreach (Collider2D overlap in colliders)
             {
-                if(overlap == wallCollider)
+                if (overlap.Equals(wallCollider))
+                {
+                    Debug.Log("Overlapping wall collider");
                     skip = true;
+                }
             }
 
             if (skip)
@@ -242,13 +245,16 @@ public class Room : Connectable
                 Enemy enemy = levelData.GetEnemy();
 
                 Instantiate(enemy.gameObject, spawnPos, Quaternion.identity);
+                
+                yield return new WaitForSeconds(0.5f);
+                Destroy(particle.gameObject);
 
                 EnemyManager.instance.enemyCount++;
                 EnemyAttackManager.instance.Enemies.Add(enemy);
                 //Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
                 spawnedEnemies.Add(enemy);
                 
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.2f);
             }
         }
         
