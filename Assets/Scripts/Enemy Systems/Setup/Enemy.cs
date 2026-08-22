@@ -17,19 +17,19 @@ public class Enemy : MonoBehaviour
     [NonSerialized] public Path currentPath;
     [NonSerialized] public int currentWaypoint;
     [NonSerialized] public bool reachedEndOfPath = true;
+    public bool debugMode = false;
 
     /**************************************************************************************/
 
     void Start()
     {
-        stateTimer = 0;
-        currentState = enemyData.initialState;
-        currentState.OnEnter(this);
-
+        context = new EnemyContext();
         currentPath = null;
         currentWaypoint = 0;
 
-        context = new EnemyContext();
+        stateTimer = 0;
+        currentState = enemyData.initialState;
+        currentState.OnEnter(this);
     }
 
     void FixedUpdate()
@@ -42,7 +42,15 @@ public class Enemy : MonoBehaviour
         stateTimer += Time.deltaTime;
         currentState.OnUpdate(this);
 
+        if (debugMode)
+            Debug.LogWarning($"Current State: {currentState.GetType().Name}");
+
         TransitionHandler();
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     /**************************************************************************************/
