@@ -218,7 +218,7 @@ public class Room : Connectable
                 continue;
             }
 
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPos, 3);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPos, 10f);
 
             foreach (Collider2D overlap in colliders)
             {
@@ -235,7 +235,7 @@ public class Room : Connectable
                 continue;
             }
 
-            if (boundingBox.collider.OverlapPoint(spawnPos))
+            if (boundingBox.collider.OverlapPoint(spawnPos) && !wallCollider.OverlapPoint(spawnPos))
             {
                 ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
                 particle.Play();
