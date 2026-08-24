@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [System.Serializable]
@@ -17,6 +16,7 @@ public class Tackle : AIState
 
     public override void OnExit(Enemy enemy)
     {
+        enemy.StopCoroutine(BeginTackle(enemy));
     }
 
     public override void OnFixedUpdate(Enemy enemy)

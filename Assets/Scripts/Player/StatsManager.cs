@@ -124,17 +124,19 @@ public class StatsManager : MonoBehaviour
 
     void Start()
     {
-        maxHealth.SetBaseValue(10);
-        speed.SetBaseValue(5);
-        attackSpeed.SetBaseValue(0);
-        damage.SetBaseValue(0);
-        defense.SetBaseValue(0);
-        critChance.SetBaseValue(0.1f);
-        attackRange.SetBaseValue(1);
-        luck.SetBaseValue(0);
-        knockback.SetBaseValue(1);
-        
-        currentHP = maxHealth.value;
+        // NOTE: This is handled by the SaveManager now, so these lines are commented out to avoid overwriting saved values.
+
+        //maxHealth.SetBaseValue(10);
+        //speed.SetBaseValue(5);
+        //attackSpeed.SetBaseValue(0);
+        //damage.SetBaseValue(0);
+        //defense.SetBaseValue(0);
+        //critChance.SetBaseValue(0.1f);
+        //attackRange.SetBaseValue(1);
+        //luck.SetBaseValue(0);
+        //knockback.SetBaseValue(1);
+
+        //currentHP = maxHealth.value;
         timeSinceLastHit = 0f;
 
         fadeAnimator = Fade.instance.GetComponent<Animator>();

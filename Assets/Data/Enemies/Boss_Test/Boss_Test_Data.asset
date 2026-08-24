@@ -130,7 +130,7 @@ MonoBehaviour:
     - rid: 7376889870827126784
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}
       data:
-        timeElapsed: 1.5
+        timeElapsed: 2
     - rid: 7376889870827126785
       type: {class: Chase, ns: , asm: Assembly-CSharp}
       data:
@@ -156,7 +156,7 @@ MonoBehaviour:
       type: {class: BoolCondition, ns: , asm: Assembly-CSharp}
       data:
         variableName: PlayerHit
-        value: 0
+        value: 1
     - rid: 7376889902933475339
       type: {class: Runaway, ns: , asm: Assembly-CSharp}
       data:

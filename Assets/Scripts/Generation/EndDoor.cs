@@ -24,7 +24,9 @@ public class EndDoor : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && enabled)
         {
             Debug.Log("Player has entered a door");
-                StartCoroutine(FadeTransition(other));
+
+            SaveManager.SaveData();
+            StartCoroutine(FadeTransition(other));
         }
     }
 

@@ -8,6 +8,7 @@ public abstract class WeaponData : ScriptableObject
     public float attackLifetime;
     public int damage;
     public int knockback;
+    public int weaponDataID = -1;
 
     public abstract void Attack(GameObject player);
 }
