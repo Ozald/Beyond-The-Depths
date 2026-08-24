@@ -135,7 +135,7 @@ MonoBehaviour:
       type: {class: Chase, ns: , asm: Assembly-CSharp}
       data:
         moveSpeed: 5
-        chaseAnimationTrigger: Idle
+        chaseAnimationTrigger: Chase
         facePlayer: 0
     - rid: 7376889902933475329
       type: {class: Time_Elapsed, ns: , asm: Assembly-CSharp}

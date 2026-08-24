@@ -78,8 +78,12 @@ public class SaveManager : MonoBehaviour
                     break;
             }
 
-            weapon2.CanInteract = false;
-            PlayerInventory.instance.playerInv.Add(weapon2);
+            if (weapon2 != null)
+            {
+                weapon2.CanInteract = false;
+                PlayerInventory.instance.playerInv.Add(weapon2);
+                weapon2.gameObject.SetActive(false);
+            }
         }
         else
         {
