@@ -56,7 +56,8 @@ public class Room : Connectable
     public bool SpawnsEnemies;
     public int MinEnemySpawnAttempts;
     public int MaxEnemySpawnAttempts;
-    
+    public LayerMask wallLayer;
+
     [Header("Spawning Particles")]
     public ParticleSystem spawnParticles;
     
@@ -197,6 +198,8 @@ public class Room : Connectable
 
     private IEnumerator<YieldInstruction> SpawnEnemies()
     {
+        EnemyManager.instance.currentRoom = this;
+
         if (MaxEnemySpawnAttempts == 0)
             yield break;
         
@@ -206,32 +209,24 @@ public class Room : Connectable
         
         for(int i = 0; i < spawnAttempts; i++)
         {
-            bool skip = false;
             Vector2 spawnPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
             // Temporary?
             spawnPos.x += Random.Range(-5, 5);
             spawnPos.y += Random.Range(-5, 5);
 
-            if (wallCollider.OverlapPoint(spawnPos))
+            if (!boundingBox.collider.OverlapPoint(spawnPos))
             {
-                Debug.Log("Skipping due to overlapping wall");
+                Debug.Log("Out of bounds spawning");
+                i--;
                 continue;
             }
 
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPos, 10f);
+            Collider2D hitObstacle = Physics2D.OverlapCircle(spawnPos, 1f, wallLayer);
 
-            foreach (Collider2D overlap in colliders)
-            {
-                if (overlap.Equals(wallCollider))
-                {
-                    Debug.Log("Overlapping wall collider");
-                    skip = true;
-                }
-            }
-
-            if (skip)
+            if (hitObstacle is not null)
             {
                 Debug.Log("Skipping due to overlapping wall");
+                i--;
                 continue;
             }
 
@@ -243,7 +238,6 @@ public class Room : Connectable
                 yield return new WaitForSeconds(1f);
                 
                 Enemy enemy = levelData.GetEnemy();
-
                 Instantiate(enemy.gameObject, spawnPos, Quaternion.identity);
                 
                 yield return new WaitForSeconds(0.5f);
@@ -256,9 +250,7 @@ public class Room : Connectable
                 
                 yield return new WaitForSeconds(0.2f);
             }
-        }
-        
-        EnemyManager.instance.currentRoom = this;
+        } 
     }
 
     private void OpenDoors()
