@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [System.Serializable]
 public class Tackle : AIState
 {
     public float tackleSpeed = 5f;
+    public string tackleAnimationTrigger = "Tackle";
 
     public override void OnEnter(Enemy enemy)
     {
@@ -16,6 +16,7 @@ public class Tackle : AIState
 
     public override void OnExit(Enemy enemy)
     {
+        enemy.StopCoroutine(BeginTackle(enemy));
     }
 
     public override void OnFixedUpdate(Enemy enemy)
@@ -39,6 +40,13 @@ public class Tackle : AIState
         {
             yield return new WaitForSeconds(0.5f);
             Vector2 direction = (player.position - enemy.transform.position).normalized;
+
+            Animator animator = enemy.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetTrigger(tackleAnimationTrigger);
+            }
+
             yield return new WaitForSeconds(0.25f);
             rb.AddForce(direction * tackleSpeed * 5, ForceMode2D.Impulse);
         }
@@ -70,6 +78,9 @@ public class TackleEditor : PropertyDrawer
 
         r.y += lineHeight + 2;
         EditorGUI.PropertyField(r, property.FindPropertyRelative("tackleSpeed"));
+
+        r.y += lineHeight + 2;
+        EditorGUI.PropertyField(r, property.FindPropertyRelative("tackleAnimationTrigger"));
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

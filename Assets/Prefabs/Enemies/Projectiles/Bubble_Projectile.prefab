@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: -2127994465, guid: 88208425813c4ac409f22468b6ad1925, type: 3}
-  m_Color: {r: 0.28773582, g: 0.97179306, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ece3fcff27b5a4bd899efc6e9d1616f5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -170,6 +170,9 @@ MonoBehaviour:
   destroyOnHit: 0
   crit: 0
   critEffect: {fileID: 5244863149348968394, guid: 6bf73d74c9f9c3741a8ab4db074887c1, type: 3}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
   layerToHit:
     serializedVersion: 2
     m_Bits: 8
