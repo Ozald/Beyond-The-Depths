@@ -59,7 +59,7 @@ MonoBehaviour:
   mapWidth: 13
   mapHeight: 13
   maxMapRooms: 30
-  specialRoomsChance: 0.1
+  specialRoomsChance: 0.125
   canLoop: 1
   extraHallsChance: 0.055
   validDirections: 00000000020000000100000003000000

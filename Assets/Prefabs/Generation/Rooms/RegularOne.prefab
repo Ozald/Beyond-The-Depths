@@ -7477,12 +7477,17 @@ MonoBehaviour:
   upDoor: {fileID: 5233314812639983713}
   downDoor: {fileID: 6384593634832239673}
   roomType: 0
+  wall: {fileID: 6945570452848892465}
   boundingBox: {fileID: 6753517410192208581}
   SpawnsEnemies: 1
   MinEnemySpawnAttempts: 2
   MaxEnemySpawnAttempts: 4
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
   levelData: {fileID: 0}
+  wallCollider: {fileID: 0}
   hasBeenExplored: 0
   spawnedEnemies: []
 --- !u!1 &6945570452848892465
@@ -11654,7 +11659,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
