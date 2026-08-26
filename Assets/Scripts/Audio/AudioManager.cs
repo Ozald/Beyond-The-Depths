@@ -53,6 +53,8 @@ public class AudioManager : MonoBehaviour
             instance.currentBGMusic.setParameterByName("Intensity", 0);
         else
             instance.currentBGMusic.setParameterByName("Intensity", 1);
+
+        Debug.Log($"Current Room: {EnemyManager.instance.currentRoom.name}, Intensity: {(EnemyManager.instance.currentRoom.hasBeenExplored ? 0 : 1)}");
     }
 
 /******************************** AUDIO SETTINGS ***********************************/

@@ -32,7 +32,11 @@ MonoBehaviour:
   - connectable: {fileID: 5288363887424236422, guid: ecb281ba13af0ec4385f64a5f0f45a8d, type: 3}
     weight: 1
   - connectable: {fileID: 1209347448243372640, guid: b744dac359d93134896cadcfdaed68ea, type: 3}
-    weight: 10
+    weight: 1
+  - connectable: {fileID: 2805981087004359911, guid: 942020f3ade60c94681fb41419dabd04, type: 3}
+    weight: 1
+  - connectable: {fileID: 7367849665674607369, guid: a823686b9ca73514d8b653db5a58ed88, type: 3}
+    weight: 1
   startRooms:
   - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
     weight: 1

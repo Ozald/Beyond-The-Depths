@@ -164,6 +164,8 @@ public class Room : Connectable
         if(EnemyManager.instance.currentRoom == this 
             && EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
             OpenDoors();
+
+        Debug.Log("All enemies dead: " + EnemyManager.instance.AllEnemiesDead() + " | Current Room: " + EnemyManager.instance.currentRoom.name + " | Has been explored: " + hasBeenExplored);
     }
 
     void PlayerEntered()
@@ -211,8 +213,8 @@ public class Room : Connectable
         {
             Vector2 spawnPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
             // Temporary?
-            spawnPos.x += Random.Range(-5, 5);
-            spawnPos.y += Random.Range(-5, 5);
+            spawnPos.x += Random.Range(-10,30);
+            spawnPos.y += Random.Range(-10, 30);
 
             if (!boundingBox.collider.OverlapPoint(spawnPos))
             {
