@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/New Floor2.unity
     guid: 66572e4de6338eb4a8b56a4cabb6cb59
   - enabled: 1
+    path: Assets/Scenes/Final Scenes/New Floor3.unity
+    guid: 129d11d4f782dc64382626d42b95bd39
+  - enabled: 1
     path: Assets/Scenes/Final Scenes/BossFightTest.unity
     guid: d2ecc347037c57149bbc73a3c8ff0170
   - enabled: 1

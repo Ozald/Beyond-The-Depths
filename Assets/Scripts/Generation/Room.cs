@@ -162,10 +162,12 @@ public class Room : Connectable
     void Update()
     {
         if(EnemyManager.instance.currentRoom == this 
-            && EnemyManager.instance.AllEnemiesDead() && !hasBeenExplored)
+            && EnemyManager.instance.AllEnemiesDead() && EnemyManager.instance.allEnemiesSpawned && !hasBeenExplored)
             OpenDoors();
 
-        Debug.Log("All enemies dead: " + EnemyManager.instance.AllEnemiesDead() + " | Current Room: " + EnemyManager.instance.currentRoom.name + " | Has been explored: " + hasBeenExplored);
+        Debug.Log("All enemies dead: " + EnemyManager.instance.AllEnemiesDead() + 
+                  " | Current Room: " + EnemyManager.instance.currentRoom.name + " | All Enemies Spawned: " + EnemyManager.instance.allEnemiesSpawned +
+                  " | Has been explored: " + hasBeenExplored);
     }
 
     void PlayerEntered()
@@ -178,6 +180,15 @@ public class Room : Connectable
             OpenDoors();
             return;
         }
+        
+        if (SpawnsEnemies && MinEnemySpawnAttempts > 0)
+        {
+            EnemyManager.instance.allEnemiesSpawned = false;
+            StartCoroutine(SpawnEnemies());
+        }
+
+        if (!EnemyManager.instance.currentRoom.SpawnsEnemies && !hasBeenExplored)
+            EnemyManager.instance.allEnemiesSpawned = true;
 
         if (!hasBeenExplored && MinEnemySpawnAttempts > 0)
         {
@@ -192,9 +203,6 @@ public class Room : Connectable
         
             if (upDoor is not null)
                 upDoor.enabled = false;
-            
-            if(SpawnsEnemies)
-                StartCoroutine(SpawnEnemies());
         }
     }
 
@@ -208,12 +216,12 @@ public class Room : Connectable
         yield return new WaitForSeconds(1f);
 
         int spawnAttempts = Random.Range(MinEnemySpawnAttempts, MaxEnemySpawnAttempts + 1);
-        
-        for(int i = 0; i < spawnAttempts; i++)
+
+        for (int i = 0; i < spawnAttempts; i++)
         {
             Vector2 spawnPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
             // Temporary?
-            spawnPos.x += Random.Range(-10,30);
+            spawnPos.x += Random.Range(-10, 30);
             spawnPos.y += Random.Range(-10, 30);
 
             if (!boundingBox.collider.OverlapPoint(spawnPos))
@@ -234,29 +242,35 @@ public class Room : Connectable
 
             if (boundingBox.collider.OverlapPoint(spawnPos) && !wallCollider.OverlapPoint(spawnPos))
             {
-                ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1), Quaternion.identity);
+                ParticleSystem particle = Instantiate(spawnParticles, new Vector3(spawnPos.x, spawnPos.y, -1),
+                    Quaternion.identity);
                 particle.Play();
-                
+
                 yield return new WaitForSeconds(1f);
-                
+
                 Enemy enemy = levelData.GetEnemy();
+                EnemyManager.instance.enemyCount++;
                 Instantiate(enemy.gameObject, spawnPos, Quaternion.identity);
-                
+
                 yield return new WaitForSeconds(0.5f);
                 Destroy(particle.gameObject);
-
-                EnemyManager.instance.enemyCount++;
+                
                 EnemyAttackManager.instance.Enemies.Add(enemy);
                 //Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
                 spawnedEnemies.Add(enemy);
-                
+
                 yield return new WaitForSeconds(0.2f);
             }
-        } 
+        }
+        
+        EnemyManager.instance.allEnemiesSpawned = true;
     }
 
     private void OpenDoors()
     {
+        if (hasBeenExplored)
+            return;
+        
         hasBeenExplored = true;
         
         if (leftDoor is not null)

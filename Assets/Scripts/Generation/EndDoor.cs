@@ -36,6 +36,7 @@ public class EndDoor : MonoBehaviour
 
         // Wait for animation to finish
         yield return new WaitForSecondsRealtime(1f);
+        AudioManager.instance.currentBGMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
