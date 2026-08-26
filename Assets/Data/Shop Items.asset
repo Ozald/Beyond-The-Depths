@@ -20,26 +20,26 @@ MonoBehaviour:
     price: 4
     weight: 1
   - item: {fileID: 2625777978731625262, guid: 6a0b1c6d7c4bbba4a8c71ab72e1fadc8, type: 3}
-    price: 5
+    price: 4
     weight: 1
   - item: {fileID: 2625777978731625262, guid: afe1ecce4a502004299ed178a4b5e9cd, type: 3}
     price: 4
     weight: 2
   - item: {fileID: 2625777978731625262, guid: 002201143e1efb844bd22cd0ec7f5e53, type: 3}
-    price: 6
+    price: 5
     weight: 1
   - item: {fileID: 2625777978731625262, guid: 248ba5e30c0bc4543b88716ba18d7a25, type: 3}
     price: 3
     weight: 2
   - item: {fileID: 2625777978731625262, guid: 1680fc73565ab6b429d8bc2d910e3241, type: 3}
-    price: 6
+    price: 5
     weight: 1
   - item: {fileID: 2625777978731625262, guid: d735f9256ef1e3c42a57ea6291da51bd, type: 3}
-    price: 5
+    price: 4
     weight: 2
   - item: {fileID: 657121370835302512, guid: da8b23c3442387a429d0ab376c4f1728, type: 3}
-    price: 4
-    weight: 3
+    price: 5
+    weight: 2
   - item: {fileID: 4592145569582754314, guid: d10ac90cda763d541b8b9ce951e852ce, type: 3}
     price: 3
     weight: 2

@@ -24,7 +24,9 @@ public class EndDoor : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && enabled)
         {
             Debug.Log("Player has entered a door");
-                StartCoroutine(FadeTransition(other));
+
+            SaveManager.SaveData();
+            StartCoroutine(FadeTransition(other));
         }
     }
 
@@ -34,8 +36,9 @@ public class EndDoor : MonoBehaviour
 
         // Wait for animation to finish
         yield return new WaitForSecondsRealtime(1f);
+        AudioManager.instance.currentBGMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
-        SceneManager.LoadScene("EndScreen");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
 }

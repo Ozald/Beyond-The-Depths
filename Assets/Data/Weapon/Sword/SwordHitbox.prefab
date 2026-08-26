@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5438212432343439849}
@@ -205,4 +205,10 @@ MonoBehaviour:
   destroyOnHit: 0
   crit: 0
   critEffect: {fileID: 5244863149348968394, guid: 6bf73d74c9f9c3741a8ab4db074887c1, type: 3}
-  tagToHit: 
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  layerToHit:
+    serializedVersion: 2
+    m_Bits: 0
+  usesAddForce: 0

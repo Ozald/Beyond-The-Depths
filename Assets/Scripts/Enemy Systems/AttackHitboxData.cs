@@ -14,8 +14,9 @@ public class AttackHitboxData : MonoBehaviour
     public bool crit;
     public ParticleSystem critEffect; // Only needed for player weapons
 
-    public string tagToHit;
     public LayerMask wallLayer;
+    public LayerMask layerToHit;
+    public bool usesAddForce = false;
 
     private float currLifetime;
     private Rigidbody2D rb;
@@ -30,7 +31,7 @@ public class AttackHitboxData : MonoBehaviour
 
     void Update()
     {
-        if (rb != null)
+        if (rb != null && !usesAddForce)
             rb.velocity = direction * speed;
 
         currLifetime += Time.deltaTime;
@@ -48,7 +49,7 @@ public class AttackHitboxData : MonoBehaviour
         EnemyHP enemy = collider.gameObject.GetComponent<EnemyHP>();
         // StatsManager player = collider.gameObject.GetComponent<StatsManager>();
 
-        if (enemy != null && collider.gameObject.CompareTag(tagToHit))
+        if (enemy != null && (layerToHit & (1 << collider.gameObject.layer)) != 0)
         {
             if (enemiesHit.Contains(enemy) || enemy.timeSinceLastHit < enemy.enemyData.invincibilityCooldown)
                 return;

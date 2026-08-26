@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0.4
   attackLifetime: 1.5
-  damage: 1
+  damage: 2
   knockback: 0.1
+  weaponDataID: 2
   bulletSpeed: 10
   bulletPrefab: {fileID: 1056719614797597177, guid: 2c3501c4b8c2fe44a8d3e48c25415243, type: 3}

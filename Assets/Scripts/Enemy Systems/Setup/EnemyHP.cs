@@ -9,6 +9,7 @@ public class EnemyHP : MonoBehaviour
     public EnemyData enemyData;
     public Material flashMaterial;
     public GameObject HP_Drop;
+    public GameObject Coin;
 
     [SerializeField] public float currentHP;
     public float timeSinceLastHit { private set; get; }
@@ -45,9 +46,9 @@ public class EnemyHP : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            Die();
             CameraShake.ShakeCamera(amplitude: 2f, duration: 0.3f, isImpactFrame: true);
             AudioManager.PlayOneShot(sound: AudioManager.GetAudioData().enemyDeath, delay: 0.3f);
-            Die();
         }
 
         timeSinceLastHit = 0;
@@ -74,7 +75,10 @@ public class EnemyHP : MonoBehaviour
         if (EnemyManager.instance.enemyCount > 0)
             EnemyManager.instance.enemyCount--;
 
-        GetComponent<Enemy>().enabled = false;
+        Enemy enemy = GetComponent<Enemy>();
+
+        if (enemy != null)
+            enemy.enabled = false;
 
         Vector3 knockbackDir = -(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -91,7 +95,11 @@ public class EnemyHP : MonoBehaviour
         {
             Instantiate(HP_Drop, transform.position, Quaternion.identity);
         }
-        
-        Destroy(gameObject, 0.7f);
+        else
+        {
+            Instantiate(Coin, transform.position, Quaternion.identity);
+        }
+
+            Destroy(gameObject, 0.7f);
     }
 }

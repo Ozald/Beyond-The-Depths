@@ -46,13 +46,15 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        if (EnemyManager.instance == null)
+        if (EnemyManager.instance == null || EnemyManager.instance.currentRoom is null)
             return;
 
         if (EnemyManager.instance.currentRoom.hasBeenExplored)
             instance.currentBGMusic.setParameterByName("Intensity", 0);
         else
             instance.currentBGMusic.setParameterByName("Intensity", 1);
+
+        Debug.Log($"Current Room: {EnemyManager.instance.currentRoom.name}, Intensity: {(EnemyManager.instance.currentRoom.hasBeenExplored ? 0 : 1)}");
     }
 
 /******************************** AUDIO SETTINGS ***********************************/

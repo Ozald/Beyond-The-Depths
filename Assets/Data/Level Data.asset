@@ -16,34 +16,40 @@ MonoBehaviour:
   - connectable: {fileID: -598439968689866140, guid: 08d897b0d3798024fa7262b4798d9664, type: 3}
     weight: 1
   - connectable: {fileID: -3573859890246586673, guid: c41e08e2d4ab99648ace8eb677805411, type: 3}
-    weight: 1
+    weight: 2
   - connectable: {fileID: 5035185924873772528, guid: 0847d74293711de46b95bbba579556a7, type: 3}
-    weight: 1
+    weight: 2
   - connectable: {fileID: 8113397583161321766, guid: 5a757023aa3d25c40a7b4925d935a4a4, type: 3}
-    weight: 1
+    weight: 2
   - connectable: {fileID: 871887348868227583, guid: e2ab393dce330a0429c293ce80b23a51, type: 3}
     weight: 1
   - connectable: {fileID: 7850640461209332830, guid: 46589dc83a77ac04db4ea9fc68e2adaa, type: 3}
-    weight: 1
+    weight: 2
   - connectable: {fileID: 1051941340371020093, guid: a97beb3da00dfe842a7e5cdd9b64c2fe, type: 3}
     weight: 1
   - connectable: {fileID: 3766077978749172037, guid: 51172ebbea237fb43a8f146c948ecbb4, type: 3}
     weight: 1
   - connectable: {fileID: 5288363887424236422, guid: ecb281ba13af0ec4385f64a5f0f45a8d, type: 3}
     weight: 1
+  - connectable: {fileID: 1209347448243372640, guid: b744dac359d93134896cadcfdaed68ea, type: 3}
+    weight: 1
+  - connectable: {fileID: 2805981087004359911, guid: 942020f3ade60c94681fb41419dabd04, type: 3}
+    weight: 1
+  - connectable: {fileID: 7367849665674607369, guid: a823686b9ca73514d8b653db5a58ed88, type: 3}
+    weight: 1
   startRooms:
   - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
     weight: 1
   - connectable: {fileID: 5330091141466109851, guid: 1e52268000f8ee34eb3ec415c38bc752, type: 3}
-    weight: 1
+    weight: 2
   endRooms:
   - connectable: {fileID: -598439968689866140, guid: 3126698a294ba1643888c3d6c9b16e26, type: 3}
     weight: 1
   specialRooms:
   - connectable: {fileID: 1698931879632160829, guid: c4e37c3781faf294ba8d4b0571a34413, type: 3}
-    weight: 1
+    weight: 4
   - connectable: {fileID: 7850640461209332830, guid: 9641e866c461b9e4792e292bfbe34e88, type: 3}
-    weight: 1
+    weight: 6
   hallways:
   - connectable: {fileID: 918799073537635806, guid: 8d51d8a13d8304a42bcba7ea843b622a, type: 3}
     weight: 1
@@ -59,7 +65,7 @@ MonoBehaviour:
   mapWidth: 13
   mapHeight: 13
   maxMapRooms: 30
-  specialRoomsChance: 0.1
+  specialRoomsChance: 0.125
   canLoop: 1
   extraHallsChance: 0.055
   validDirections: 00000000020000000100000003000000
@@ -71,10 +77,10 @@ MonoBehaviour:
   generationChance: 0.95
   generationChanceDecay: 0.05
   maximumBranchAttempts: 4
-  baseGenerationChance: 0.10000000149011612
+  baseGenerationChance: 0.15000000596046448
   generationChanceIncrease: 0.05000000074505806
-  guaranteedGenerationRooms: 10
+  guaranteedGenerationRooms: 12
   RoomRules: []
   provideRandomizedSeed: 1
   generatorRandomizerSeed: 45
-  roomOffset: 25
+  roomOffset: 30

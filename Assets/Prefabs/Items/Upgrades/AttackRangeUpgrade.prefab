@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContinuousUpgradeParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 7137578124192508261, guid: ad79364fc6d78db449f1266f278ed86a, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

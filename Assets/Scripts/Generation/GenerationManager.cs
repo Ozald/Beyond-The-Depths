@@ -14,15 +14,6 @@ public class GenerationManager : MonoBehaviour
     {
         GenerateFloorLayout();
         GenerateNavMesh();
-        
-        // Set camera to new room
-        CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
-
-        if (cineCam is not null)
-        {
-            cineCam.m_BoundingShape2D = map.StartRoom.GetComponent<PolygonCollider2D>();
-            cineCam.InvalidateCache();
-        }
     }
 
     void GenerateFloorLayout()
@@ -74,7 +65,16 @@ public class GenerationManager : MonoBehaviour
             PlayerManager.instance.currentRoom = map.StartRoom;
             EnemyManager.instance.currentRoom = map.StartRoom;
             map.StartRoom.hasBeenExplored = true;
-            
+
+            // Set camera to new room
+            CinemachineConfiner2D cineCam = FindObjectOfType<CinemachineConfiner2D>();
+
+            if (cineCam is not null)
+            {
+                cineCam.m_BoundingShape2D = map.StartRoom.GetComponent<PolygonCollider2D>();
+                cineCam.InvalidateCache();
+            }
+
             player.transform.position = new Vector3(map.StartRoom.gameObject.transform.position.x, 
                 map.StartRoom.gameObject.transform.position.y, player.transform.position.z);
         }
@@ -87,8 +87,8 @@ public class GenerationManager : MonoBehaviour
         dungeonNavMesh.RelocateNodes(center: map.StartRoom.transform.position, rotation: Quaternion.identity, nodeSize: dungeonNavMesh.nodeSize);
 
         dungeonNavMesh.rotation = new Vector3(90, 0, 0);
-        dungeonNavMesh.SetDimensions(width: roomTypes.mapWidth * roomTypes.roomOffset * 2,
-            depth: roomTypes.mapHeight * roomTypes.roomOffset * 2, dungeonNavMesh.nodeSize);
+        dungeonNavMesh.SetDimensions(width: roomTypes.mapWidth * roomTypes.roomOffset * 2 + roomTypes.roomOffset,
+            depth: roomTypes.mapHeight * roomTypes.roomOffset * 2 + roomTypes.roomOffset, dungeonNavMesh.nodeSize);
 
         AstarPath.active.Scan();
     }
