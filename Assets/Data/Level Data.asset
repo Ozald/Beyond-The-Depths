@@ -31,6 +31,8 @@ MonoBehaviour:
     weight: 1
   - connectable: {fileID: 5288363887424236422, guid: ecb281ba13af0ec4385f64a5f0f45a8d, type: 3}
     weight: 1
+  - connectable: {fileID: 1209347448243372640, guid: b744dac359d93134896cadcfdaed68ea, type: 3}
+    weight: 10
   startRooms:
   - connectable: {fileID: 7726907193795363843, guid: ff3897b3fde143b42824233b6098bba2, type: 3}
     weight: 1
@@ -77,4 +79,4 @@ MonoBehaviour:
   RoomRules: []
   provideRandomizedSeed: 1
   generatorRandomizerSeed: 45
-  roomOffset: 25
+  roomOffset: 30
