@@ -42,8 +42,8 @@ public class SaveManager : MonoBehaviour
             StatsManager.Instance.doubloons = PlayerPrefs.GetInt("doubloons");
 
             // Inventory Loading
-            int weaponID1 = PlayerPrefs.GetInt("weaponID1");
-            int weaponID2 = PlayerPrefs.GetInt("weaponID2");
+            int weaponID1 = PlayerPrefs.GetInt("weaponID1", -1);
+            int weaponID2 = PlayerPrefs.GetInt("weaponID2", -1);
 
             // Weapon 1
             Weapon weapon1 = null;
@@ -60,8 +60,11 @@ public class SaveManager : MonoBehaviour
                     break;
             }
 
-            weapon1.CanInteract = false;
-            PlayerInventory.instance.playerInv.Add(weapon1);
+            if (weapon1 != null)
+            {
+                weapon1.CanInteract = false;
+                PlayerInventory.instance.playerInv.Add(weapon1);
+            }
 
             // Weapon 2
             Weapon weapon2 = null;
@@ -128,8 +131,15 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("doubloons", StatsManager.Instance.doubloons);
 
         // Inventory Saving
-        PlayerPrefs.SetInt("weaponID1", PlayerInventory.instance.playerInv[0].weaponData.weaponDataID);
-        PlayerPrefs.SetInt("weaponID2", PlayerInventory.instance.playerInv[1].weaponData.weaponDataID);
+        if (PlayerInventory.instance.playerInv.Count > 0 && PlayerInventory.instance.playerInv[0] != null)
+            PlayerPrefs.SetInt("weaponID1", PlayerInventory.instance.playerInv[0].weaponData.weaponDataID);
+        else
+            PlayerPrefs.SetInt("weaponID1", -1);
+
+        if (PlayerInventory.instance.playerInv.Count > 1 && PlayerInventory.instance.playerInv[1] != null)
+            PlayerPrefs.SetInt("weaponID2", PlayerInventory.instance.playerInv[1].weaponData.weaponDataID);
+        else
+            PlayerPrefs.SetInt("weaponID2", -1);
 
         PlayerPrefs.Save();
     }

@@ -249,12 +249,12 @@ public class Room : Connectable
                 yield return new WaitForSeconds(1f);
 
                 Enemy enemy = levelData.GetEnemy();
+                EnemyManager.instance.enemyCount++;
                 Instantiate(enemy.gameObject, spawnPos, Quaternion.identity);
 
                 yield return new WaitForSeconds(0.5f);
                 Destroy(particle.gameObject);
-
-                EnemyManager.instance.enemyCount++;
+                
                 EnemyAttackManager.instance.Enemies.Add(enemy);
                 //Debug.Log("Enemy spawned. Enemies: " + EnemyManager.instance.enemyCount);
                 spawnedEnemies.Add(enemy);

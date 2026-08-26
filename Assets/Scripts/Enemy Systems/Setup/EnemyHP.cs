@@ -40,9 +40,9 @@ public class EnemyHP : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            Die();
             CameraShake.ShakeCamera(amplitude: 2f, duration: 0.3f, isImpactFrame: true);
             AudioManager.PlayOneShot(sound: AudioManager.GetAudioData().enemyDeath, delay: 0.3f);
-            Die();
         }
 
         timeSinceLastHit = 0;
