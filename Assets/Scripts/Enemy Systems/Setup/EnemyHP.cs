@@ -14,10 +14,15 @@ public class EnemyHP : MonoBehaviour
     [SerializeField] public float currentHP;
     public float timeSinceLastHit { private set; get; }
 
+    private Material originalMaterial;
+    private Color originalColor;
+
     void Start()
     {
         currentHP = enemyData.HP;
         timeSinceLastHit = enemyData.invincibilityCooldown;
+        originalMaterial = GetComponent<SpriteRenderer>().material;
+        originalColor = GetComponent<SpriteRenderer>().color;
     }
 
     void Update()
@@ -31,6 +36,7 @@ public class EnemyHP : MonoBehaviour
     public void TakeDamage(float damage, float knockback)
     {
         currentHP -= damage;
+        StopCoroutine(FlashEnemy());
         StartCoroutine(FlashEnemy());
 
         Vector3 knockbackDir = -(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
@@ -51,10 +57,6 @@ public class EnemyHP : MonoBehaviour
     public IEnumerator FlashEnemy()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        Color originalColor = spriteRenderer.color;
-        Material originalMaterial = spriteRenderer.material;
-
-        // Now do the flash
 
         spriteRenderer.color = Color.white;
         spriteRenderer.material = flashMaterial;
