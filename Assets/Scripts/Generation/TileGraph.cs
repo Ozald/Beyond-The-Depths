@@ -406,6 +406,7 @@ public class TileGraph : MonoBehaviour
                         next.rightDoor.parentRoom = next;
                         next.upDoor.parentRoom = next;
                         next.downDoor.parentRoom = next;
+                        next.levelData = roomTypes;
 
                         rooms.Add(next, position + direction);
                         
@@ -539,6 +540,7 @@ public class TileGraph : MonoBehaviour
                         next.rightDoor.parentRoom = next;
                         next.upDoor.parentRoom = next;
                         next.downDoor.parentRoom = next;
+                        next.levelData = roomTypes;
 
                         rooms.Add(next, position + direction);
                         
@@ -669,6 +671,8 @@ public class TileGraph : MonoBehaviour
                         next.rightDoor.parentRoom = next;
                         next.upDoor.parentRoom = next;
                         next.downDoor.parentRoom = next;
+                        
+                        next.levelData = roomTypes;
 
                         rooms.Add(next, position + direction);
                         
