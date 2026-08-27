@@ -119,7 +119,7 @@ public class SaveManager : MonoBehaviour
 
         // Player Stats Saving
         PlayerPrefs.SetFloat("speed", StatsManager.Instance.speed.value);
-        PlayerPrefs.SetInt("damage", StatsManager.Instance.damage.value);
+        PlayerPrefs.SetFloat("damage", StatsManager.Instance.damage.value);
         PlayerPrefs.SetFloat("knockback", StatsManager.Instance.knockback.value);
         PlayerPrefs.SetFloat("attackRange", StatsManager.Instance.attackRange.value);
         PlayerPrefs.SetFloat("critChance", StatsManager.Instance.critChance.value);
