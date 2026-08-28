@@ -58,7 +58,7 @@ public class GenerationManager : MonoBehaviour
 
         map.GenerateMap(new(map.Width / 2, map.Height / 2));
         
-        Debug.Log(map);
+        //Debug.Log(map);
 
         if(map.StartRoom is not null)
         {

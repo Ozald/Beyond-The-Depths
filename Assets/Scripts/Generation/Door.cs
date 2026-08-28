@@ -2,6 +2,7 @@ using System.Collections;
 using Cinemachine;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Door : Connectable
 {
@@ -25,10 +26,15 @@ public class Door : Connectable
     [HideInInspector]
     public bool isTransitioning;
 
+    [HideInInspector] 
+    public Light2D light;
+
     void Start()
     {
         fadeAnimator = Fade.instance.GetComponent<Animator>();
         isTransitioning = false;
+        
+        light = GetComponentInChildren<Light2D>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -99,5 +105,11 @@ public class Door : Connectable
             playerMovement.canMove = true;
 
         isTransitioning = false;
+
+        if(light.enabled)
+        {
+            light.enabled = false;
+            connectedDoor.light.enabled = false;
+        }
     }
 }

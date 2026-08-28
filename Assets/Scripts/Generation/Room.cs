@@ -165,9 +165,9 @@ public class Room : Connectable
             && EnemyManager.instance.AllEnemiesDead() && EnemyManager.instance.allEnemiesSpawned && !hasBeenExplored)
             OpenDoors();
 
-        Debug.Log("All enemies dead: " + EnemyManager.instance.AllEnemiesDead() + 
-                  " | Current Room: " + EnemyManager.instance.currentRoom.name + " | All Enemies Spawned: " + EnemyManager.instance.allEnemiesSpawned +
-                  " | Has been explored: " + hasBeenExplored);
+        // Debug.Log("All enemies dead: " + EnemyManager.instance.AllEnemiesDead() + 
+                  // " | Current Room: " + EnemyManager.instance.currentRoom.name + " | All Enemies Spawned: " + EnemyManager.instance.allEnemiesSpawned +
+                  // " | Has been explored: " + hasBeenExplored);
     }
 
     void PlayerEntered()
@@ -226,7 +226,7 @@ public class Room : Connectable
 
             if (!boundingBox.collider.OverlapPoint(spawnPos))
             {
-                Debug.Log("Out of bounds spawning");
+                //Debug.Log("Out of bounds spawning");
                 i--;
                 continue;
             }
@@ -235,7 +235,7 @@ public class Room : Connectable
 
             if (hitObstacle is not null)
             {
-                Debug.Log("Skipping due to overlapping wall");
+                //Debug.Log("Skipping due to overlapping wall");
                 i--;
                 continue;
             }

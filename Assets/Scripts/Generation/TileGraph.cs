@@ -144,7 +144,7 @@ public class TileGraph : MonoBehaviour
     public void GenerateMap(Vector2 startPosition)
     {
         Debug.Log("Starting generation");
-        Debug.Log($"Start position: {startPosition}");
+        //Debug.Log($"Start position: {startPosition}");
         
         if (!InBounds(startPosition))
             throw new ArgumentException("Start position is not in the map.");
