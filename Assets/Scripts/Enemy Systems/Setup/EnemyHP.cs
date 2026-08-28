@@ -95,11 +95,11 @@ public class EnemyHP : MonoBehaviour
         {
             Instantiate(HP_Drop, transform.position, Quaternion.identity);
         }
-        else
+        else if(dropChance >= 0.6)
         {
             Instantiate(Coin, transform.position, Quaternion.identity);
         }
 
-            Destroy(gameObject, 0.7f);
+        Destroy(gameObject, 0.7f);
     }
 }

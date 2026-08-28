@@ -20,7 +20,7 @@ public class DistanceToPlayer : Condition
 
     public override bool Check(Enemy enemy)
     {
-        Transform player = PlayerManager.instance.transform;
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         float distance = Vector3.Distance(player.position, enemy.transform.position);
 
         switch (comparisonOperator)

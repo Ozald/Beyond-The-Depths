@@ -31,7 +31,7 @@ public class Octo_Shot : AIState
     public override void OnUpdate(Enemy enemy)
     {
         SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
-        Transform player = PlayerManager.instance.transform;
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (enemyRenderer != null && player != null)
         {
@@ -53,7 +53,7 @@ public class Octo_Shot : AIState
     {
         yield return new WaitForSeconds(1f);
 
-        Transform player = PlayerManager.instance.transform;
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2[] attackDirections = new Vector2[]
         {
             new Vector2(0, 1),

@@ -67,7 +67,7 @@ public class EnemyAttackManager : MonoBehaviour
             return true;
         }
 
-        Debug.Log("Attack request denied for " + enemy.name);
+        //Debug.Log("Attack request denied for " + enemy.name);
         return false;
     }
 }

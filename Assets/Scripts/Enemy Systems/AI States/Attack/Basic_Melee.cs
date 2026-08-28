@@ -46,7 +46,7 @@ public class Basic_Melee : AIState
 
     public override void OnUpdate(Enemy enemy)
     {
-        Transform player = PlayerManager.instance.transform;
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
         SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
         GameObject attackHitbox = enemy.GetData().GetAttribute<GameObject>(attackHitboxKey);
 
