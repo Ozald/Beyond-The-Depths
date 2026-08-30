@@ -624,7 +624,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &126606733
+--- !u!43 &91626953
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1488,8 +1488,8 @@ MonoBehaviour:
   - {x: 0.24163605, y: -0.8648729, z: 0}
   - {x: 0.19892357, y: -0.9629133, z: 0}
   m_ShapePathHash: -313925516
-  m_Mesh: {fileID: 126606733}
-  m_InstanceId: 41608
+  m_Mesh: {fileID: 91626953}
+  m_InstanceId: 39376
   m_LocalBounds:
     m_Center: {x: -0.0068460107, y: -0.22593164, z: 0}
     m_Extent: {x: 0.61193335, y: 0.73698163, z: 0}
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0c95b07eef4b40bd3918529def824b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomTypes: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
+  roomTypes: {fileID: 11400000, guid: fc2d7e24bff16a647bb42de344e484c0, type: 2}
   map: {fileID: 0}
 --- !u!4 &409894598
 Transform:
@@ -1584,6 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
   enemyCount: 0
+  allEnemiesSpawned: 0
 --- !u!4 &501854938
 Transform:
   m_ObjectHideFlags: 0

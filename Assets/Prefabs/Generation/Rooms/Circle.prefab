@@ -184,6 +184,7 @@ MonoBehaviour:
   enabled: 0
   fadeAnimator: {fileID: 0}
   isTransitioning: 0
+  light: {fileID: 0}
 --- !u!61 &8175796528260491016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   spawnParticles: {fileID: 6299002914487910474, guid: 1c915852478a11b4fbf8807053d27068, type: 3}
-  levelData: {fileID: 11400000, guid: a1d4d923bd1b53046a63590acab86eca, type: 2}
+  levelData: {fileID: 0}
   wallCollider: {fileID: 0}
   hasBeenExplored: 0
   spawnedEnemies: []
@@ -668,6 +669,7 @@ MonoBehaviour:
   enabled: 0
   fadeAnimator: {fileID: 0}
   isTransitioning: 0
+  light: {fileID: 0}
 --- !u!61 &3109891522363184657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5635,6 +5637,7 @@ MonoBehaviour:
   enabled: 0
   fadeAnimator: {fileID: 0}
   isTransitioning: 0
+  light: {fileID: 0}
 --- !u!61 &7739394121558499549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13365,6 +13368,7 @@ MonoBehaviour:
   enabled: 0
   fadeAnimator: {fileID: 0}
   isTransitioning: 0
+  light: {fileID: 0}
 --- !u!61 &9180713084095593430
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,7 +40,9 @@ public class PlayerMovement : MonoBehaviour
 
         rb2d.velocity = movementDirection * stats.speed.value;
 
-        if (PlayerManager.instance.currentRoom is not null && PlayerManager.instance.currentRoom.hasBeenExplored)
+        if (PlayerManager.instance.currentRoom is not null 
+            && PlayerManager.instance.currentRoom.hasBeenExplored
+            && SceneManager.GetActiveScene().buildIndex != 4) // Yikes on the "magic number" 4 for the boss scene
             rb2d.velocity *= 1.5f;
         
         // rb2d.rotation = Vector2.SignedAngle(Vector2.up, movementDirection);
