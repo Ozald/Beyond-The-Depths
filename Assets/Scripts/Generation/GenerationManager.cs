@@ -77,6 +77,14 @@ public class GenerationManager : MonoBehaviour
 
             player.transform.position = new Vector3(map.StartRoom.gameObject.transform.position.x, 
                 map.StartRoom.gameObject.transform.position.y, player.transform.position.z);
+            
+            List<Room> rooms = new List<Room>(FindObjectsByType<Room>(FindObjectsSortMode.None));
+
+            foreach (Room room in rooms)
+            {
+                if (room.levelData == null)
+                    room.levelData = roomTypes;
+            }
         }
     }
 
