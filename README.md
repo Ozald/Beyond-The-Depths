@@ -8,7 +8,7 @@ Legends say a gatekeeper appears to stop your descent three levels deep... can y
 
 <img width="1920" height="1080" alt="Sprite-0004" src="https://github.com/user-attachments/assets/9a208d54-2b8f-42d6-b995-4307ed9b4acf" />
 
-**[Play [Beyond the Depths] on Itch.io](https://ozald.itch.io/beyond-the-depths)**
+**[Play Beyond the Depths on Itch.io](https://ozald.itch.io/beyond-the-depths)**
 
 ## Controls
 WASD / Arrow Keys -- Movement<br>
