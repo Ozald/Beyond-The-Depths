@@ -17,7 +17,7 @@ E -- Interact<br>
 Q -- Swap Weapons<br>
 
 ## Tech Stack
-**Engine:** Unity<br>
+**Engine:** Unity (C#)<br>
 **Art:** Asesprite<br>
 **Audio:** FL Studio & FMOD<br>
 
